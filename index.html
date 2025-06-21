@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/jpeg" href="logo1.jpg" />
+    <link rel="icon" type="image/png" href="final1.png" />
 
     <style>
       body {
@@ -93,6 +93,9 @@
         width: 100%;
         height: 350px;
         max-height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       @media (min-width: 768px) {
         .chart-container {
@@ -186,6 +189,78 @@
       .job-card-compact .job-card-header.expanded .job-card-icon {
         transform: rotate(180deg);
       }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100; /* Above all content */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+      }
+      .modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        transform: translateY(20px);
+        transition: transform 0.3s ease-in-out;
+      }
+      .modal-overlay.show .modal-content {
+        transform: translateY(0);
+      }
+      .modal-close-button {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #666;
+        cursor: pointer;
+      }
+
+      /* New styling for bottom footer links */
+      .footer-links-section {
+          background-color: #000000; /* Black background */
+          color: #cccccc;
+          padding: 1.5rem 0;
+          font-size: 0.875rem;
+      }
+      .footer-links-section a {
+          color: #cccccc;
+          text-decoration: none;
+          transition: color 0.2s ease-in-out;
+      }
+      .footer-links-section a:hover {
+          color: #ffffff;
+      }
+      .footer-links-section ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1.5rem; /* Spacing between links */
+      }
+      .footer-links-section li {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -200,10 +275,10 @@
 
     <header
       id="header"
-      class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200"
+      class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20"
     >
       <nav
-        class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20"
+        class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
       >
         <a href="#home" class="flex items-center space-x-2">
           <div class="text-xl tracking-wider">
@@ -525,7 +600,8 @@
             </div>
 
             <div class="chart-container">
-              <canvas id="pqcChart"></canvas>
+              <div id="chart-loading-spinner" class="loading-spinner"></div>
+              <canvas id="pqcChart" class="hidden"></canvas>
             </div>
           </div>
         </div>
@@ -726,9 +802,10 @@
                       (e.g., FPGAs, ASICs) is a plus.
                     </li>
                   </ul>
-                  <a href="mailto:bharat.moontrace@gmail.com" class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition">
+                  <button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                          data-job-title="Senior Post-Quantum Cryptography Engineer">
                     Apply Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -769,9 +846,10 @@
                     <li>Familiarity with NIST PQC standards and migration challenges.</li>
                     <li>Excellent communication and client-facing skills.</li>
                   </ul>
-                  <a href="mailto:bharat.moontrace@gmail.com" class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition">
+                  <button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                          data-job-title="Quantum Security Solutions Architect">
                     Apply Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -808,9 +886,10 @@
                       <li>Proficiency in at least one programming language (C/C++, Python).</li>
                       <li>Eagerness to learn and a strong interest in quantum computing.</li>
                     </ul>
-                    <a href="mailto:bharat.moontrace@gmail.com" class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition">
+                    <button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                            data-job-title="Junior Post-Quantum Cryptographer">
                       Apply Now
-                    </a>
+                    </button>
                   </div>
                 </div>
             </div>
@@ -847,9 +926,10 @@
                       <li>Proficiency in Verilog/VHDL and digital design principles.</li>
                       <li>Experience with cryptographic hardware or security is a plus.</li>
                     </ul>
-                    <a href="mailto:bharat.moontrace@gmail.com" class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition">
+                    <button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                            data-job-title="Embedded Systems Engineer (Cryptographic Hardware)">
                       Apply Now
-                    </a>
+                    </button>
                   </div>
                 </div>
             </div>
@@ -886,9 +966,10 @@
                       <li>Understanding of network security protocols and cryptographic concepts.</li>
                       <li>Certifications like CISSP, CompTIA Security+ are a plus.</li>
                     </ul>
-                    <a href="mailto:bharat.moontrace@gmail.com" class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition">
+                    <button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                            data-job-title="Cybersecurity Analyst (PQC Focused)">
                       Apply Now
-                    </a>
+                    </button>
                   </div>
                 </div>
             </div>
@@ -918,16 +999,17 @@
                       <li>Maintain and update existing documentation.</li>
                       <li>Contribute to content strategy for blogs and marketing materials.</li>
                     </ul>
-                    <                    <h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4>
+                    <h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4>
                     <ul class="list-disc list-inside text-gray-600 mb-4">
                       <li>Bachelor's degree in Technical Communication, English, Computer Science, or related field.</li>
                       <li>3+ years experience in technical writing for software or hardware.</li>
                       <li>Excellent writing, editing, and communication skills.</li>
                       <li>Familiarity with cybersecurity or cryptography concepts is highly desirable.</li>
                     </ul>
-                    <a href="mailto:bharat.moontrace@gmail.com" class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition">
+                    <button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                            data-job-title="Technical Writer / Documentation Specialist (PQC)">
                       Apply Now
-                    </a>
+                    </button>
                   </div>
                 </div>
             </div>
@@ -959,76 +1041,7 @@
               </p>
             </div>
             <div class="space-y-4">
-              <div
-                class="accordion-item bg-white border border-gray-200 rounded-lg animated-item"
-              >
-                <button
-                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold"
-                >
-                  <span>Investor Relations & Our Funding Instrument</span>
-                  <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                  <div class="p-5 border-t border-gray-200 text-gray-600">
-                    <p>
-                      At Moontrace, we understand that early-stage investment is
-                      not just about capital – it's a partnership of vision,
-                      belief, and long-term conviction. We deeply value the
-                      trust our investors place in us, especially in an emerging
-                      domain like Post-Quantum Cryptography.
-                    </p>
-                    <p class="mt-4">
-                      To reflect that trust with fairness, transparency, and
-                      alignment, we have adopted a structured, founder-conscious
-                      equity approach.
-                    </p>
-                    <p class="mt-4 font-semibold">
-                      Our Funding Instrument: ISAFE Notes (Cap + Discount)
-                    </p>
-                    <p class="mt-2">
-                      We prefer to use the 100x VC's Standard ISAFE (India
-                      Simple Agreement for Future Equity) for all early-stage
-                      investment rounds, featuring:
-                    </p>
-                    <ul class="list-disc list-inside ml-4 mt-2">
-                      <li>
-                        <strong>Valuation Cap:</strong> Ensures that your early
-                        belief is rewarded – you'll convert equity at a fair
-                        ceiling, even if the company's valuation grows rapidly.
-                        This protects early investors by setting a maximum
-                        valuation at which their investment converts into
-                        equity.
-                      </li>
-                      <li>
-                        <strong>Discount Rate:</strong> As an early backer,
-                        you'll receive a 10-20% discount on shares compared to
-                        new investors in our priced round. This further rewards
-                        early-stage risk-takers by allowing them to purchase
-                        shares at a lower price than future investors.
-                      </li>
-                    </ul>
-                    <p class="mt-4">
-                      This structure simplifies early financing, reduces legal
-                      complexity, and aligns incentives – allowing us to focus
-                      intensely on product development, team building, and
-                      achieving market traction, rather than getting bogged down
-                      in complex legal negotiations.
-                    </p>
-                    <p class="mt-4 font-semibold">Interested in Investing?</p>
-                    <p>
-                      Reach out to:
-                      <a
-                        href="mailto:bharat.moontrace@gmail.com"
-                        class="text-gray-700 hover:underline"
-                        >bharat.moontrace@gmail.com</a
-                      >. We'd be glad to send you a detailed deck, a
-                      comprehensive demo, and a draft ISAFE note for your
-                      review.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
+                <div
                 class="accordion-item bg-white border border-gray-200 rounded-lg animated-item"
               >
                 <button
@@ -1090,6 +1103,70 @@
                       your belief is our foundation, and our trust in you is
                       absolute. We rise together, or not at all."
                     </p>
+                    <a href="contributor_policy.pdf" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition mt-4">
+                        Read More
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="accordion-item bg-white border border-gray-200 rounded-lg animated-item"
+              >
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold"
+                >
+                  <span>Investor Relations & Our Funding Instrument</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p>
+                      At Moontrace, we understand that early-stage investment is
+                      not just about capital – it's a partnership of vision,
+                      belief, and long-term conviction. We deeply value the
+                      trust our investors place in us, especially in an emerging
+                      domain like Post-Quantum Cryptography.
+                    </p>
+                    <p class="mt-4">
+                      To reflect that trust with fairness, transparency, and
+                      alignment, we have adopted a structured, founder-conscious
+                      equity approach.
+                    </p>
+                    <p class="mt-4 font-semibold">
+                      Our Funding Instrument: ISAFE Notes (Cap + Discount)
+                    </p>
+                    <p class="mt-2">
+                      We prefer to use the 100x VC's Standard ISAFE (India
+                      Simple Agreement for Future Equity) for all early-stage
+                      investment rounds, featuring:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                      <li>
+                        <strong>Valuation Cap:</strong> Ensures that your early
+                        belief is rewarded – you'll convert equity at a fair
+                        ceiling, even if the company's valuation grows rapidly.
+                        This protects early investors by setting a maximum
+                        valuation at which their investment converts into
+                        equity.
+                      </li>
+                      <li>
+                        <strong>Discount Rate:</strong> As an early backer,
+                        you'll receive a 10-20% discount on shares compared to
+                        new investors in our priced round. This further rewards
+                        early-stage risk-takers by allowing them to purchase
+                        shares at a lower price than future investors.
+                      </li>
+                    </ul>
+                    <p class="mt-4">
+                      This structure simplifies early financing, reduces legal
+                      complexity, and aligns incentives – allowing us to focus
+                      intensely on product development, team building, and
+                      achieving market traction, rather than getting bogged down
+                      in complex legal negotiations.
+                    </p>                    
+                    <a href="investor_policy.pdf" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition mt-4">
+                        Read More
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1133,19 +1210,53 @@
       </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400">
-      <div
-        class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm"
-      >
-        <p>
-          &copy; 2025 Moontrace Engineering Research and Consulting. All Rights
-          Reserved.
-        </p>
-        <p class="mt-2">Built in India, for the World.</p>
-      </div>
+        <div class="footer-links-section text-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <ul class="mb-4">
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="whymoon.pdf" target="_blank">Manifesto</a></li>
+                    <li><a href="https://x.com/Moontrace_HQ">X</a></li>
+                    <li><a href="https://www.instagram.com/moontrace_hq/">Instagram</a></li>
+                    <li><a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a></li>
+                </ul>
+                <p>
+                  &copy; 2025 Moontrace Engineering Research and Consulting. All Rights
+                  Reserved.
+                </p>
+                <p class="mt-2">Built in India, for the World.</p>
+                <p class="mt-4">
+                    <a href="#top" class="hover:underline">Back to top</a>
+                </p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Bottom Navigation Panel -->
+    <!-- Apply Now Modal -->
+    <div id="apply-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-button" class="modal-close-button">&times;</button>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Apply for <span id="modal-job-title"></span></h3>
+            <p class="text-gray-700 mb-4">
+                Mail us at this email: <a href="mailto:bharat.moontrace@gmail.com" class="text-blue-600 hover:underline">bharat.moontrace@gmail.com</a>
+            </p>
+            <div class="mb-4">
+                <label for="expertise-input" class="block text-sm font-medium text-gray-700 mb-2">Tell us about your expertise:</label>
+                <textarea id="expertise-input" rows="4" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+            </div>
+            <div class="mb-6">
+                <label for="problem-input" class="block text-sm font-medium text-gray-700 mb-2">Describe a problem you faced and how you approached it:</label>
+                <textarea id="problem-input" rows="6" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+            </div>
+            <button id="send-email-button" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition">
+                Send Application Email
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Bottom Navigation Panel (for small screens) -->
     <nav class="bottom-nav md:hidden">
         <div class="flex justify-around items-center h-16">
             <a href="#home" class="bottom-nav-link">
@@ -1240,6 +1351,7 @@
             jobCards.forEach((otherCard) => {
               if (otherCard !== card) {
                 otherCard.querySelector(".job-card-content").style.maxHeight = "0px";
+                otherCard.querySelector(".job-card-header").classList.remove('expanded');
                 otherCard.querySelector(".job-card-icon").textContent = "+";
               }
             });
@@ -1301,6 +1413,9 @@
 
         // Chart.js PQC Benchmark Chart
         const ctx = document.getElementById("pqcChart").getContext("2d");
+        const chartLoadingSpinner = document.getElementById("chart-loading-spinner");
+        const pqcChartCanvas = document.getElementById("pqcChart");
+
         let pqcChart;
 
         const benchmarkData = {
@@ -1347,60 +1462,65 @@
         };
 
         function createChart(metric, level) {
-          if (pqcChart) {
-            pqcChart.destroy();
-          }
+            chartLoadingSpinner.classList.remove('hidden'); // Show spinner
+            pqcChartCanvas.classList.add('hidden'); // Hide canvas
+            if (pqcChart) {
+                pqcChart.destroy();
+            }
 
-          const data = benchmarkData[metric];
-          const chartData = data.datasets[level].map((ds, index) => ({
-            label: ds.label,
-            data: ds.data,
-            backgroundColor: ["#333333", "#777777", "#bbbbbb"][
-              index
-            ] /* Grayscale colors */,
-            borderColor: "#333333",
-            borderWidth: 1,
-          }));
+            // Simulate a delay for loading, remove in production if data is instant
+            setTimeout(() => {
+                const data = benchmarkData[metric];
+                const chartData = data.datasets[level].map((ds, index) => ({
+                    label: ds.label,
+                    data: ds.data,
+                    backgroundColor: ["#333333", "#777777", "#bbbbbb"][index], /* Grayscale colors */
+                    borderColor: "#333333",
+                    borderWidth: 1,
+                }));
 
-          pqcChart = new Chart(ctx, {
-            type: "bar",
-            data: {
-              labels: data.labels,
-              datasets: chartData,
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  title: {
-                    display: true,
-                    text: metric === "latency" ? "Milliseconds (ms)" : "Bytes",
-                    font: { size: 14, color: "#333333" },
-                  },
-                  ticks: { color: "#333333" },
-                  grid: { color: "#e0e0e0" } /* Light gray grid lines */,
-                },
-                x: {
-                  ticks: { color: "#333333" },
-                  grid: { color: "#e0e0e0" } /* Light gray grid lines */,
-                },
-              },
-              plugins: {
-                tooltip: {
-                  mode: "index",
-                  intersect: false,
-                },
-                legend: {
-                  labels: {
-                    color: "#333333" /* Legend text color */,
-                  },
-                },
-              },
-            },
-          });
-          pqcChart.update();
+                pqcChart = new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: data.labels,
+                        datasets: chartData,
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: metric === "latency" ? "Milliseconds (ms)" : "Bytes",
+                                    font: { size: 14, color: "#333333" },
+                                },
+                                ticks: { color: "#333333" },
+                                grid: { color: "#e0e0e0" } /* Light gray grid lines */,
+                            },
+                            x: {
+                                ticks: { color: "#333333" },
+                                grid: { color: "#e0e0e0" } /* Light gray grid lines */,
+                            },
+                        },
+                        plugins: {
+                            tooltip: {
+                                mode: "index",
+                                intersect: false,
+                            },
+                            legend: {
+                                labels: {
+                                    color: "#333333" /* Legend text color */,
+                                },
+                            },
+                        },
+                    },
+                });
+                pqcChart.update();
+                chartLoadingSpinner.classList.add('hidden'); // Hide spinner
+                pqcChartCanvas.classList.remove('hidden'); // Show canvas
+            }, 500); // Simulate 0.5 second load time
         }
 
         const metricSelect = document.getElementById("metric-select");
@@ -1428,17 +1548,73 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // Reduced transition delay for faster animation (index * 0.05s)
-                    entry.target.style.transitionDelay = `${entry.target.dataset.animationDelay || 0}s`;
+                    // Staggered delay for animation (now twice as fast, i.e., 0.05s per item)
+                    entry.target.style.transitionDelay = `${parseFloat(entry.target.dataset.animationDelay) / 2}s`;
                     observer.unobserve(entry.target); // Stop observing once visible
                 }
             });
         }, observerOptions);
 
         animatedItems.forEach((item, index) => {
-            // Apply staggered delay for animation
-            item.dataset.animationDelay = (index * 0.05).toFixed(2); // Set data attribute for delay
+            item.dataset.animationDelay = (index * 0.1).toFixed(2); // Store original delay for calculation
             observer.observe(item);
+        });
+
+        // Apply Modal Logic
+        const applyButtons = document.querySelectorAll(".apply-now-button");
+        const applyModalOverlay = document.getElementById("apply-modal-overlay");
+        const modalCloseButton = document.getElementById("modal-close-button");
+        const modalJobTitle = document.getElementById("modal-job-title");
+        const expertiseInput = document.getElementById("expertise-input");
+        const problemInput = document.getElementById("problem-input");
+        const sendEmailButton = document.getElementById("send-email-button");
+
+        let currentJobTitle = ""; // To store the job title for the email subject
+
+        applyButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                currentJobTitle = button.dataset.jobTitle;
+                modalJobTitle.textContent = currentJobTitle;
+                applyModalOverlay.classList.add("show");
+            });
+        });
+
+        modalCloseButton.addEventListener("click", () => {
+            applyModalOverlay.classList.remove("show");
+            // Clear inputs when modal closes
+            expertiseInput.value = "";
+            problemInput.value = "";
+        });
+
+        // Close modal if clicking outside the content
+        applyModalOverlay.addEventListener("click", (event) => {
+            if (event.target === applyModalOverlay) {
+                applyModalOverlay.classList.remove("show");
+                expertiseInput.value = "";
+                problemInput.value = "";
+            }
+        });
+
+        sendEmailButton.addEventListener("click", () => {
+            const expertise = expertiseInput.value.trim();
+            const problem = problemInput.value.trim();
+            const recipient = "bharat.moontrace@gmail.com";
+            const subject = encodeURIComponent(`Application for ${currentJobTitle}`);
+            const body = encodeURIComponent(
+                `Dear Bharat Raghuvanshi,\n\n` +
+                `I am writing to apply for the position of ${currentJobTitle}.\n\n` +
+                `My expertise: \n${expertise}\n\n` +
+                `Regarding a problem I faced and my approach to it:\n${problem}\n\n` +
+                `Thank you for your time and consideration.\n\n` +
+                `Sincerely,`
+            );
+            
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            
+            // Optionally clear inputs and hide modal after opening mail client
+            expertiseInput.value = "";
+            problemInput.value = "";
+            applyModalOverlay.classList.remove("show");
         });
 
       });
