@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="final1.png" />
+    <link rel="icon" type="image/png" href="finalbg.png" />
 
     <style>
       body {
@@ -131,6 +131,21 @@
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         min-width: 130px; /* Ensures consistent width for larger text */
       }
+      @media (max-width: 640px) {
+  .countdown-segment {
+    padding: 0.5rem 0.5rem;
+    min-width: 60px;
+  }
+  #countdown {
+    gap: 0.5rem;
+  }
+  #countdown span.text-7xl {
+    font-size: 2rem !important;
+  }
+  #countdown span.text-base {
+    font-size: 0.8rem !important;
+  }
+}
       .animated-item {
           opacity: 0;
           transform: translateY(20px);
@@ -321,17 +336,11 @@
           </svg>
         </button>
       </nav>
-      <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2">
-        <a href="#services" class="block nav-link font-medium py-2"
-          >Services</a
-        >
+      <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-white/95 rounded-b-lg shadow-lg">
+        <a href="#services" class="block nav-link font-medium py-2">Services</a>
         <a href="#defense" class="block nav-link font-medium py-2">Defense</a>
-        <a href="#whymoontrace" class="block nav-link font-medium py-2"
-          >Why Moontrace?</a
-        >
-        <a href="#industries" class="block nav-link font-medium py-2"
-          >Industries</a
-        >
+        <a href="#whymoontrace" class="block nav-link font-medium py-2">Why Moontrace?</a>
+        <a href="#industries" class="block nav-link font-medium py-2">Industries</a>
         <a href="#careers" class="block nav-link font-medium py-2">Careers</a>
         <a href="#about" class="block nav-link font-medium py-2">About</a>
         <a
@@ -414,7 +423,7 @@
         </div>
       </section>
 
-      <section id="services" class="py-20 bg-white">
+      <section id="services" class="py-20 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
             <h2
@@ -1222,7 +1231,7 @@
                     <li><a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a></li>
                 </ul>
                 <p>
-                  &copy; 2025 Moontrace Engineering Research and Consulting. All Rights
+                  &copy; 2025 Moontrace Engineering Research and Consulting  | All Rights
                   Reserved.
                 </p>
                 <p class="mt-2">Built in India, for the World.</p>
@@ -1285,7 +1294,7 @@
             </a>
             <a href="#contact" class="bottom-nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"/>
                 </svg>
                 Contact
             </a>
@@ -1311,6 +1320,13 @@
         const mobileMenu = document.getElementById("mobile-menu");
         mobileMenuButton.addEventListener("click", () => {
           mobileMenu.classList.toggle("hidden");
+        });
+
+        // Auto-close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
         });
 
         // Accordion (for About section policies)
@@ -1418,24 +1434,32 @@
 
         let pqcChart;
 
+        // Use dark blue shades for bar colors
+        const barColors = [
+          "#26619c",
+          "#3a7ca5", 
+          "#74b3ce", 
+    
+        ];
+
         const benchmarkData = {
           latency: {
             labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
             datasets: {
               1: [
-                { label: "KeyGen/Sign", data: [0.92, 1.45, 1.25, 2.45] },
-                { label: "Enc/Verify", data: [0.8, 1.15, 0.9, 0.45] },
-                { label: "Decaps", data: [0.85, 1.22, null, null] },
+          { label: "KeyGen/Sign", data: [0.92, 1.45, 1.25, 2.45] },
+          { label: "Enc/Verify", data: [0.8, 1.15, 0.9, 0.45] },
+          { label: "Decaps", data: [0.85, 1.22, null, null] },
               ],
               3: [
-                { label: "KeyGen/Sign", data: [1.18, 1.85, 1.55, 3.12] },
-                { label: "Enc/Verify", data: [0.9, 1.3, 1.03, 0.58] },
-                { label: "Decaps", data: [1.12, 1.4, null, null] },
+          { label: "KeyGen/Sign", data: [1.18, 1.85, 1.55, 3.12] },
+          { label: "Enc/Verify", data: [0.9, 1.3, 1.03, 0.58] },
+          { label: "Decaps", data: [1.12, 1.4, null, null] },
               ],
               5: [
-                { label: "KeyGen/Sign", data: [1.45, 2.25, 1.95, 3.85] },
-                { label: "Enc/Verify", data: [1.2, 1.65, 1.35, 0.7] },
-                { label: "Decaps", data: [1.38, 1.8, null, null] },
+          { label: "KeyGen/Sign", data: [1.45, 2.25, 1.95, 3.85] },
+          { label: "Enc/Verify", data: [1.2, 1.65, 1.35, 0.7] },
+          { label: "Decaps", data: [1.38, 1.8, null, null] },
               ],
             },
           },
@@ -1443,19 +1467,19 @@
             labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
             datasets: {
               1: [
-                { label: "Public Key", data: [800, 699, 1184, 897] },
-                { label: "Ciphertext/Sig", data: [768, 699, 2044, 666] },
-                { label: "Secret Key", data: [1632, 935, 2800, 1281] },
+          { label: "Public Key", data: [800, 699, 1184, 897] },
+          { label: "Ciphertext/Sig", data: [768, 699, 2044, 666] },
+          { label: "Secret Key", data: [1632, 935, 2800, 1281] },
               ],
               3: [
-                { label: "Public Key", data: [1184, 1027, 1472, 1441] },
-                { label: "Ciphertext/Sig", data: [1088, 1025, 2701, 1007] },
-                { label: "Secret Key", data: [2400, 1999, 3504, 2305] },
+          { label: "Public Key", data: [1184, 1027, 1472, 1441] },
+          { label: "Ciphertext/Sig", data: [1088, 1025, 2701, 1007] },
+          { label: "Secret Key", data: [2400, 1999, 3504, 2305] },
               ],
               5: [
-                { label: "Public Key", data: [1568, 1398, 1760, 1793] },
-                { label: "Ciphertext/Sig", data: [1568, 1389, 3366, 1280] },
-                { label: "Secret Key", data: [3168, 2653, 4864, 3073] },
+          { label: "Public Key", data: [1568, 1398, 1760, 1793] },
+          { label: "Ciphertext/Sig", data: [1568, 1389, 3366, 1280] },
+          { label: "Secret Key", data: [3168, 2653, 4864, 3073] },
               ],
             },
           },
@@ -1465,61 +1489,61 @@
             chartLoadingSpinner.classList.remove('hidden'); // Show spinner
             pqcChartCanvas.classList.add('hidden'); // Hide canvas
             if (pqcChart) {
-                pqcChart.destroy();
+          pqcChart.destroy();
             }
 
             // Simulate a delay for loading, remove in production if data is instant
             setTimeout(() => {
-                const data = benchmarkData[metric];
-                const chartData = data.datasets[level].map((ds, index) => ({
-                    label: ds.label,
-                    data: ds.data,
-                    backgroundColor: ["#333333", "#777777", "#bbbbbb"][index], /* Grayscale colors */
-                    borderColor: "#333333",
-                    borderWidth: 1,
-                }));
+          const data = benchmarkData[metric];
+          const chartData = data.datasets[level].map((ds, index) => ({
+              label: ds.label,
+              data: ds.data,
+              backgroundColor: barColors[index % barColors.length],
+              borderColor: barColors[index % barColors.length],
+              borderWidth: 1,
+          }));
 
-                pqcChart = new Chart(ctx, {
-                    type: "bar",
-                    data: {
-                        labels: data.labels,
-                        datasets: chartData,
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: metric === "latency" ? "Milliseconds (ms)" : "Bytes",
-                                    font: { size: 14, color: "#333333" },
-                                },
-                                ticks: { color: "#333333" },
-                                grid: { color: "#e0e0e0" } /* Light gray grid lines */,
-                            },
-                            x: {
-                                ticks: { color: "#333333" },
-                                grid: { color: "#e0e0e0" } /* Light gray grid lines */,
-                            },
-                        },
-                        plugins: {
-                            tooltip: {
-                                mode: "index",
-                                intersect: false,
-                            },
-                            legend: {
-                                labels: {
-                                    color: "#333333" /* Legend text color */,
-                                },
-                            },
-                        },
-                    },
-                });
-                pqcChart.update();
-                chartLoadingSpinner.classList.add('hidden'); // Hide spinner
-                pqcChartCanvas.classList.remove('hidden'); // Show canvas
+          pqcChart = new Chart(ctx, {
+              type: "bar",
+              data: {
+            labels: data.labels,
+            datasets: chartData,
+              },
+              options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+              beginAtZero: true,
+              title: {
+                  display: true,
+                  text: metric === "latency" ? "Milliseconds (ms)" : "Bytes",
+                  font: { size: 14, color: "#333333" },
+              },
+              ticks: { color: "#333333" },
+              grid: { color: "#e0e0e0" },
+                },
+                x: {
+              ticks: { color: "#333333" },
+              grid: { color: "#e0e0e0" },
+                },
+            },
+            plugins: {
+                tooltip: {
+              mode: "index",
+              intersect: false,
+                },
+                legend: {
+              labels: {
+                  color: "#333333",
+              },
+                },
+            },
+              },
+          });
+          pqcChart.update();
+          chartLoadingSpinner.classList.add('hidden'); // Hide spinner
+          pqcChartCanvas.classList.remove('hidden'); // Show canvas
             }, 500); // Simulate 0.5 second load time
         }
 
@@ -1546,12 +1570,12 @@
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    // Staggered delay for animation (now twice as fast, i.e., 0.05s per item)
-                    entry.target.style.transitionDelay = `${parseFloat(entry.target.dataset.animationDelay) / 2}s`;
-                    observer.unobserve(entry.target); // Stop observing once visible
-                }
+          if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              // Staggered delay for animation (now twice as fast, i.e., 0.05s per item)
+              entry.target.style.transitionDelay = `${parseFloat(entry.target.dataset.animationDelay) / 2}s`;
+              observer.unobserve(entry.target); // Stop observing once visible
+          }
             });
         }, observerOptions);
 
