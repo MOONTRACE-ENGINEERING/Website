@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-20">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTLabs | Moontrace Engineering</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="finalbg.png" />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f9fafb;
+        color: #1f2937;
+      }
+      h1, h2, h3, h4 {
+        font-family: "Inter", sans-serif;
+        color: #111827;
+      }
+      .hero-bg {
+        background-color: #090909;
+        background-image: radial-gradient(#4b5563 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+      .hero-bg h1, .hero-bg p {
+        color: #ffffff;
+      }
+      .sticky-nav {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 80px;
+        z-index: 40;
+        transition: top 0.3s;
+      }
+      .nav-container {
+        background-color: #e5e7eb;
+        border-radius: 9999px;
+        padding: 0.5rem;
+        display: inline-flex;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      }
+      .nav-link {
+        color: #4b5563;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 9999px;
+        transition: color 0.3s, background-color 0.3s;
+        text-decoration: none;
+      }
+      .nav-link:hover {
+        background-color: #d1d5db;
+        color: #111827;
+      }
+      .nav-link.active {
+        background-color: #111827;
+        color: #ffffff;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      }
+      .card {
+        background-color: white;
+        border-radius: 0.75rem;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+      }
+      .animated-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+      .animated-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .footer-links-section {
+        background-color: #000000;
+        color: #cccccc;
+        padding: 1.5rem 0;
+        font-size: 0.875rem;
+        border-top: 1px solid #222222;
+      }
+      .footer-links-section a {
+        color: #cccccc;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+      }
+      .footer-links-section a:hover { color: #ffffff; }
+      .footer-links-section ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      /* Modal Styles */
+      .modal-backdrop {
+        transition: opacity 0.3s ease-in-out;
+      }
+      .modal-content {
+        transition: transform 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header id="header" class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20">
+      <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="text-xl tracking-wider">
+            <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
+            <span class="font-normal text-red-600 text-base md:text-lg">|</span>
+            <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+            <!-- Replaced buttons with a single "Subscribe" button -->
+            <button id="subscribe-button" class="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Subscribe</button>
+        </div>
+        <button id="mobile-menu-button-main" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </nav>
+      <div id="mobile-menu-main" class="hidden md:hidden px-4 pb-4 space-y-2 bg-white/95 rounded-b-lg shadow-lg">
+        <button id="subscribe-button-mobile" class="w-full bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Subscribe</button>
+        <a href="index.html" class="block text-center text-gray-700 font-medium py-2 border-t mt-2">Back to Main Site</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="bg-black hero-bg text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32">
+          <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight">Welcome to MTLabs</h1>
+          <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl">Our research and development wing, dedicated to pioneering the future of post-quantum and quantum-native solutions for the world's most critical industries.</p>
+        </div>
+      </section>
+
+      <div class="sticky-nav bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto px-2 sm:px-4 lg:px-8">
+          <div class="flex justify-center items-center h-14 md:h-20">
+            <nav class="nav-container px-2 py-1 md:px-4 md:py-2">
+              <a href="#research" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Research</a>
+              <a href="#blog" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Blog</a>
+              <a href="#operations" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Operations</a>
+              <a href="#contact" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Contact</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <section id="research" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Research Papers</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Explore our latest publications and contributions to the field of quantum computing.</p>
+          </div>
+          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">A Novel Lightweight PQC Algorithm for IoT</h3><p class="mt-2 text-sm text-gray-500">Published: June 2025 | Authors: A. Sharma, B. Singh</p><p class="mt-4 text-gray-600">This paper introduces a new lattice-based cryptographic scheme optimized for resource-constrained IoT devices, offering robust security with minimal computational overhead.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read Paper &rarr;</a></div>
+            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Quantum Machine Learning for Medical Diagnostics</h3><p class="mt-2 text-sm text-gray-500">Published: March 2025 | Authors: C. Reddy, D. Patel</p><p class="mt-4 text-gray-600">We explore the application of quantum classifiers to improve the accuracy of early-stage disease detection from medical imaging data.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read Paper &rarr;</a></div>
+            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Securing Tactical Communications with Crypto-Agility</h3><p class="mt-2 text-sm text-gray-500">Published: January 2025 | Authors: E. Khan</p><p class="mt-4 text-gray-600">A framework for implementing crypto-agility in military communication systems, allowing for seamless updates to cryptographic primitives in response to new threats.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read Paper &rarr;</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the Lab</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Insights, tutorials, and news from the MTLabs team.</p>
+          </div>
+          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card overflow-hidden animated-item"><img src="https://placehold.co/600x400/000000/FFFFFF?text=Quantum+Insights" alt="Blog post image" class="w-full h-48 object-cover"><div class="p-8"><h3 class="text-xl font-bold text-gray-900">Understanding the NIST PQC Finalists</h3><p class="mt-2 text-sm text-gray-500">July 1, 2025</p><p class="mt-4 text-gray-600">A high-level overview of the algorithms selected by NIST and what they mean for the future of digital security.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read More &rarr;</a></div></div>
+            <div class="card overflow-hidden animated-item"><img src="https://placehold.co/600x400/333333/FFFFFF?text=Code+Deep+Dive" alt="Blog post image" class="w-full h-48 object-cover"><div class="p-8"><h3 class="text-xl font-bold text-gray-900">Implementing ML-KEM in Rust</h3><p class="mt-2 text-sm text-gray-500">June 15, 2025</p><p class="mt-4 text-gray-600">A step-by-step tutorial on building a basic implementation of the CRYSTALS-Kyber key encapsulation mechanism.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read More &rarr;</a></div></div>
+            <div class="card overflow-hidden animated-item"><img src="https://placehold.co/600x400/1a1a1a/FFFFFF?text=Future+Vision" alt="Blog post image" class="w-full h-48 object-cover"><div class="p-8"><h3 class="text-xl font-bold text-gray-900">The Road Ahead: Quantum-Resistant Healthcare</h3><p class="mt-2 text-sm text-gray-500">May 28, 2025</p><p class="mt-4 text-gray-600">Discussing the unique challenges and opportunities for implementing PQC to protect sensitive patient data for the long term.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read More &rarr;</a></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="operations" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Current Operations</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">A look at the active projects and initiatives currently underway at MTLabs.</p>
+          </div>
+          <div class="mt-16 max-w-4xl mx-auto space-y-8">
+            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Project Cerberus: Lightweight PQC for Drones</h3><p class="mt-2 text-gray-600">Developing a suite of energy-efficient PQC algorithms for securing command-and-control communications for autonomous aerial vehicles in the defense sector.</p><p class="mt-4 text-sm font-semibold text-gray-500">Status: Active Development</p></div>
+            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Quantum-Enhanced Financial Modeling</h3><p class="mt-2 text-gray-600">Partnering with financial institutions to explore how quantum algorithms can optimize risk analysis and fraud detection models, preparing them for a quantum future.</p><p class="mt-4 text-sm font-semibold text-gray-500">Status: Research & Prototyping</p></div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Connect with the Lab</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">We're actively seeking collaborators, innovators, and partners. Let's build the quantum-safe future together.</p>
+          </div>
+          <div class="mt-16 max-w-xl mx-auto animated-item">
+        <div class="text-center space-y-4">
+          <p class="text-lg text-gray-200">Get in touch directly:</p>
+          <p class="text-2xl font-bold text-white">Bharat Raghuvanshi</p>
+          <p><a href="mailto:bharat.moontrace@gmail.com" class="text-lg text-gray-300 hover:text-white transition">bharat.moontrace@gmail.com</a></p>
+          <p><a href="tel:+918887748365" class="text-lg text-gray-300 hover:text-white transition">+91 8887748365</a></p>
+        </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400">
+      <div class="footer-links-section text-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ul class="mb-4">
+            <li><a href="index.html#careers">Careers</a></li>
+            <li><a href="whymoon.pdf" target="_blank">Manifesto</a></li>
+            <li><a href="https://x.com/Moontrace_HQ">X</a></li>
+            <li><a href="https://www.instagram.com/moontrace_hq/">Instagram</a></li>
+            <li><a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a></li>
+          </ul>
+          <p>&copy; 2025 Moontrace Engineering Research and Consulting | All Rights Reserved.</p>
+          <p class="mt-2">Built in India, for the World.</p>
+          <p class="mt-4"><a href="#" class="hover:underline">Back to top</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Subscription Modal -->
+    <div id="subscription-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <!-- Backdrop -->
+        <div id="modal-backdrop" class="fixed inset-0 bg-black/50 modal-backdrop"></div>
+        
+        <!-- Modal Content -->
+        <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-md mx-auto p-8 relative transform scale-95">
+            <button id="modal-close-button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-gray-900">Join Our Newsletter</h3>
+                <p class="mt-2 text-gray-600">Stay updated on our progress, research, and plans. No spam, ever.</p>
+            </div>
+            <form id="subscription-form" class="mt-6 space-y-4">
+                <div>
+                    <label for="email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent transition" placeholder="you@example.com" required>
+                </div>
+                <button type="submit" id="submit-form-button" class="w-full bg-black text-white px-5 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Main mobile menu toggle
+        const mobileMenuButtonMain = document.getElementById("mobile-menu-button-main");
+        const mobileMenuMain = document.getElementById("mobile-menu-main");
+        mobileMenuButtonMain.addEventListener("click", () => {
+          mobileMenuMain.classList.toggle("hidden");
+        });
+
+        // Intersection Observer for animations
+        const animatedItems = document.querySelectorAll(".animated-item");
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              entry.target.style.transitionDelay = `${index * 100}ms`;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        animatedItems.forEach(item => observer.observe(item));
+
+        // Sticky nav active state on scroll
+        const sections = document.querySelectorAll("main section[id]");
+        const navLinks = document.querySelectorAll(".sticky-nav .nav-link");
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: "-100px 0px -50% 0px", threshold: 0 });
+        sections.forEach(section => {
+            if(section.id !== 'home') {
+                sectionObserver.observe(section);
+            }
+        });
+
+        // Subscription Modal Logic
+        const modal = document.getElementById('subscription-modal');
+        const openButtons = [document.getElementById('subscribe-button'), document.getElementById('subscribe-button-mobile')];
+        const closeButton = document.getElementById('modal-close-button');
+        const backdrop = document.getElementById('modal-backdrop');
+        const form = document.getElementById('subscription-form');
+        const submitButton = document.getElementById('submit-form-button');
+
+        const openModal = () => {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Prevent background scroll
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            }, 10);
+        };
+
+        const closeModal = () => {
+            backdrop.classList.add('opacity-0');
+            modal.querySelector('.modal-content').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        };
+
+        openButtons.forEach(btn => btn.addEventListener('click', openModal));
+        closeButton.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitButton.textContent = 'Subscribed!';
+            submitButton.classList.add('bg-green-600');
+            
+            // Here you would typically send the form data to a server
+            // For now, we'll just simulate it and close the modal
+            setTimeout(() => {
+                closeModal();
+                // Reset button state after modal is closed
+                setTimeout(() => {
+                    submitButton.textContent = 'Subscribe';
+                    submitButton.classList.remove('bg-green-600');
+                    form.reset();
+                }, 500);
+            }, 1500);
+        });
+      });
+    </script>
+  </body>
+</html>
