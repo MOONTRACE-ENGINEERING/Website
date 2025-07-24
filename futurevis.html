@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Future Vision</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="finalbg.png" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #18181b; /* Very dark gray background */
+            color: #f3f4f6; /* Light gray text */
+        }
+        .infographic-container {
+            max-width: 1200px;
+            margin: auto;
+            background: #232326; /* Dark gray container */
+            backdrop-filter: blur(5px);
+            border: 1px solid #27272a;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+            color: #f3f4f6;
+        }
+        #three-canvas-vision {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.10;
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        .title-line {
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #38bdf8, #818cf8);
+            border-radius: 2px;
+        }
+        .category-card {
+            background-color: #232326;
+            border: 1px solid #27272a;
+            border-radius: 0.75rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: #f3f4f6;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .icon-bg {
+            background-color: #18181b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+        }
+        .learn-more-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+        }
+        .learn-more-button {
+            background-color: #18181b;
+            color: #f3f4f6;
+            transition: background-color 0.3s;
+        }
+        .learn-more-button:hover {
+            background-color: #27272a;
+        }
+        .learn-more-button .arrow {
+            transition: transform 0.3s;
+        }
+        .learn-more-button.expanded .arrow {
+            transform: rotate(180deg);
+        }
+        .animated-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background-color: #27272a;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 1rem 2rem;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #232326;
+            border: 4px solid #38bdf8;
+            border-radius: 50%;
+            top: 1.5rem;
+            z-index: 1;
+        }
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+    </style>
+</head>
+<body class="antialiased p-4 sm:p-8">
+
+    <div class="infographic-container p-6 sm:p-10 rounded-xl shadow-2xl border border-gray-800">
+
+        <div class="mb-8">
+            <a href="mtlabs.html" class="inline-flex items-center text-sm font-semibold text-gray-300 hover:text-white transition px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to MTLabs
+            </a>
+        </div>
+
+        <header class="text-center mb-12 relative overflow-hidden rounded-lg">
+            <canvas id="three-canvas-vision"></canvas>
+            <div class="header-content p-8 animated-item">
+                <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">Future Vision</h1>
+                <p class="text-lg text-teal-300 font-medium mt-2">Engineering the Next Generation of Security</p>
+                <div class="title-line w-24 mx-auto mt-4"></div>
+                <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg">
+                    The NIST PQC transition is just the beginning. At MTLABS, we are architecting a future where security is not just resistant to attack, but is intelligent, adaptable, and woven into the fabric of quantum technology itself.
+                </p>
+            </div>
+        </header>
+
+        <!-- Timeline Section -->
+        <div class="timeline mb-12">
+            <div class="timeline-item animated-item">
+                <h3 class="text-xl font-bold text-white">Today: PQC Migration</h3>
+                <p class="text-gray-200">Building the tools to seamlessly transition current infrastructure to NIST-standardized Post-Quantum Cryptography.</p>
+            </div>
+            <div class="timeline-item animated-item">
+                <h3 class="text-xl font-bold text-white">Tomorrow: Crypto-Agility</h3>
+                <p class="text-gray-200">Creating dynamic systems that can swap cryptographic algorithms on the fly in response to new threats.</p>
+            </div>
+            <div class="timeline-item animated-item">
+                <h3 class="text-xl font-bold text-white">Future: Quantum-Native Security</h3>
+                <p class="text-gray-200">Pioneering security protocols that harness the laws of quantum physics for unparalleled protection.</p>
+            </div>
+        </div>
+
+        <!-- Main Content - Categories -->
+        <div class="space-y-10">
+
+            <div class="category-card p-6 sm:p-8 animated-item">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="icon-bg flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Dynamic Crypto-Agility</h2>
+                        <p class="mt-2 text-sm text-blue-300 font-medium">ANALOGY: A PLUGGABLE SECURITY ENGINE</p>
+                        <p class="mt-3 text-gray-200">Imagine your car's engine could be swapped out in seconds for a newer, more efficient one. Crypto-agility is the same principle for security, allowing systems to adapt to new threats without a complete overhaul.</p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <button class="learn-more-button w-full text-left font-semibold p-3 rounded-lg flex justify-between items-center"><span>Learn More</span><span class="arrow">▼</span></button>
+                    <div class="learn-more-content"><div class="border-t border-gray-200 pt-4 mt-4 space-y-3 text-gray-700"><p><strong>Why it Matters:</strong> The cryptographic landscape is always changing. New attacks are discovered and new standards are developed. A system that is "crypto-agile" isn't hard-coded to one algorithm; it's built to evolve.</p><p><strong>Our Focus:</strong> We are developing orchestration platforms that manage cryptographic policies, allowing organizations to update algorithms across their entire infrastructure from a central point, ensuring they are always protected by the best available security.</p></div></div>
+                </div>
+            </div>
+
+            <div class="category-card p-6 sm:p-8 animated-item">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="icon-bg flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Quantum-Native Security</h2>
+                        <p class="mt-2 text-sm text-emerald-300 font-medium">ANALOGY: USING QUANTUM PHYSICS AS THE LOCK</p>
+                        <p class="mt-3 text-gray-200">While PQC uses math that's hard for quantum computers, quantum-native security uses the laws of physics themselves. Eavesdropping on a quantum channel inherently disturbs it, making any intrusion immediately detectable.</p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <button class="learn-more-button w-full text-left font-semibold p-3 rounded-lg flex justify-between items-center"><span>Learn More</span><span class="arrow">▼</span></button>
+                    <div class="learn-more-content"><div class="border-t border-gray-200 pt-4 mt-4 space-y-3 text-gray-700"><p><strong>Key Technology:</strong> Quantum Key Distribution (QKD) is a prime example. It allows two parties to generate a shared, secret key known only to them, with security guaranteed by quantum mechanics. Any attempt to intercept the key leaves a detectable trace.</p><p><strong>Our Focus:</strong> MTLABS is researching hybrid models that combine the proven security of QKD for key exchange with the practicality of PQC algorithms for authentication, creating a multi-layered defense for ultra-secure communications.</p></div></div>
+                </div>
+            </div>
+            
+            <div class="category-card p-6 sm:p-8 animated-item">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="icon-bg flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M12 16h.01"/><path d="M16 16h.01"/><path d="M8 12h.01"/><path d="M8 16h.01"/></svg></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">AI-Driven Cryptanalysis</h2>
+                        <p class="mt-2 text-sm text-sky-300 font-medium">ANALOGY: AN AI-POWERED CODEBREAKER</p>
+                        <p class="mt-3 text-gray-200">Artificial intelligence is a powerful tool for finding complex patterns. We are exploring its dual-use nature: using AI to probe for weaknesses in cryptographic systems, so we can build stronger, more resilient algorithms.</p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <button class="learn-more-button w-full text-left font-semibold p-3 rounded-lg flex justify-between items-center"><span>Learn More</span><span class="arrow">▼</span></button>
+                    <div class="learn-more-content"><div class="border-t border-gray-200 pt-4 mt-4 space-y-3 text-gray-700"><p><strong>The Two Sides:</strong> AI can be trained to identify subtle statistical patterns that might indicate a vulnerability (Offensive AI). Conversely, it can be used in the design process to generate and test new cryptographic structures, helping to create systems that are secure by design (Defensive AI).</p><p><strong>Our Focus:</strong> We are building AI models to automate the security auditing of cryptographic implementations. This allows us to find and fix potential flaws faster and more effectively than manual analysis alone, ensuring our solutions are robust against both current and future threats.</p></div></div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-700 animated-item">
+            <p class="text-lg font-semibold text-white">Our vision is to build a future that is not just quantum-resistant, but quantum-ready.</p>
+            <p class="mt-2 text-gray-400">Join us as we move beyond defense and begin to architect the next paradigm of digital trust.</p>
+            <div class="mt-6">
+                <a href="https://moontrace.in" class="text-xl tracking-wider"><span class="font-bold text-white">MOONTRACE</span><span class="font-normal text-red-500">|</span><span class="font-normal text-gray-400">ENGINEERING</span></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedItems = document.querySelectorAll('.animated-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transitionDelay = `${index * 150}ms`;
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedItems.forEach(item => observer.observe(item));
+
+            const learnMoreButtons = document.querySelectorAll('.learn-more-button');
+            learnMoreButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    button.classList.toggle('expanded');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.style.marginTop = '0px';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.marginTop = '1rem';
+                    }
+                });
+            });
+
+            const canvas = document.getElementById('three-canvas-vision');
+            if (canvas) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+
+                const shapes = [];
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0x38bdf8, // sky blue
+                    metalness: 0.2,
+                    roughness: 0.4,
+                    wireframe: true
+                });
+
+                for (let i = 0; i < 5; i++) {
+                    const geometry = new THREE.TorusGeometry(1 + i * 0.3, 0.05, 16, 100);
+                    const torus = new THREE.Mesh(geometry, material);
+                    torus.rotation.x = Math.PI / 2;
+                    torus.rotation.y = Math.random() * Math.PI;
+                    scene.add(torus);
+                    shapes.push(torus);
+                }
+
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+                scene.add(ambientLight);
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                directionalLight.position.set(5, 10, 7.5);
+                scene.add(directionalLight);
+
+                camera.position.z = 5;
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    shapes.forEach((shape, index) => {
+                        shape.rotation.z += 0.002 * (index % 2 === 0 ? 1 : -1);
+                    });
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

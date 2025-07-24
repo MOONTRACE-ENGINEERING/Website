@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Interactive Quantum Insights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="finalbg.png" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #18181b; /* Very dark gray background */
+            color: #f3f4f6; /* Light gray text */
+        }
+        .infographic-container {
+            max-width: 1200px;
+            margin: auto;
+            background: #232326; /* Dark gray container */
+            backdrop-filter: blur(5px);
+            border: 1px solid #27272a;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+            color: #f3f4f6;
+        }
+        #three-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.10;
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        .title-line {
+            height: 4px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            border-radius: 2px;
+        }
+        .category-card {
+            background-color: #232326;
+            border: 1px solid #27272a;
+            border-radius: 0.75rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: #f3f4f6;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .icon-bg {
+            background-color: #18181b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+        }
+        .bullet-point::before {
+            content: '✓';
+            color: #38bdf8;
+            margin-right: 0.75rem;
+            font-weight: 700;
+        }
+        .learn-more-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+        }
+        .learn-more-button {
+            background-color: #18181b;
+            color: #f3f4f6;
+            transition: background-color 0.3s;
+        }
+        .learn-more-button:hover {
+            background-color: #27272a;
+        }
+        .learn-more-button .arrow {
+            transition: transform 0.3s;
+        }
+        .learn-more-button.expanded .arrow {
+            transform: rotate(180deg);
+        }
+        .animated-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased p-4 sm:p-8">
+
+    <div class="infographic-container p-6 sm:p-10 rounded-xl shadow-2xl border border-gray-800">
+
+        <!-- Back to MTLabs Link -->
+        <div class="mb-8">
+            <a href="mtlabs.html" class="inline-flex items-center text-sm font-semibold text-gray-300 hover:text-white transition px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to MTLabs
+            </a>
+        </div>
+
+        <!-- Header Section -->
+        <header class="text-center mb-12 relative overflow-hidden rounded-lg">
+            <canvas id="three-canvas"></canvas>
+            <div class="header-content p-8 animated-item">
+                <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">Quantum Insights</h1>
+                <p class="text-lg text-blue-300 font-medium mt-2">An Interactive Guide to the NIST PQC Finalists</p>
+                <div class="title-line w-24 mx-auto mt-4"></div>
+                <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg">
+                    Quantum computers threaten to break the cryptography that protects our digital world. The National Institute of Standards and Technology (NIST) ran a multi-year competition to find new, quantum-resistant algorithms. Here's an interactive look at the winning categories.
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Content - Categories -->
+        <div class="space-y-10">
+
+            <!-- Category 1: Lattice-Based Cryptography -->
+            <div class="category-card p-6 sm:p-8 animated-item">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="icon-bg flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Lattice-Based Cryptography</h2>
+                        <p class="mt-2 text-sm text-purple-300 font-medium">ANALOGY: A MULTI-DIMENSIONAL MAZE</p>
+                        <p class="mt-3 text-gray-200">Imagine a vast, complex grid (a lattice). Finding a specific, hidden point near a known location is a computationally hard problem for computers—especially quantum ones—without a secret "map." Our keys act as that secret map.</p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <button class="learn-more-button w-full text-left font-semibold p-3 rounded-lg flex justify-between items-center">
+                        <span>Learn More</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="learn-more-content">
+                        <div class="border-t border-gray-700 pt-4 space-y-3 text-gray-200">
+                            <p><strong>NIST Standardized Algorithms:</strong> CRYSTALS-Kyber (KEM), CRYSTALS-Dilithium (Signature), FALCON (Signature).</p>
+                            <p><strong>Key Characteristics:</strong> Generally offers a strong balance of security, key size, and performance, making it a versatile choice for many applications.</p>
+                            <p><strong>Best Use Cases:</strong> General-purpose encryption and digital signatures for web servers (TLS), software updates, and protecting data at rest.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Hash-Based Cryptography -->
+            <div class="category-card p-6 sm:p-8 animated-item">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="icon-bg flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/><rect x="8" y="4" width="8" height="4" rx="1"/></svg></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Hash-Based Cryptography</h2>
+                        <p class="mt-2 text-sm text-blue-300 font-medium">ANALOGY: A DIGITAL FINGERPRINT</p>
+                        <p class="mt-3 text-gray-200">This method relies on cryptographic hash functions, which are like one-way trapdoors. It's easy to create a unique "fingerprint" from data, but impossible to recreate the data from the fingerprint. Its security is well-understood and relies on minimal assumptions.</p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <button class="learn-more-button w-full text-left font-semibold p-3 rounded-lg flex justify-between items-center">
+                        <span>Learn More</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="learn-more-content">
+                        <div class="border-t border-gray-700 pt-4 space-y-3 text-gray-200">
+                            <p><strong>NIST Standardized Algorithm:</strong> SPHINCS+ (Signature).</p>
+                            <p><strong>Key Characteristics:</strong> Considered the most conservative and secure choice. However, it produces larger signatures and is "stateful" in some variants, meaning the private key must be updated after each use.</p>
+                            <p><strong>Best Use Cases:</strong> High-assurance software signing, such as for firmware updates or code signing where trust is paramount and signature size is less of a concern.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Code-Based Cryptography -->
+            <div class="category-card p-6 sm:p-8 animated-item">
+                <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="icon-bg flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Code-Based Cryptography</h2>
+                        <p class="mt-2 text-sm text-blue-400 font-medium">ANALOGY: FINDING A NEEDLE IN A HAYSTACK</p>
+                        <p class="mt-3 text-gray-200">Based on the difficulty of decoding a random-looking linear code. Imagine receiving a message intentionally garbled with errors. Without the secret "decoder ring" (the private key), correcting the errors and reading the message is an incredibly hard problem.</p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <button class="learn-more-button w-full text-left font-semibold p-3 rounded-lg flex justify-between items-center">
+                        <span>Learn More</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="learn-more-content">
+                        <div class="border-t border-gray-700 pt-4 space-y-3 text-gray-200">
+                             <p><strong>NIST Candidate Algorithms:</strong> Classic McEliece, BIKE, HQC.</p>
+                             <p><strong>Key Characteristics:</strong> This family is one of the oldest and most trusted in PQC. Its main drawback is very large public key sizes, which can make it impractical for some applications.</p>
+                             <p><strong>Best Use Cases:</strong> Scenarios where key size is not a major constraint but long-term, conservative security is required, such as in archival systems or VPNs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-700 animated-item">
+            <p class="text-lg font-semibold text-white">The Quantum Era is Approaching.</p>
+            <p class="mt-2 text-gray-400">The transition to Post-Quantum Cryptography is a marathon, not a sprint. At MTLABS, we are building the tools to make this transition secure and seamless.</p>
+            <div class="mt-6">
+                <a href="https://moontrace.in" class="text-xl tracking-wider">
+                  <span class="font-bold text-white">MOONTRACE</span><span class="font-normal text-red-500">|</span><span class="font-normal text-gray-400">ENGINEERING</span>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Animation Observer ---
+            const animatedItems = document.querySelectorAll('.animated-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transitionDelay = `${index * 150}ms`;
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedItems.forEach(item => observer.observe(item));
+
+            // --- Learn More Accordion ---
+            const learnMoreButtons = document.querySelectorAll('.learn-more-button');
+            learnMoreButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    button.classList.toggle('expanded');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.style.marginTop = '0px';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.marginTop = '1rem';
+                    }
+                });
+            });
+
+            // --- Three.js Background Animation ---
+            const canvas = document.getElementById('three-canvas');
+            if (canvas) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+
+                const shapes = [];
+                const geometry1 = new THREE.IcosahedronGeometry(1, 0);
+                const geometry2 = new THREE.TorusKnotGeometry(0.8, 0.25, 100, 16);
+                
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0x818cf8, // Indigo color
+                    metalness: 0.1,
+                    roughness: 0.5,
+                    wireframe: true
+                });
+
+                const shape1 = new THREE.Mesh(geometry1, material);
+                shape1.position.x = -2;
+                scene.add(shape1);
+                shapes.push(shape1);
+
+                const shape2 = new THREE.Mesh(geometry2, material);
+                shape2.position.x = 2;
+                scene.add(shape2);
+                shapes.push(shape2);
+
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+                scene.add(ambientLight);
+                const pointLight = new THREE.PointLight(0xffffff, 0.7);
+                pointLight.position.set(5, 5, 5);
+                scene.add(pointLight);
+
+                camera.position.z = 5;
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    shapes.forEach(shape => {
+                        shape.rotation.x += 0.001;
+                        shape.rotation.y += 0.002;
+                    });
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
