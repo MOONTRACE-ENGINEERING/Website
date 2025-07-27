@@ -7,6 +7,8 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- three.js for hero animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -90,10 +92,23 @@
           padding: 0 0.2rem;
         }
       }
+      /* Updated Hero Section styles */
       .hero-bg {
+        position: relative;
         background-color: #000000;
-        background-image: radial-gradient(#333333 1px, transparent 1px);
-        background-size: 20px 20px;
+        overflow: hidden;
+      }
+      #hero-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
       }
       .nav-link {
         position: relative;
@@ -358,9 +373,8 @@
 
     <main>
       <section id="home" class="hero-bg text-white">
-        <div
-          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32"
-        >
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32">
           <h1
             class="text-4xl md:text-6xl font-black tracking-tight leading-tight"
           >
@@ -1006,6 +1020,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // All original JS from test12.html is here
         const flashBanner = document.getElementById("flash-banner");
         setTimeout(() => flashBanner.classList.add("show"), 100);
 
@@ -1256,6 +1271,112 @@
           autoAdvanceTimer = setInterval(autoAdvance, 5000);
         }
         resetAutoAdvance();
+        
+        // --- Hero Animation: Interactive Particle Field ---
+        const heroScene = new THREE.Scene();
+        const heroCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const heroRenderer = new THREE.WebGLRenderer({ 
+            canvas: document.getElementById('hero-canvas'),
+            alpha: true,
+            antialias: true 
+        });
+        heroRenderer.setSize(window.innerWidth, window.innerHeight);
+
+        const mouse = new THREE.Vector2();
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        const heroParticleCount = 500;
+        const heroParticles = new THREE.BufferGeometry();
+        const heroPositions = new Float32Array(heroParticleCount * 3);
+        const heroParticleData = [];
+
+        for (let i = 0; i < heroParticleCount; i++) {
+            const x = (Math.random() - 0.5) * 20;
+            const y = (Math.random() - 0.5) * 20;
+            const z = (Math.random() - 0.5) * 20;
+            heroPositions[i * 3] = x;
+            heroPositions[i * 3 + 1] = y;
+            heroPositions[i * 3 + 2] = z;
+
+            heroParticleData.push({
+                originalX: x, originalY: y, originalZ: z,
+                velocityX: (Math.random() - 0.5) * 0.01,
+                velocityY: (Math.random() - 0.5) * 0.01,
+                velocityZ: (Math.random() - 0.5) * 0.01,
+            });
+        }
+        heroParticles.setAttribute('position', new THREE.BufferAttribute(heroPositions, 3));
+        const heroParticleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
+        const heroParticleSystem = new THREE.Points(heroParticles, heroParticleMaterial);
+        heroScene.add(heroParticleSystem);
+
+        const heroLineMaterial = new THREE.LineBasicMaterial({ color: 0x87CEEB, transparent: true, opacity: 0.08 });
+        const heroLineGeometry = new THREE.BufferGeometry();
+        const heroLinePositions = new Float32Array(heroParticleCount * heroParticleCount * 3);
+        heroLineGeometry.setAttribute('position', new THREE.BufferAttribute(heroLinePositions, 3));
+        const heroLines = new THREE.LineSegments(heroLineGeometry, heroLineMaterial);
+        heroScene.add(heroLines);
+
+        heroCamera.position.z = 15;
+        let heroTime = 0;
+
+        function animateHero() {
+            requestAnimationFrame(animateHero);
+            heroTime += 0.005;
+
+            const posArray = heroParticleSystem.geometry.attributes.position.array;
+            const linePosArray = heroLines.geometry.attributes.position.array;
+            let lineIndex = 0;
+            const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
+
+            for (let i = 0; i < heroParticleCount; i++) {
+                const data = heroParticleData[i];
+                const particlePos = new THREE.Vector3(posArray[i*3], posArray[i*3+1], posArray[i*3+2]);
+                const distanceToMouse = particlePos.distanceTo(mouse3D);
+                const pushStrength = Math.max(0, 1 - distanceToMouse / 5);
+                const pushVector = particlePos.clone().sub(mouse3D).normalize().multiplyScalar(pushStrength * 0.1);
+                
+                posArray[i * 3] += Math.sin(heroTime + data.originalX) * 0.001 + data.velocityX + pushVector.x;
+                posArray[i * 3 + 1] += Math.cos(heroTime + data.originalY) * 0.001 + data.velocityY + pushVector.y;
+                posArray[i * 3 + 2] += data.velocityZ + pushVector.z;
+
+                if (posArray[i * 3] > 10 || posArray[i * 3] < -10) data.velocityX *= -1;
+                if (posArray[i * 3 + 1] > 10 || posArray[i * 3 + 1] < -10) data.velocityY *= -1;
+                if (posArray[i * 3 + 2] > 10 || posArray[i * 3 + 2] < -10) data.velocityZ *= -1;
+
+                for (let j = i + 1; j < heroParticleCount; j++) {
+                    const dx = posArray[i * 3] - posArray[j * 3];
+                    const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
+                    const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+                    const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                    if (distance < 1.8) {
+                        linePosArray[lineIndex++] = posArray[i * 3];
+                        linePosArray[lineIndex++] = posArray[i * 3 + 1];
+                        linePosArray[lineIndex++] = posArray[i * 3 + 2];
+                        linePosArray[lineIndex++] = posArray[j * 3];
+                        linePosArray[lineIndex++] = posArray[j * 3 + 1];
+                        linePosArray[lineIndex++] = posArray[j * 3 + 2];
+                    }
+                }
+            }
+            heroLines.geometry.setDrawRange(0, lineIndex / 3);
+            heroLines.geometry.attributes.position.needsUpdate = true;
+            heroParticleSystem.geometry.attributes.position.needsUpdate = true;
+            heroScene.rotation.y += 0.0001;
+            heroScene.rotation.x += 0.0001;
+            heroRenderer.render(heroScene, heroCamera);
+        }
+        animateHero();
+
+        window.addEventListener('resize', () => {
+            heroCamera.aspect = window.innerWidth / window.innerHeight;
+            heroCamera.updateProjectionMatrix();
+            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
       });
     </script>
   </body>

@@ -1,325 +1,199 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Countdown | MET</title>
+    <title>Infographic: The Quantum Countdown</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="finalbg.png" />
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #18181b; /* Very dark gray background */
-            color: #f3f4f6; /* Light gray text */
+            background-color: #111827;
+            color: #d1d5db;
         }
         .infographic-container {
             max-width: 1200px;
             margin: auto;
-            background: #232326; /* Dark gray container */
-            backdrop-filter: blur(5px);
-            border: 1px solid #27272a;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+            background: #1f2937;
+            border: 1px solid #374151;
         }
-        .chart-container {
-            position: relative;
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 400px;
-            max-height: 50vh;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.2;
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 450px;
-            }
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
-        .text-glow {
-            text-shadow: 0 0 12px rgba(156, 163, 175, 0.4);
+        .title-line {
+            height: 4px;
+            background: linear-gradient(90deg, #f87171, #fb923c, #fbbf24);
+            border-radius: 2px;
         }
         .card {
-            background-color: #232326;
-            border: 1px solid #27272a;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            color: #f3f4f6;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background-color: #111827;
+            border: 1px solid #374151;
         }
         .countdown-segment {
-            background-color: #1a1a1a;
-            padding: 1.5rem 2rem;
-            border-radius: 0.5rem;
-            border: 1px solid #444444;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-            min-width: 130px;
-        }
-        #countdown {
-            gap: 1rem;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
-        }
-        @media (max-width: 640px) {
-            .countdown-segment { padding: 0.35rem; min-width: 40px; }
-            #countdown { gap: 0.35rem; flex-wrap: nowrap; overflow-x: auto; }
-            #countdown span.text-4xl, #countdown span.text-5xl { font-size: 1.5rem !important; }
-            #countdown span.text-base, #countdown span.text-sm { font-size: 0.7rem !important; }
-            #countdown span.text-7xl { font-size: 1.5rem !important; }
-            #countdown span.text-base { font-size: 0.7rem !important; }
-        }
-#countdown::-webkit-scrollbar { display: none; }
-        .animated-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animated-item.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+            background-color: #111827;
+            border: 1px solid #374151;
         }
     </style>
 </head>
 <body class="antialiased p-4 sm:p-8">
 
-    <div class="infographic-container p-6 sm:p-10 rounded-xl shadow-2xl border border-gray-800">
-        <main>
-            <!-- Back Button -->
-            <div class="mb-8 animated-item">
-                <a href="MTLabs.html" class="inline-flex items-center text-sm font-semibold text-gray-300 hover:text-white transition px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                    Back to MTLabs
-                </a>
+    <div class="infographic-container p-6 sm:p-10 rounded-xl shadow-2xl">
+        <div class="mb-8">
+            <a href="mtlabs.html" class="inline-flex items-center text-sm font-semibold text-gray-300 hover:text-white transition px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Back to MTLabs
+            </a>
+        </div>
+
+        <header class="text-center mb-16 relative overflow-hidden rounded-lg p-8">
+            <canvas id="hero-canvas"></canvas>
+            <div class="header-content">
+                <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">The Quantum Countdown</h1>
+                <div class="title-line w-24 mx-auto mt-4"></div>
             </div>
+        </header>
 
-            <section id="header" class="text-center py-12 md:py-16 animated-item">
-                <h1 class="text-4xl md:text-6xl font-black uppercase text-white mb-4 text-glow">The Quantum Countdown</h1>
-                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8">
-                    Future quantum computers will shatter today's encryption. The "Harvest Now, Decrypt Later" threat is real. Adversaries are stealing our data today to break it tomorrow.
-                </p>
-                
-                <div class="mb-12">
-                    <p class="text-white text-xl font-semibold mb-4">Years to Quantum (Y2Q)</p>
-                    <div id="countdown" class="flex justify-center items-center flex-nowrap gap-4 text-white text-center w-full">
-                        <div class="countdown-segment"><span id="years" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Years</span></div>
-                        <div class="countdown-segment"><span id="days" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Days</span></div>
-                        <div class="countdown-segment"><span id="hours" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Hours</span></div>
-                        <div class="countdown-segment"><span id="minutes" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Minutes</span></div>
-                        <div class="countdown-segment"><span id="seconds" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Seconds</span></div>
-                    </div>
-                </div>
+        <section class="mb-16 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">The "Harvest Now, Decrypt Later" Threat</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-300">
+                The most immediate quantum threat isn't that a quantum computer will be built tomorrow. It's that adversaries are capturing and storing our encrypted data *today*. They are betting that in the future, they can use a quantum computer to decrypt this stolen information, exposing long-term secrets. This makes the need for PQC urgent, even before large-scale quantum computers exist.
+            </p>
+        </section>
 
-                <div class="bg-black/80 inline-block p-6 rounded-xl border border-gray-700 shadow-2xl">
-                    <p class="text-2xl font-bold text-white">DoD Migration Deadline</p>
-                    <p class="text-8xl font-black text-gray-100 text-glow">2035</p>
-                    <p class="text-white">To adopt quantum-resistant cryptography.</p>
-                </div>
-            </section>
+        <section class="mb-16">
+            <p class="text-white text-2xl font-bold text-center mb-4">Years to Quantum (Y2Q)</p>
+            <div id="countdown" class="flex justify-center items-center flex-wrap gap-4 text-white text-center">
+                <div class="countdown-segment p-4 rounded-lg"><span id="years" class="block text-5xl font-bold">00</span><span class="text-sm">Years</span></div>
+                <div class="countdown-segment p-4 rounded-lg"><span id="days" class="block text-5xl font-bold">00</span><span class="text-sm">Days</span></div>
+                <div class="countdown-segment p-4 rounded-lg"><span id="hours" class="block text-5xl font-bold">00</span><span class="text-sm">Hours</span></div>
+                <div class="countdown-segment p-4 rounded-lg"><span id="minutes" class="block text-5xl font-bold">00</span><span class="text-sm">Minutes</span></div>
+                <div class="countdown-segment p-4 rounded-lg"><span id="seconds" class="block text-5xl font-bold">00</span><span class="text-sm">Seconds</span></div>
+            </div>
+        </section>
 
-            <section id="challenge" class="py-16 animated-item">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">The Battlefield Gauntlet: Extreme Constraints</h2>
-                <p class="max-w-3xl mx-auto text-lg text-center text-gray-300 mb-12">
-                    Deploying cryptography in combat is not a lab exercise. It's a battle against physics, environment, and the enemy. Any algorithm must survive these core challenges.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="card p-6 rounded-lg text-center">
-                        <div class="text-5xl mb-4">⚖️</div>
-                        <h3 class="text-xl font-bold text-white mb-2">SWaP</h3>
-                        <p>Minimal Size, Weight, and Power are non-negotiable for portable, battery-powered gear.</p>
-                    </div>
-                    <div class="card p-6 rounded-lg text-center">
-                        <div class="text-5xl mb-4">⏱️</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Real-Time</h3>
-                        <p>No delays. Cryptography must be instant. Milliseconds matter for command and control.</p>
-                    </div>
-                    <div class="card p-6 rounded-lg text-center">
-                        <div class="text-5xl mb-4">🛡️</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Ruggedization</h3>
-                        <p>Must withstand shock, extreme temperatures, dust, and EMP attacks (MIL-STD specs).</p>
-                    </div>
-                    <div class="card p-6 rounded-lg text-center">
-                        <div class="text-5xl mb-4">📡</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Low Bandwidth</h3>
-                        <p>Tactical networks are slow and unreliable. Large keys or signatures clog the network.</p>
-                    </div>
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">Performance Showdown: NIST PQC Algorithms</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-center text-white mb-4">Computational Latency (ms)</h3>
+                    <div class="h-80"><canvas id="latencyChart"></canvas></div>
                 </div>
-            </section>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-center text-white mb-4">Data Footprint (bytes)</h3>
+                    <div class="h-80"><canvas id="sizeChart"></canvas></div>
+                </div>
+            </div>
+        </section>
 
-            <section id="performance" class="py-16 animated-item">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Performance Showdown: NIST PQC Algorithms</h2>
-                <p class="max-w-3xl mx-auto text-lg text-center text-gray-300 mb-12">
-                    NIST has standardized new algorithms to resist quantum attacks. But how do they perform under pressure? Here's a look at key metrics on a resource-constrained device (ARM Cortex-A53). Lower bars are better.
-                </p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <div class="card p-6 rounded-xl">
-                        <h3 class="text-2xl font-bold text-center text-white mb-2">Computational Latency (ms)</h3>
-                        <p class="text-center text-sm text-gray-300 mb-6">This chart compares the time taken for key generation, encryption/signing, and decryption/verification at NIST Security Level 3. Speed is critical for real-time operations.</p>
-                        <div class="chart-container"><canvas id="latencyChart"></canvas></div>
-                    </div>
-                    <div class="card p-6 rounded-xl">
-                        <h3 class="text-2xl font-bold text-center text-white mb-2">Data Footprint (bytes)</h3>
-                        <p class="text-center text-sm text-gray-300 mb-6">This shows the size of public keys and the resulting ciphertexts or signatures at NIST Security Level 3. Smaller sizes are vital for low-bandwidth networks.</p>
-                        <div class="chart-container"><canvas id="sizeChart"></canvas></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="holistic-view" class="py-16 animated-item">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Holistic Trade-Offs: The Full Picture</h2>
-                <p class="max-w-3xl mx-auto text-lg text-center text-gray-300 mb-12">
-                    No single algorithm wins on all fronts. This radar chart illustrates the fundamental trade-offs between speed, size, and memory usage for the top contenders. A smaller, more central shape indicates better all-around lightweight performance.
-                </p>
-                <div class="card p-6 rounded-xl">
-                     <div class="chart-container h-96 md:h-[500px]"><canvas id="radarChart"></canvas></div>
-                </div>
-            </section>
-            
-            <section id="bottleneck" class="py-16 animated-item">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">The Bottleneck & The Boost</h2>
-                <p class="max-w-3xl mx-auto text-lg text-center text-gray-300 mb-12">
-                    Even fast algorithms can be slow on embedded devices. The bottleneck isn't always the CPU; it's often memory bandwidth. The solution? Hardware acceleration.
-                </p>
-                <div class="card p-8 rounded-xl">
-                    <div class="flex flex-col md:flex-row items-center justify-around text-center gap-4">
-                        <div class="p-4"><h3 class="text-2xl font-bold text-white">Software Only</h3><p class="text-gray-300">High CPU and Memory Load</p><p class="text-4xl mt-2">🐢</p></div>
-                        <div class="text-5xl text-gray-400 font-black hidden md:block">&rarr;</div>
-                        <div class="text-5xl text-gray-400 font-black md:hidden">&darr;</div>
-                        <div class="p-4 rounded-lg bg-black/50 border border-gray-600"><h3 class="text-2xl font-bold text-white">Hardware Acceleration</h3><p class="text-gray-300">(RISC-V, FPGAs)</p><p class="text-sm mt-2">Offloads heavy math like NTT & Keccak</p></div>
-                         <div class="text-5xl text-gray-400 font-black hidden md:block">&rarr;</div>
-                         <div class="text-5xl text-gray-400 font-black md:hidden">&darr;</div>
-                        <div class="p-4"><h3 class="text-2xl font-bold text-white">Optimized Performance</h3><p class="text-gray-300">Up to <span class="font-bold text-white text-glow">20x Faster</span></p><p class="text-4xl mt-2">🚀</p></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="recommendations" class="py-16 animated-item">
-                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Strategic Imperatives</h2>
-                 <p class="max-w-3xl mx-auto text-lg text-center text-gray-300 mb-12">
-                     Developing a truly "lightweight" PQC algorithm for defense requires a holistic strategy.
-                 </p>
-                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div class="card p-6 rounded-lg flex items-start space-x-4"><div class="text-3xl flex-shrink-0 pt-1 text-blue-400">1.</div><div><h4 class="font-bold text-xl text-white">Co-Design Hardware & Software</h4><p>Design algorithms that are explicitly suited for hardware acceleration on FPGAs and RISC-V from day one.</p></div></div>
-                     <div class="card p-6 rounded-lg flex items-start space-x-4"><div class="text-3xl flex-shrink-0 pt-1 text-blue-400">2.</div><div><h4 class="font-bold text-xl text-white">Obsess Over Data Footprint</h4><p>Prioritize minimal key and signature sizes to reduce network load. Every byte counts on tactical radios.</p></div></div>
-                     <div class="card p-6 rounded-lg flex items-start space-x-4"><div class="text-3xl flex-shrink-0 pt-1 text-blue-400">3.</div><div><h4 class="font-bold text-xl text-white">Embrace Crypto-Agility</h4><p>Build systems that can easily swap algorithms to adapt to new threats and standards. Don't get locked in.</p></div></div>
-                     <div class="card p-6 rounded-lg flex items-start space-x-4"><div class="text-3xl flex-shrink-0 pt-1 text-blue-400">4.</div><div><h4 class="font-bold text-xl text-white">Use Granular Security</h4><p>Match the security level to the data's sensitivity. A "one-size-fits-all" approach is inefficient and impractical.</p></div></div>
-                 </div>
-            </section>
-        </main>
-        
-        <footer class="text-center mt-16 pt-8 border-t border-gray-700 animated-item">
-            <p class="text-lg font-semibold text-white">The Quantum Era is Approaching.</p>
-            <p class="mt-2 text-gray-400">The transition to Post-Quantum Cryptography is a marathon, not a sprint. At MTLABS, we are building the tools to make this transition secure and seamless.</p>
+        <footer class="text-center mt-16 pt-8 border-t border-gray-700">
+            <p class="text-lg font-semibold text-white">The transition to Post-Quantum Cryptography is a marathon, not a sprint.</p>
             <div class="mt-6">
-                <a href="https://moontrace.in" class="text-xl tracking-wider">
-                  <span class="font-bold text-white">MOONTRACE</span><span class="font-normal text-red-500">|</span><span class="font-normal text-gray-400">ENGINEERING</span>
-                </a>
+                <a href="index.html" class="text-xl tracking-wider"><span class="font-bold text-white">MOONTRACE</span><span class="font-normal text-red-500">|</span><span class="font-normal text-gray-400">ENGINEERING</span></a>
             </div>
         </footer>
     </div>
 
     <script>
-        // --- Animation Observer ---
         document.addEventListener('DOMContentLoaded', () => {
-            const animatedItems = document.querySelectorAll('.animated-item');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.transitionDelay = `${index * 100}ms`;
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+            // Animation
+            const heroScene = new THREE.Scene();
+            const heroCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const heroRenderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
+            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+            const mouse = new THREE.Vector2();
+            window.addEventListener('mousemove', (event) => { mouse.x = (event.clientX / window.innerWidth) * 2 - 1; mouse.y = -(event.clientY / window.innerHeight) * 2 + 1; });
+            const heroParticleCount = 500;
+            const heroParticles = new THREE.BufferGeometry();
+            const heroPositions = new Float32Array(heroParticleCount * 3);
+            const heroParticleData = [];
+            for (let i = 0; i < heroParticleCount; i++) {
+                const x = (Math.random() - 0.5) * 20; const y = (Math.random() - 0.5) * 20; const z = (Math.random() - 0.5) * 20;
+                heroPositions[i * 3] = x; heroPositions[i * 3 + 1] = y; heroPositions[i * 3 + 2] = z;
+                heroParticleData.push({ originalX: x, originalY: y, originalZ: z, velocityX: (Math.random() - 0.5) * 0.01, velocityY: (Math.random() - 0.5) * 0.01, velocityZ: (Math.random() - 0.5) * 0.01 });
+            }
+            heroParticles.setAttribute('position', new THREE.BufferAttribute(heroPositions, 3));
+            const heroParticleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
+            const heroParticleSystem = new THREE.Points(heroParticles, heroParticleMaterial);
+            heroScene.add(heroParticleSystem);
+            const heroLineMaterial = new THREE.LineBasicMaterial({ color: 0x87CEEB, transparent: true, opacity: 0.08 });
+            const heroLineGeometry = new THREE.BufferGeometry();
+            const heroLinePositions = new Float32Array(heroParticleCount * heroParticleCount * 3);
+            heroLineGeometry.setAttribute('position', new THREE.BufferAttribute(heroLinePositions, 3));
+            const heroLines = new THREE.LineSegments(heroLineGeometry, heroLineMaterial);
+            heroScene.add(heroLines);
+            heroCamera.position.z = 15;
+            let heroTime = 0;
+            function animateHero() {
+                requestAnimationFrame(animateHero);
+                heroTime += 0.005;
+                const posArray = heroParticleSystem.geometry.attributes.position.array;
+                const linePosArray = heroLines.geometry.attributes.position.array;
+                let lineIndex = 0;
+                const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
+                for (let i = 0; i < heroParticleCount; i++) {
+                    const data = heroParticleData[i];
+                    const particlePos = new THREE.Vector3(posArray[i*3], posArray[i*3+1], posArray[i*3+2]);
+                    const distanceToMouse = particlePos.distanceTo(mouse3D);
+                    const pushStrength = Math.max(0, 1 - distanceToMouse / 5);
+                    const pushVector = particlePos.clone().sub(mouse3D).normalize().multiplyScalar(pushStrength * 0.1);
+                    posArray[i * 3] += Math.sin(heroTime + data.originalX) * 0.001 + data.velocityX + pushVector.x;
+                    posArray[i * 3 + 1] += Math.cos(heroTime + data.originalY) * 0.001 + data.velocityY + pushVector.y;
+                    posArray[i * 3 + 2] += data.velocityZ + pushVector.z;
+                    if (posArray[i * 3] > 10 || posArray[i * 3] < -10) data.velocityX *= -1;
+                    if (posArray[i * 3 + 1] > 10 || posArray[i * 3 + 1] < -10) data.velocityY *= -1;
+                    if (posArray[i * 3 + 2] > 10 || posArray[i * 3 + 2] < -10) data.velocityZ *= -1;
+                    for (let j = i + 1; j < heroParticleCount; j++) {
+                        const dx = posArray[i * 3] - posArray[j * 3]; const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1]; const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+                        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                        if (distance < 1.8) {
+                            linePosArray[lineIndex++] = posArray[i * 3]; linePosArray[lineIndex++] = posArray[i * 3 + 1]; linePosArray[lineIndex++] = posArray[i * 3 + 2];
+                            linePosArray[lineIndex++] = posArray[j * 3]; linePosArray[lineIndex++] = posArray[j * 3 + 1]; linePosArray[lineIndex++] = posArray[j * 3 + 2];
+                        }
                     }
-                });
-            }, { threshold: 0.1 });
-            animatedItems.forEach(item => observer.observe(item));
-        });
-
-        // --- Charting Logic ---
-        const themeColors = {
-            accent: '#d1d5db',
-            grid: 'rgba(55, 65, 81, 0.5)',
-            bar1: '#bf988a',
-            bar2: '#247c6d',
-            bar3: '#38bdf8',
-            radar1: 'rgba(59, 130, 246, 0.2)',
-            radar2: 'rgba(139, 92, 246, 0.2)',
-            radar3: 'rgba(34, 197, 94, 0.2)',
-        };
-
-        const defaultChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { labels: { color: themeColors.accent, font: { size: 14 } } } },
-            scales: {
-                x: { ticks: { color: themeColors.accent }, grid: { color: themeColors.grid } },
-                y: { ticks: { color: themeColors.accent }, grid: { color: themeColors.grid }, beginAtZero: true }
+                }
+                heroLines.geometry.setDrawRange(0, lineIndex / 3);
+                heroLines.geometry.attributes.position.needsUpdate = true;
+                heroParticleSystem.geometry.attributes.position.needsUpdate = true;
+                heroScene.rotation.y += 0.0001; heroScene.rotation.x += 0.0001;
+                heroRenderer.render(heroScene, heroCamera);
             }
-        };
+            animateHero();
+            window.addEventListener('resize', () => { heroCamera.aspect = window.innerWidth / window.innerHeight; heroCamera.updateProjectionMatrix(); heroRenderer.setSize(window.innerWidth, window.innerHeight); });
 
-        new Chart(document.getElementById('latencyChart'), {
-            type: 'bar',
-            data: {
-                labels: ['ML-KEM (Kyber)', 'NTRU', 'ML-DSA (Dilithium)', 'FALCON'],
-                datasets: [
-                    { label: 'KeyGen', data: [1.18, 1.85, 1.35, 2.85], backgroundColor: themeColors.bar1 },
-                    { label: 'Encaps/Sign', data: [0.90, 1.30, 1.55, 3.12], backgroundColor: themeColors.bar2 },
-                    { label: 'Decaps/Verify', data: [1.12, 1.40, 1.03, 0.58], backgroundColor: themeColors.bar3 }
-                ]
-            },
-            options: { ...defaultChartOptions, scales: { ...defaultChartOptions.scales, y: { ...defaultChartOptions.scales.y, title: { display: true, text: 'Time (ms)', color: themeColors.accent } } } }
+            // Charting
+            const themeColors = { accent: '#d1d5db', grid: 'rgba(55, 65, 81, 0.5)', bar1: 'rgba(96, 165, 250, 0.7)', bar2: 'rgba(129, 140, 248, 0.7)', bar3: 'rgba(74, 222, 128, 0.7)' };
+            const defaultChartOptions = { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: themeColors.accent, font: { size: 14 } } } }, scales: { x: { ticks: { color: themeColors.accent }, grid: { color: themeColors.grid } }, y: { ticks: { color: themeColors.accent }, grid: { color: themeColors.grid }, beginAtZero: true } } };
+            new Chart(document.getElementById('latencyChart'), { type: 'bar', data: { labels: ['ML-KEM', 'NTRU', 'ML-DSA', 'FALCON'], datasets: [{ label: 'KeyGen', data: [1.18, 1.85, 1.35, 2.85], backgroundColor: themeColors.bar1 }, { label: 'Encaps/Sign', data: [0.90, 1.30, 1.55, 3.12], backgroundColor: themeColors.bar2 }, { label: 'Decaps/Verify', data: [1.12, 1.40, 1.03, 0.58], backgroundColor: themeColors.bar3 }] }, options: { ...defaultChartOptions, scales: { ...defaultChartOptions.scales, y: { ...defaultChartOptions.scales.y, title: { display: true, text: 'Time (ms)', color: themeColors.accent } } } } });
+            new Chart(document.getElementById('sizeChart'), { type: 'bar', data: { labels: ['ML-KEM', 'NTRU', 'ML-DSA', 'FALCON'], datasets: [{ label: 'Public Key Size', data: [1184, 1027, 1472, 1441], backgroundColor: themeColors.bar1 }, { label: 'Ciphertext/Sig Size', data: [1088, 1025, 2701, 1007], backgroundColor: themeColors.bar2 }] }, options: { ...defaultChartOptions, scales: { ...defaultChartOptions.scales, y: { ...defaultChartOptions.scales.y, type: 'logarithmic', title: { display: true, text: 'Size (bytes) - Log Scale', color: themeColors.accent } } } } });
+
+            // Countdown
+            const countdownDate = new Date("April 20, 2030 00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime(); const distance = countdownDate - now;
+                if (distance < 0) { document.getElementById("countdown").innerHTML = "<div class='text-4xl font-bold text-red-500'>QUANTUM ERA IS HERE!</div>"; return; }
+                document.getElementById("years").textContent = Math.floor(distance / (1000*60*60*24*365.25)).toString().padStart(2, '0');
+                document.getElementById("days").textContent = Math.floor((distance % (1000*60*60*24*365.25)) / (1000*60*60*24)).toString().padStart(2, '0');
+                document.getElementById("hours").textContent = Math.floor((distance % (1000*60*60*24)) / (1000*60*60)).toString().padStart(2, '0');
+                document.getElementById("minutes").textContent = Math.floor((distance % (1000*60*60)) / (1000*60)).toString().padStart(2, '0');
+                document.getElementById("seconds").textContent = Math.floor((distance % (1000*60)) / 1000).toString().padStart(2, '0');
+            }, 1000);
         });
-
-        new Chart(document.getElementById('sizeChart'), {
-            type: 'bar',
-            data: {
-                labels: ['ML-KEM (Kyber)', 'NTRU', 'ML-DSA (Dilithium)', 'FALCON'],
-                datasets: [
-                    { label: 'Public Key Size', data: [1184, 1027, 1472, 1441], backgroundColor: themeColors.bar1 },
-                    { label: 'Ciphertext/Sig Size', data: [1088, 1025, 2701, 1007], backgroundColor: themeColors.bar2 }
-                ]
-            },
-            options: { ...defaultChartOptions, scales: { ...defaultChartOptions.scales, y: { ...defaultChartOptions.scales.y, type: 'logarithmic', title: { display: true, text: 'Size (bytes) - Log Scale', color: themeColors.accent } } } }
-        });
-
-        new Chart(document.getElementById('radarChart'), {
-            type: 'radar',
-            data: {
-                labels: ['Speed', 'Sig. Compactness', 'Key Compactness', 'Verify Speed', 'Low Memory'],
-                datasets: [
-                    { label: 'ML-KEM', data: [0.85, 0.92, 0.84, 0.89, 0.95], fill: true, backgroundColor: themeColors.radar1, borderColor: themeColors.bar1, pointBackgroundColor: themeColors.bar1 },
-                    { label: 'ML-DSA', data: [0.77, 0.37, 0.68, 0.97, 0.85], fill: true, backgroundColor: themeColors.radar2, borderColor: themeColors.bar2, pointBackgroundColor: themeColors.bar2 },
-                    { label: 'FALCON', data: [0.32, 0.99, 0.70, 0.99, 0.65], fill: true, backgroundColor: themeColors.radar3, borderColor: themeColors.bar3, pointBackgroundColor: themeColors.bar3 }
-                ]
-            },
-            options: { ...defaultChartOptions, scales: { r: { angleLines: { color: themeColors.grid }, grid: { color: themeColors.grid }, pointLabels: { color: themeColors.accent, font: { size: 12 } }, ticks: { color: themeColors.accent, backdropColor: 'transparent' } } } }
-        });
-
-        // --- Countdown Logic ---
-        const countdownDate = new Date("April 20, 2030 00:00:00").getTime();
-        const countdownInterval = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                document.getElementById("countdown").innerHTML = "<div class='text-4xl md:text-5xl font-bold text-red-500'>QUANTUM ERA IS HERE!</div>";
-                return;
-            }
-            const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365.25));
-            const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("years").textContent = years.toString().padStart(2, '0');
-            document.getElementById("days").textContent = days.toString().padStart(2, '0');
-            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-        }, 1000);
     </script>
 </body>
 </html>
