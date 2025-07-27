@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moontrace Engineering | Post-Quantum Cryptography Solutions</title>
+    <title>Moontrace Engineering</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -29,11 +29,16 @@
         color: #ffffff;
       }
       .flash-banner {
-        background-color: #1e90ff;
+        background: linear-gradient(90deg, #070708 0%, #414040 100%);
         color: #ffffff;
         padding: 0.75rem 1rem;
         text-align: center;
         font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        min-height: 3.5rem;
         position: relative;
         z-index: 60;
         opacity: 0;
@@ -42,18 +47,48 @@
       .flash-banner.show {
         opacity: 1;
       }
-      .flash-banner-close {
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
+      .flash-banner-content {
+        a:hover text-decoration: underline;
+        flex: 1 1 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        min-width: 0;
+        text-align: center;
+        flex-wrap: wrap;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+      }
+      .flash-banner-nav {
         background: none;
         border: none;
-        color: #ffffff;
-        font-size: 1.25rem;
+        color: #fff;
+        font-size: 1.1rem;
         cursor: pointer;
-        line-height: 1;
-        padding: 0.25rem;
+        padding: 0 0.5rem;
+        min-width: 1.8rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+      .flash-banner-nav:hover { opacity: 1; }
+      .flash-banner-nav.left { left: 0.2rem; }
+      .flash-banner-nav.right { right: 0.2rem; }
+      @media (max-width: 640px) {
+        .flash-banner-content {
+          padding-left: 2.2rem;
+          padding-right: 2.2rem;
+          font-size: 0.95rem;
+        }
+        .flash-banner-nav {
+          font-size: 1.5rem;
+          min-width: 2rem;
+          padding: 0 0.2rem;
+        }
       }
       .hero-bg {
         background-color: #000000;
@@ -211,66 +246,197 @@
         margin: 0;
         padding: 0;
       }
+      .flash-banner-content a:hover span {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body class="antialiased">
+    <!-- Add this template just after <body> and before the banner for reference/JS use -->
+    <template id="flash-item-template">
+      <a href="#careers" class="flash-item flash-banner-heading-link">
+        <span>
+          We're seeking pioneering minds in Post-Quantum Cryptography and
+          crypto-agility.
+        </span>
+      </a>
+      <a
+        href="Quantuminsights.html"
+        class="flash-item flash-banner-heading-link"
+      >
+        <span>
+          From the MTLabs Blog: An Interactive Guide to the NIST PQC Finalists.
+        </span>
+      </a>
+      <a href="futurevis.html" class="flash-item flash-banner-heading-link">
+        <span>
+          From the MTLabs Blog: A Look at Our Vision for the Next Generation of
+          Security.
+        </span>
+      </a>
+      <a href="Quantcount.html" class="flash-item flash-banner-heading-link">
+        <span>
+          From the MTLabs Blog: Quantum Countdown has already begun! Are you
+          ready?
+        </span>
+      </a>
+    </template>
     <div id="flash-banner" class="flash-banner show">
-      We're seeking pioneering minds in Post-Quantum Cryptography, embedded
-      systems, and crypto-agility to build the future with Moontrace.
-      <a href="#careers" class="underline text-white ml-2">Get Involved</a>
-      <button id="flash-banner-close" class="flash-banner-close">&times;</button>
+      <button
+        class="flash-banner-nav left"
+        id="flash-banner-prev"
+        aria-label="Previous"
+      >
+        &#8592;
+      </button>
+      <div class="flash-banner-content" id="flash-banner-content">
+        <!-- JS will inject content here -->
+      </div>
+      <button
+        class="flash-banner-nav right"
+        id="flash-banner-next"
+        aria-label="Next"
+      >
+        &#8594;
+      </button>
     </div>
 
-    <header id="header" class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20">
-      <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
-        <a href="#home" class="flex items-center space-x-2">
-          <div class="text-xl tracking-wider">
-            <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
-            <span class="font-normal text-red-600 text-base md:text-lg">|</span>
-            <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
-          </div>
-        </a>
+    <header
+      id="header"
+      class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20"
+    >
+      <nav
+        class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
+      >
+        <div class="text-xl tracking-wider">
+          <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
+          <span class="font-normal text-red-600 text-base md:text-lg">|</span>
+          <span class="font-normal text-gray-700 text-base md:text-lg"
+            >ENGINEERING</span
+          >
+        </div>
+        <a href="#home" class="flex items-center space-x-2"> </a>
         <div class="hidden md:flex items-center space-x-12">
           <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
           <a href="#services" class="nav-link font-medium">Services</a>
           <a href="#defense" class="nav-link font-medium">Defense</a>
-          <a href="#whymoontrace" class="nav-link font-medium">Why Moontrace?</a>
+          <a href="#whymoontrace" class="nav-link font-medium"
+            >Why Moontrace?</a
+          >
           <a href="#careers" class="nav-link font-medium">Careers</a>
           <a href="#about" class="nav-link font-medium">About</a>
         </div>
-        <a href="#careers" class="hidden md:block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Join Our Team</a>
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        <a
+          href="#careers"
+          class="hidden md:block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
+          >Join Our Team</a
+        >
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
         </button>
       </nav>
-      <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 bg-white/95 rounded-b-lg shadow-lg">
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden px-4 pb-4 space-y-2 bg-white/95 rounded-b-lg shadow-lg"
+      >
         <a href="MTLabs.html" class="block nav-link font-medium py-2">MTLabs</a>
         <a href="#services" class="block nav-link font-medium py-2">Services</a>
         <a href="#defense" class="block nav-link font-medium py-2">Defense</a>
-        <a href="#whymoontrace" class="block nav-link font-medium py-2">Why Moontrace?</a>
+        <a href="#whymoontrace" class="block nav-link font-medium py-2"
+          >Why Moontrace?</a
+        >
         <a href="#careers" class="block nav-link font-medium py-2">Careers</a>
         <a href="#about" class="block nav-link font-medium py-2">About</a>
-        <a href="#careers" class="block bg-black text-white text-center mt-2 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Join Our Team</a>
+        <a
+          href="#careers"
+          class="block bg-black text-white text-center mt-2 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
+          >Join Our Team</a
+        >
       </div>
     </header>
 
     <main>
       <section id="home" class="hero-bg text-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32">
-          <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight">Pioneering Quantum-Resilient Security. Building the Future Together.</h1>
-          <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-300">At Moontrace Engineering, we are building the foundational layers of quantum-resilient digital transformation, inviting partners to shape a confident future in the quantum era.</p>
-          <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="#services" class="bg-white text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition w-full sm:w-auto">Discover Our Approach</a>
-            <a href="#about" class="bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition w-full sm:w-auto">Join Our Journey</a>
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32"
+        >
+          <h1
+            class="text-4xl md:text-6xl font-black tracking-tight leading-tight"
+          >
+            Pioneering Quantum-Resilient Security. Building the Future Together.
+          </h1>
+          <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-300">
+            At Moontrace Engineering, we are building the foundational layers of
+            quantum-resilient digital transformation, inviting partners to shape
+            a confident future in the quantum era.
+          </p>
+          <div
+            class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
+          >
+            <a
+              href="#services"
+              class="bg-white text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition w-full sm:w-auto"
+              >Discover Our Approach</a
+            >
+            <a
+              href="#about"
+              class="bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition w-full sm:w-auto"
+              >Join Our Journey</a
+            >
           </div>
           <div class="mt-20">
-            <p class="text-white text-xl font-semibold mb-4">Years to Quantum (Y2Q) Countdown</p>
-            <div id="countdown" class="flex justify-center items-center flex-wrap gap-4 text-white text-center">
-              <div class="countdown-segment"><span id="years" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Years</span></div>
-              <div class="countdown-segment"><span id="days" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Days</span></div>
-              <div class="countdown-segment"><span id="hours" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Hours</span></div>
-              <div class="countdown-segment"><span id="minutes" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Minutes</span></div>
-              <div class="countdown-segment"><span id="seconds" class="block text-7xl font-bold text-gray-300">00</span><span class="block text-base text-gray-500">Seconds</span></div>
+            <p class="text-white text-xl font-semibold mb-4">
+              Years to Quantum (Y2Q) Countdown
+            </p>
+            <div
+              id="countdown"
+              class="flex justify-center items-center flex-wrap gap-4 text-white text-center"
+            >
+              <div class="countdown-segment">
+                <span id="years" class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Years</span>
+              </div>
+              <div class="countdown-segment">
+                <span id="days" class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Days</span>
+              </div>
+              <div class="countdown-segment">
+                <span id="hours" class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Hours</span>
+              </div>
+              <div class="countdown-segment">
+                <span
+                  id="minutes"
+                  class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Minutes</span>
+              </div>
+              <div class="countdown-segment">
+                <span
+                  id="seconds"
+                  class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Seconds</span>
+              </div>
             </div>
           </div>
         </div>
@@ -279,52 +445,132 @@
       <section id="services" class="py-20 bg-white/80 backdrop-blur-sm">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Quantum Software as a Service (QSaaS)</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">An open, agile, developer-friendly approach to simplify your transition to post-quantum security.</p>
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Our Quantum Software as a Service (QSaaS)
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+              An open, agile, developer-friendly approach to simplify your
+              transition to post-quantum security.
+            </p>
           </div>
           <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Moonscan: Cryptographic Posture Visibility</h3><p class="mt-2 text-gray-600">Gain complete visibility into your cryptographic posture. We identify what needs fixing, where, and why, providing a clear roadmap to quantum readiness.</p></div>
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Migration Tooling: Phased, Hybrid Crypto Adoption</h3><p class="mt-2 text-gray-600">Enable phased, hybrid crypto adoption. Our tools provide a structured, manageable path to integrate PQC without disrupting your current operations.</p></div>
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Crypto Agility Orchestration: Adapt & Evolve</h3><p class="mt-2 text-gray-600">Stay ahead of evolving threats. Our platform gives you the control to swap algorithms, diversify entropy, and maintain a future-proof security posture.</p></div>
+            <div class="card p-8 animated-item">
+              <h3 class="text-xl font-bold text-gray-900">
+                MOONTRACE VANTAGE: Cryptographic Posture Visibility
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Gain complete visibility into your cryptographic posture. We
+                identify what needs fixing, where, and why, providing a clear
+                roadmap to quantum readiness.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <h3 class="text-xl font-bold text-gray-900">
+                MOONTRACE APX Migration Tooling: Phased, Hybrid Crypto Adoption
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Enable phased, hybrid crypto adoption. Our tools provide a
+                structured, manageable path to integrate PQC without disrupting
+                your current operations.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <h3 class="text-xl font-bold text-gray-900">
+                Crypto Agility Orchestration: Adapt & Evolve
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Stay ahead of evolving threats. Our platform gives you the
+                control to swap algorithms, diversify entropy, and maintain a
+                future-proof security posture.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="MTLabs" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">MTLabs: Research & Development Wing</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Our R&D wing, MTLabs, is at the forefront of post-quantum and quantum innovation. We are dedicated to creating the next generation of algorithms and solutions for defense, healthcare, and other critical sectors.</p>
-                <div class="mt-8">
-                    <a href="MTLabs.html" class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition block sm:inline-block">
-                      <span class="hidden sm:inline">Explore Our Research & Innovations</span>
-                      <span class="sm:hidden">Explore MTLabs</span>
-                    </a>
-                </div>
+          <div class="text-center">
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              MTLabs: Research & Development Wing
+            </h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              Our R&D wing, MTLabs, is at the forefront of post-quantum and
+              quantum innovation. We are dedicated to creating the next
+              generation of algorithms and solutions for defense, healthcare,
+              and other critical sectors.
+            </p>
+            <div class="mt-8">
+              <a
+                href="MTLabs.html"
+                class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition block sm:inline-block"
+              >
+                <span class="hidden sm:inline"
+                  >Explore Our Research & Innovations</span
+                >
+                <span class="sm:hidden">Explore MTLabs</span>
+              </a>
             </div>
+          </div>
         </div>
       </section>
 
       <section id="defense" class="py-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Specialized Solutions: Defense & Embedded Systems</h2>
-            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Developing battlefield-ready, lightweight PQC algorithms to secure critical defense systems in the world's most demanding environments.</p>
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Specialized Solutions: Defense & Embedded Systems
+            </h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              Developing battlefield-ready, lightweight PQC algorithms to secure
+              critical defense systems in the world's most demanding
+              environments.
+            </p>
           </div>
           <div class="mt-16 bg-white p-8 md:p-12 rounded-xl shadow-lg">
-            <h3 class="text-2xl font-bold text-gray-800 text-center mt-12">PQC Performance Benchmarks on Embedded Systems</h3>
-            <p class="text-center text-gray-600 mt-2 mb-8">Interactively explore the trade-offs between PQC algorithms on a resource-constrained ARM Cortex-A53 device. Lower bars indicate better performance.</p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 text-center mt-12">
+              PQC Performance Benchmarks on Embedded Systems
+            </h3>
+            <p class="text-center text-gray-600 mt-2 mb-8">
+              Interactively explore the trade-offs between PQC algorithms on a
+              resource-constrained ARM Cortex-A53 device. Lower bars indicate
+              better performance.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8"
+            >
               <div>
-                <label for="metric-select" class="font-medium text-sm text-gray-700">Metric:</label>
-                <select id="metric-select" class="mt-1 block w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 rounded-md">
-                  <option value="latency" selected>Computational Latency (ms)</option>
+                <label
+                  for="metric-select"
+                  class="font-medium text-sm text-gray-700"
+                  >Metric:</label
+                >
+                <select
+                  id="metric-select"
+                  class="mt-1 block w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 rounded-md"
+                >
+                  <option value="latency" selected>
+                    Computational Latency (ms)
+                  </option>
                   <option value="size">Key/Signature Size (bytes)</option>
                 </select>
               </div>
               <div>
-                <label for="security-level-select" class="font-medium text-sm text-gray-700">NIST Security Level:</label>
-                <select id="security-level-select" class="mt-1 block w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 rounded-md">
+                <label
+                  for="security-level-select"
+                  class="font-medium text-sm text-gray-700"
+                  >NIST Security Level:</label
+                >
+                <select
+                  id="security-level-select"
+                  class="mt-1 block w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 rounded-md"
+                >
                   <option value="1">Level 1</option>
                   <option value="3" selected>Level 3</option>
                   <option value="5">Level 5</option>
@@ -341,14 +587,71 @@
 
       <section id="whymoontrace" class="py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why Choose Moontrace Engineering?</h2>
-          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are committed to democratizing post-quantum security with an approach that is open, agile, and fundamentally trustworthy.</p>
-          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="card p-8 animated-item"><span class="text-4xl block mb-4 text-gray-700">✨</span><h3 class="text-xl font-bold text-gray-900">Open & Agile Approach</h3><p class="mt-2 text-gray-600">Challenging the opaque and expensive, we offer transparent, developer-friendly solutions for rapid adaptation to quantum threats.</p></div>
-            <div class="card p-8 animated-item"><span class="text-4xl block mb-4 text-gray-700">🤝</span><h3 class="text-xl font-bold text-gray-900">Affordability, Transparency, Trust</h3><p class="mt-2 text-gray-600">Our core values guide every interaction, ensuring practical and accessible quantum security for organizations worldwide.</p></div>
-            <div class="card p-8 animated-item"><span class="text-3xl block mb-4 text-gray-700">🇮🇳🌍</span><h3 class="text-xl font-bold text-gray-900">Built in India, for the World</h3><p class="mt-2 text-gray-600">With a global-first mindset, our solutions are designed to serve companies, governments, and developers beyond traditional Western enterprise markets.</p></div>
-            <div class="card p-8 md:col-span-1 lg:col-span-1 animated-item"><span class="text-4xl block mb-4 text-gray-700">💡</span><h3 class="text-xl font-bold text-gray-900">Dual Expertise: QSaaS & Defense</h3><p class="mt-2 text-gray-600">From comprehensive enterprise QSaaS to specialized lightweight algorithms for battlefield deployment, we cover the full spectrum of quantum security needs.</p></div>
-            <div class="card p-8 md:col-span-1 lg:col-span-1 animated-item"><span class="text-4xl block mb-4 text-gray-700">🔭</span><h3 class="text-xl font-bold text-gray-900">Founding Vision for a Confident Tomorrow</h3><p class="mt-2 text-gray-600">We are driven by a singular mission: to move every organization from compromised to confident in the quantum era.</p></div>
+          <h2
+            class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            Why Choose Moontrace Engineering?
+          </h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+            We are committed to democratizing post-quantum security with an
+            approach that is open, agile, and fundamentally trustworthy.
+          </p>
+          <div
+            class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <div class="card p-8 animated-item">
+              <span class="text-4xl block mb-4 text-gray-700">✨</span>
+              <h3 class="text-xl font-bold text-gray-900">
+                Open & Agile Approach
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Challenging the opaque and expensive, we offer transparent,
+                developer-friendly solutions for rapid adaptation to quantum
+                threats.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <span class="text-4xl block mb-4 text-gray-700">🤝</span>
+              <h3 class="text-xl font-bold text-gray-900">
+                Affordability, Transparency, Trust
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Our core values guide every interaction, ensuring practical and
+                accessible quantum security for organizations worldwide.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <span class="text-3xl block mb-4 text-gray-700">🇮🇳🌍</span>
+              <h3 class="text-xl font-bold text-gray-900">
+                Built in India, for the World
+              </h3>
+              <p class="mt-2 text-gray-600">
+                With a global-first mindset, our solutions are designed to serve
+                companies, governments, and developers beyond traditional
+                Western enterprise markets.
+              </p>
+            </div>
+            <div class="card p-8 md:col-span-1 lg:col-span-1 animated-item">
+              <span class="text-4xl block mb-4 text-gray-700">💡</span>
+              <h3 class="text-xl font-bold text-gray-900">
+                Dual Expertise: QSaaS & Defense
+              </h3>
+              <p class="mt-2 text-gray-600">
+                From comprehensive enterprise QSaaS to specialized lightweight
+                algorithms for battlefield deployment, we cover the full
+                spectrum of quantum security needs.
+              </p>
+            </div>
+            <div class="card p-8 md:col-span-1 lg:col-span-1 animated-item">
+              <span class="text-4xl block mb-4 text-gray-700">🔭</span>
+              <h3 class="text-xl font-bold text-gray-900">
+                Founding Vision for a Confident Tomorrow
+              </h3>
+              <p class="mt-2 text-gray-600">
+                We are driven by a singular mission: to move every organization
+                from compromised to confident in the quantum era.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -356,14 +659,55 @@
       <section id="industries" class="py-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Securing Critical Industries</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">From government agencies to healthcare providers, we deliver quantum-resistant security tailored to your sector's unique challenges.</p>
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Securing Critical Industries
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+              From government agencies to healthcare providers, we deliver
+              quantum-resistant security tailored to your sector's unique
+              challenges.
+            </p>
           </div>
-          <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div class="p-6 animated-item"><h3 class="text-xl font-bold text-gray-900">Government & Public Sector</h3><p class="mt-2 text-gray-600">Protecting national security data and critical infrastructure against state-level quantum threats, ensuring compliance with mandates like NSM-10.</p></div>
-            <div class="p-6 animated-item"><h3 class="text-xl font-bold text-gray-900">Healthcare</h3><p class="mt-2 text-gray-600">Securing long-term patient records and medical devices from the "Harvest Now, Decrypt Later" risk and ensuring HIPAA compliance.</p></div>
-            <div class="p-6 animated-item"><h3 class="text-xl font-bold text-gray-900">Critical Infrastructure</h3><p class="mt-2 text-gray-600">Ensuring the resilience of energy grids, financial networks, and transportation systems against catastrophic quantum breaches.</p></div>
-            <div class="p-6 animated-item"><h3 class="text-xl font-bold text-gray-900">Defense & Military</h3><p class="mt-2 text-gray-600">Providing military-grade, lightweight PQC for tactical communications and battlefield systems under extreme conditions.</p></div>
+          <div
+            class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+          >
+            <div class="p-6 animated-item">
+              <h3 class="text-xl font-bold text-gray-900">
+                Government & Public Sector
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Protecting national security data and critical infrastructure
+                against state-level quantum threats, ensuring compliance with
+                mandates like NSM-10.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <h3 class="text-xl font-bold text-gray-900">Healthcare</h3>
+              <p class="mt-2 text-gray-600">
+                Securing long-term patient records and medical devices from the
+                "Harvest Now, Decrypt Later" risk and ensuring HIPAA compliance.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <h3 class="text-xl font-bold text-gray-900">
+                Critical Infrastructure
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Ensuring the resilience of energy grids, financial networks, and
+                transportation systems against catastrophic quantum breaches.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <h3 class="text-xl font-bold text-gray-900">
+                Defense & Military
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Providing military-grade, lightweight PQC for tactical
+                communications and battlefield systems under extreme conditions.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -372,31 +716,602 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div id="job-listings-section" class="">
             <div class="text-center">
-              <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Join Our Journey to Secure the Quantum Future</h2>
-              <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">At Moontrace Engineering, we are always looking for passionate, innovative, and driven individuals to help us build a more quantum-resilient world. Explore our open positions below.</p>
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                Join Our Journey to Secure the Quantum Future
+              </h2>
+              <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                At Moontrace Engineering, we are always looking for passionate,
+                innovative, and driven individuals to help us build a more
+                quantum-resilient world. Explore our open positions below.
+              </p>
             </div>
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8" id="job-listings">
-              <div class="job-card-compact card p-8 animated-item"><button class="job-card-header w-full flex justify-between items-center text-left font-semibold"><div><h3 class="text-2xl font-bold text-gray-900 mb-2">Senior Post-Quantum Cryptography Engineer</h3><p class="text-gray-600 font-semibold">Remote | Global</p></div><span class="job-card-icon">+</span></button><div class="job-card-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p class="text-gray-700 mb-4">We're seeking an experienced PQC Engineer to design, develop, and implement cutting-edge post-quantum cryptographic algorithms and protocols for embedded and enterprise solutions.</p><h4 class="font-bold text-gray-800 mb-2">Responsibilities:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Research and evaluate new PQC schemes and standards.</li><li>Implement and optimize PQC algorithms for various hardware platforms, including low-resource embedded systems.</li><li>Contribute to the design of secure cryptographic architectures.</li><li>Collaborate with cross-functional teams to integrate PQC solutions.</li></ul><h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Master's or Ph.D. in Computer Science, Mathematics, Electrical Engineering, or related field.</li><li>5+ years experience in cryptography, with a focus on PQC.</li><li>Proficiency in C/C++, Rust, or Go for cryptographic implementations.</li><li>Experience with embedded systems and hardware acceleration (e.g., FPGAs, ASICs) is a plus.</li></ul><button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition" data-job-title="Senior Post-Quantum Cryptography Engineer">Apply Now</button></div></div></div>
-              <div class="job-card-compact card p-8 animated-item"><button class="job-card-header w-full flex justify-between items-center text-left font-semibold"><div><h3 class="text-2xl font-bold text-gray-900 mb-2">Quantum Security Solutions Architect</h3><p class="text-gray-600 font-semibold">Remote | Global</p></div><span class="job-card-icon">+</span></button><div class="job-card-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p class="text-gray-700 mb-4">As a Solutions Architect, you will work directly with clients to understand their existing cryptographic infrastructure and design tailored post-quantum migration strategies using Moontrace's QSaaS platform.</p><h4 class="font-bold text-gray-800 mb-2">Responsibilities:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Conduct cryptographic posture assessments for clients.</li><li>Develop comprehensive PQC migration roadmaps.</li><li>Provide technical guidance on crypto agility best practices.</li><li>Lead workshops and presentations for client stakeholders.</li></ul><h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Bachelor's degree in a technical field; Master's preferred.</li><li>8+ years in cybersecurity architecture or consulting.</li><li>Strong understanding of cryptographic principles (PKI, symmetric/asymmetric).</li><li>Familiarity with NIST PQC standards and migration challenges.</li><li>Excellent communication and client-facing skills.</li></ul><button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition" data-job-title="Quantum Security Solutions Architect">Apply Now</button></div></div></div>
-              <div class="job-card-compact card p-8 animated-item"><button class="job-card-header w-full flex justify-between items-center text-left font-semibold"><div><h3 class="text-2xl font-bold text-gray-900 mb-2">Junior Post-Quantum Cryptographer</h3><p class="text-gray-600 font-semibold">Remote | Global</p></div><span class="job-card-icon">+</span></button><div class="job-card-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p class="text-gray-700 mb-4">Join our R&D team to assist in the analysis, implementation, and testing of post-quantum cryptographic algorithms. This is an ideal role for a budding cryptographer passionate about quantum-safe security.</p><h4 class="font-bold text-gray-800 mb-2">Responsibilities:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Assist in the research and evaluation of PQC candidates.</li><li>Write and test cryptographic code in C/C++ or Python.</li><li>Perform performance benchmarking on various platforms.</li><li>Contribute to internal documentation and technical reports.</li></ul><h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Bachelor's or Master's degree in Computer Science, Applied Mathematics, or related field with a focus on cryptography.</li><li>Strong foundational knowledge of cryptographic primitives and number theory.</li><li>Proficiency in at least one programming language (C/C++, Python).</li><li>Eagerness to learn and a strong interest in quantum computing.</li></ul><button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition" data-job-title="Junior Post-Quantum Cryptographer">Apply Now</button></div></div></div>
-              <div class="job-card-compact card p-8 animated-item"><button class="job-card-header w-full flex justify-between items-center text-left font-semibold"><div><h3 class="text-2xl font-bold text-gray-900 mb-2">Embedded Systems Engineer (Cryptographic Hardware)</h3><p class="text-gray-600 font-semibold">Remote | Global</p></div><span class="job-card-icon">+</span></button><div class="job-card-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p class="text-gray-700 mb-4">Design and optimize hardware implementations of PQC algorithms for resource-constrained embedded systems, focusing on efficiency and security in defense applications.</p><h4 class="font-bold text-gray-800 mb-2">Responsibilities:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Develop and verify RTL designs for PQC accelerators (e.g., for NTT, Keccak).</li><li>Work with FPGAs and ASICs to integrate cryptographic modules.</li><li>Perform power, performance, and area (PPA) analysis.</li><li>Collaborate with software teams for hardware-software co-design.</li></ul><h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Bachelor's or Master's in Electrical Engineering, Computer Engineering, or related.</li><li>3+ years experience in embedded systems hardware design.</li><li>Proficiency in Verilog/VHDL and digital design principles.</li><li>Experience with cryptographic hardware or security is a plus.</li></ul><button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition" data-job-title="Embedded Systems Engineer (Cryptographic Hardware)">Apply Now</button></div></div></div>
-              <div class="job-card-compact card p-8 animated-item"><button class="job-card-header w-full flex justify-between items-center text-left font-semibold"><div><h3 class="text-2xl font-bold text-gray-900 mb-2">Unit 7</h3><p class="text-gray-600 font-semibold">Remote | Global</p></div><span class="job-card-icon">+</span></button><div class="job-card-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p class="text-gray-700 mb-4">Analyze current security infrastructures, identify quantum vulnerabilities, and support clients in implementing migration strategies using Moontrace's tools.</p><p class="text-gray-700 mb-4 font-semibold"><span class="text-blue-700">Are you a student or early-career candidate interested in learning and researching cryptography or cybersecurity?</span><br>You can join our team as a <strong>Student Researcher / Intern</strong> and gain hands-on experience in this field!</p><h4 class="font-bold text-gray-800 mb-2">Responsibilities:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Conduct security assessments and gap analysis.</li><li>Assist in developing PQC migration roadmaps for clients.</li><li>Stay updated on the latest cybersecurity threats and PQC advancements.</li><li>Provide client support and training on Moontrace solutions.</li></ul><h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Bachelor's degree in Cybersecurity, IT, or related field.</li><li>2+ years experience in cybersecurity analysis or consulting.</li><li>Understanding of network security protocols and cryptographic concepts.</li><li>Certifications like CISSP, CompTIA Security+ are a plus.</li><li><span class="text-blue-700">Open to students and freshers with a strong interest in cryptography or cybersecurity (intern/researcher roles available).</span></li></ul><button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition" data-job-title="Unit 7">Apply Now</button></div></div></div>
-              <div class="job-card-compact card p-8 animated-item"><button class="job-card-header w-full flex justify-between items-center text-left font-semibold"><div><h3 class="text-2xl font-bold text-gray-900 mb-2">Technical Writer / Documentation Specialist (PQC)</h3><p class="text-gray-600 font-semibold">Remote | Global</p></div><span class="job-card-icon">+</span></button><div class="job-card-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p class="text-gray-700 mb-4">Create clear, concise, and accurate technical documentation for Moontrace's PQC software and hardware solutions, including user manuals, API guides, and whitepapers.</p><h4 class="font-bold text-gray-800 mb-2">Responsibilities:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Translate complex technical concepts into user-friendly documentation.</li><li>Collaborate with engineers and product managers to gather information.</li><li>Maintain and update existing documentation.</li><li>Contribute to content strategy for blogs and marketing materials.</li></ul><h4 class="font-bold text-gray-800 mb-2">Qualifications:</h4><ul class="list-disc list-inside text-gray-600 mb-4"><li>Bachelor's degree in Technical Communication, English, Computer Science, or related field.</li><li>3+ years experience in technical writing for software or hardware.</li><li>Excellent writing, editing, and communication skills.</li><li>Familiarity with cybersecurity or cryptography concepts is highly desirable.</li></ul><button class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition" data-job-title="Technical Writer / Documentation Specialist (PQC)">Apply Now</button></div></div></div>
+            <div
+              class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8"
+              id="job-listings"
+            >
+              <div class="job-card-compact card p-8 animated-item">
+                <button
+                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
+                >
+                  <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                      Senior Post-Quantum Cryptography Engineer
+                    </h3>
+                    <p class="text-gray-600 font-semibold">Remote | Global</p>
+                  </div>
+                  <span class="job-card-icon">+</span>
+                </button>
+                <div class="job-card-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p class="text-gray-700 mb-4">
+                      We're seeking an experienced PQC Engineer to design,
+                      develop, and implement cutting-edge post-quantum
+                      cryptographic algorithms and protocols for embedded and
+                      enterprise solutions.
+                    </p>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Responsibilities:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Research and evaluate new PQC schemes and standards.
+                      </li>
+                      <li>
+                        Implement and optimize PQC algorithms for various
+                        hardware platforms, including low-resource embedded
+                        systems.
+                      </li>
+                      <li>
+                        Contribute to the design of secure cryptographic
+                        architectures.
+                      </li>
+                      <li>
+                        Collaborate with cross-functional teams to integrate PQC
+                        solutions.
+                      </li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Qualifications:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Master's or Ph.D. in Computer Science, Mathematics,
+                        Electrical Engineering, or related field.
+                      </li>
+                      <li>
+                        5+ years experience in cryptography, with a focus on
+                        PQC.
+                      </li>
+                      <li>
+                        Proficiency in C/C++, Rust, or Go for cryptographic
+                        implementations.
+                      </li>
+                      <li>
+                        Experience with embedded systems and hardware
+                        acceleration (e.g., FPGAs, ASICs) is a plus.
+                      </li>
+                    </ul>
+                    <button
+                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                      data-job-title="Senior Post-Quantum Cryptography Engineer"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="job-card-compact card p-8 animated-item">
+                <button
+                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
+                >
+                  <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                      Quantum Security Solutions Architect
+                    </h3>
+                    <p class="text-gray-600 font-semibold">Remote | Global</p>
+                  </div>
+                  <span class="job-card-icon">+</span>
+                </button>
+                <div class="job-card-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p class="text-gray-700 mb-4">
+                      As a Solutions Architect, you will work directly with
+                      clients to understand their existing cryptographic
+                      infrastructure and design tailored post-quantum migration
+                      strategies using Moontrace's QSaaS platform.
+                    </p>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Responsibilities:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Conduct cryptographic posture assessments for clients.
+                      </li>
+                      <li>Develop comprehensive PQC migration roadmaps.</li>
+                      <li>
+                        Provide technical guidance on crypto agility best
+                        practices.
+                      </li>
+                      <li>
+                        Lead workshops and presentations for client
+                        stakeholders.
+                      </li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Qualifications:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Bachelor's degree in a technical field; Master's
+                        preferred.
+                      </li>
+                      <li>
+                        8+ years in cybersecurity architecture or consulting.
+                      </li>
+                      <li>
+                        Strong understanding of cryptographic principles (PKI,
+                        symmetric/asymmetric).
+                      </li>
+                      <li>
+                        Familiarity with NIST PQC standards and migration
+                        challenges.
+                      </li>
+                      <li>Excellent communication and client-facing skills.</li>
+                    </ul>
+                    <button
+                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                      data-job-title="Quantum Security Solutions Architect"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="job-card-compact card p-8 animated-item">
+                <button
+                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
+                >
+                  <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                      Junior Post-Quantum Cryptographer
+                    </h3>
+                    <p class="text-gray-600 font-semibold">Remote | Global</p>
+                  </div>
+                  <span class="job-card-icon">+</span>
+                </button>
+                <div class="job-card-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p class="text-gray-700 mb-4">
+                      Join our R&D team to assist in the analysis,
+                      implementation, and testing of post-quantum cryptographic
+                      algorithms. This is an ideal role for a budding
+                      cryptographer passionate about quantum-safe security.
+                    </p>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Responsibilities:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Assist in the research and evaluation of PQC candidates.
+                      </li>
+                      <li>
+                        Write and test cryptographic code in C/C++ or Python.
+                      </li>
+                      <li>
+                        Perform performance benchmarking on various platforms.
+                      </li>
+                      <li>
+                        Contribute to internal documentation and technical
+                        reports.
+                      </li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Qualifications:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Bachelor's or Master's degree in Computer Science,
+                        Applied Mathematics, or related field with a focus on
+                        cryptography.
+                      </li>
+                      <li>
+                        Strong foundational knowledge of cryptographic
+                        primitives and number theory.
+                      </li>
+                      <li>
+                        Proficiency in at least one programming language (C/C++,
+                        Python).
+                      </li>
+                      <li>
+                        Eagerness to learn and a strong interest in quantum
+                        computing.
+                      </li>
+                    </ul>
+                    <button
+                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                      data-job-title="Junior Post-Quantum Cryptographer"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="job-card-compact card p-8 animated-item">
+                <button
+                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
+                >
+                  <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                      Embedded Systems Engineer (Cryptographic Hardware)
+                    </h3>
+                    <p class="text-gray-600 font-semibold">Remote | Global</p>
+                  </div>
+                  <span class="job-card-icon">+</span>
+                </button>
+                <div class="job-card-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p class="text-gray-700 mb-4">
+                      Design and optimize hardware implementations of PQC
+                      algorithms for resource-constrained embedded systems,
+                      focusing on efficiency and security in defense
+                      applications.
+                    </p>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Responsibilities:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Develop and verify RTL designs for PQC accelerators
+                        (e.g., for NTT, Keccak).
+                      </li>
+                      <li>
+                        Work with FPGAs and ASICs to integrate cryptographic
+                        modules.
+                      </li>
+                      <li>
+                        Perform power, performance, and area (PPA) analysis.
+                      </li>
+                      <li>
+                        Collaborate with software teams for hardware-software
+                        co-design.
+                      </li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Qualifications:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Bachelor's or Master's in Electrical Engineering,
+                        Computer Engineering, or related.
+                      </li>
+                      <li>
+                        3+ years experience in embedded systems hardware design.
+                      </li>
+                      <li>
+                        Proficiency in Verilog/VHDL and digital design
+                        principles.
+                      </li>
+                      <li>
+                        Experience with cryptographic hardware or security is a
+                        plus.
+                      </li>
+                    </ul>
+                    <button
+                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                      data-job-title="Embedded Systems Engineer (Cryptographic Hardware)"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="job-card-compact card p-8 animated-item">
+                <button
+                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
+                >
+                  <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                      Unit 7
+                    </h3>
+                    <p class="text-gray-600 font-semibold">Remote | Global</p>
+                  </div>
+                  <span class="job-card-icon">+</span>
+                </button>
+                <div class="job-card-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p class="text-gray-700 mb-4">
+                      Analyze current security infrastructures, identify quantum
+                      vulnerabilities, and support clients in implementing
+                      migration strategies using Moontrace's tools.
+                    </p>
+                    <p class="text-gray-700 mb-4 font-semibold">
+                      <span class="text-blue-700"
+                        >Are you a student or early-career candidate interested
+                        in learning and researching cryptography or
+                        cybersecurity?</span
+                      ><br />You can join our team as a
+                      <strong>Student Researcher / Intern</strong> and gain
+                      hands-on experience in this field!
+                    </p>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Responsibilities:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>Conduct security assessments and gap analysis.</li>
+                      <li>
+                        Assist in developing PQC migration roadmaps for clients.
+                      </li>
+                      <li>
+                        Stay updated on the latest cybersecurity threats and PQC
+                        advancements.
+                      </li>
+                      <li>
+                        Provide client support and training on Moontrace
+                        solutions.
+                      </li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Qualifications:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Bachelor's degree in Cybersecurity, IT, or related
+                        field.
+                      </li>
+                      <li>
+                        2+ years experience in cybersecurity analysis or
+                        consulting.
+                      </li>
+                      <li>
+                        Understanding of network security protocols and
+                        cryptographic concepts.
+                      </li>
+                      <li>
+                        Certifications like CISSP, CompTIA Security+ are a plus.
+                      </li>
+                      <li>
+                        <span class="text-blue-700"
+                          >Open to students and freshers with a strong interest
+                          in cryptography or cybersecurity (intern/researcher
+                          roles available).</span
+                        >
+                      </li>
+                    </ul>
+                    <button
+                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                      data-job-title="Unit 7"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="job-card-compact card p-8 animated-item">
+                <button
+                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
+                >
+                  <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                      Technical Writer / Documentation Specialist (PQC)
+                    </h3>
+                    <p class="text-gray-600 font-semibold">Remote | Global</p>
+                  </div>
+                  <span class="job-card-icon">+</span>
+                </button>
+                <div class="job-card-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p class="text-gray-700 mb-4">
+                      Create clear, concise, and accurate technical
+                      documentation for Moontrace's PQC software and hardware
+                      solutions, including user manuals, API guides, and
+                      whitepapers.
+                    </p>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Responsibilities:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Translate complex technical concepts into user-friendly
+                        documentation.
+                      </li>
+                      <li>
+                        Collaborate with engineers and product managers to
+                        gather information.
+                      </li>
+                      <li>Maintain and update existing documentation.</li>
+                      <li>
+                        Contribute to content strategy for blogs and marketing
+                        materials.
+                      </li>
+                    </ul>
+                    <h4 class="font-bold text-gray-800 mb-2">
+                      Qualifications:
+                    </h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                      <li>
+                        Bachelor's degree in Technical Communication, English,
+                        Computer Science, or related field.
+                      </li>
+                      <li>
+                        3+ years experience in technical writing for software or
+                        hardware.
+                      </li>
+                      <li>
+                        Excellent writing, editing, and communication skills.
+                      </li>
+                      <li>
+                        Familiarity with cybersecurity or cryptography concepts
+                        is highly desirable.
+                      </li>
+                    </ul>
+                    <button
+                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
+                      data-job-title="Technical Writer / Documentation Specialist (PQC)"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div id="job-application-form" class="hidden mt-16 max-w-3xl mx-auto p-8 card">
-            <button id="back-to-jobs-button" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>Back to Job Listings</button>
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Apply for <span id="application-job-title"></span></h2>
-            <div class="mb-4"><label for="applicant-name" class="form-field-label block mb-2">Name<span class="text-red-500">*</span></label><input type="text" id="applicant-name" class="form-input w-full" placeholder="Your Full Name" required /></div>
-            <div class="mb-4"><label for="applicant-email" class="form-field-label block mb-2">Email<span class="text-red-500">*</span></label><input type="email" id="applicant-email" class="form-input w-full" placeholder="you@example.com" required /></div>
-            <div class="mb-4"><label for="applicant-location" class="form-field-label block mb-2">Location (City, Country)</label><input type="text" id="applicant-location" class="form-input w-full" placeholder="e.g., Bengaluru, India"/></div>
-            <div class="mb-4"><label for="linkedin-profile" class="form-field-label block mb-2">LinkedIn Profile (URL)</label><input type="url" id="linkedin-profile" class="form-input w-full" placeholder="https://linkedin.com/in/yourprofile"/></div>
-            <div class="mb-4"><label for="portfolio-site" class="form-field-label block mb-2">Portfolio, GitHub, or Personal Site (URL)</label><input type="url" id="portfolio-site" class="form-input w-full" placeholder="https://github.com/yourprofile"/></div>
-            <div class="mb-6"><label for="resume-upload" class="form-field-label block mb-2">Resume / CV<span class="text-red-500">*</span></label><div class="flex items-center border border-gray-300 rounded-md p-3 bg-gray-50"><input type="file" id="resume-file-input" accept=".pdf,.doc,.docx" class="hidden"/><button id="upload-resume-button" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>Upload File</button><span id="resume-file-name" class="ml-3 text-gray-500 italic text-sm">No file chosen (Attach manually in email)</span></div></div>
-            <div class="mb-4"><label for="motivations" class="form-field-label block mb-2">Motivations: Why are you interested in Moontrace Engineering?</label><textarea id="motivations" class="form-textarea w-full" rows="5" placeholder="Tell us about your interest..."></textarea></div>
-            <div class="mb-4"><label for="project-problem" class="form-field-label block mb-2">Briefly describe a recent project, problem, or challenge you're proud of:</label><textarea id="project-problem" class="form-textarea w-full" rows="7" placeholder="Keep it short, thoughtful, and human."></textarea></div>
-            <div class="mb-6"><label for="how-heard" class="form-field-label block mb-2">How did you hear about us?</label><input type="text" id="how-heard" class="form-input w-full" placeholder="e.g., LinkedIn, referral, Google Search"/></div>
-            <button id="submit-application-button" class="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition">Submit Application</button>
+          <div
+            id="job-application-form"
+            class="hidden mt-16 max-w-3xl mx-auto p-8 card"
+          >
+            <button
+              id="back-to-jobs-button"
+              class="text-gray-600 hover:text-gray-900 mb-6 flex items-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                /></svg
+              >Back to Job Listings
+            </button>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              Apply for <span id="application-job-title"></span>
+            </h2>
+            <div class="mb-4">
+              <label for="applicant-name" class="form-field-label block mb-2"
+                >Name<span class="text-red-500">*</span></label
+              ><input
+                type="text"
+                id="applicant-name"
+                class="form-input w-full"
+                placeholder="Your Full Name"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label for="applicant-email" class="form-field-label block mb-2"
+                >Email<span class="text-red-500">*</span></label
+              ><input
+                type="email"
+                id="applicant-email"
+                class="form-input w-full"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                for="applicant-location"
+                class="form-field-label block mb-2"
+                >Location (City, Country)</label
+              ><input
+                type="text"
+                id="applicant-location"
+                class="form-input w-full"
+                placeholder="e.g., Bengaluru, India"
+              />
+            </div>
+            <div class="mb-4">
+              <label for="linkedin-profile" class="form-field-label block mb-2"
+                >LinkedIn Profile (URL)</label
+              ><input
+                type="url"
+                id="linkedin-profile"
+                class="form-input w-full"
+                placeholder="https://linkedin.com/in/yourprofile"
+              />
+            </div>
+            <div class="mb-4">
+              <label for="portfolio-site" class="form-field-label block mb-2"
+                >Portfolio, GitHub, or Personal Site (URL)</label
+              ><input
+                type="url"
+                id="portfolio-site"
+                class="form-input w-full"
+                placeholder="https://github.com/yourprofile"
+              />
+            </div>
+            <div class="mb-6">
+              <label for="resume-upload" class="form-field-label block mb-2"
+                >Resume / CV<span class="text-red-500">*</span></label
+              >
+              <div
+                class="flex items-center border border-gray-300 rounded-md p-3 bg-gray-50"
+              >
+                <input
+                  type="file"
+                  id="resume-file-input"
+                  accept=".pdf,.doc,.docx"
+                  class="hidden"
+                /><button
+                  id="upload-resume-button"
+                  class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                    /></svg
+                  >Upload File</button
+                ><span
+                  id="resume-file-name"
+                  class="ml-3 text-gray-500 italic text-sm"
+                  >No file chosen (Attach manually in email)</span
+                >
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="motivations" class="form-field-label block mb-2"
+                >Motivations: Why are you interested in Moontrace
+                Engineering?</label
+              ><textarea
+                id="motivations"
+                class="form-textarea w-full"
+                rows="5"
+                placeholder="Tell us about your interest..."
+              ></textarea>
+            </div>
+            <div class="mb-4">
+              <label for="project-problem" class="form-field-label block mb-2"
+                >Briefly describe a recent project, problem, or challenge you're
+                proud of:</label
+              ><textarea
+                id="project-problem"
+                class="form-textarea w-full"
+                rows="7"
+                placeholder="Keep it short, thoughtful, and human."
+              ></textarea>
+            </div>
+            <div class="mb-6">
+              <label for="how-heard" class="form-field-label block mb-2"
+                >How did you hear about us?</label
+              ><input
+                type="text"
+                id="how-heard"
+                class="form-input w-full"
+                placeholder="e.g., LinkedIn, referral, Google Search"
+              />
+            </div>
+            <button
+              id="submit-application-button"
+              class="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition"
+            >
+              Submit Application
+            </button>
           </div>
         </div>
       </section>
@@ -405,13 +1320,144 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="animated-item">
-              <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Built in India, for the World.</h2>
-              <p class="mt-6 text-lg text-gray-600">Moontrace Engineering was founded to challenge the status quo. We saw that existing quantum security solutions were often opaque, expensive, and inaccessible to many global organizations. Our mission is to democratize post-quantum security with an open, agile, and developer-friendly platform that prioritizes affordability, transparency, and trust.</p>
-              <p class="mt-4 text-lg text-gray-600">Our vision is to secure the post-quantum internet for everyone, everywhere.</p>
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                Built in India, for the World.
+              </h2>
+              <p class="mt-6 text-lg text-gray-600">
+                Moontrace Engineering was founded to challenge the status quo.
+                We saw that existing quantum security solutions were often
+                opaque, expensive, and inaccessible to many global
+                organizations. Our mission is to democratize post-quantum
+                security with an open, agile, and developer-friendly platform
+                that prioritizes affordability, transparency, and trust.
+              </p>
+              <p class="mt-4 text-lg text-gray-600">
+                Our vision is to secure the post-quantum internet for everyone,
+                everywhere.
+              </p>
             </div>
             <div class="space-y-4">
-              <div class="accordion-item card animated-item"><button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold"><span class="text-gray-900">Contributor Equity Philosophy</span><span class="accordion-icon">+</span></button><div class="accordion-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p>At Moontrace Engineering, we believe that equity is a long-term commitment, not a short-term perk. It is designed to reward those who invest meaningful time, energy, and dedication into building our company's success.</p><p class="mt-4">All equity grants to our founders and contributors follow a standard vesting policy: a 4-year vesting schedule with a 1-year cliff. This means:</p><p class="mt-4">In our earliest stages, initial roles may be equity-only, with cash compensation or stipends contingent upon securing initial funding rounds or generating significant revenue. This approach is a strategic choice designed to:</p><ul class="list-disc list-inside ml-4 mt-2"><li><strong>Protect the Company:</strong> Minimize short-term financial burn and ensure resources are channelled directly into product development and growth.</li><li><strong>Incentivize Long-Term Value:</strong> Attract individuals who are truly passionate about our mission and willing to build something significant, aligning their personal success with the company's long-term value creation.</li></ul><p class="mt-4 italic font-bold text-black">"To those who stand by Moontrace in its earliest days – your belief is our foundation, and our trust in you is absolute. We rise together, or not at all."</p><a href="Contributor_policy.pdf" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition mt-4">Read More</a></div></div></div>
-              <div class="accordion-item card animated-item"><button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold"><span class="text-gray-900">Investor Relations & Our Funding Instrument</span><span class="accordion-icon">+</span></button><div class="accordion-content"><div class="p-5 border-t border-gray-200 text-gray-600"><p>At Moontrace, we understand that early-stage investment is not just about capital – it's a partnership of vision, belief, and long-term conviction. We deeply value the trust our investors place in us, especially in an emerging domain like Post-Quantum Cryptography.</p><p class="mt-4">To reflect that trust with fairness, transparency, and alignment, we have adopted a structured, founder-conscious equity approach.</p><p class="mt-4 font-semibold">Our Funding Instrument: ISAFE Notes (Cap + Discount)</p><p class="mt-2">We prefer to use the 100x VC's Standard ISAFE (India Simple Agreement for Future Equity) for all early-stage investment rounds, featuring:</p><ul class="list-disc list-inside ml-4 mt-2"><li><strong>Valuation Cap:</strong> Ensures that your early belief is rewarded – you'll convert equity at a fair ceiling, even if the company's valuation grows rapidly. This protects early investors by setting a maximum valuation at which their investment converts into equity.</li><li><strong>Discount Rate:</strong> As an early backer, you'll receive a 10-20% discount on shares compared to new investors in our priced round. This further rewards early-stage risk-takers by allowing them to purchase shares at a lower price than future investors.</li></ul><p class="mt-4">This structure simplifies early financing, reduces legal complexity, and aligns incentives – allowing us to focus intensely on product development, team building, and achieving market traction, rather than getting bogged down in complex legal negotiations.</p><a href="Investor_policy.pdf" target="_blank" class="inline-block bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition mt-4">Enquire Now</a></div></div></div>
+              <div class="accordion-item card animated-item">
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold"
+                >
+                  <span class="text-gray-900"
+                    >Contributor Equity Philosophy</span
+                  ><span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p>
+                      At Moontrace Engineering, we believe that equity is a
+                      long-term commitment, not a short-term perk. It is
+                      designed to reward those who invest meaningful time,
+                      energy, and dedication into building our company's
+                      success.
+                    </p>
+                    <p class="mt-4">
+                      All equity grants to our founders and contributors follow
+                      a standard vesting policy: a 4-year vesting schedule with
+                      a 1-year cliff. This means:
+                    </p>
+                    <p class="mt-4">
+                      In our earliest stages, initial roles may be equity-only,
+                      with cash compensation or stipends contingent upon
+                      securing initial funding rounds or generating significant
+                      revenue. This approach is a strategic choice designed to:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                      <li>
+                        <strong>Protect the Company:</strong> Minimize
+                        short-term financial burn and ensure resources are
+                        channelled directly into product development and growth.
+                      </li>
+                      <li>
+                        <strong>Incentivize Long-Term Value:</strong> Attract
+                        individuals who are truly passionate about our mission
+                        and willing to build something significant, aligning
+                        their personal success with the company's long-term
+                        value creation.
+                      </li>
+                    </ul>
+                    <p class="mt-4 italic font-bold text-black">
+                      "To those who stand by Moontrace in its earliest days –
+                      your belief is our foundation, and our trust in you is
+                      absolute. We rise together, or not at all."
+                    </p>
+                    <a
+                      href="Contributor_policy.pdf"
+                      target="_blank"
+                      class="inline-block bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition mt-4"
+                      >Read More</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item card animated-item">
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold"
+                >
+                  <span class="text-gray-900"
+                    >Investor Relations & Our Funding Instrument</span
+                  ><span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="p-5 border-t border-gray-200 text-gray-600">
+                    <p>
+                      At Moontrace, we understand that early-stage investment is
+                      not just about capital – it's a partnership of vision,
+                      belief, and long-term conviction. We deeply value the
+                      trust our investors place in us, especially in an emerging
+                      domain like Post-Quantum Cryptography.
+                    </p>
+                    <p class="mt-4">
+                      To reflect that trust with fairness, transparency, and
+                      alignment, we have adopted a structured, founder-conscious
+                      equity approach.
+                    </p>
+                    <p class="mt-4 font-semibold">
+                      Our Funding Instrument: iSAFE Notes (Cap + Discount)
+                    </p>
+                    <p class="mt-2">
+                      We prefer to use the 100x VC's Standard iSAFE (India
+                      Simple Agreement for Future Equity) for all early-stage
+                      investment rounds, featuring:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                      <li>
+                        <strong>Valuation Cap:</strong> Ensures that your early
+                        belief is rewarded – you'll convert equity at a fair
+                        ceiling, even if the company's valuation grows rapidly.
+                        This protects early investors by setting a maximum
+                        valuation at which their investment converts into
+                        equity.
+                      </li>
+                      <li>
+                        <strong>Discount Rate:</strong> As an early backer,
+                        you'll receive a 10-20% discount on shares compared to
+                        new investors in our priced round. This further rewards
+                        early-stage risk-takers by allowing them to purchase
+                        shares at a lower price than future investors.
+                      </li>
+                    </ul>
+                    <p class="mt-4">
+                      This structure simplifies early financing, reduces legal
+                      complexity, and aligns incentives – allowing us to focus
+                      intensely on product development, team building, and
+                      achieving market traction, rather than getting bogged down
+                      in complex legal negotiations.
+                    </p>
+                    <a
+                      href="Investor_policy.pdf"
+                      target="_blank"
+                      class="inline-block bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition mt-4"
+                      >Enquire Now</a
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -420,15 +1466,32 @@
       <section id="contact" class="py-20 bg-gray-800 text-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-white font-bold tracking-tight sm:text-4xl">Let's Build the Quantum-Safe Future.</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">We're actively seeking collaborators, innovators, and partners who share our vision for securing the quantum era. Connect with us.</p>
+            <h2 class="text-white font-bold tracking-tight sm:text-4xl">
+              Let's Build the Quantum-Safe Future.
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+              We're actively seeking collaborators, innovators, and partners who
+              share our vision for securing the quantum era. Connect with us.
+            </p>
           </div>
           <div class="mt-16 max-w-xl mx-auto animated-item">
             <div class="text-center space-y-4">
               <p class="text-lg">Get in touch directly:</p>
               <p class="text-lg font-semibold">Bharat Raghuvanshi</p>
-              <p><a href="mailto:bharat.moontrace@gmail.com" class="text-gray-400 hover:text-gray-300 transition">bharat.moontrace@gmail.com</a></p>
-              <p><a href="tel:+918887748365" class="text-gray-400 hover:text-gray-300 transition">+91 8887748365</a></p>
+              <p>
+                <a
+                  href="mailto:bharat.moontrace@gmail.com"
+                  class="text-gray-400 hover:text-gray-300 transition"
+                  >bharat.moontrace@gmail.com</a
+                >
+              </p>
+              <p>
+                <a
+                  href="tel:+918887748365"
+                  class="text-gray-400 hover:text-gray-300 transition"
+                  >+91 8887748365</a
+                >
+              </p>
             </div>
           </div>
         </div>
@@ -442,23 +1505,102 @@
             <li><a href="#careers">Careers</a></li>
             <li><a href="whymoon.pdf" target="_blank">Manifesto</a></li>
             <li><a href="https://x.com/Moontrace_HQ">X</a></li>
-            <li><a href="https://www.instagram.com/moontrace_hq/">Instagram</a></li>
-            <li><a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a></li>
+            <li>
+              <a href="https://www.instagram.com/moontrace_hq/">Instagram</a>
+            </li>
+            <li>
+              <a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a>
+            </li>
           </ul>
-          <p>&copy; 2025 Moontrace Engineering Research and Consulting | All Rights Reserved.</p>
+          <p>
+            &copy; 2025 Moontrace Engineering Research and Consulting | All
+            Rights Reserved.
+          </p>
           <p class="mt-2">Built in India, for the World.</p>
-          <p class="mt-4"><a href="#top" class="hover:underline">Back to top</a></p>
+          <p class="mt-4">
+            <a href="#top" class="hover:underline">Back to top</a>
+          </p>
         </div>
       </div>
     </footer>
 
     <nav class="bottom-nav md:hidden">
       <div class="flex justify-around items-center h-16">
-        <a href="#home" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>Home</a>
-        <a href="#services" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 20.25l2.25-3.25M21 9l-3.354-3.354A4.5 4.5 0 0014.28 4.792L12 7.5l-2.28-2.708A4.5 4.5 0 005.354 5.646L2 9m19 0H2m19 0a2 2 0 012 2v6a2 2 0 01-2 2H2a2 2 0 01-2-2v-6a2 2 0 012-2z"/></svg>Services</a>
-        <a href="#careers" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"/></svg>Careers</a>
-        <a href="#about" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>About</a>
-        <a href="#contact" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"/></svg>Contact</a>
+        <a href="#home" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            /></svg
+          >Home</a
+        >
+        <a href="#services" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9.75 17L12 20.25l2.25-3.25M21 9l-3.354-3.354A4.5 4.5 0 0014.28 4.792L12 7.5l-2.28-2.708A4.5 4.5 0 005.354 5.646L2 9m19 0H2m19 0a2 2 0 012 2v6a2 2 0 01-2 2H2a2 2 0 01-2-2v-6a2 2 0 012-2z"
+            /></svg
+          >Services</a
+        >
+        <a href="#careers" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 13V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
+            /></svg
+          >Careers</a
+        >
+        <a href="#about" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            /></svg
+          >About</a
+        >
+        <a href="#contact" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
+            /></svg
+          >Contact</a
+        >
       </div>
     </nav>
 
@@ -466,11 +1608,6 @@
       document.addEventListener("DOMContentLoaded", function () {
         // All original JS from test12.html is here
         const flashBanner = document.getElementById("flash-banner");
-        const flashBannerClose = document.getElementById("flash-banner-close");
-        flashBannerClose.addEventListener("click", () => {
-          flashBanner.classList.remove("show");
-          setTimeout(() => { flashBanner.style.display = "none"; }, 500);
-        });
         setTimeout(() => flashBanner.classList.add("show"), 100);
 
         const mobileMenuButton = document.getElementById("mobile-menu-button");
@@ -484,30 +1621,45 @@
           });
         });
 
-        const accordionItems = document.querySelectorAll(".accordion-item, .job-card-compact");
+        const accordionItems = document.querySelectorAll(
+          ".accordion-item, .job-card-compact"
+        );
         accordionItems.forEach((item) => {
-          const header = item.querySelector(".accordion-header, .job-card-header");
-          const content = item.querySelector(".accordion-content, .job-card-content");
+          const header = item.querySelector(
+            ".accordion-header, .job-card-header"
+          );
+          const content = item.querySelector(
+            ".accordion-content, .job-card-content"
+          );
           const icon = item.querySelector(".accordion-icon, .job-card-icon");
           header.addEventListener("click", () => {
-            const isExpanded = header.classList.contains('expanded');
-            accordionItems.forEach(otherItem => {
+            const isExpanded = header.classList.contains("expanded");
+            accordionItems.forEach((otherItem) => {
               if (otherItem !== item) {
-                const otherHeader = otherItem.querySelector(".accordion-header, .job-card-header");
-                const otherContent = otherItem.querySelector(".accordion-content, .job-card-content");
-                otherHeader.classList.remove('expanded');
+                const otherHeader = otherItem.querySelector(
+                  ".accordion-header, .job-card-header"
+                );
+                const otherContent = otherItem.querySelector(
+                  ".accordion-content, .job-card-content"
+                );
+                otherHeader.classList.remove("expanded");
                 otherContent.style.maxHeight = null;
-                if(otherHeader.querySelector('.accordion-icon, .job-card-icon')) otherHeader.querySelector('.accordion-icon, .job-card-icon').textContent = '+';
+                if (
+                  otherHeader.querySelector(".accordion-icon, .job-card-icon")
+                )
+                  otherHeader.querySelector(
+                    ".accordion-icon, .job-card-icon"
+                  ).textContent = "+";
               }
             });
             if (isExpanded) {
-              header.classList.remove('expanded');
+              header.classList.remove("expanded");
               content.style.maxHeight = null;
-              if(icon) icon.textContent = '+';
+              if (icon) icon.textContent = "+";
             } else {
-              header.classList.add('expanded');
+              header.classList.add("expanded");
               content.style.maxHeight = content.scrollHeight + "px";
-              if(icon) icon.textContent = '-';
+              if (icon) icon.textContent = "-";
             }
           });
         });
@@ -517,109 +1669,271 @@
           const now = new Date().getTime();
           const distance = countdownDate - now;
           if (distance < 0) {
-            document.getElementById("countdown").innerHTML = "<div class='text-4xl font-bold text-gray-400'>The Quantum Era is Here</div>";
+            document.getElementById("countdown").innerHTML =
+              "<div class='text-4xl font-bold text-gray-400'>The Quantum Era is Here</div>";
             return;
           }
-          document.getElementById("years").textContent = Math.floor(distance / (1000 * 60 * 60 * 24 * 365.25)).toString().padStart(2, "0");
-          document.getElementById("days").textContent = Math.floor((distance % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24)).toString().padStart(2, "0");
-          document.getElementById("hours").textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, "0");
-          document.getElementById("minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
-          document.getElementById("seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, "0");
+          document.getElementById("years").textContent = Math.floor(
+            distance / (1000 * 60 * 60 * 24 * 365.25)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("days").textContent = Math.floor(
+            (distance % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").textContent = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("seconds").textContent = Math.floor(
+            (distance % (1000 * 60)) / 1000
+          )
+            .toString()
+            .padStart(2, "0");
         }, 1000);
 
         const ctx = document.getElementById("pqcChart")?.getContext("2d");
-        const chartLoadingSpinner = document.getElementById("chart-loading-spinner");
+        const chartLoadingSpinner = document.getElementById(
+          "chart-loading-spinner"
+        );
         const pqcChartCanvas = document.getElementById("pqcChart");
         let pqcChart;
         const benchmarkData = {
-            latency:{labels:["ML-KEM","NTRU","ML-DSA","FALCON"],datasets:{1:[{label:"KeyGen/Sign",data:[.92,1.45,1.25,2.45]},{label:"Enc/Verify",data:[.8,1.15,.9,.45]},{label:"Decaps",data:[.85,1.22,null,null]}],3:[{label:"KeyGen/Sign",data:[1.18,1.85,1.55,3.12]},{label:"Enc/Verify",data:[.9,1.3,1.03,.58]},{label:"Decaps",data:[1.12,1.4,null,null]}],5:[{label:"KeyGen/Sign",data:[1.45,2.25,1.95,3.85]},{label:"Enc/Verify",data:[1.2,1.65,1.35,.7]},{label:"Decaps",data:[1.38,1.8,null,null]}]}},
-            size:{labels:["ML-KEM","NTRU","ML-DSA","FALCON"],datasets:{1:[{label:"Public Key",data:[800,699,1184,897]},{label:"Ciphertext/Sig",data:[768,699,2044,666]},{label:"Secret Key",data:[1632,935,2800,1281]}],3:[{label:"Public Key",data:[1184,1027,1472,1441]},{label:"Ciphertext/Sig",data:[1088,1025,2701,1007]},{label:"Secret Key",data:[2400,1999,3504,2305]}],5:[{label:"Public Key",data:[1568,1398,1760,1793]},{label:"Ciphertext/Sig",data:[1568,1389,3366,1280]},{label:"Secret Key",data:[3168,2653,4864,3073]}]}}
+          latency: {
+            labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
+            datasets: {
+              1: [
+                { label: "KeyGen/Sign", data: [0.92, 1.45, 1.25, 2.45] },
+                { label: "Enc/Verify", data: [0.8, 1.15, 0.9, 0.45] },
+                { label: "Decaps", data: [0.85, 1.22, null, null] },
+              ],
+              3: [
+                { label: "KeyGen/Sign", data: [1.18, 1.85, 1.55, 3.12] },
+                { label: "Enc/Verify", data: [0.9, 1.3, 1.03, 0.58] },
+                { label: "Decaps", data: [1.12, 1.4, null, null] },
+              ],
+              5: [
+                { label: "KeyGen/Sign", data: [1.45, 2.25, 1.95, 3.85] },
+                { label: "Enc/Verify", data: [1.2, 1.65, 1.35, 0.7] },
+                { label: "Decaps", data: [1.38, 1.8, null, null] },
+              ],
+            },
+          },
+          size: {
+            labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
+            datasets: {
+              1: [
+                { label: "Public Key", data: [800, 699, 1184, 897] },
+                { label: "Ciphertext/Sig", data: [768, 699, 2044, 666] },
+                { label: "Secret Key", data: [1632, 935, 2800, 1281] },
+              ],
+              3: [
+                { label: "Public Key", data: [1184, 1027, 1472, 1441] },
+                { label: "Ciphertext/Sig", data: [1088, 1025, 2701, 1007] },
+                { label: "Secret Key", data: [2400, 1999, 3504, 2305] },
+              ],
+              5: [
+                { label: "Public Key", data: [1568, 1398, 1760, 1793] },
+                { label: "Ciphertext/Sig", data: [1568, 1389, 3366, 1280] },
+                { label: "Secret Key", data: [3168, 2653, 4864, 3073] },
+              ],
+            },
+          },
         };
         function createChart(metric, level) {
-            if (!ctx) return;
-            chartLoadingSpinner.classList.remove("hidden");
-            pqcChartCanvas.classList.add("hidden");
-            if (pqcChart) pqcChart.destroy();
-            setTimeout(() => {
-                const data = benchmarkData[metric];
-                const chartData = data.datasets[level].map((ds, index) => ({...ds, backgroundColor: ["#26619c", "#3a7ca5", "#74b3ce"][index % 3]}));
-                pqcChart = new Chart(ctx, {type: "bar", data: {labels: data.labels, datasets: chartData}, options: {responsive: true, maintainAspectRatio: false, scales: {y: {beginAtZero: true, title: {display: true, text: metric === "latency" ? "Milliseconds (ms)" : "Bytes"}}}, plugins: {tooltip: {mode: "index", intersect: false}}}});
-                chartLoadingSpinner.classList.add("hidden");
-                pqcChartCanvas.classList.remove("hidden");
-            }, 300);
+          if (!ctx) return;
+          chartLoadingSpinner.classList.remove("hidden");
+          pqcChartCanvas.classList.add("hidden");
+          if (pqcChart) pqcChart.destroy();
+          setTimeout(() => {
+            const data = benchmarkData[metric];
+            const chartData = data.datasets[level].map((ds, index) => ({
+              ...ds,
+              backgroundColor: ["#bf988a", "#247c6d", "#031c26"][index % 3],
+            }));
+            pqcChart = new Chart(ctx, {
+              type: "bar",
+              data: { labels: data.labels, datasets: chartData },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text:
+                        metric === "latency" ? "Milliseconds (ms)" : "Bytes",
+                    },
+                  },
+                },
+                plugins: { tooltip: { mode: "index", intersect: false } },
+              },
+            });
+            chartLoadingSpinner.classList.add("hidden");
+            pqcChartCanvas.classList.remove("hidden");
+          }, 300);
         }
         const metricSelect = document.getElementById("metric-select");
         const levelSelect = document.getElementById("security-level-select");
-        metricSelect?.addEventListener("change", () => createChart(metricSelect.value, levelSelect.value));
-        levelSelect?.addEventListener("change", () => createChart(metricSelect.value, levelSelect.value));
-        if(ctx) createChart("latency", "3");
+        metricSelect?.addEventListener("change", () =>
+          createChart(metricSelect.value, levelSelect.value)
+        );
+        levelSelect?.addEventListener("change", () =>
+          createChart(metricSelect.value, levelSelect.value)
+        );
+        if (ctx) createChart("latency", "3");
 
         const animatedItems = document.querySelectorAll(".animated-item");
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        animatedItems.forEach(item => observer.observe(item));
-        
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        animatedItems.forEach((item) => observer.observe(item));
+
         const applyButtons = document.querySelectorAll(".apply-now-button");
-        const jobListingsSection = document.getElementById("job-listings-section");
-        const jobApplicationForm = document.getElementById("job-application-form");
-        const applicationJobTitle = document.getElementById("application-job-title");
+        const jobListingsSection = document.getElementById(
+          "job-listings-section"
+        );
+        const jobApplicationForm = document.getElementById(
+          "job-application-form"
+        );
+        const applicationJobTitle = document.getElementById(
+          "application-job-title"
+        );
         const backToJobsButton = document.getElementById("back-to-jobs-button");
-        const submitApplicationButton = document.getElementById("submit-application-button");
+        const submitApplicationButton = document.getElementById(
+          "submit-application-button"
+        );
         const resumeFileInput = document.getElementById("resume-file-input");
-        const uploadResumeButton = document.getElementById("upload-resume-button");
+        const uploadResumeButton = document.getElementById(
+          "upload-resume-button"
+        );
         const resumeFileNameSpan = document.getElementById("resume-file-name");
 
-        applyButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const jobTitle = button.dataset.jobTitle;
-                if(applicationJobTitle) applicationJobTitle.textContent = jobTitle;
-                if(jobListingsSection) jobListingsSection.classList.add('hidden');
-                if(jobApplicationForm) {
-                    jobApplicationForm.classList.remove('hidden');
-                    jobApplicationForm.dataset.jobTitle = jobTitle;
-                }
-                document.getElementById('careers')?.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        backToJobsButton?.addEventListener('click', () => {
-            jobListingsSection?.classList.remove('hidden');
-            jobApplicationForm?.classList.add('hidden');
-        });
-        
-        uploadResumeButton?.addEventListener('click', (e) => {
-            e.preventDefault();
-            resumeFileInput?.click();
-        });
-
-        resumeFileInput?.addEventListener('change', (event) => {
-            if (event.target.files.length > 0) {
-                if(resumeFileNameSpan) resumeFileNameSpan.textContent = event.target.files[0].name + " (Attach manually in email)";
+        applyButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const jobTitle = button.dataset.jobTitle;
+            if (applicationJobTitle) applicationJobTitle.textContent = jobTitle;
+            if (jobListingsSection) jobListingsSection.classList.add("hidden");
+            if (jobApplicationForm) {
+              jobApplicationForm.classList.remove("hidden");
+              jobApplicationForm.dataset.jobTitle = jobTitle;
             }
+            document
+              .getElementById("careers")
+              ?.scrollIntoView({ behavior: "smooth" });
+          });
         });
 
-        submitApplicationButton?.addEventListener('click', () => {
-            const name = document.getElementById('applicant-name').value;
-            const email = document.getElementById('applicant-email').value;
-            if (!name || !email) {
-                const msgBox = document.createElement('div');
-                msgBox.style.cssText = `position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:2rem;border-radius:0.5rem;box-shadow:0 10px 25px rgba(0,0,0,0.1);z-index:1000;`;
-                msgBox.innerHTML = `<p>Please fill all required fields.</p><button onclick="this.parentElement.remove()" style="margin-top:1rem;padding:0.5rem 1rem;background:black;color:white;border:none;border-radius:0.25rem;">OK</button>`;
-                document.body.appendChild(msgBox);
-                return;
-            }
-            const jobTitle = jobApplicationForm.dataset.jobTitle;
-            const subject = `Job Application: ${jobTitle} - ${name}`;
-            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A...`;
-            window.location.href = `mailto:bharat.moontrace@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        backToJobsButton?.addEventListener("click", () => {
+          jobListingsSection?.classList.remove("hidden");
+          jobApplicationForm?.classList.add("hidden");
         });
+
+        uploadResumeButton?.addEventListener("click", (e) => {
+          e.preventDefault();
+          resumeFileInput?.click();
+        });
+
+        resumeFileInput?.addEventListener("change", (event) => {
+          if (event.target.files.length > 0) {
+            if (resumeFileNameSpan)
+              resumeFileNameSpan.textContent =
+                event.target.files[0].name + " (Attach manually in email)";
+          }
+        });
+
+        submitApplicationButton?.addEventListener("click", () => {
+          const name = document.getElementById("applicant-name").value;
+          const email = document.getElementById("applicant-email").value;
+          if (!name || !email) {
+            const msgBox = document.createElement("div");
+            msgBox.style.cssText = `position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:2rem;border-radius:0.5rem;box-shadow:0 10px 25px rgba(0,0,0,0.1);z-index:1000;`;
+            msgBox.innerHTML = `<p>Please fill all required fields.</p><button onclick="this.parentElement.remove()" style="margin-top:1rem;padding:0.5rem 1rem;background:black;color:white;border:none;border-radius:0.25rem;">OK</button>`;
+            document.body.appendChild(msgBox);
+            return;
+          }
+          const jobTitle = jobApplicationForm.dataset.jobTitle;
+          const subject = `Job Application: ${jobTitle} - ${name}`;
+          const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A...`;
+          window.location.href = `mailto:bharat.moontrace@gmail.com?subject=${encodeURIComponent(
+            subject
+          )}&body=${encodeURIComponent(body)}`;
+        });
+
+        // --- FLASH BANNER MULTI-CARD LOGIC ---
+        const flashItems = Array.from(
+          document
+            .getElementById("flash-item-template")
+            .content.querySelectorAll("a")
+        );
+        let flashCardIndex = 0;
+        let autoAdvanceTimer = null;
+
+        const flashBannerContent = document.getElementById(
+          "flash-banner-content"
+        );
+        const flashBannerPrev = document.getElementById("flash-banner-prev");
+        const flashBannerNext = document.getElementById("flash-banner-next");
+
+        function renderFlashCard(idx) {
+          flashBannerContent.innerHTML = "";
+          const node = flashItems[idx].cloneNode(true);
+          if (node.tagName === "A") {
+            node.target = "_blank";
+            node.rel = "noopener noreferrer";
+          }
+          flashBannerContent.appendChild(node);
+        }
+        renderFlashCard(flashCardIndex);
+
+        function showPrevCard() {
+          flashCardIndex =
+            (flashCardIndex - 1 + flashItems.length) % flashItems.length;
+          renderFlashCard(flashCardIndex);
+          resetAutoAdvance();
+        }
+        function showNextCard() {
+          flashCardIndex = (flashCardIndex + 1) % flashItems.length;
+          renderFlashCard(flashCardIndex);
+          resetAutoAdvance();
+        }
+
+        flashBannerPrev.addEventListener("click", showPrevCard);
+        flashBannerNext.addEventListener("click", showNextCard);
+
+        function autoAdvance() {
+          flashCardIndex = (flashCardIndex + 1) % flashItems.length;
+          renderFlashCard(flashCardIndex);
+        }
+        function resetAutoAdvance() {
+          if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
+          autoAdvanceTimer = setInterval(autoAdvance, 5000);
+        }
+        resetAutoAdvance();
+
+        // Remove close button if present (for safety)
+        const flashBannerClose = document.getElementById("flash-banner-close");
+        if (flashBannerClose) flashBannerClose.remove();
+
+        // ...rest of your JS...
       });
     </script>
   </body>

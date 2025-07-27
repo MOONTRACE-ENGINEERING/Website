@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moontrace Engineering</title>
+    <title>Moontrace Engineering | Post-Quantum Cryptography Solutions</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -142,7 +142,7 @@
           height: 450px;
         }
       }
-      .accordion-content, .job-card-content {
+      .accordion-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease-out;
@@ -203,24 +203,10 @@
       }
       .bottom-nav-link:hover { color: #ffffff; }
       .bottom-nav-link svg { width: 24px; height: 24px; margin-bottom: 0.25rem; }
-      .job-card-header, .accordion-header { cursor: pointer; }
-      .job-card-icon, .accordion-icon { transition: transform 0.3s ease-in-out; }
-      .job-card-header.expanded .job-card-icon,
+      .accordion-header { cursor: pointer; }
+      .accordion-icon { transition: transform 0.3s ease-in-out; }
       .accordion-header.expanded .accordion-icon {
         transform: rotate(45deg);
-      }
-      .form-input, .form-textarea, .form-select {
-        background-color: #f9f9f9;
-        border: 1px solid #e0e0e0;
-        color: #1a1a1a;
-        border-radius: 0.375rem;
-        padding: 0.75rem;
-      }
-      .form-input::placeholder, .form-textarea::placeholder { color: #888888; }
-      .form-input:focus, .form-textarea:focus, .form-select:focus {
-        border-color: #666666;
-        box-shadow: 0 0 0 1px #666666;
-        outline: none;
       }
       .footer-links-section {
         background-color: #000000;
@@ -252,9 +238,8 @@
     </style>
   </head>
   <body class="antialiased">
-    <!-- Add this template just after <body> and before the banner for reference/JS use -->
     <template id="flash-item-template">
-      <a href="#careers" class="flash-item flash-banner-heading-link">
+      <a href="careers.html" class="flash-item flash-banner-heading-link">
         <span>
           We're seeking pioneering minds in Post-Quantum Cryptography and
           crypto-agility.
@@ -323,11 +308,11 @@
           <a href="#whymoontrace" class="nav-link font-medium"
             >Why Moontrace?</a
           >
-          <a href="#careers" class="nav-link font-medium">Careers</a>
+          <a href="careers.html" class="nav-link font-medium">Careers</a>
           <a href="#about" class="nav-link font-medium">About</a>
         </div>
         <a
-          href="#careers"
+          href="careers.html"
           class="hidden md:block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
           >Join Our Team</a
         >
@@ -361,10 +346,10 @@
         <a href="#whymoontrace" class="block nav-link font-medium py-2"
           >Why Moontrace?</a
         >
-        <a href="#careers" class="block nav-link font-medium py-2">Careers</a>
+        <a href="careers.html" class="block nav-link font-medium py-2">Careers</a>
         <a href="#about" class="block nav-link font-medium py-2">About</a>
         <a
-          href="#careers"
+          href="careers.html"
           class="block bg-black text-white text-center mt-2 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
           >Join Our Team</a
         >
@@ -395,7 +380,7 @@
               >Discover Our Approach</a
             >
             <a
-              href="#about"
+              href="careers.html"
               class="bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition w-full sm:w-auto"
               >Join Our Journey</a
             >
@@ -468,7 +453,7 @@
             </div>
             <div class="card p-8 animated-item">
               <h3 class="text-xl font-bold text-gray-900">
-                MOONTRACE APX Migration Tooling: Phased, Hybrid Crypto Adoption
+                Migration Tooling: Phased, Hybrid Crypto Adoption
               </h3>
               <p class="mt-2 text-gray-600">
                 Enable phased, hybrid crypto adoption. Our tools provide a
@@ -712,606 +697,21 @@
         </div>
       </section>
 
-      <section id="careers" class="py-20 bg-white">
+      <!-- MODIFIED CAREERS SECTION -->
+      <section id="careers-cta" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div id="job-listings-section" class="">
-            <div class="text-center">
-              <h2
-                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-              >
-                Join Our Journey to Secure the Quantum Future
-              </h2>
-              <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                At Moontrace Engineering, we are always looking for passionate,
-                innovative, and driven individuals to help us build a more
-                quantum-resilient world. Explore our open positions below.
-              </p>
-            </div>
-            <div
-              class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8"
-              id="job-listings"
-            >
-              <div class="job-card-compact card p-8 animated-item">
-                <button
-                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
-                >
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                      Senior Post-Quantum Cryptography Engineer
-                    </h3>
-                    <p class="text-gray-600 font-semibold">Remote | Global</p>
-                  </div>
-                  <span class="job-card-icon">+</span>
-                </button>
-                <div class="job-card-content">
-                  <div class="p-5 border-t border-gray-200 text-gray-600">
-                    <p class="text-gray-700 mb-4">
-                      We're seeking an experienced PQC Engineer to design,
-                      develop, and implement cutting-edge post-quantum
-                      cryptographic algorithms and protocols for embedded and
-                      enterprise solutions.
-                    </p>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Responsibilities:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Research and evaluate new PQC schemes and standards.
-                      </li>
-                      <li>
-                        Implement and optimize PQC algorithms for various
-                        hardware platforms, including low-resource embedded
-                        systems.
-                      </li>
-                      <li>
-                        Contribute to the design of secure cryptographic
-                        architectures.
-                      </li>
-                      <li>
-                        Collaborate with cross-functional teams to integrate PQC
-                        solutions.
-                      </li>
-                    </ul>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Qualifications:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Master's or Ph.D. in Computer Science, Mathematics,
-                        Electrical Engineering, or related field.
-                      </li>
-                      <li>
-                        5+ years experience in cryptography, with a focus on
-                        PQC.
-                      </li>
-                      <li>
-                        Proficiency in C/C++, Rust, or Go for cryptographic
-                        implementations.
-                      </li>
-                      <li>
-                        Experience with embedded systems and hardware
-                        acceleration (e.g., FPGAs, ASICs) is a plus.
-                      </li>
-                    </ul>
-                    <button
-                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
-                      data-job-title="Senior Post-Quantum Cryptography Engineer"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="job-card-compact card p-8 animated-item">
-                <button
-                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
-                >
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                      Quantum Security Solutions Architect
-                    </h3>
-                    <p class="text-gray-600 font-semibold">Remote | Global</p>
-                  </div>
-                  <span class="job-card-icon">+</span>
-                </button>
-                <div class="job-card-content">
-                  <div class="p-5 border-t border-gray-200 text-gray-600">
-                    <p class="text-gray-700 mb-4">
-                      As a Solutions Architect, you will work directly with
-                      clients to understand their existing cryptographic
-                      infrastructure and design tailored post-quantum migration
-                      strategies using Moontrace's QSaaS platform.
-                    </p>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Responsibilities:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Conduct cryptographic posture assessments for clients.
-                      </li>
-                      <li>Develop comprehensive PQC migration roadmaps.</li>
-                      <li>
-                        Provide technical guidance on crypto agility best
-                        practices.
-                      </li>
-                      <li>
-                        Lead workshops and presentations for client
-                        stakeholders.
-                      </li>
-                    </ul>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Qualifications:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Bachelor's degree in a technical field; Master's
-                        preferred.
-                      </li>
-                      <li>
-                        8+ years in cybersecurity architecture or consulting.
-                      </li>
-                      <li>
-                        Strong understanding of cryptographic principles (PKI,
-                        symmetric/asymmetric).
-                      </li>
-                      <li>
-                        Familiarity with NIST PQC standards and migration
-                        challenges.
-                      </li>
-                      <li>Excellent communication and client-facing skills.</li>
-                    </ul>
-                    <button
-                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
-                      data-job-title="Quantum Security Solutions Architect"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="job-card-compact card p-8 animated-item">
-                <button
-                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
-                >
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                      Junior Post-Quantum Cryptographer
-                    </h3>
-                    <p class="text-gray-600 font-semibold">Remote | Global</p>
-                  </div>
-                  <span class="job-card-icon">+</span>
-                </button>
-                <div class="job-card-content">
-                  <div class="p-5 border-t border-gray-200 text-gray-600">
-                    <p class="text-gray-700 mb-4">
-                      Join our R&D team to assist in the analysis,
-                      implementation, and testing of post-quantum cryptographic
-                      algorithms. This is an ideal role for a budding
-                      cryptographer passionate about quantum-safe security.
-                    </p>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Responsibilities:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Assist in the research and evaluation of PQC candidates.
-                      </li>
-                      <li>
-                        Write and test cryptographic code in C/C++ or Python.
-                      </li>
-                      <li>
-                        Perform performance benchmarking on various platforms.
-                      </li>
-                      <li>
-                        Contribute to internal documentation and technical
-                        reports.
-                      </li>
-                    </ul>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Qualifications:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Bachelor's or Master's degree in Computer Science,
-                        Applied Mathematics, or related field with a focus on
-                        cryptography.
-                      </li>
-                      <li>
-                        Strong foundational knowledge of cryptographic
-                        primitives and number theory.
-                      </li>
-                      <li>
-                        Proficiency in at least one programming language (C/C++,
-                        Python).
-                      </li>
-                      <li>
-                        Eagerness to learn and a strong interest in quantum
-                        computing.
-                      </li>
-                    </ul>
-                    <button
-                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
-                      data-job-title="Junior Post-Quantum Cryptographer"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="job-card-compact card p-8 animated-item">
-                <button
-                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
-                >
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                      Embedded Systems Engineer (Cryptographic Hardware)
-                    </h3>
-                    <p class="text-gray-600 font-semibold">Remote | Global</p>
-                  </div>
-                  <span class="job-card-icon">+</span>
-                </button>
-                <div class="job-card-content">
-                  <div class="p-5 border-t border-gray-200 text-gray-600">
-                    <p class="text-gray-700 mb-4">
-                      Design and optimize hardware implementations of PQC
-                      algorithms for resource-constrained embedded systems,
-                      focusing on efficiency and security in defense
-                      applications.
-                    </p>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Responsibilities:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Develop and verify RTL designs for PQC accelerators
-                        (e.g., for NTT, Keccak).
-                      </li>
-                      <li>
-                        Work with FPGAs and ASICs to integrate cryptographic
-                        modules.
-                      </li>
-                      <li>
-                        Perform power, performance, and area (PPA) analysis.
-                      </li>
-                      <li>
-                        Collaborate with software teams for hardware-software
-                        co-design.
-                      </li>
-                    </ul>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Qualifications:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Bachelor's or Master's in Electrical Engineering,
-                        Computer Engineering, or related.
-                      </li>
-                      <li>
-                        3+ years experience in embedded systems hardware design.
-                      </li>
-                      <li>
-                        Proficiency in Verilog/VHDL and digital design
-                        principles.
-                      </li>
-                      <li>
-                        Experience with cryptographic hardware or security is a
-                        plus.
-                      </li>
-                    </ul>
-                    <button
-                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
-                      data-job-title="Embedded Systems Engineer (Cryptographic Hardware)"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="job-card-compact card p-8 animated-item">
-                <button
-                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
-                >
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                      Unit 7
-                    </h3>
-                    <p class="text-gray-600 font-semibold">Remote | Global</p>
-                  </div>
-                  <span class="job-card-icon">+</span>
-                </button>
-                <div class="job-card-content">
-                  <div class="p-5 border-t border-gray-200 text-gray-600">
-                    <p class="text-gray-700 mb-4">
-                      Analyze current security infrastructures, identify quantum
-                      vulnerabilities, and support clients in implementing
-                      migration strategies using Moontrace's tools.
-                    </p>
-                    <p class="text-gray-700 mb-4 font-semibold">
-                      <span class="text-blue-700"
-                        >Are you a student or early-career candidate interested
-                        in learning and researching cryptography or
-                        cybersecurity?</span
-                      ><br />You can join our team as a
-                      <strong>Student Researcher / Intern</strong> and gain
-                      hands-on experience in this field!
-                    </p>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Responsibilities:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>Conduct security assessments and gap analysis.</li>
-                      <li>
-                        Assist in developing PQC migration roadmaps for clients.
-                      </li>
-                      <li>
-                        Stay updated on the latest cybersecurity threats and PQC
-                        advancements.
-                      </li>
-                      <li>
-                        Provide client support and training on Moontrace
-                        solutions.
-                      </li>
-                    </ul>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Qualifications:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Bachelor's degree in Cybersecurity, IT, or related
-                        field.
-                      </li>
-                      <li>
-                        2+ years experience in cybersecurity analysis or
-                        consulting.
-                      </li>
-                      <li>
-                        Understanding of network security protocols and
-                        cryptographic concepts.
-                      </li>
-                      <li>
-                        Certifications like CISSP, CompTIA Security+ are a plus.
-                      </li>
-                      <li>
-                        <span class="text-blue-700"
-                          >Open to students and freshers with a strong interest
-                          in cryptography or cybersecurity (intern/researcher
-                          roles available).</span
-                        >
-                      </li>
-                    </ul>
-                    <button
-                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
-                      data-job-title="Unit 7"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="job-card-compact card p-8 animated-item">
-                <button
-                  class="job-card-header w-full flex justify-between items-center text-left font-semibold"
-                >
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
-                      Technical Writer / Documentation Specialist (PQC)
-                    </h3>
-                    <p class="text-gray-600 font-semibold">Remote | Global</p>
-                  </div>
-                  <span class="job-card-icon">+</span>
-                </button>
-                <div class="job-card-content">
-                  <div class="p-5 border-t border-gray-200 text-gray-600">
-                    <p class="text-gray-700 mb-4">
-                      Create clear, concise, and accurate technical
-                      documentation for Moontrace's PQC software and hardware
-                      solutions, including user manuals, API guides, and
-                      whitepapers.
-                    </p>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Responsibilities:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Translate complex technical concepts into user-friendly
-                        documentation.
-                      </li>
-                      <li>
-                        Collaborate with engineers and product managers to
-                        gather information.
-                      </li>
-                      <li>Maintain and update existing documentation.</li>
-                      <li>
-                        Contribute to content strategy for blogs and marketing
-                        materials.
-                      </li>
-                    </ul>
-                    <h4 class="font-bold text-gray-800 mb-2">
-                      Qualifications:
-                    </h4>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                      <li>
-                        Bachelor's degree in Technical Communication, English,
-                        Computer Science, or related field.
-                      </li>
-                      <li>
-                        3+ years experience in technical writing for software or
-                        hardware.
-                      </li>
-                      <li>
-                        Excellent writing, editing, and communication skills.
-                      </li>
-                      <li>
-                        Familiarity with cybersecurity or cryptography concepts
-                        is highly desirable.
-                      </li>
-                    </ul>
-                    <button
-                      class="apply-now-button bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
-                      data-job-title="Technical Writer / Documentation Specialist (PQC)"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            id="job-application-form"
-            class="hidden mt-16 max-w-3xl mx-auto p-8 card"
-          >
-            <button
-              id="back-to-jobs-button"
-              class="text-gray-600 hover:text-gray-900 mb-6 flex items-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                /></svg
-              >Back to Job Listings
-            </button>
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">
-              Apply for <span id="application-job-title"></span>
+          <div class="text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              We're Building the Future. Join Us.
             </h2>
-            <div class="mb-4">
-              <label for="applicant-name" class="form-field-label block mb-2"
-                >Name<span class="text-red-500">*</span></label
-              ><input
-                type="text"
-                id="applicant-name"
-                class="form-input w-full"
-                placeholder="Your Full Name"
-                required
-              />
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+              We are looking for passionate, innovative, and driven individuals to help us build a more quantum-resilient world.
+            </p>
+            <div class="mt-8">
+              <a href="careers.html" class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition">
+                View Open Positions
+              </a>
             </div>
-            <div class="mb-4">
-              <label for="applicant-email" class="form-field-label block mb-2"
-                >Email<span class="text-red-500">*</span></label
-              ><input
-                type="email"
-                id="applicant-email"
-                class="form-input w-full"
-                placeholder="you@example.com"
-                required
-              />
-            </div>
-            <div class="mb-4">
-              <label
-                for="applicant-location"
-                class="form-field-label block mb-2"
-                >Location (City, Country)</label
-              ><input
-                type="text"
-                id="applicant-location"
-                class="form-input w-full"
-                placeholder="e.g., Bengaluru, India"
-              />
-            </div>
-            <div class="mb-4">
-              <label for="linkedin-profile" class="form-field-label block mb-2"
-                >LinkedIn Profile (URL)</label
-              ><input
-                type="url"
-                id="linkedin-profile"
-                class="form-input w-full"
-                placeholder="https://linkedin.com/in/yourprofile"
-              />
-            </div>
-            <div class="mb-4">
-              <label for="portfolio-site" class="form-field-label block mb-2"
-                >Portfolio, GitHub, or Personal Site (URL)</label
-              ><input
-                type="url"
-                id="portfolio-site"
-                class="form-input w-full"
-                placeholder="https://github.com/yourprofile"
-              />
-            </div>
-            <div class="mb-6">
-              <label for="resume-upload" class="form-field-label block mb-2"
-                >Resume / CV<span class="text-red-500">*</span></label
-              >
-              <div
-                class="flex items-center border border-gray-300 rounded-md p-3 bg-gray-50"
-              >
-                <input
-                  type="file"
-                  id="resume-file-input"
-                  accept=".pdf,.doc,.docx"
-                  class="hidden"
-                /><button
-                  id="upload-resume-button"
-                  class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 mr-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                    /></svg
-                  >Upload File</button
-                ><span
-                  id="resume-file-name"
-                  class="ml-3 text-gray-500 italic text-sm"
-                  >No file chosen (Attach manually in email)</span
-                >
-              </div>
-            </div>
-            <div class="mb-4">
-              <label for="motivations" class="form-field-label block mb-2"
-                >Motivations: Why are you interested in Moontrace
-                Engineering?</label
-              ><textarea
-                id="motivations"
-                class="form-textarea w-full"
-                rows="5"
-                placeholder="Tell us about your interest..."
-              ></textarea>
-            </div>
-            <div class="mb-4">
-              <label for="project-problem" class="form-field-label block mb-2"
-                >Briefly describe a recent project, problem, or challenge you're
-                proud of:</label
-              ><textarea
-                id="project-problem"
-                class="form-textarea w-full"
-                rows="7"
-                placeholder="Keep it short, thoughtful, and human."
-              ></textarea>
-            </div>
-            <div class="mb-6">
-              <label for="how-heard" class="form-field-label block mb-2"
-                >How did you hear about us?</label
-              ><input
-                type="text"
-                id="how-heard"
-                class="form-input w-full"
-                placeholder="e.g., LinkedIn, referral, Google Search"
-              />
-            </div>
-            <button
-              id="submit-application-button"
-              class="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition"
-            >
-              Submit Application
-            </button>
           </div>
         </div>
       </section>
@@ -1418,10 +818,10 @@
                       equity approach.
                     </p>
                     <p class="mt-4 font-semibold">
-                      Our Funding Instrument: iSAFE Notes (Cap + Discount)
+                      Our Funding Instrument: ISAFE Notes (Cap + Discount)
                     </p>
                     <p class="mt-2">
-                      We prefer to use the 100x VC's Standard iSAFE (India
+                      We prefer to use the 100x VC's Standard ISAFE (India
                       Simple Agreement for Future Equity) for all early-stage
                       investment rounds, featuring:
                     </p>
@@ -1502,7 +902,7 @@
       <div class="footer-links-section text-center">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <ul class="mb-4">
-            <li><a href="#careers">Careers</a></li>
+            <li><a href="careers.html">Careers</a></li>
             <li><a href="whymoon.pdf" target="_blank">Manifesto</a></li>
             <li><a href="https://x.com/Moontrace_HQ">X</a></li>
             <li>
@@ -1556,7 +956,7 @@
             /></svg
           >Services</a
         >
-        <a href="#careers" class="bottom-nav-link"
+        <a href="careers.html" class="bottom-nav-link"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -1606,7 +1006,6 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // All original JS from test12.html is here
         const flashBanner = document.getElementById("flash-banner");
         setTimeout(() => flashBanner.classList.add("show"), 100);
 
@@ -1622,33 +1021,33 @@
         });
 
         const accordionItems = document.querySelectorAll(
-          ".accordion-item, .job-card-compact"
+          ".accordion-item"
         );
         accordionItems.forEach((item) => {
           const header = item.querySelector(
-            ".accordion-header, .job-card-header"
+            ".accordion-header"
           );
           const content = item.querySelector(
-            ".accordion-content, .job-card-content"
+            ".accordion-content"
           );
-          const icon = item.querySelector(".accordion-icon, .job-card-icon");
+          const icon = item.querySelector(".accordion-icon");
           header.addEventListener("click", () => {
             const isExpanded = header.classList.contains("expanded");
             accordionItems.forEach((otherItem) => {
               if (otherItem !== item) {
                 const otherHeader = otherItem.querySelector(
-                  ".accordion-header, .job-card-header"
+                  ".accordion-header"
                 );
                 const otherContent = otherItem.querySelector(
-                  ".accordion-content, .job-card-content"
+                  ".accordion-content"
                 );
                 otherHeader.classList.remove("expanded");
                 otherContent.style.maxHeight = null;
                 if (
-                  otherHeader.querySelector(".accordion-icon, .job-card-icon")
+                  otherHeader.querySelector(".accordion-icon")
                 )
                   otherHeader.querySelector(
-                    ".accordion-icon, .job-card-icon"
+                    ".accordion-icon"
                   ).textContent = "+";
               }
             });
@@ -1806,79 +1205,6 @@
         );
         animatedItems.forEach((item) => observer.observe(item));
 
-        const applyButtons = document.querySelectorAll(".apply-now-button");
-        const jobListingsSection = document.getElementById(
-          "job-listings-section"
-        );
-        const jobApplicationForm = document.getElementById(
-          "job-application-form"
-        );
-        const applicationJobTitle = document.getElementById(
-          "application-job-title"
-        );
-        const backToJobsButton = document.getElementById("back-to-jobs-button");
-        const submitApplicationButton = document.getElementById(
-          "submit-application-button"
-        );
-        const resumeFileInput = document.getElementById("resume-file-input");
-        const uploadResumeButton = document.getElementById(
-          "upload-resume-button"
-        );
-        const resumeFileNameSpan = document.getElementById("resume-file-name");
-
-        applyButtons.forEach((button) => {
-          button.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const jobTitle = button.dataset.jobTitle;
-            if (applicationJobTitle) applicationJobTitle.textContent = jobTitle;
-            if (jobListingsSection) jobListingsSection.classList.add("hidden");
-            if (jobApplicationForm) {
-              jobApplicationForm.classList.remove("hidden");
-              jobApplicationForm.dataset.jobTitle = jobTitle;
-            }
-            document
-              .getElementById("careers")
-              ?.scrollIntoView({ behavior: "smooth" });
-          });
-        });
-
-        backToJobsButton?.addEventListener("click", () => {
-          jobListingsSection?.classList.remove("hidden");
-          jobApplicationForm?.classList.add("hidden");
-        });
-
-        uploadResumeButton?.addEventListener("click", (e) => {
-          e.preventDefault();
-          resumeFileInput?.click();
-        });
-
-        resumeFileInput?.addEventListener("change", (event) => {
-          if (event.target.files.length > 0) {
-            if (resumeFileNameSpan)
-              resumeFileNameSpan.textContent =
-                event.target.files[0].name + " (Attach manually in email)";
-          }
-        });
-
-        submitApplicationButton?.addEventListener("click", () => {
-          const name = document.getElementById("applicant-name").value;
-          const email = document.getElementById("applicant-email").value;
-          if (!name || !email) {
-            const msgBox = document.createElement("div");
-            msgBox.style.cssText = `position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:2rem;border-radius:0.5rem;box-shadow:0 10px 25px rgba(0,0,0,0.1);z-index:1000;`;
-            msgBox.innerHTML = `<p>Please fill all required fields.</p><button onclick="this.parentElement.remove()" style="margin-top:1rem;padding:0.5rem 1rem;background:black;color:white;border:none;border-radius:0.25rem;">OK</button>`;
-            document.body.appendChild(msgBox);
-            return;
-          }
-          const jobTitle = jobApplicationForm.dataset.jobTitle;
-          const subject = `Job Application: ${jobTitle} - ${name}`;
-          const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A...`;
-          window.location.href = `mailto:bharat.moontrace@gmail.com?subject=${encodeURIComponent(
-            subject
-          )}&body=${encodeURIComponent(body)}`;
-        });
-
-        // --- FLASH BANNER MULTI-CARD LOGIC ---
         const flashItems = Array.from(
           document
             .getElementById("flash-item-template")
@@ -1897,8 +1223,10 @@
           flashBannerContent.innerHTML = "";
           const node = flashItems[idx].cloneNode(true);
           if (node.tagName === "A") {
-            node.target = "_blank";
-            node.rel = "noopener noreferrer";
+            if (!node.href.includes("#")) {
+                node.target = "_blank";
+                node.rel = "noopener noreferrer";
+            }
           }
           flashBannerContent.appendChild(node);
         }
@@ -1928,12 +1256,6 @@
           autoAdvanceTimer = setInterval(autoAdvance, 5000);
         }
         resetAutoAdvance();
-
-        // Remove close button if present (for safety)
-        const flashBannerClose = document.getElementById("flash-banner-close");
-        if (flashBannerClose) flashBannerClose.remove();
-
-        // ...rest of your JS...
       });
     </script>
   </body>
