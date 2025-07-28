@@ -52,37 +52,32 @@
         z-index: 40;
         transition: top 0.3s;
       }
-      .nav-container {
-        background-color: #e5e7eb;
-        border-radius: 9999px;
-        padding: 0.5rem;
-        display: inline-flex;
-        flex-wrap: wrap; /* Allow wrapping on small screens */
-        justify-content: center; /* Center items when they wrap */
-        gap: 0.25rem; /* Add a small gap for wrapped items */
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-      }
       .nav-link {
+        position: relative;
         color: #4b5563;
         font-weight: 600;
-        padding: 0.5rem 1rem; /* Adjusted padding for mobile */
-        border-radius: 9999px;
-        transition: color 0.3s, background-color 0.3s;
+        padding: 0.5rem 0.25rem;
+        transition: color 0.3s;
         text-decoration: none;
       }
-      @media (min-width: 768px) { /* Larger padding on medium screens and up */
-        .nav-link {
-            padding: 0.75rem 1.5rem;
-        }
-      }
       .nav-link:hover {
-        background-color: #d1d5db;
         color: #111827;
       }
-      .nav-link.active {
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
         background-color: #111827;
-        color: #ffffff;
-        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        transition: width 0.3s ease-in-out;
+      }
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .nav-link.active {
+        color: #111827;
       }
       .card {
         background-color: white;
@@ -166,13 +161,12 @@
 
       <div class="sticky-nav bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div class="container mx-auto px-2 sm:px-4 lg:px-8">
-          <div class="flex justify-center items-center h-auto py-2 md:h-20">
-            <nav class="nav-container">
+          <div class="flex justify-center items-center h-16">
+            <nav class="flex space-x-6 md:space-x-10">
               <a href="#blog" class="nav-link text-sm md:text-base">Blog</a>
               <a href="#research" class="nav-link text-sm md:text-base">Research</a>
               <a href="#operations" class="nav-link text-sm md:text-base">Operations</a>
               <a href="#team" class="nav-link text-sm md:text-base">Team</a>
-              <!-- <a href="#contact" class="nav-link text-sm md:text-base">Contact</a> -->
             </nav>
           </div>
         </div>
