@@ -268,13 +268,19 @@
           From the MTLabs Blog: An Interactive Guide to the NIST PQC Finalists.
         </span>
       </a>
-      <a href="assets/infographics/futurevis.html" class="flash-item flash-banner-heading-link">
+      <a
+        href="assets/infographics/futurevis.html"
+        class="flash-item flash-banner-heading-link"
+      >
         <span>
           From the MTLabs Blog: A Look at Our Vision for the Next Generation of
           Security.
         </span>
       </a>
-      <a href="assets/infographics/Quantcount.html" class="flash-item flash-banner-heading-link">
+      <a
+        href="assets/infographics/Quantcount.html"
+        class="flash-item flash-banner-heading-link"
+      >
         <span>
           From the MTLabs Blog: Quantum Countdown has already begun! Are you
           ready?
@@ -323,7 +329,6 @@
           <a href="#whymoontrace" class="nav-link font-medium"
             >Why Moontrace?</a
           >
-          <a href="careers.html" class="nav-link font-medium">Careers</a>
           <a href="#about" class="nav-link font-medium">About</a>
         </div>
         <a
@@ -361,7 +366,7 @@
         <a href="#whymoontrace" class="block nav-link font-medium py-2"
           >Why Moontrace?</a
         >
-        <a href="careers.html" class="block nav-link font-medium py-2">Careers</a>
+       
         <a href="#about" class="block nav-link font-medium py-2">About</a>
         <a
           href="careers.html"
@@ -374,7 +379,9 @@
     <main>
       <section id="home" class="hero-bg text-white">
         <canvas id="hero-canvas"></canvas>
-        <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32">
+        <div
+          class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32"
+        >
           <h1
             class="text-4xl md:text-6xl font-black tracking-tight leading-tight"
           >
@@ -491,28 +498,47 @@
 
       <section id="MTLabs" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center">
-            <h2
-              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-            >
-              MTLabs: Research & Development Wing
-            </h2>
-            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
-              Our R&D wing, MTLabs, is at the forefront of post-quantum and
-              quantum innovation. We are dedicated to creating the next
-              generation of algorithms and solutions for defense, healthcare,
-              and other critical sectors.
-            </p>
-            <div class="mt-8">
-              <a
-                href="MTLabs.html"
-                class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition block sm:inline-block"
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Text Left -->
+            <div>
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-left"
               >
-                <span class="hidden sm:inline"
-                  >Explore Our Research & Innovations</span
+                MTLabs: Research & Development Wing
+              </h2>
+              <p class="mt-4 max-w-3xl text-lg text-gray-600 text-left">
+                Our R&D wing, MTLabs, is at the forefront of post-quantum and
+                quantum innovation. We are dedicated to creating the next
+                generation of algorithms and solutions for defense, healthcare,
+                and other critical sectors.
+              </p>
+              <div class="mt-8 text-left">
+                <a
+                  href="MTLabs.html"
+                  class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition block sm:inline-block"
                 >
-                <span class="sm:hidden">Explore MTLabs</span>
-              </a>
+                  <span class="hidden sm:inline"
+                    >Explore Our Research & Innovations</span
+                  >
+                  <span class="sm:hidden">Explore MTLabs</span>
+                </a>
+              </div>
+            </div>
+            <!-- Image Right -->
+            <div
+              class="animated-item flex justify-center md:justify-end mt-12 md:mt-0 hidden sm:flex"
+            >
+              <div class="relative group transition-transform duration-300 hover:scale-105">
+                <div class="absolute -inset-2 bg-gradient-to-tr from-blue-200 via-purple-200 to-pink-200 opacity-60 rounded-2xl blur-lg group-hover:opacity-80 transition-opacity duration-300"></div>
+                <img
+                  src="assets/team/r1.png"
+                  alt="Research Paper Cover"
+                  class="relative rounded-2xl shadow-2xl border-4 border-white/80 group-hover:shadow-[0_8px_32px_0_rgba(80,80,160,0.25)] w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm mx-auto md:mx-0 transition-shadow duration-300"
+                />
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
+                  MTLabs Research
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -715,14 +741,20 @@
       <section id="careers-cta" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
               We're Building the Future. Join Us.
             </h2>
             <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-              We are looking for passionate, innovative, and driven individuals to help us build a more quantum-resilient world.
+              We are looking for passionate, innovative, and driven individuals
+              to help us build a more quantum-resilient world.
             </p>
             <div class="mt-8">
-              <a href="careers.html" class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition">
+              <a
+                href="careers.html"
+                class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition"
+              >
                 View Open Positions
               </a>
             </div>
@@ -917,13 +949,18 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <ul class="mb-4">
             <li><a href="careers.html">Careers</a></li>
-            <li><a href="assets/pdfs/whymoon.pdf" target="_blank">Manifesto</a></li>
+            <li>
+              <a href="assets/pdfs/whymoon.pdf" target="_blank">Manifesto</a>
+            </li>
             <li><a href="https://x.com/Moontrace_HQ">X</a></li>
             <li>
               <a href="https://www.instagram.com/moontrace_hq/">Instagram</a>
             </li>
             <li>
               <a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a>
+            </li>
+            <li>
+              <a href="assets/pdfs/Investor_policy.pdf" target="_blank">Investor Relations</a>
             </li>
           </ul>
           <p>
@@ -1035,35 +1072,24 @@
           });
         });
 
-        const accordionItems = document.querySelectorAll(
-          ".accordion-item"
-        );
+        const accordionItems = document.querySelectorAll(".accordion-item");
         accordionItems.forEach((item) => {
-          const header = item.querySelector(
-            ".accordion-header"
-          );
-          const content = item.querySelector(
-            ".accordion-content"
-          );
+          const header = item.querySelector(".accordion-header");
+          const content = item.querySelector(".accordion-content");
           const icon = item.querySelector(".accordion-icon");
           header.addEventListener("click", () => {
             const isExpanded = header.classList.contains("expanded");
             accordionItems.forEach((otherItem) => {
               if (otherItem !== item) {
-                const otherHeader = otherItem.querySelector(
-                  ".accordion-header"
-                );
-                const otherContent = otherItem.querySelector(
-                  ".accordion-content"
-                );
+                const otherHeader =
+                  otherItem.querySelector(".accordion-header");
+                const otherContent =
+                  otherItem.querySelector(".accordion-content");
                 otherHeader.classList.remove("expanded");
                 otherContent.style.maxHeight = null;
-                if (
-                  otherHeader.querySelector(".accordion-icon")
-                )
-                  otherHeader.querySelector(
-                    ".accordion-icon"
-                  ).textContent = "+";
+                if (otherHeader.querySelector(".accordion-icon"))
+                  otherHeader.querySelector(".accordion-icon").textContent =
+                    "+";
               }
             });
             if (isExpanded) {
@@ -1239,8 +1265,8 @@
           const node = flashItems[idx].cloneNode(true);
           if (node.tagName === "A") {
             if (!node.href.includes("#")) {
-                node.target = "_blank";
-                node.rel = "noopener noreferrer";
+              node.target = "_blank";
+              node.rel = "noopener noreferrer";
             }
           }
           flashBannerContent.appendChild(node);
@@ -1271,21 +1297,26 @@
           autoAdvanceTimer = setInterval(autoAdvance, 5000);
         }
         resetAutoAdvance();
-        
+
         // --- Hero Animation: Interactive Particle Field ---
         const heroScene = new THREE.Scene();
-        const heroCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const heroRenderer = new THREE.WebGLRenderer({ 
-            canvas: document.getElementById('hero-canvas'),
-            alpha: true,
-            antialias: true 
+        const heroCamera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000
+        );
+        const heroRenderer = new THREE.WebGLRenderer({
+          canvas: document.getElementById("hero-canvas"),
+          alpha: true,
+          antialias: true,
         });
         heroRenderer.setSize(window.innerWidth, window.innerHeight);
 
         const mouse = new THREE.Vector2();
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        window.addEventListener("mousemove", (event) => {
+          mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         });
 
         const heroParticleCount = 500;
@@ -1294,88 +1325,129 @@
         const heroParticleData = [];
 
         for (let i = 0; i < heroParticleCount; i++) {
-            const x = (Math.random() - 0.5) * 20;
-            const y = (Math.random() - 0.5) * 20;
-            const z = (Math.random() - 0.5) * 20;
-            heroPositions[i * 3] = x;
-            heroPositions[i * 3 + 1] = y;
-            heroPositions[i * 3 + 2] = z;
+          const x = (Math.random() - 0.5) * 20;
+          const y = (Math.random() - 0.5) * 20;
+          const z = (Math.random() - 0.5) * 20;
+          heroPositions[i * 3] = x;
+          heroPositions[i * 3 + 1] = y;
+          heroPositions[i * 3 + 2] = z;
 
-            heroParticleData.push({
-                originalX: x, originalY: y, originalZ: z,
-                velocityX: (Math.random() - 0.5) * 0.01,
-                velocityY: (Math.random() - 0.5) * 0.01,
-                velocityZ: (Math.random() - 0.5) * 0.01,
-            });
+          heroParticleData.push({
+            originalX: x,
+            originalY: y,
+            originalZ: z,
+            velocityX: (Math.random() - 0.5) * 0.01,
+            velocityY: (Math.random() - 0.5) * 0.01,
+            velocityZ: (Math.random() - 0.5) * 0.01,
+          });
         }
-        heroParticles.setAttribute('position', new THREE.BufferAttribute(heroPositions, 3));
-        const heroParticleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
-        const heroParticleSystem = new THREE.Points(heroParticles, heroParticleMaterial);
+        heroParticles.setAttribute(
+          "position",
+          new THREE.BufferAttribute(heroPositions, 3)
+        );
+        const heroParticleMaterial = new THREE.PointsMaterial({
+          color: 0xffffff,
+          size: 0.05,
+        });
+        const heroParticleSystem = new THREE.Points(
+          heroParticles,
+          heroParticleMaterial
+        );
         heroScene.add(heroParticleSystem);
 
-        const heroLineMaterial = new THREE.LineBasicMaterial({ color: 0x87CEEB, transparent: true, opacity: 0.08 });
+        const heroLineMaterial = new THREE.LineBasicMaterial({
+          color: 0x87ceeb,
+          transparent: true,
+          opacity: 0.08,
+        });
         const heroLineGeometry = new THREE.BufferGeometry();
-        const heroLinePositions = new Float32Array(heroParticleCount * heroParticleCount * 3);
-        heroLineGeometry.setAttribute('position', new THREE.BufferAttribute(heroLinePositions, 3));
-        const heroLines = new THREE.LineSegments(heroLineGeometry, heroLineMaterial);
+        const heroLinePositions = new Float32Array(
+          heroParticleCount * heroParticleCount * 3
+        );
+        heroLineGeometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(heroLinePositions, 3)
+        );
+        const heroLines = new THREE.LineSegments(
+          heroLineGeometry,
+          heroLineMaterial
+        );
         heroScene.add(heroLines);
 
         heroCamera.position.z = 15;
         let heroTime = 0;
 
         function animateHero() {
-            requestAnimationFrame(animateHero);
-            heroTime += 0.005;
+          requestAnimationFrame(animateHero);
+          heroTime += 0.005;
 
-            const posArray = heroParticleSystem.geometry.attributes.position.array;
-            const linePosArray = heroLines.geometry.attributes.position.array;
-            let lineIndex = 0;
-            const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
+          const posArray =
+            heroParticleSystem.geometry.attributes.position.array;
+          const linePosArray = heroLines.geometry.attributes.position.array;
+          let lineIndex = 0;
+          const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
 
-            for (let i = 0; i < heroParticleCount; i++) {
-                const data = heroParticleData[i];
-                const particlePos = new THREE.Vector3(posArray[i*3], posArray[i*3+1], posArray[i*3+2]);
-                const distanceToMouse = particlePos.distanceTo(mouse3D);
-                const pushStrength = Math.max(0, 1 - distanceToMouse / 5);
-                const pushVector = particlePos.clone().sub(mouse3D).normalize().multiplyScalar(pushStrength * 0.1);
-                
-                posArray[i * 3] += Math.sin(heroTime + data.originalX) * 0.001 + data.velocityX + pushVector.x;
-                posArray[i * 3 + 1] += Math.cos(heroTime + data.originalY) * 0.001 + data.velocityY + pushVector.y;
-                posArray[i * 3 + 2] += data.velocityZ + pushVector.z;
+          for (let i = 0; i < heroParticleCount; i++) {
+            const data = heroParticleData[i];
+            const particlePos = new THREE.Vector3(
+              posArray[i * 3],
+              posArray[i * 3 + 1],
+              posArray[i * 3 + 2]
+            );
+            const distanceToMouse = particlePos.distanceTo(mouse3D);
+            const pushStrength = Math.max(0, 1 - distanceToMouse / 5);
+            const pushVector = particlePos
+              .clone()
+              .sub(mouse3D)
+              .normalize()
+              .multiplyScalar(pushStrength * 0.1);
 
-                if (posArray[i * 3] > 10 || posArray[i * 3] < -10) data.velocityX *= -1;
-                if (posArray[i * 3 + 1] > 10 || posArray[i * 3 + 1] < -10) data.velocityY *= -1;
-                if (posArray[i * 3 + 2] > 10 || posArray[i * 3 + 2] < -10) data.velocityZ *= -1;
+            posArray[i * 3] +=
+              Math.sin(heroTime + data.originalX) * 0.001 +
+              data.velocityX +
+              pushVector.x;
+            posArray[i * 3 + 1] +=
+              Math.cos(heroTime + data.originalY) * 0.001 +
+              data.velocityY +
+              pushVector.y;
+            posArray[i * 3 + 2] += data.velocityZ + pushVector.z;
 
-                for (let j = i + 1; j < heroParticleCount; j++) {
-                    const dx = posArray[i * 3] - posArray[j * 3];
-                    const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
-                    const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
-                    const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+            if (posArray[i * 3] > 10 || posArray[i * 3] < -10)
+              data.velocityX *= -1;
+            if (posArray[i * 3 + 1] > 10 || posArray[i * 3 + 1] < -10)
+              data.velocityY *= -1;
+            if (posArray[i * 3 + 2] > 10 || posArray[i * 3 + 2] < -10)
+              data.velocityZ *= -1;
 
-                    if (distance < 1.8) {
-                        linePosArray[lineIndex++] = posArray[i * 3];
-                        linePosArray[lineIndex++] = posArray[i * 3 + 1];
-                        linePosArray[lineIndex++] = posArray[i * 3 + 2];
-                        linePosArray[lineIndex++] = posArray[j * 3];
-                        linePosArray[lineIndex++] = posArray[j * 3 + 1];
-                        linePosArray[lineIndex++] = posArray[j * 3 + 2];
-                    }
-                }
+            for (let j = i + 1; j < heroParticleCount; j++) {
+              const dx = posArray[i * 3] - posArray[j * 3];
+              const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
+              const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+              const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+              if (distance < 1.8) {
+                linePosArray[lineIndex++] = posArray[i * 3];
+                linePosArray[lineIndex++] = posArray[i * 3 + 1];
+                linePosArray[lineIndex++] = posArray[i * 3 + 2];
+                linePosArray[lineIndex++] = posArray[j * 3];
+                linePosArray[lineIndex++] = posArray[j * 3 + 1];
+                linePosArray[lineIndex++] = posArray[j * 3 + 2];
+              }
             }
-            heroLines.geometry.setDrawRange(0, lineIndex / 3);
-            heroLines.geometry.attributes.position.needsUpdate = true;
-            heroParticleSystem.geometry.attributes.position.needsUpdate = true;
-            heroScene.rotation.y += 0.0001;
-            heroScene.rotation.x += 0.0001;
-            heroRenderer.render(heroScene, heroCamera);
+          }
+          heroLines.geometry.setDrawRange(0, lineIndex / 3);
+          heroLines.geometry.attributes.position.needsUpdate = true;
+          heroParticleSystem.geometry.attributes.position.needsUpdate = true;
+          heroScene.rotation.y += 0.0001;
+          heroScene.rotation.x += 0.0001;
+          heroRenderer.render(heroScene, heroCamera);
         }
         animateHero();
 
-        window.addEventListener('resize', () => {
-            heroCamera.aspect = window.innerWidth / window.innerHeight;
-            heroCamera.updateProjectionMatrix();
-            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+        window.addEventListener("resize", () => {
+          heroCamera.aspect = window.innerWidth / window.innerHeight;
+          heroCamera.updateProjectionMatrix();
+          heroRenderer.setSize(window.innerWidth, window.innerHeight);
         });
       });
     </script>
