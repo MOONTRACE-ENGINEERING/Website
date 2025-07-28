@@ -6,7 +6,6 @@
     <title>MTLabs | Moontrace Engineering</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- three.js for hero animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -136,7 +135,6 @@
           </div>
         </a>
         <div class="hidden md:flex items-center space-x-8">
-            <!-- Replaced buttons with a single "Subscribe" button -->
             <button id="subscribe-button" class="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Subscribe</button>
         </div>
         <button id="mobile-menu-button-main" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
@@ -165,13 +163,13 @@
               <a href="#blog" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Blog</a>
               <a href="#research" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Research</a>
               <a href="#operations" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Operations</a>
+              <a href="#team" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Team</a>
               <a href="#contact" class="nav-link text-sm md:text-base px-3 md:px-6 py-2">Contact</a>
             </nav>
           </div>
         </div>
       </div>
 
-      <!-- Moved Blog Section ABOVE Research Section -->
       <section id="blog" class="py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -179,29 +177,29 @@
             <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Insights, tutorials, and news from the MTLabs team.</p>
           </div>
           <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <a href="Quantuminsights.html" class="card overflow-hidden animated-item hover:shadow-xl transition-shadow duration-200 block">
-              <img src="https://placehold.co/600x400/000000/FFFFFF?text=Quantum+Insights" alt="Blog post image" class="w-full h-48 object-cover">
-              <div class="p-8">
-                <h3 class="text-xl font-bold text-gray-900">Understanding the NIST PQC Finalists</h3>
-                <p class="mt-2 text-sm text-gray-500">July 1, 2025</p>
-                <p class="mt-4 text-gray-600">A high-level overview of the algorithms selected by NIST and what they mean for the future of digital security.</p>
-                <span class="mt-6 inline-block font-semibold text-black hover:underline">Read More &rarr;</span>
-              </div>
-            </a>
-            <a href="Quantcount.html" class="card overflow-hidden animated-item hover:shadow-xl transition-shadow duration-200 block">
+             <a href="Quantcount.html" class="card overflow-hidden animated-item hover:shadow-xl transition-shadow duration-200 block">
               <img src="https://placehold.co/600x400/1a1a1a/FFFFFF?text=Quantum+Countdown" alt="Quantum Countdown infographic" class="w-full h-48 object-cover">
               <div class="p-8">
                 <h3 class="text-xl font-bold text-gray-900">The Quantum Countdown</h3>
                 <p class="mt-2 text-sm text-gray-500">Infographic • Updated 2025</p>
                 <p class="mt-4 text-gray-600">How long until quantum computers break today’s encryption? See the Y2Q countdown, battlefield constraints, and why lightweight PQC matters for defense.</p>
-                <span class="mt-6 inline-block font-semibold text-black hover:underline">View Infographic &rarr;</span>
+                <span class="mt-6 inline-block font-semibold text-black hover:underline">Read More&rarr;</span>
+              </div>
+            </a>
+            <a href="Quantuminsights.html" class="card overflow-hidden animated-item hover:shadow-xl transition-shadow duration-200 block">
+              <img src="https://placehold.co/600x400/000000/FFFFFF?text=Quantum+Insights" alt="Blog post image" class="w-full h-48 object-cover">
+              <div class="p-8">
+                <h3 class="text-xl font-bold text-gray-900">Understanding the NIST PQC Finalists</h3>
+                <p class="mt-2 text-sm text-gray-500">July 28, 2025</p>
+                <p class="mt-4 text-gray-600">A high-level overview of the algorithms selected by NIST and what they mean for the future of digital security.</p>
+                <span class="mt-6 inline-block font-semibold text-black hover:underline">Read More &rarr;</span>
               </div>
             </a>
             <a href="futurevis.html" class="card overflow-hidden animated-item hover:shadow-xl transition-shadow duration-200 block">
               <img src="https://placehold.co/600x400/1a1a1a/FFFFFF?text=Future+Vision" alt="Blog post image" class="w-full h-48 object-cover">
               <div class="p-8">
                 <h3 class="text-xl font-bold text-gray-900">The Road Ahead: Quantum-Resistant Healthcare</h3>
-                <p class="mt-2 text-sm text-gray-500">May 28, 2025</p>
+                <p class="mt-2 text-sm text-gray-500">July 15, 2025</p>
                 <p class="mt-4 text-gray-600">Discussing the unique challenges and opportunities for implementing PQC to protect sensitive patient data for the long term.</p>
                 <span class="mt-6 inline-block font-semibold text-black hover:underline">Read More &rarr;</span>
               </div>
@@ -213,13 +211,33 @@
       <section id="research" class="py-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Research Papers</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Explore our latest publications and contributions to the field of quantum computing.</p>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Featured Research</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our foundational work in developing next-generation cryptographic solutions.</p>
           </div>
-          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">A Novel Lightweight PQC Algorithm for IoT</h3><p class="mt-2 text-sm text-gray-500">Published: June 2025 | Authors: A. Sharma, B. Singh</p><p class="mt-4 text-gray-600">This paper introduces a new lattice-based cryptographic scheme optimized for resource-constrained IoT devices, offering robust security with minimal computational overhead.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read Paper &rarr;</a></div>
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Quantum Machine Learning for Medical Diagnostics</h3><p class="mt-2 text-sm text-gray-500">Published: March 2025 | Authors: C. Reddy, D. Patel</p><p class="mt-4 text-gray-600">We explore the application of quantum classifiers to improve the accuracy of early-stage disease detection from medical imaging data.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read Paper &rarr;</a></div>
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Securing Tactical Communications with Crypto-Agility</h3><p class="mt-2 text-sm text-gray-500">Published: January 2025 | Authors: HSL  </p><p class="mt-4 text-gray-600">A framework for implementing crypto-agility in military communication systems, allowing for seamless updates to cryptographic primitives in response to new threats.</p><a href="#" class="mt-6 inline-block font-semibold text-black hover:underline">Read Paper &rarr;</a></div>
+          <div class="mt-16 max-w-4xl mx-auto">
+            <div class="card p-8 animated-item">
+                <div class="grid md:grid-cols-3 gap-8 items-start">
+                    <div class="md:col-span-1">
+                        <img src="team/r1.png" alt="Research Paper Cover" class="rounded-lg shadow-md w-full">
+                    </div>
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-bold text-gray-900">Lightweight Post-Quantum Cryptography for Critical Embedded Systems</h3>
+                        <p class="mt-2 text-sm text-gray-500">Authors: Dr. Hemraj S. Lamkuche, Bharat Raghuvanshi</p>
+                        <p class="mt-4 text-gray-600">
+                            <strong>Abstract:</strong> This research review addresses the development of lightweight PQC algorithms tailored for constrained environments. It analyzes the finalized NIST standards on embedded architectures like ARM Cortex-M4 and RISC-V, presenting benchmark data on speed and memory...
+                        </p>
+                        <div class="mt-4 border-t pt-4">
+                            <h4 class="font-bold text-gray-800">Key Takeaways:</h4>
+                            <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
+                                <li>Provides a comprehensive performance analysis of NIST PQC standards on embedded hardware.</li>
+                                <li>Identifies sector-specific challenges and solutions for Defense, Health, and Finance.</li>
+                                <li>Highlights the strategic importance of hardware-software co-design and crypto-agility.</li>
+                            </ul>
+                        </div>
+                        <a href="team/Lightweight PQC for Embedded Systems  updated.pdf" target="_blank" class="mt-6 inline-block font-semibold text-black hover:underline">Read Review Paper &rarr;</a>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
       </section>
@@ -231,25 +249,62 @@
             <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">A look at the active projects and initiatives currently underway at MTLabs.</p>
           </div>
           <div class="mt-16 max-w-4xl mx-auto space-y-8">
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Project Cerberus: Lightweight PQC for Drones</h3><p class="mt-2 text-gray-600">Developing a suite of energy-efficient PQC algorithms for securing command-and-control communications for autonomous aerial vehicles in the defense sector.</p><p class="mt-4 text-sm font-semibold text-gray-500">Status: Active Development</p></div>
-            <div class="card p-8 animated-item"><h3 class="text-xl font-bold text-gray-900">Quantum-Enhanced Financial Modeling</h3><p class="mt-2 text-gray-600">Partnering with financial institutions to explore how quantum algorithms can optimize risk analysis and fraud detection models, preparing them for a quantum future.</p><p class="mt-4 text-sm font-semibold text-gray-500">Status: Research & Prototyping</p></div>
+            <div class="card p-8 animated-item">
+                <h3 class="text-xl font-bold text-gray-900">Project Cerberus: Lightweight PQC for Drones</h3>
+                <p class="mt-2 text-gray-600">Developing a suite of energy-efficient PQC algorithms for securing command-and-control communications for autonomous aerial vehicles in the defense sector.</p>
+                <p class="mt-4 text-sm font-semibold text-blue-600 bg-blue-100 inline-block px-3 py-1 rounded-full">Status: Hardware Testing & Optimization Phase</p>
+            </div>
+            
           </div>
         </div>
       </section>
       
+      <section id="team" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Research Team</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Meet the minds behind our research and innovation.</p>
+          </div>
+          <div class="mt-16 flex flex-col md:flex-row justify-center items-start gap-12">
+              <div class="text-center animated-item">
+                  <div class="p-2 bg-gray-200 rounded-lg shadow-md transform -rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-300 inline-block">
+                      <img src="team/p2.jpg" alt="Dr. Hemraj S. Lamkuche" class="w-40 aspect-[3/4] object-cover rounded-md border-4 border-white">
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mt-6">Dr. Hemraj S. Lamkuche</h3>
+                  <p class="text-gray-500">Advisor & Lead Researcher</p>
+                  <div class="mt-2 flex justify-center space-x-4">
+                      <a href="https://www.linkedin.com/in/dr-hemraj-lamkuche-4b760040/" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+                      <a href="https://scholar.google.co.in/citations?hl=en&user=sqNVq48AAAAJ&view_op=list_works" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4zm0-21.6C5.376 2.4 0 6.624 0 12s5.376 9.6 12 9.6 12-4.32 12-9.6S18.624 2.4 12 2.4zM5.532 12a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zm3.84 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zm3.828 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zm3.84 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg></a>
+                  </div>
+              </div>
+              <div class="text-center animated-item">
+                  <div class="p-2 bg-gray-200 rounded-lg shadow-md transform rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-300 inline-block">
+                      <img src="team/p1.jpg" alt="Bharat Raghuvanshi" class="w-40 aspect-[3/4] object-cover rounded-md border-4 border-white">
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mt-6">Bharat Raghuvanshi</h3>
+                  <p class="text-gray-500">Founder & Researcher</p>
+                  <div class="mt-2 flex justify-center space-x-4">
+                      <a href="https://www.linkedin.com/in/bharat-raghuvanshi-a139a4222/" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+                      <a href="https://scholar.google.co.in/citations?hl=en&user=dsgk_CQAAAAJ&view_op=list_works&gmla=AH8HC4z_G6BKa0BUOcOrCGzYUlV5Bb0rD1vE5qPbXsP05KMGYb84FfwGH3beHRqw32Pt2J4OKoM3aAp_gof7Unp_hl_GC5BA_hJ6_1HSPKSOS05xsy9Qla4RTcrhdcLp45n44xif0p7Jzbdy8vjAYRHZuQ" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4zm0-21.6C5.376 2.4 0 6.624 0 12s5.376 9.6 12 9.6 12-4.32 12-9.6S18.624 2.4 12 2.4zM5.532 12a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zm3.84 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zm3.828 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zm3.84 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg></a>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="py-20 bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Connect with the Lab</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">We're actively seeking collaborators, innovators, and partners. Let's build the quantum-safe future together.</p>
+            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Collaborate With Us</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">We are actively seeking research partners, industry collaborators, and academic institutions to join us in solving the next generation of security challenges. If you are interested in working with MTLabs, please get in touch.</p>
           </div>
           <div class="mt-16 max-w-xl mx-auto animated-item">
-        <div class="text-center space-y-4">
-          <p class="text-lg text-gray-200">Get in touch directly:</p>
-          <p class="text-2xl font-bold text-white">Bharat Raghuvanshi</p>
-          <p><a href="mailto:bharat.moontrace@gmail.com" class="text-lg text-gray-300 hover:text-white transition">bharat.moontrace@gmail.com</a></p>
-          <p><a href="tel:+918887748365" class="text-lg text-gray-300 hover:text-white transition">+91 8887748365</a></p>
-        </div>
+            <div class="text-center space-y-4">
+              <p class="text-lg text-gray-200">Contact our lead architect directly:</p>
+              <p class="text-2xl font-bold text-white">Bharat Raghuvanshi</p>
+              <p><a href="mailto:bharat.moontrace@gmail.com" class="text-lg text-gray-300 hover:text-white transition">bharat.moontrace@gmail.com</a></p>
+              <p><a href="tel:+918887748365" class="text-lg text-gray-300 hover:text-white transition">+91 8887748365</a></p>
+            </div>
           </div>
         </div>
       </section>
@@ -274,10 +329,7 @@
 
     <!-- Subscription Modal -->
     <div id="subscription-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-        <!-- Backdrop -->
         <div id="modal-backdrop" class="fixed inset-0 bg-black/50 modal-backdrop"></div>
-        
-        <!-- Modal Content -->
         <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-md mx-auto p-8 relative transform scale-95">
             <button id="modal-close-button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -350,7 +402,7 @@
 
         const openModal = () => {
             modal.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden'); // Prevent background scroll
+            document.body.classList.add('overflow-hidden');
             setTimeout(() => {
                 backdrop.classList.remove('opacity-0');
                 modal.querySelector('.modal-content').classList.remove('scale-95');
@@ -375,11 +427,8 @@
             submitButton.textContent = 'Subscribed!';
             submitButton.classList.add('bg-green-600');
             
-            // Here you would typically send the form data to a server
-            // For now, we'll just simulate it and close the modal
             setTimeout(() => {
                 closeModal();
-                // Reset button state after modal is closed
                 setTimeout(() => {
                     submitButton.textContent = 'Subscribe';
                     submitButton.classList.remove('bg-green-600');
@@ -388,111 +437,70 @@
             }, 1500);
         });
 
-        // --- Hero Animation: Interactive Particle Field ---
+        // Hero Animation
         const heroScene = new THREE.Scene();
         const heroCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const heroRenderer = new THREE.WebGLRenderer({ 
-            canvas: document.getElementById('hero-canvas'),
-            alpha: true,
-            antialias: true 
-        });
+        const heroRenderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
         heroRenderer.setSize(window.innerWidth, window.innerHeight);
-
         const mouse = new THREE.Vector2();
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        });
-
+        window.addEventListener('mousemove', (event) => { mouse.x = (event.clientX / window.innerWidth) * 2 - 1; mouse.y = -(event.clientY / window.innerHeight) * 2 + 1; });
         const heroParticleCount = 500;
         const heroParticles = new THREE.BufferGeometry();
         const heroPositions = new Float32Array(heroParticleCount * 3);
         const heroParticleData = [];
-
         for (let i = 0; i < heroParticleCount; i++) {
-            const x = (Math.random() - 0.5) * 20;
-            const y = (Math.random() - 0.5) * 20;
-            const z = (Math.random() - 0.5) * 20;
-            heroPositions[i * 3] = x;
-            heroPositions[i * 3 + 1] = y;
-            heroPositions[i * 3 + 2] = z;
-
-            heroParticleData.push({
-                originalX: x, originalY: y, originalZ: z,
-                velocityX: (Math.random() - 0.5) * 0.01,
-                velocityY: (Math.random() - 0.5) * 0.01,
-                velocityZ: (Math.random() - 0.5) * 0.01,
-            });
+            const x = (Math.random() - 0.5) * 20; const y = (Math.random() - 0.5) * 20; const z = (Math.random() - 0.5) * 20;
+            heroPositions[i * 3] = x; heroPositions[i * 3 + 1] = y; heroPositions[i * 3 + 2] = z;
+            heroParticleData.push({ originalX: x, originalY: y, originalZ: z, velocityX: (Math.random() - 0.5) * 0.01, velocityY: (Math.random() - 0.5) * 0.01, velocityZ: (Math.random() - 0.5) * 0.01 });
         }
         heroParticles.setAttribute('position', new THREE.BufferAttribute(heroPositions, 3));
         const heroParticleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 });
         const heroParticleSystem = new THREE.Points(heroParticles, heroParticleMaterial);
         heroScene.add(heroParticleSystem);
-
         const heroLineMaterial = new THREE.LineBasicMaterial({ color: 0x87CEEB, transparent: true, opacity: 0.08 });
         const heroLineGeometry = new THREE.BufferGeometry();
         const heroLinePositions = new Float32Array(heroParticleCount * heroParticleCount * 3);
         heroLineGeometry.setAttribute('position', new THREE.BufferAttribute(heroLinePositions, 3));
         const heroLines = new THREE.LineSegments(heroLineGeometry, heroLineMaterial);
         heroScene.add(heroLines);
-
         heroCamera.position.z = 15;
         let heroTime = 0;
-
         function animateHero() {
             requestAnimationFrame(animateHero);
             heroTime += 0.005;
-
             const posArray = heroParticleSystem.geometry.attributes.position.array;
             const linePosArray = heroLines.geometry.attributes.position.array;
             let lineIndex = 0;
             const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
-
             for (let i = 0; i < heroParticleCount; i++) {
                 const data = heroParticleData[i];
                 const particlePos = new THREE.Vector3(posArray[i*3], posArray[i*3+1], posArray[i*3+2]);
                 const distanceToMouse = particlePos.distanceTo(mouse3D);
                 const pushStrength = Math.max(0, 1 - distanceToMouse / 5);
                 const pushVector = particlePos.clone().sub(mouse3D).normalize().multiplyScalar(pushStrength * 0.1);
-                
                 posArray[i * 3] += Math.sin(heroTime + data.originalX) * 0.001 + data.velocityX + pushVector.x;
                 posArray[i * 3 + 1] += Math.cos(heroTime + data.originalY) * 0.001 + data.velocityY + pushVector.y;
                 posArray[i * 3 + 2] += data.velocityZ + pushVector.z;
-
                 if (posArray[i * 3] > 10 || posArray[i * 3] < -10) data.velocityX *= -1;
                 if (posArray[i * 3 + 1] > 10 || posArray[i * 3 + 1] < -10) data.velocityY *= -1;
                 if (posArray[i * 3 + 2] > 10 || posArray[i * 3 + 2] < -10) data.velocityZ *= -1;
-
                 for (let j = i + 1; j < heroParticleCount; j++) {
-                    const dx = posArray[i * 3] - posArray[j * 3];
-                    const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
-                    const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+                    const dx = posArray[i * 3] - posArray[j * 3]; const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1]; const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
                     const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
                     if (distance < 1.8) {
-                        linePosArray[lineIndex++] = posArray[i * 3];
-                        linePosArray[lineIndex++] = posArray[i * 3 + 1];
-                        linePosArray[lineIndex++] = posArray[i * 3 + 2];
-                        linePosArray[lineIndex++] = posArray[j * 3];
-                        linePosArray[lineIndex++] = posArray[j * 3 + 1];
-                        linePosArray[lineIndex++] = posArray[j * 3 + 2];
+                        linePosArray[lineIndex++] = posArray[i * 3]; linePosArray[lineIndex++] = posArray[i * 3 + 1]; linePosArray[lineIndex++] = posArray[i * 3 + 2];
+                        linePosArray[lineIndex++] = posArray[j * 3]; linePosArray[lineIndex++] = posArray[j * 3 + 1]; linePosArray[lineIndex++] = posArray[j * 3 + 2];
                     }
                 }
             }
             heroLines.geometry.setDrawRange(0, lineIndex / 3);
             heroLines.geometry.attributes.position.needsUpdate = true;
             heroParticleSystem.geometry.attributes.position.needsUpdate = true;
-            heroScene.rotation.y += 0.0001;
-            heroScene.rotation.x += 0.0001;
+            heroScene.rotation.y += 0.0001; heroScene.rotation.x += 0.0001;
             heroRenderer.render(heroScene, heroCamera);
         }
         animateHero();
-
-        window.addEventListener('resize', () => {
-            heroCamera.aspect = window.innerWidth / window.innerHeight;
-            heroCamera.updateProjectionMatrix();
-            heroRenderer.setSize(window.innerWidth, window.innerHeight);
-        });
+        window.addEventListener('resize', () => { heroCamera.aspect = window.innerWidth / window.innerHeight; heroCamera.updateProjectionMatrix(); heroRenderer.setSize(window.innerWidth, window.innerHeight); });
       });
     </script>
   </body>
