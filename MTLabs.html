@@ -125,6 +125,19 @@
       .modal-content {
         transition: transform 0.3s ease-in-out;
       }
+
+      /* Team Panel Backdrop */
+      .team-panel-backdrop {
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      /* Custom line clamp for bio - removed as we're doing JS truncation */
+      /* .line-clamp-4 {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      } */
     </style>
   </head>
   <body class="antialiased">
@@ -268,27 +281,23 @@
             <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Meet the minds behind our research and innovation.</p>
           </div>
           <div class="mt-16 flex flex-col md:flex-row justify-center items-center md:items-start gap-12">
-              <div class="text-center animated-item">
+              <!-- Team Member 1: Dr. Hemraj S. Lamkuche -->
+              <div class="text-center animated-item cursor-pointer" data-member-id="hemraj">
                   <div class="p-2 bg-gray-200 rounded-lg shadow-md transform -rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-300 inline-block">
                       <img src="assets/team/p2.jpg" alt="Dr. Hemraj S. Lamkuche" class="w-40 aspect-[3/4] object-cover rounded-md border-4 border-white">
                   </div>
                   <h3 class="text-xl font-bold text-gray-900 mt-6">Dr. Hemraj S. Lamkuche</h3>
                   <p class="text-gray-500">Advisor & Lead Researcher</p>
-                  <div class="mt-2 flex justify-center space-x-4">
-                      <a href="https://www.linkedin.com/in/dr-hemraj-lamkuche-4b760040/" target="_blank" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-                      <a href="https://scholar.google.co.in/citations?hl=en&user=sqNVq48AAAAJ&view_op=list_works" target="_blank" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></a>
-                  </div>
+                  <!-- Social links removed from here, now in side panel -->
               </div>
-              <div class="text-center animated-item">
+              <!-- Team Member 2: Bharat Raghuvanshi -->
+              <div class="text-center animated-item cursor-pointer" data-member-id="bharat">
                   <div class="p-2 bg-gray-200 rounded-lg shadow-md transform rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-300 inline-block">
                       <img src="assets/team/p1.jpg" alt="Bharat Raghuvanshi" class="w-40 aspect-[3/4] object-cover rounded-md border-4 border-white">
                   </div>
                   <h3 class="text-xl font-bold text-gray-900 mt-6">Bharat Raghuvanshi</h3>
                   <p class="text-gray-500">Founder & Researcher</p>
-                  <div class="mt-2 flex justify-center space-x-4">
-                      <a href="https://www.linkedin.com/in/bharat-raghuvanshi-a139a4222/" target="_blank" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-                      <a href="https://scholar.google.co.in/citations?hl=en&user=dsgk_CQAAAAJ&view_op=list_works&gmla=AH8HC4z_G6BKa0BUOcOrCGzYUlV5Bb0rD1vE5qPbXsP05KMGYb84FfwGH3beHRqw32Pt2J4OKoM3aAp_gof7Unp_hl_GC5BA_hJ6_1HSPKSOS05xsy9Qla4RTcrhdcLp45n44xif0p7Jzbdy8vjAYRHZuQ" target="_blank" class="text-gray-400 hover:text-gray-600 transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></a>
-                  </div>
+                  <!-- Social links removed from here, now in side panel -->
               </div>
           </div>
         </div>
@@ -350,6 +359,56 @@
             </form>
         </div>
     </div>
+
+    <!-- Team Member Detail Panel Backdrop -->
+    <div id="team-panel-backdrop" class="fixed inset-0 bg-black/50 z-40 hidden team-panel-backdrop opacity-0"></div>
+
+    <!-- Team Member Detail Panel -->
+    <div id="team-detail-panel" class="fixed inset-y-0 right-0 max-w-xl w-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6 sm:p-8">
+            <button id="close-panel-button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-full p-1">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div id="panel-content" class="pt-4">
+                <div class="flex items-center mb-6">
+                    <img id="panel-member-image" src="" alt="Team Member" class="w-40 h-auto aspect-[3/4] object-cover border-4 border-gray-200 mr-8">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">TEAM MEMBER SPOTLIGHT</p>
+                        <h3 id="panel-member-name" class="text-3xl font-bold text-blue-700 leading-tight"></h3>
+                        <p id="panel-member-title" class="text-gray-600 text-lg"></p>
+                        <div class="mt-2 flex space-x-4" id="panel-social-links">
+                            <!-- LinkedIn icon will be inserted here by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">About</h4>
+                    <p id="panel-member-bio" class="text-gray-700 leading-relaxed"></p>
+                    <button id="read-more-bio" class="text-blue-600 hover:underline font-semibold mt-2 hidden">Read More</button>
+                </div>
+
+                <div id="recommended-insights-section" class="mb-8 hidden">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4">Recommended Insights</h4>
+                    <div id="insights-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Insights will be dynamically loaded here -->
+                    </div>
+                </div>
+
+                <div id="connect-button-container" class="mt-8">
+                    <a id="connect-with-button" href="#" target="_blank" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-md shadow-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                        Connect with <span id="connect-button-name" class="ml-1"></span>
+                        <svg class="ml-2 h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="teamMembers.js"></script> <!-- Link to your teamMembers.js file -->
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -449,16 +508,38 @@
                         }, 500);
                     }, 1500);
                 } else {
-                    alert('Oops! There was a problem submitting your form.');
+                    // Using a custom message box instead of alert()
+                    showMessageBox('Oops! There was a problem submitting your form.', 'error');
                     submitButton.textContent = 'Subscribe';
                     submitButton.disabled = false;
                 }
             }).catch(error => {
-                alert('Oops! There was a network error.');
+                // Using a custom message box instead of alert()
+                showMessageBox('Oops! There was a network error.', 'error');
                 submitButton.textContent = 'Subscribe';
                 submitButton.disabled = false;
             });
         });
+
+        // Custom Message Box Function (replaces alert)
+        function showMessageBox(message, type = 'info') {
+            const messageBox = document.createElement('div');
+            messageBox.classList.add('fixed', 'bottom-4', 'right-4', 'p-4', 'rounded-lg', 'shadow-lg', 'text-white', 'z-[999]');
+            
+            if (type === 'error') {
+                messageBox.classList.add('bg-red-600');
+            } else {
+                messageBox.classList.add('bg-gray-800');
+            }
+            
+            messageBox.textContent = message;
+            document.body.appendChild(messageBox);
+
+            setTimeout(() => {
+                messageBox.remove();
+            }, 3000); // Message disappears after 3 seconds
+        }
+
 
         // Hero Animation
         const heroScene = new THREE.Scene();
@@ -524,6 +605,154 @@
         }
         animateHero();
         window.addEventListener('resize', () => { heroCamera.aspect = window.innerWidth / window.innerHeight; heroCamera.updateProjectionMatrix(); heroRenderer.setSize(window.innerWidth, window.innerHeight); });
+
+
+        // Team Member Side Panel Logic
+        const teamMembersContainer = document.querySelector('#team .flex');
+        const teamDetailPanel = document.getElementById('team-detail-panel');
+        const closePanelButton = document.getElementById('close-panel-button');
+        const teamPanelBackdrop = document.getElementById('team-panel-backdrop'); // New backdrop
+
+        const panelMemberImage = document.getElementById('panel-member-image');
+        const panelMemberName = document.getElementById('panel-member-name');
+        const panelMemberTitle = document.getElementById('panel-member-title');
+        const panelSocialLinks = document.getElementById('panel-social-links'); // Container for social icons
+        const panelMemberBio = document.getElementById('panel-member-bio');
+        const readMoreBioButton = document.getElementById('read-more-bio'); // Read More button
+        const insightsGrid = document.getElementById('insights-grid');
+        const recommendedInsightsSection = document.getElementById('recommended-insights-section');
+        const connectWithButton = document.getElementById('connect-with-button');
+        const connectButtonName = document.getElementById('connect-button-name');
+        const connectButtonContainer = document.getElementById('connect-button-container');
+
+        let originalBioText = ""; // To store the full bio text
+
+        const openTeamPanel = () => {
+            teamDetailPanel.classList.remove('translate-x-full');
+            teamPanelBackdrop.classList.remove('hidden');
+            setTimeout(() => teamPanelBackdrop.classList.remove('opacity-0'), 10);
+            document.body.classList.add('overflow-hidden'); // Prevent body scrolling
+        };
+
+        const closeTeamPanel = () => {
+            teamDetailPanel.classList.add('translate-x-full');
+            teamPanelBackdrop.classList.add('opacity-0');
+            setTimeout(() => teamPanelBackdrop.classList.add('hidden'), 300); // Hide after transition
+            document.body.classList.remove('overflow-hidden'); // Re-enable body scrolling
+        };
+
+        // Function to truncate text by word count
+        function truncateWords(text, limit) {
+            const words = text.split(' ');
+            if (words.length > limit) {
+                return words.slice(0, limit).join(' ') + '...';
+            }
+            return text;
+        }
+
+        // Event listener for clicks on the team members container
+        teamMembersContainer.addEventListener('click', (event) => {
+            const memberCard = event.target.closest('.animated-item');
+            
+            if (memberCard) {
+                const memberId = memberCard.dataset.memberId;
+                const member = window.teamMembers.find(m => m.id === memberId); // Access window.teamMembers
+
+                if (member) {
+                    panelMemberImage.src = member.image;
+                    panelMemberName.textContent = member.name;
+                    panelMemberTitle.textContent = member.title;
+                    
+                    originalBioText = member.bio; // Store the original full bio
+
+                    // Handle Read More/Show Less for bio
+                    const wordLimit = 100;
+                    if (originalBioText.split(' ').length > wordLimit) {
+                        panelMemberBio.textContent = truncateWords(originalBioText, wordLimit);
+                        readMoreBioButton.classList.remove('hidden');
+                        readMoreBioButton.textContent = 'Read More';
+                    } else {
+                        panelMemberBio.textContent = originalBioText;
+                        readMoreBioButton.classList.add('hidden');
+                    }
+
+                    // Event listener for Read More button
+                    readMoreBioButton.onclick = () => {
+                        if (panelMemberBio.textContent.endsWith('...')) { // Check if currently truncated
+                            panelMemberBio.textContent = originalBioText;
+                            readMoreBioButton.textContent = 'Show Less';
+                        } else {
+                            panelMemberBio.textContent = truncateWords(originalBioText, wordLimit);
+                            readMoreBioButton.textContent = 'Read More';
+                        }
+                    };
+
+
+                    // Clear previous social links
+                    panelSocialLinks.innerHTML = '';
+
+                    // Add LinkedIn icon if available
+                    if (member.linkedin) {
+                        const linkedinLink = document.createElement('a');
+                        linkedinLink.href = member.linkedin;
+                        linkedinLink.target = '_blank';
+                        linkedinLink.classList.add('text-gray-400', 'hover:text-gray-600', 'transition');
+                        linkedinLink.innerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>';
+                        panelSocialLinks.appendChild(linkedinLink);
+                    }
+                    // Add Google Scholar icon if available (can add more social icons here)
+                    if (member.googleScholar) {
+                        const scholarLink = document.createElement('a');
+                        scholarLink.href = member.googleScholar;
+                        scholarLink.target = '_blank';
+                        scholarLink.classList.add('text-gray-400', 'hover:text-gray-600', 'transition', 'ml-4');
+                        scholarLink.innerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>';
+                        panelSocialLinks.appendChild(scholarLink);
+                    }
+
+                    // Populate Recommended Insights
+                    insightsGrid.innerHTML = ''; // Clear previous insights
+                    if (member.insights && member.insights.length > 0) {
+                        recommendedInsightsSection.classList.remove('hidden');
+                        member.insights.forEach(insight => {
+                            const insightCard = document.createElement('a');
+                            insightCard.href = insight.link || '#'; // Fallback link
+                            insightCard.target = '_blank';
+                            insightCard.classList.add('block', 'border', 'border-gray-200', 'rounded-lg', 'overflow-hidden', 'hover:shadow-md', 'transition-shadow');
+                            insightCard.innerHTML = `
+                                <img src="${insight.image || 'https://placehold.co/600x400/eeeeee/333333?text=No+Image'}" alt="${insight.title}" class="w-full h-24 object-cover">
+                                <div class="p-3">
+                                    <h5 class="text-sm font-semibold text-gray-900 mb-1">${insight.title}</h5>
+                                    <p class="text-xs text-gray-500">${insight.date || ''}</p>
+                                    <p class="text-sm text-gray-600 mt-2 line-clamp-2">${insight.description || ''}</p>
+                                </div>
+                            `;
+                            insightsGrid.appendChild(insightCard);
+                        });
+                    } else {
+                        recommendedInsightsSection.classList.add('hidden'); // Hide section if no insights
+                    }
+
+                    // Populate Connect Button
+                    if (member.connectLink && member.name) {
+                        connectButtonContainer.classList.remove('hidden');
+                        connectWithButton.href = member.connectLink;
+                        // Use first name for "Connect with [First Name]"
+                        connectButtonName.textContent = member.name.split(' ')[0]; 
+                    } else {
+                        connectButtonContainer.classList.add('hidden');
+                    }
+
+                    openTeamPanel();
+                }
+            }
+        });
+
+        // Event listener for the close button on the side panel
+        closePanelButton.addEventListener('click', closeTeamPanel);
+
+        // Event listener for the backdrop to close the panel
+        teamPanelBackdrop.addEventListener('click', closeTeamPanel);
       });
     </script>
   </body>
