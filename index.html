@@ -250,6 +250,62 @@
       .flash-banner-content a:hover span {
         text-decoration: underline;
       }
+      /* Styles for the new solutions section */
+      .solution-tab {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #6b7280;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: color 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background: none;
+        border: none;
+      }
+      @media (min-width: 768px) {
+        .solution-tab {
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+      }
+      .solution-tab:hover {
+        color: #111827;
+        border-color: #a0aec0; /* Lighter border on hover */
+      }
+      .solution-tab.active-tab {
+        color: #0052cc;
+        border-color: #0052cc; /* Active tab has a solid border */
+      }
+      #active-tab-highlighter {
+          height: 3px;
+          background-color: #0052cc;
+          position: absolute;
+          bottom: -2px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .solution-panel-content {
+          min-height: 450px;
+      }
+      /* CTA button styling */
+      .cta-button {
+          display: inline-block;
+          margin-top: 1.5rem; /* mt-6 */
+          background-color: #0052cc; /* bg-blue-600 */
+          color: white;
+          padding: 0.75rem 1.5rem; /* px-6 py-2 */
+          border-radius: 0.5rem; /* rounded-lg */
+          font-weight: 600; /* font-semibold */
+          font-size: 0.875rem; /* text-sm */
+          transition: background-color 0.3s ease, transform 0.2s ease;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .cta-button:hover {
+          background-color: #003f99; /* hover:bg-blue-700 */
+          transform: translateY(-2px);
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -324,7 +380,7 @@
         <a href="#home" class="flex items-center space-x-2"> </a>
         <div class="hidden md:flex items-center space-x-12">
           <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
-          <a href="#services" class="nav-link font-medium">Services</a>
+          <a href="#solutions" class="nav-link font-medium">Solutions</a>
           <a href="#defense" class="nav-link font-medium">Defense</a>
           <a href="#whymoontrace" class="nav-link font-medium"
             >Why Moontrace?</a
@@ -361,7 +417,7 @@
         class="hidden md:hidden px-4 pb-4 space-y-2 bg-white/95 rounded-b-lg shadow-lg"
       >
         <a href="MTLabs.html" class="block nav-link font-medium py-2">MTLabs</a>
-        <a href="#services" class="block nav-link font-medium py-2">Services</a>
+        <a href="#solutions" class="block nav-link font-medium py-2">Solutions</a>
         <a href="#defense" class="block nav-link font-medium py-2">Defense</a>
         <a href="#whymoontrace" class="block nav-link font-medium py-2"
           >Why Moontrace?</a
@@ -396,7 +452,7 @@
             class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
           >
             <a
-              href="#services"
+              href="#solutions"
               class="bg-white text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition w-full sm:w-auto"
               >Discover Our Approach</a
             >
@@ -448,53 +504,119 @@
         </div>
       </section>
 
-      <section id="services" class="py-20 bg-white/80 backdrop-blur-sm">
+      <!-- NEW SOLUTIONS SECTION -->
+      <section id="solutions" class="py-20 bg-gray-50 overflow-x-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center">
-            <h2
-              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-            >
-              Our Quantum Software as a Service (QSaaS)
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-              An open, agile, developer-friendly approach to simplify your
-              transition to post-quantum security.
-            </p>
-          </div>
-          <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="card p-8 animated-item">
-              <h3 class="text-xl font-bold text-gray-900">
-                MOONTRACE VANTAGE: Cryptographic Posture Visibility
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Gain complete visibility into your cryptographic posture. We
-                identify what needs fixing, where, and why, providing a clear
-                roadmap to quantum readiness.
-              </p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    Our Solutions
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                    A suite of tools designed to provide cryptographic agility and a seamless transition to post-quantum security.
+                </p>
             </div>
-            <div class="card p-8 animated-item">
-              <h3 class="text-xl font-bold text-gray-900">
-                Migration Tooling: Phased, Hybrid Crypto Adoption
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Enable phased, hybrid crypto adoption. Our tools provide a
-                structured, manageable path to integrate PQC without disrupting
-                your current operations.
-              </p>
+
+            <!-- Tab Controls -->
+            <div class="relative flex justify-center">
+                <div class="relative border-b-2 border-gray-200">
+                    <div id="solution-tabs" class="flex flex-wrap justify-center -mb-px sm:space-x-4">
+                        <button data-tab-index="0" class="solution-tab active-tab">VANTAGE</button>
+                        <button data-tab-index="1" class="solution-tab">APX</button>
+                        <button data-tab-index="2" class="solution-tab">VPN</button>
+                        <button data-tab-index="3" class="solution-tab">KMS</button>
+                    </div>
+                    <div id="active-tab-highlighter"></div>
+                </div>
             </div>
-            <div class="card p-8 animated-item">
-              <h3 class="text-xl font-bold text-gray-900">
-                Crypto Agility Orchestration: Adapt & Evolve
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Stay ahead of evolving threats. Our platform gives you the
-                control to swap algorithms, diversify entropy, and maintain a
-                future-proof security posture.
-              </p>
-            </div>
-          </div>
         </div>
+
+            <!-- Sliding Panels -->
+            <div class="mt-10 relative">
+                <div id="solution-panels" class="flex transition-transform duration-500 ease-in-out">
+                    <!-- Panel 1: Vantage -->
+                    <div class="solution-panel min-w-full">
+                        <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Cryptographic Posture Visibility</h3>
+                                    <p class="text-gray-600 mb-3">Gain complete visibility into your cryptographic posture. We identify what needs fixing, where, and why, providing a clear roadmap to quantum readiness.</p>
+                                    <p class="text-gray-600">Our Vantage tool scans your entire digital ecosystem—from code repositories to live applications—to create a comprehensive inventory of all cryptographic assets.</p>
+                                    <a href="#" class="cta-button">Learn More about Vantage</a>
+                                </div>
+                           </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+                                <img src="https://placehold.co/800x600/0052cc/ffffff?text=Vantage" alt="Moontrace Vantage Tool" class="h-full w-full object-cover object-right">
+                            </div>
+                           <div class="block px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <img src="https://placehold.co/600x400/0052cc/ffffff?text=Vantage" alt="Moontrace Vantage Tool" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Panel 2: APX -->
+                    <div class="solution-panel min-w-full">
+                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Crypto-Agile Application Exchange (APX)</h3>
+                                    <p class="text-gray-600 mb-3">Enable phased, hybrid crypto adoption without disrupting your current operations. APX provides a structured, manageable path to integrate PQC.</p>
+                                    <p class="text-gray-600">Moontrace APX acts as a cryptographic abstraction layer. Instead of hardcoding cryptographic calls, your developers interface with our simple API.</p>
+                                    <a href="#" class="cta-button">Learn More about APX</a>
+                                </div>
+                           </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+                                <img src="https://placehold.co/800x600/247c6d/ffffff?text=APX" alt="Moontrace APX Tool" class="h-full w-full object-cover object-right">
+                            </div>
+                            <div class="block px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <img src="https://placehold.co/600x400/247c6d/ffffff?text=APX" alt="Moontrace APX Tool" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Panel 3: VPN -->
+                    <div class="solution-panel min-w-full">
+                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Quantum-Resistant VPN</h3>
+                                    <p class="text-gray-600 mb-3">Secure your network traffic against current and future threats. Our PQC-enabled VPN protects your data-in-transit from "Harvest Now, Decrypt Later" attacks.</p>
+                                    <p class="text-gray-600">Moontrace VPN establishes secure tunnels using a hybrid key exchange mechanism, combining the strengths of classical algorithms with NIST-selected PQC KEMs.</p>
+                                    <a href="#" class="cta-button">Learn More about our VPN</a>
+                                </div>
+                           </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+                                <img src="https://placehold.co/800x600/bf988a/ffffff?text=VPN" alt="Moontrace VPN Tool" class="h-full w-full object-cover object-right">
+                            </div>
+                            <div class="block px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <img src="https://placehold.co/600x400/bf988a/ffffff?text=VPN" alt="Moontrace VPN Tool" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Panel 4: KMS -->
+                    <div class="solution-panel min-w-full">
+                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Quantum Key Management System (KMS)</h3>
+                                    <p class="text-gray-600 mb-3">Centralize and secure the entire lifecycle of quantum-safe and classical cryptographic keys with Moontrace KMS.</p>
+                                    <p class="text-gray-600">Our KMS is designed for the hybrid era, providing robust generation, storage, distribution, and revocation of keys for both PQC and traditional algorithms.</p>
+                                    <a href="#" class="cta-button">Explore our KMS</a>
+                                </div>
+                           </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+                                <img src="https://placehold.co/800x600/4a3f56/ffffff?text=KMS" alt="Moontrace KMS Tool" class="h-full w-full object-cover object-right">
+                            </div>
+                            <div class="block px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <img src="https://placehold.co/600x400/4a3f56/ffffff?text=KMS" alt="Moontrace KMS Tool" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
       </section>
+      <!-- END NEW SOLUTIONS SECTION -->
 
       <section id="MTLabs" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -992,7 +1114,7 @@
             /></svg
           >Home</a
         >
-        <a href="#services" class="bottom-nav-link"
+        <a href="#solutions" class="bottom-nav-link"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -1005,7 +1127,7 @@
               stroke-width="2"
               d="M9.75 17L12 20.25l2.25-3.25M21 9l-3.354-3.354A4.5 4.5 0 0014.28 4.792L12 7.5l-2.28-2.708A4.5 4.5 0 005.354 5.646L2 9m19 0H2m19 0a2 2 0 012 2v6a2 2 0 01-2 2H2a2 2 0 01-2-2v-6a2 2 0 012-2z"
             /></svg
-          >Services</a
+          >Solutions</a
         >
         <a href="careers.html" class="bottom-nav-link"
           ><svg
@@ -1449,6 +1571,68 @@
           heroCamera.updateProjectionMatrix();
           heroRenderer.setSize(window.innerWidth, window.innerHeight);
         });
+
+        // --- NEW: Solutions Tab Slider ---
+        const tabs = document.querySelectorAll('.solution-tab');
+        const panels = document.getElementById('solution-panels');
+        const highlighter = document.getElementById('active-tab-highlighter');
+        let currentSolutionIndex = 0;
+        let solutionSliderInterval;
+
+
+        function updateHighlighter(activeTab) {
+            if (!activeTab) return;
+            highlighter.style.width = `${activeTab.offsetWidth}px`;
+            highlighter.style.left = `${activeTab.offsetLeft}px`;
+        }
+        
+        function switchTab(tabIndex) {
+            const activeTab = tabs[tabIndex];
+
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+            activeTab.classList.add('active-tab');
+            
+            panels.style.transform = `translateX(-${tabIndex * 100}%)`;
+            
+            updateHighlighter(activeTab);
+            currentSolutionIndex = tabIndex;
+        }
+
+        function startAutoSlider() {
+            solutionSliderInterval = setInterval(() => {
+                const nextIndex = (currentSolutionIndex + 1) % tabs.length;
+                switchTab(nextIndex);
+            }, 7000); // 7 seconds
+        }
+
+        function resetAutoSlider() {
+            clearInterval(solutionSliderInterval);
+            startAutoSlider();
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabIndex = parseInt(tab.dataset.tabIndex, 10);
+                switchTab(tabIndex);
+                resetAutoSlider(); // Reset timer on manual click
+            });
+        });
+
+        // Initialize highlighter and auto-slider
+        const initialActiveTab = document.querySelector('.solution-tab.active-tab');
+        if (initialActiveTab) {
+            setTimeout(() => {
+                updateHighlighter(initialActiveTab);
+            }, 100);
+        }
+        
+        window.addEventListener('resize', () => {
+            const currentActiveTab = document.querySelector('.solution-tab.active-tab');
+            updateHighlighter(currentActiveTab);
+        });
+
+        startAutoSlider();
+
       });
     </script>
   </body>
