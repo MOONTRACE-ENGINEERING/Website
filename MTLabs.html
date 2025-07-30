@@ -138,6 +138,57 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       } */
+
+      /* Custom styles for mobile team panel optimization */
+      @media (max-width: 767px) { /* Small screens (mobile) */
+        #team-detail-panel {
+          width: 100%; /* Full width on mobile */
+          max-width: none; /* Remove max-width constraint */
+          left: 0; /* Align to left edge */
+          right: auto; /* Remove right alignment */
+          transform: translateY(100%); /* Slide up from bottom */
+          transition: transform 0.3s ease-in-out;
+          border-top-left-radius: 1rem; /* Rounded top corners */
+          border-top-right-radius: 1rem;
+          bottom: 0; /* Position at the bottom */
+          top: auto; /* Remove top constraint */
+          height: 90%; /* Take up 90% of screen height */
+        }
+        #team-detail-panel.active { /* Class to be added by JS to show panel */
+          transform: translateY(0%);
+        }
+        #team-detail-panel .p-6 {
+          padding: 1.5rem 1rem; /* Adjust padding for smaller screens */
+        }
+        #panel-content .flex {
+          flex-direction: column; /* Stack image and text vertically */
+          align-items: center; /* Center items when stacked */
+        }
+        #panel-member-image {
+          margin-right: 0; /* Remove right margin */
+          margin-bottom: 1rem; /* Add bottom margin for spacing */
+          width: 120px; /* Adjust image size for mobile */
+          height: 160px; /* Maintain aspect ratio */
+        }
+        #panel-content > div:first-child { /* Target the flex container for member info */
+          text-align: center; /* Center text for mobile */
+        }
+        #panel-social-links {
+          display: flex; /* Explicitly make it a flex container */
+          flex-direction: row; /* Force horizontal alignment */
+          justify-content: center; /* Center items horizontally */
+          align-items: center; /* Center items vertically within the row */
+          gap: 1rem; /* Add some space between icons */
+          width: 100%; /* Ensure it takes available width to center properly */
+        }
+        #insights-grid {
+          grid-template-columns: 1fr; /* Single column for insights on mobile */
+        }
+        #close-panel-button {
+          top: 1rem;
+          right: 1rem;
+        }
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -210,7 +261,7 @@
                  <span class="mt-6 inline-block font-semibold text-black hover:underline">Read More &rarr;</span>
                </div>
              </a>
-             <a href="assets/infographics/futurevis.html" class="card overflow-hidden animated-item hover:shadow-xl transition-shadow duration-200 block">
+             <a href="assets/infographics/futurevis.html" class="card overflow-hidden animated-item hover:shadow-xl transition-shadow duration-300 block">
                <img src="https://placehold.co/600x400/1a1a1a/FFFFFF?text=Future+Vision" alt="Blog post image" class="w-full h-48 object-cover">
                <div class="p-8">
                  <h3 class="text-xl font-bold text-gray-900">The Road Ahead: Quantum-Resistant Healthcare</h3>
@@ -376,7 +427,8 @@
                         <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">TEAM MEMBER SPOTLIGHT</p>
                         <h3 id="panel-member-name" class="text-3xl font-bold text-blue-700 leading-tight"></h3>
                         <p id="panel-member-title" class="text-gray-600 text-lg"></p>
-                        <div class="mt-2 flex space-x-4" id="panel-social-links">
+                        <!-- Removed flex and space-x-4 from here -->
+                        <div class="mt-2" id="panel-social-links">
                             <!-- LinkedIn icon will be inserted here by JS -->
                         </div>
                     </div>
@@ -628,14 +680,18 @@
         let originalBioText = ""; // To store the full bio text
 
         const openTeamPanel = () => {
+            // Added 'active' class for mobile slide-up animation
             teamDetailPanel.classList.remove('translate-x-full');
+            teamDetailPanel.classList.add('active'); // Add active class for mobile
             teamPanelBackdrop.classList.remove('hidden');
             setTimeout(() => teamPanelBackdrop.classList.remove('opacity-0'), 10);
             document.body.classList.add('overflow-hidden'); // Prevent body scrolling
         };
 
         const closeTeamPanel = () => {
+            // Removed 'active' class for mobile slide-down animation
             teamDetailPanel.classList.add('translate-x-full');
+            teamDetailPanel.classList.remove('active'); // Remove active class for mobile
             teamPanelBackdrop.classList.add('opacity-0');
             setTimeout(() => teamPanelBackdrop.classList.add('hidden'), 300); // Hide after transition
             document.body.classList.remove('overflow-hidden'); // Re-enable body scrolling
@@ -696,6 +752,7 @@
                         const linkedinLink = document.createElement('a');
                         linkedinLink.href = member.linkedin;
                         linkedinLink.target = '_blank';
+                        // Removed ml-4 from here, as gap will handle spacing
                         linkedinLink.classList.add('text-gray-400', 'hover:text-gray-600', 'transition');
                         linkedinLink.innerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>';
                         panelSocialLinks.appendChild(linkedinLink);
@@ -705,7 +762,8 @@
                         const scholarLink = document.createElement('a');
                         scholarLink.href = member.googleScholar;
                         scholarLink.target = '_blank';
-                        scholarLink.classList.add('text-gray-400', 'hover:text-gray-600', 'transition', 'ml-4');
+                        // Removed ml-4 from here, as gap will handle spacing
+                        scholarLink.classList.add('text-gray-400', 'hover:text-gray-600', 'transition');
                         scholarLink.innerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>';
                         panelSocialLinks.appendChild(scholarLink);
                     }
