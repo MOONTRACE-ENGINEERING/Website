@@ -168,123 +168,166 @@
 
         <!-- Job Listings Section -->
         <section id="job-listings-section" class="py-16">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Current Openings</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                        Explore the roles we're actively hiring for. Don't see a fit? Reach out anyway!
-                    </p>
-                </div>
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Current Openings</h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+        Explore the roles we're actively hiring for. Don't see a fit? Reach out anyway!
+      </p>
+    </div>
 
-                <!-- Filter Buttons -->
-                <div id="job-filters" class="mt-12 flex justify-center flex-wrap gap-3">
-                    <button class="filter-button active" data-filter="all">All</button>
-                    <button class="filter-button" data-filter="engineering">Engineering</button>
-                    <button class="filter-button" data-filter="security">Security</button>
-                    <button class="filter-button" data-filter="analyst">Analyst/Consulting</button>
-                    <button class="filter-button" data-filter="writing">Writing</button>
-                </div>
+    <!-- Filter Buttons -->
+    <div id="job-filters" class="mt-12 flex justify-center flex-wrap gap-3">
+      <button class="filter-button active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="engineering">Engineering</button>
+      <button class="filter-button" data-filter="security">Security</button>
+      <button class="filter-button" data-filter="analyst">Analyst/Consulting</button>
+      <button class="filter-button" data-filter="writing">Writing</button>
+      <button class="filter-button" data-filter="research">Student Research</button>
+    </div>
 
-                <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8" id="job-listings">
-                    
-                    <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
-                        <button class="job-card-header w-full flex justify-between items-center text-left">
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Frontend Engineer</h3>
-                                <p class="text-gray-600 font-semibold">Remote | Global</p>
-                            </div>
-                            <span class="job-card-icon text-gray-400">+</span>
-                        </button>
-                        <div class="job-card-content">
-                            <div class="border-t border-gray-200 pt-5 text-gray-600">
-                                <p class="text-gray-700 mb-4">You'll build the face of Moontrace—crafting intuitive, beautiful user interfaces that make complex cryptographic data understandable and actionable. You'll own the user experience from concept to deployment.</p>
-                                <button class="apply-now-button" data-job-title="Frontend Engineer">Apply Now</button>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Job Cards Grid -->
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8" id="job-listings">
+      <!-- Frontend Engineer -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Frontend Engineer</h3>
+            <p class="text-gray-600 font-semibold">Remote | Global</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Craft intuitive user interfaces for our cryptographic dashboards. Own UI/UX from concept to deployment.</p>
+          <button class="apply-now-button" data-job-title="Frontend Engineer">Apply Now</button>
+        </div>
+      </div>
 
-                    <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
-                        <button class="job-card-header w-full flex justify-between items-center text-left">
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Backend / Systems Engineer</h3>
-                                <p class="text-gray-600 font-semibold">Remote | Global</p>
-                            </div>
-                            <span class="job-card-icon text-gray-400">+</span>
-                        </button>
-                        <div class="job-card-content">
-                            <div class="border-t border-gray-200 pt-5 text-gray-600">
-                                <p class="text-gray-700 mb-4">You are the architect of our core logic. You'll build the scalable, secure, and high-performance services that power our entire quantum-safe platform, from data ingestion pipelines to critical API endpoints.</p>
-                                <button class="apply-now-button" data-job-title="Backend / Systems Engineer">Apply Now</button>
-                            </div>
-                        </div>
-                    </div>
+      <!-- Backend Engineer -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Backend / Systems Engineer</h3>
+            <p class="text-gray-600 font-semibold">Remote | Global</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Architect our API, crypto-scan engines, and automation backends. Optimize for security and scale.</p>
+          <button class="apply-now-button" data-job-title="Backend / Systems Engineer">Apply Now</button>
+        </div>
+      </div>
 
-                    <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
-                        <button class="job-card-header w-full flex justify-between items-center text-left">
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">DevOps / Infrastructure Engineer</h3>
-                                <p class="text-gray-600 font-semibold">Remote | Global</p>
-                            </div>
-                            <span class="job-card-icon text-gray-400">+</span>
-                        </button>
-                        <div class="job-card-content">
-                            <div class="border-t border-gray-200 pt-5 text-gray-600">
-                                <p class="text-gray-700 mb-4">You'll build the foundation upon which Moontrace runs. Your mission is to create a robust, secure, and highly automated infrastructure that allows our engineering team to ship features quickly and reliably.</p>
-                                <button class="apply-now-button" data-job-title="DevOps / Infrastructure Engineer">Apply Now</button>
-                            </div>
-                        </div>
-                    </div>
+      <!-- DevOps Engineer -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">DevOps / Infrastructure Engineer</h3>
+            <p class="text-gray-600 font-semibold">Remote | Global</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Design robust CI/CD pipelines, secure cloud infra, and production-grade deployments.</p>
+          <button class="apply-now-button" data-job-title="DevOps / Infrastructure Engineer">Apply Now</button>
+        </div>
+      </div>
 
-                    <div class="job-card-compact card p-6 sm:p-8" data-category="security">
-                        <button class="job-card-header w-full flex justify-between items-center text-left">
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cryptography / Security Engineer</h3>
-                                <p class="text-gray-600 font-semibold">Remote | Global</p>
-                            </div>
-                            <span class="job-card-icon text-gray-400">+</span>
-                        </button>
-                        <div class="job-card-content">
-                            <div class="border-t border-gray-200 pt-5 text-gray-600">
-                                <p class="text-gray-700 mb-4">You'll be at the heart of our mission, driving the core cryptographic logic of our platform. This role involves deep research, implementation, and analysis of both classical and post-quantum cryptographic systems.</p>
-                                <button class="apply-now-button" data-job-title="Cryptography / Security Engineer">Apply Now</button>
-                            </div>
-                        </div>
-                    </div>
+      <!-- Cryptography Engineer -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="security">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cryptography / Security Engineer</h3>
+            <p class="text-gray-600 font-semibold">Remote | Global</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Research and implement PQC, crypto audits, and analysis. Experience with Kyber/SABER ideal.</p>
+          <button class="apply-now-button" data-job-title="Cryptography / Security Engineer">Apply Now</button>
+        </div>
+      </div>
 
-                    <div class="job-card-compact card p-6 sm:p-8" data-category="analyst">
-                        <button class="job-card-header w-full flex justify-between items-center text-left">
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cybersecurity Analyst</h3>
-                                <p class="text-gray-600 font-semibold">Remote | Global</p>
-                            </div>
-                            <span class="job-card-icon text-gray-400">+</span>
-                        </button>
-                        <div class="job-card-content">
-                            <div class="border-t border-gray-200 pt-5 text-gray-600">
-                                <p class="text-gray-700 mb-4">Analyze current security infrastructures, identify quantum vulnerabilities, and support clients in implementing migration strategies using Moontrace's tools. Open to students and early-career researchers.</p>
-                                <button class="apply-now-button" data-job-title="Cybersecurity Analyst">Apply Now</button>
-                            </div>
-                        </div>
-                    </div>
+      <!-- Cybersecurity Analyst -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="analyst">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cybersecurity Analyst</h3>
+            <p class="text-gray-600 font-semibold">Remote | Global</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Analyze crypto posture reports, generate CBOM audits, and support compliance pipelines.</p>
+          <button class="apply-now-button" data-job-title="Cybersecurity Analyst">Apply Now</button>
+        </div>
+      </div>
 
-                    <div class="job-card-compact card p-6 sm:p-8" data-category="writing">
-                        <button class="job-card-header w-full flex justify-between items-center text-left">
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Technical Writer (PQC)</h3>
-                                <p class="text-gray-600 font-semibold">Remote | Global</p>
-                            </div>
-                            <span class="job-card-icon text-gray-400">+</span>
-                        </button>
-                        <div class="job-card-content">
-                            <div class="border-t border-gray-200 pt-5 text-gray-600">
-                                <p class="text-gray-700 mb-4">Create clear, concise, and accurate technical documentation for our PQC software and hardware solutions, including user manuals, API guides, and whitepapers.</p>
-                                <button class="apply-now-button" data-job-title="Technical Writer (PQC)">Apply Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <!-- Technical Writer -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="writing">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Technical Writer (PQC)</h3>
+            <p class="text-gray-600 font-semibold">Remote | Global</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Document APIs, tools, and research outputs from VANTAGE and APX. Experience with Git & Markdown a plus.</p>
+          <button class="apply-now-button" data-job-title="Technical Writer (PQC)">Apply Now</button>
+        </div>
+      </div>
+
+      <!-- Student Researcher -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="research">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Student Researcher (MTLabs)</h3>
+            <p class="text-gray-600 font-semibold">Remote | Open to Students</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Research in PQC, embedded security, and algorithm optimization. Great for thesis/dissertation work.</p>
+          <button class="apply-now-button" data-job-title="Student Researcher (MTLabs)">Apply Now</button>
+        </div>
+      </div>
+
+      <!-- Hardware Research Intern -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="research">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Hardware Research Intern (Embedded PQC)</h3>
+            <p class="text-gray-600 font-semibold">Remote | Internship</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Design lightweight PQC systems for resource-constrained devices. Ideal for ECE students with VHDL/C/FPGA skills.</p>
+          <button class="apply-now-button" data-job-title="Hardware Research Intern">Apply Now</button>
+        </div>
+      </div>
+
+      <!-- Software Research Intern -->
+      <div class="job-card-compact card p-6 sm:p-8" data-category="research">
+        <button class="job-card-header w-full flex justify-between items-center text-left">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Software Research Intern (VANTAGE/APX)</h3>
+            <p class="text-gray-600 font-semibold">Remote | Internship</p>
+          </div>
+          <span class="job-card-icon text-gray-400">+</span>
+        </button>
+        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+          <p class="text-gray-700 mb-4">Contribute to our open tools for scanning crypto posture and automating PQC migration. Learn with real impact.</p>
+          <button class="apply-now-button" data-job-title="Software Research Intern">Apply Now</button>
+        </div>
+      </div>
+
+    </div>
             </div>
         </section>
+
+
 
                 <!-- Job Application Form Container -->
                 <div id="job-application-container" class="hidden mt-16 max-w-3xl mx-auto">
