@@ -88,6 +88,17 @@
             color: white;
             border-color: #111827;
         }
+
+        /* CSS for dynamic text animation */
+        .fade-in-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out; /* Removed transform for no movement */
+            display: inline-block; /* Ensures min-width works */
+            min-width: 250px; /* Adjust this value based on the longest text to prevent layout shift */
+        }
+        .fade-in-out.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -147,7 +158,7 @@
         <!-- Our Philosophy Section -->
         <section id="our-philosophy" class="py-16 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Philosophy: Build with Purpose</h2>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Philosophy: <span id="dynamic-philosophy-text" class="fade-in-out"></span></h2>
                 <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
                     As a pre-revenue startup, we're investing in a long-term vision. We seek brilliant, passionate minds who are eager to make a significant impact and grow with us. Your contributions will be rewarded with meaningful equity and the opportunity to shape the future of cybersecurity.
                 </p>
@@ -394,6 +405,43 @@
             const hiddenJobTitleInput = document.getElementById('hidden-job-title');
             const applicationForm = document.getElementById('job-application-form');
             const successMessageContainer = document.getElementById('form-success-message');
+
+            // --- Dynamic Philosophy Text Logic ---
+            const dynamicPhilosophyText = document.getElementById('dynamic-philosophy-text');
+
+            const philosophyData = [
+                "Build with Purpose",
+                "One Team, One Goal"
+            ];
+            let currentTextIndex = 0;
+
+            function updatePhilosophyText() {
+                // Remove 'show' class to start fade-out
+                dynamicPhilosophyText.classList.remove('show');
+
+                setTimeout(() => {
+                    const text = philosophyData[currentTextIndex];
+
+                    if (text.includes(',')) {
+                        // If the text contains a comma, split it and apply blue color to the second part
+                        const parts = text.split(',');
+                        dynamicPhilosophyText.innerHTML = `${parts[0]}, <span class="text-blue-600">${parts[1]}</span>`;
+                    } else {
+                        dynamicPhilosophyText.textContent = text;
+                    }
+
+                    // Add 'show' class to start fade-in
+                    dynamicPhilosophyText.classList.add('show');
+
+                    currentTextIndex = (currentTextIndex + 1) % philosophyData.length;
+                }, 500); // Wait for fade-out to complete before changing content
+            }
+
+            // Initial text set
+            updatePhilosophyText();
+            // Set interval for changing text every 3 seconds
+            setInterval(updatePhilosophyText, 3000);
+
 
             // --- Accordion Logic for Job Cards ---
             // Allows each job card to expand and collapse
