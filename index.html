@@ -463,6 +463,104 @@
         height: 100%;
         border: 0;
       }
+      
+      /* PDF button and modal styles */
+      #pdf-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+        background-color: #0052cc;
+        color: white;
+        border: none;
+        border-radius: 50%; /* Changed to a circle */
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        padding: 0;
+        overflow: hidden;
+      }
+      #pdf-button:hover {
+        transform: scale(1.1);
+        background-color: #003f99;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+      #pdf-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Adjust PDF button for mobile to avoid overlap */
+      @media (max-width: 768px) {
+        #pdf-button {
+          bottom: 80px; /* Adjust to be above the mobile bottom nav */
+        }
+      }
+
+      .pdf-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 101;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+      }
+      .pdf-modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .pdf-modal-content {
+        position: relative;
+        width: 90%;
+        height: 90%;
+        background-color: white;
+        border-radius: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .pdf-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #f3f4f6;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .pdf-modal-header h4 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+      }
+      .pdf-modal-close {
+        font-size: 1.75rem;
+        color: #6b7280;
+        cursor: pointer;
+        background: none;
+        border: none;
+        transition: color 0.2s;
+      }
+      .pdf-modal-close:hover {
+        color: #374151;
+      }
+      .pdf-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -480,7 +578,6 @@
         <span>
           From the MTLabs Blog: An Interactive Guide to the NIST PQC Finalists.
         </span>
-      </span>
       </a>
       <a
         href="assets/infographics/futurevis.html"
@@ -577,7 +674,7 @@
         <a href="MTLabs.html" class="block nav-link font-medium py-2">MTLabs</a>
         <a href="#solutions" class="block nav-link font-medium py-2">Solutions</a>
         <a href="#defense" class="block nav-link font-medium py-2">Defense</a>
-        <a href="#whymoontrace" class="block nav-link font-medium py-2"
+        <a href="#whymoontrace" class="block nav-link font-medium"
           >Why Moontrace?</a
         >
        
@@ -1084,7 +1181,6 @@
         </div>
       </section>
 
-      <!-- MODIFIED CAREERS SECTION -->
       <section id="careers-cta" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -1444,7 +1540,7 @@
         <ul class="list-disc list-inside text-gray-700 mb-6 pl-5 leading-relaxed">
           <li class="mb-2"><span class="font-bold">X</span> - A financial institution needs to look after personal customer data for the longevity of the customer relationship for as long as needed, in compliance with data protection laws such as GDPR, for example. In this example, let’s say between 1 and 10 years.</li>
           <li class="mb-2"><span class="font-bold">Y</span> - The financial institution forecasts that it will take between 3 and 4 years to upgrade to a fully quantum-safe environment.</li>
-          <li class="mb-2"><span class="font-bold">Z</span> - Quantum computers arrive within the next 3 to 4 years with the power to break cryptography and customer data is exposed.</li>
+          <li><span class="font-bold">Z</span> - Quantum computers arrive within the next 3 to 4 years with the power to break cryptography and customer data is exposed.</li>
           <li>This occurred before the financial institution upgraded its environment during its predicted timeframe of 3 to 4 years (Y), and hackers were able to take advantage of this sensitive customer data.</li>
         </ul>
 
@@ -1464,6 +1560,36 @@
             Dr. Michele Mosca (University of Waterloo) on overcoming cyber security challenges of the PQC era
         </p>
       </div>
+    </div>
+
+    <!-- Whitepaper PDF Button -->
+    <button id="pdf-button" aria-label="Read whitepaper" title="Read whitepaper" style="padding:0; background:none; border:none; width:60px; height:60px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+        <img src="assets/button.png" alt="Moontrace Whitepaper" style="width:60px; height:60px; object-fit:cover; border-radius:50%; display:block;" />
+    </button>
+    
+    <!-- Whitepaper PDF Modal -->
+    <div id="pdf-modal-overlay" class="pdf-modal-overlay">
+      <div class="pdf-modal-content">
+        <div class="pdf-modal-header">
+          <h4>Moontrace Engineering Whitepaper</h4>
+          <button id="pdf-modal-close" class="pdf-modal-close">&times;</button>
+        </div>
+        <iframe
+          id="pdf-iframe"
+          class="pdf-iframe"
+          src="assets/pdfs/whitepaper.pdf"
+          title="Moontrace Whitepaper"
+        ></iframe>
+      </div>
+    </div>
+    
+    <!-- New "Coming Soon" Modal -->
+    <div id="coming-soon-modal-overlay" class="modal-overlay">
+        <div class="modal-content text-center max-w-sm p-8">
+            <button id="coming-soon-modal-close" class="modal-close-button">&times;</button>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Launching Soon!</h3>
+            <p class="text-lg text-gray-700">We are actively developing our tools and will be launching soon. Stay tuned!</p>
+        </div>
     </div>
 
     <script>
@@ -1593,7 +1719,7 @@
               ],
               5: [
                 { label: "Public Key", data: [1568, 1398, 1760, 1793] },
-                { label: "Ciphertext/Sig", data: [1568, 1389, 3366, 1280] },
+                { label: "Ciphertext/Sig", data: [1568, 1568, 3366, 1280] },
                 { label: "Secret Key", data: [3168, 2653, 4864, 3073] },
               ],
             },
@@ -2049,6 +2175,95 @@
                 // Check if the click occurred directly on the overlay, not its children
                 if (event.target === moscaModalOverlay) {
                     hideMoscaModal();
+                }
+            });
+        }
+        
+        // --- Whitepaper PDF Modal Logic (new) ---
+        const pdfButton = document.getElementById('pdf-button');
+        const pdfModalOverlay = document.getElementById('pdf-modal-overlay');
+        const pdfModalClose = document.getElementById('pdf-modal-close');
+        const pdfIframe = document.getElementById('pdf-iframe');
+        const pdfUrl = 'assets/pdfs/whitepaper.pdf';
+
+        // Function to show the PDF modal
+        function showPdfModal() {
+          pdfModalOverlay.classList.add('show');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        // Function to hide the PDF modal
+        function hidePdfModal() {
+          pdfModalOverlay.classList.remove('show');
+          document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Event listener to open modal when button is clicked
+        if (pdfButton) {
+          pdfButton.addEventListener('click', () => {
+            // Check screen width
+            if (window.innerWidth <= 768) {
+              // On mobile, open in a new tab
+              window.open(pdfUrl, '_blank');
+            } else {
+              // On desktop, show the modal
+              showPdfModal();
+            }
+          });
+        }
+
+        // Event listener to close modal when close button is clicked
+        if (pdfModalClose) {
+          pdfModalClose.addEventListener('click', hidePdfModal);
+        }
+        
+        // Event listener to close modal when clicking outside the content (on the overlay)
+        if (pdfModalOverlay) {
+            pdfModalOverlay.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the overlay, not its children
+                if (event.target === pdfModalOverlay) {
+                    hidePdfModal();
+                }
+            });
+        }
+
+        // --- New "Coming Soon" Modal Logic ---
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        const comingSoonModalOverlay = document.getElementById('coming-soon-modal-overlay');
+        const comingSoonModalClose = document.getElementById('coming-soon-modal-close');
+
+        // Function to show the "Coming Soon" modal
+        function showComingSoonModal(e) {
+          // Prevent default link behavior
+          e.preventDefault(); 
+          comingSoonModalOverlay.classList.add('show');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        // Function to hide the "Coming Soon" modal
+        function hideComingSoonModal() {
+          comingSoonModalOverlay.classList.remove('show');
+          document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Event listener for all "Learn More" buttons
+        if (ctaButtons) {
+          ctaButtons.forEach(button => {
+            button.addEventListener('click', showComingSoonModal);
+          });
+        }
+
+        // Event listener to close modal when close button is clicked
+        if (comingSoonModalClose) {
+            comingSoonModalClose.addEventListener('click', hideComingSoonModal);
+        }
+        
+        // Event listener to close modal when clicking outside the content (on the overlay)
+        if (comingSoonModalOverlay) {
+            comingSoonModalOverlay.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the overlay, not its children
+                if (event.target === comingSoonModalOverlay) {
+                    hideComingSoonModal();
                 }
             });
         }

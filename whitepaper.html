@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moontrace Engineering Whitepaper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* A professional color palette is chosen for a whitepaper. */
+        :root {
+            --color-primary: #0B1727; /* Deep Navy for headings and backgrounds */
+            --color-secondary: #075985; /* Strong Blue for accents */
+            --color-accent: #0369A1; /* Medium Blue for charts and highlights */
+            --color-light-accent: #7DD3FC; /* Light Blue for softer details */
+            --color-background: #F8FAFC; /* Off-White for body background */
+            --color-text: #1F2937; /* Dark Gray for body text */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+            border: 1px solid #E5E7EB;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #4B5563;
+        }
+        .accent-color {
+            color: var(--color-secondary);
+        }
+        .flow-node {
+            background-color: #F0F9FF;
+            border: 1px solid #E0F2FE;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .flow-line {
+            background-color: var(--color-accent);
+            position: absolute;
+            z-index: 0;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            max-width: 800px;
+            margin: auto;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.expanded .accordion-icon {
+            transform: rotate(45deg);
+        }
+        .solution-tab {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: #6B7280;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .solution-tab.active-tab {
+            color: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+        .solution-panel {
+            min-height: 400px;
+        }
+        .ai-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .ai-modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .ai-modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.4s ease-out;
+        }
+        .ai-modal-overlay.show .ai-modal-content {
+            transform: translateY(0) scale(1);
+        }
+        .ai-input-area, .ai-response-area {
+            border: 1px solid #D1D5DB;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            min-height: 100px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #374151;
+        }
+        .ai-loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--color-accent);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .no-print {
+            display: block;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12px;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #D1D5DB;
+            }
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+            }
+            p, ul, li {
+                page-break-inside: avoid;
+            }
+            .accordion-content {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+            .flow-node, .flow-line {
+                page-break-inside: avoid;
+            }
+            .chart-container {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="no-print fixed top-4 right-4 z-50">
+        <button onclick="window.print()" class="px-6 py-2 bg-slate-800 text-white rounded-lg shadow-lg hover:bg-slate-700 transition">
+            Print to PDF
+        </button>
+    </div>
+
+    <header class="bg-slate-900 text-white text-center py-20 px-4">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight">Moontrace Engineering: A Whitepaper</h1>
+        <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-slate-300">A Comprehensive Guide to Securing Digital Infrastructure in the Post-Quantum Era</p>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        <!-- 1. Executive Summary -->
+        <section id="executive-summary" class="card p-8 md:p-12">
+            <h2 class="section-title text-center">1. Executive Summary</h2>
+            <p class="section-subtitle mt-4 text-center">Pioneering Quantum-Resilient Security. Building the Future Together.</p>
+            <p class="mt-6 text-base text-gray-700 leading-relaxed">The global digital landscape is on the verge of a fundamental disruption. The imminent advent of quantum computing threatens to render today's classical cryptographic defenses obsolete, exposing vast amounts of sensitive data to unprecedented threats. Moontrace Engineering stands at the forefront of this critical transition, offering a full-stack cryptographic assurance platform designed to provide the visibility, agility, and robust key management capabilities essential for navigating the post-quantum era with confidence.</p>
+            <p class="mt-4 text-base text-gray-700 leading-relaxed">Moontrace's platform is a unified suite of four integrated tools—<span class="accent-color font-bold">VANTAGE, APX, Moontrace VPN, and QUBEx</span>—that together deliver an end-to-end solution for quantum-resilient cybersecurity. We are a global-first organization, founded in India, with a core philosophy of being developer-friendly, cost-efficient, and operationally transparent. Our unique value proposition lies in providing a holistic, yet flexible, solution that democratizes access to advanced cryptographic security, ensuring that organizations of all sizes can prepare for the quantum future today.</p>
+        </section>
+
+        <!-- 2. Problem Statement -->
+        <section id="problem-statement">
+            <h2 class="section-title text-center">2. The Problem Statement: A Strategic Imperative</h2>
+            <p class="section-subtitle mt-4 text-center">Why Current Cryptographic Systems are Inadequate in a Quantum World.</p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-slate-800">The Quantum Threat to Cryptography</h3>
+                    <p class="mt-2 text-gray-700">The widespread use of public-key cryptography (PKI), including RSA and ECC, forms the backbone of digital security. However, with Shor’s algorithm, these systems will become obsolete, jeopardizing long-term data confidentiality. This is not a future problem; it's a present risk due to the "Harvest Now, Decrypt Later" threat, where adversaries are already collecting encrypted data today to decrypt with a CRQC tomorrow.</p>
+                    <p class="mt-4 text-sm italic text-gray-600">The threat of quantum computing is imminent and requires a proactive response today.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-slate-800">Challenges Faced by Organizations</h3>
+                    <ul class="mt-2 list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Enterprises:</strong> Struggle with vast legacy systems and a lack of tools for comprehensive cryptographic inventory.</li>
+                        <li><strong>Governments:</strong> Must comply with mandates like NSM-10 while protecting national security secrets that require decades of confidentiality.</li>
+                        <li><strong>Developers:</strong> Face a lack of accessible, developer-friendly tools and a fragmented PQC ecosystem, making implementation non-trivial.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 card p-6">
+                <h3 class="text-xl font-bold text-slate-800 text-center">Michele Mosca's Theorem: Quantifying the Quantum Threat</h3>
+                <p class="mt-2 text-gray-700 text-center">The urgency of the quantum threat is best framed by Dr. Michele Mosca's Theorem, which posits that the time for data to remain secure (X) plus the time to migrate systems (Y) must be less than the time until a CRQC is operational (Z). As **(X + Y) > Z**, organizations are already running out of time.</p>
+                <p class="mt-4 text-sm italic text-gray-600 text-center">"There is a 1 in 7 chance that some fundamental public-key crypto will be broken by quantum by 2026, and a 1 in 2 chance of the same by 2031."</p>
+                <p class="mt-1 text-sm text-gray-600 text-center">– Dr. Michele Mosca</p>
+            </div>
+        </section>
+
+        <!-- 2.1 Market Growth & Projections -->
+        <section id="market-growth">
+            <h2 class="section-title text-center">2.1 Market Growth & Projections</h2>
+            <p class="section-subtitle mt-4 text-center">The accelerating imperative for Post-Quantum Cryptography (PQC) solutions.</p>
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-slate-800 text-center mb-4">Global PQC Market Forecast (2025-2034)</h3>
+                    <p class="text-center text-gray-700 mb-4">The global PQC market is projected to grow from an estimated **$1.68 billion in 2025** to nearly **$30 billion by 2034**, with a remarkable CAGR of 37.72%. This rapid growth highlights the urgent, worldwide demand for quantum-resilient solutions.</p>
+                    <div class="chart-container">
+                        <canvas id="globalMarketChart"></canvas>
+                    </div>
+                </div>
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-slate-800 text-center mb-4">North America PQC Market Forecast (2025-2034)</h3>
+                    <p class="text-center text-gray-700 mb-4">North America leads the charge in quantum readiness, with its PQC market size expected to surge from **$463.6 million in 2024** to over **$8 billion by 2034**, growing at an impressive CAGR of 38.00%.</p>
+                    <div class="chart-container">
+                        <canvas id="naMarketChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2.2 India's Critical Sector Market Growth -->
+        <section id="indian-market-growth">
+            <h2 class="section-title text-center">2.2 India's Critical Sector PQC Growth</h2>
+            <p class="section-subtitle mt-4 text-center">Illustrative projections for PQC market adoption across India's key sectors.</p>
+            <div class="mt-8 card p-8">
+                <h3 class="text-2xl font-bold text-slate-800 text-center mb-4">India PQC Market by Sector (2025-2030)</h3>
+                <p class="text-center text-gray-700 mb-4">India's digitalization efforts, coupled with increasing cybersecurity threats, are driving rapid PQC adoption in critical sectors. This chart illustrates projected growth in the Defense, Finance, and Health sectors, all of which require long-term data confidentiality and robust security infrastructure.</p>
+                <div class="chart-container">
+                    <canvas id="indianMarketChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. Vision & Mission -->
+        <section id="vision-mission" class="card p-8 md:p-12">
+            <h2 class="section-title text-center">3. Vision & Mission</h2>
+            <p class="section-subtitle mt-4 text-center">Our commitment to democratizing cryptographic security at a global scale.</p>
+            <div class="mt-8 text-center max-w-4xl mx-auto">
+                <p class="text-3xl font-bold accent-color">Secure cryptography for all: from India to the world.</p>
+                <p class="mt-4 text-lg text-gray-700 leading-relaxed">Our mission is to make the global cryptographic infrastructure visible, agile, and quantum-secure. We achieve this by building a global-first, open, and transparent platform that empowers security teams, governments, and developers to proactively address the quantum threat with simplicity and confidence.</p>
+            </div>
+        </section>
+
+        <!-- 4. Solution Overview -->
+        <section id="solution-overview">
+            <h2 class="section-title text-center">4. Solution Overview: The Moontrace Platform</h2>
+            <p class="section-subtitle mt-4 text-center">A unified suite of tools for end-to-end cryptographic assurance.</p>
+            <div class="mt-8 no-print">
+                <div class="flex justify-center border-b-2 border-gray-200">
+                    <div id="solution-tabs" class="flex space-x-4">
+                        <button data-tab-index="0" class="solution-tab active-tab">VANTAGE</button>
+                        <button data-tab-index="1" class="solution-tab">APX</button>
+                        <button data-tab-index="2" class="solution-tab">VPN</button>
+                        <button data-tab-index="3" class="solution-tab">QUBEx</button>
+                    </div>
+                </div>
+                <div id="solution-panels" class="relative mt-8">
+                    <!-- Vantage Panel -->
+                    <div data-panel-index="0" class="solution-panel">
+                        <div class="card p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold accent-color">Moontrace VANTAGE</h3>
+                                <p class="mt-2 text-lg font-semibold text-slate-700">Crypto Posture Visibility & Asset Discovery</p>
+                                <p class="mt-4 text-gray-700 leading-relaxed">VANTAGE is a comprehensive scanning and analytics engine that provides CISOs and DevOps teams with a clear, real-time view of their entire cryptographic surface. It automates the discovery of cryptographic assets and identifies vulnerabilities before they can be exploited.</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2 text-gray-700">
+                                    <li>**Features:** TLS scanning, CBOM generation, and risk classification of algorithms.</li>
+                                    <li>**Who it helps:** CISOs for dashboard visibility and DevOps for proactive security.</li>
+                                </ul>
+                            </div>
+                            <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg">
+                                <img src="https://placehold.co/400x250/E0F2FE/075985?text=VANTAGE+Dashboard" alt="Vantage dashboard visualization" class="rounded-md">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- APX Panel -->
+                    <div data-panel-index="1" class="solution-panel hidden">
+                         <div class="card p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold accent-color">Moontrace APX</h3>
+                                <p class="mt-2 text-lg font-semibold text-slate-700">Crypto-Agile Migration Toolkit</p>
+                                <p class="mt-4 text-gray-700 leading-relaxed">APX is a no-code/low-code platform that simplifies the complex process of migrating legacy systems to hybrid or pure PQC stacks. It acts as an abstraction layer, automating certificate and protocol upgrades (e.g., from TLS 1.2 to TLS 1.3 with a Kyber-based key exchange).</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2 text-gray-700">
+                                    <li>**Features:** Phased migration planning, support for NIST-standardized PQC algorithms.</li>
+                                    <li>**Who it helps:** Enterprise security teams and developers building post-quantum systems.</li>
+                                </ul>
+                            </div>
+                            <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg">
+                                <img src="https://placehold.co/400x250/E0F2FE/075985?text=APX+Migration+Flow" alt="APX migration flow diagram" class="rounded-md">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- VPN Panel -->
+                    <div data-panel-index="2" class="solution-panel hidden">
+                        <div class="card p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold accent-color">Moontrace VPN</h3>
+                                <p class="mt-2 text-lg font-semibold text-slate-700">Hybrid PQC-Secure VPN Solution</p>
+                                <p class="mt-4 text-gray-700 leading-relaxed">Our PQC-enabled VPN was developed to address the lack of off-the-shelf crypto-agile VPNs. It provides a secure tunneling solution that protects data-in-transit against "Harvest Now, Decrypt Later" attacks by using hybrid key exchange and authentication.</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2 text-gray-700">
+                                    <li>**Why a new VPN:** Existing solutions are not built with crypto agility in mind and are vulnerable to future quantum attacks.</li>
+                                    <li>**Use cases:** Government and defense organizations, cross-border secure communications.</li>
+                                </ul>
+                            </div>
+                            <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg">
+                                <img src="https://placehold.co/400x250/E0F2FE/075985?text=VPN+Secure+Tunnel" alt="VPN secure tunnel diagram" class="rounded-md">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- QUBEx Panel -->
+                    <div data-panel-index="3" class="solution-panel hidden">
+                        <div class="card p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold accent-color">Moontrace QUBEx</h3>
+                                <p class="mt-2 text-lg font-semibold text-slate-700">Hardware-Based Quantum Key Management</p>
+                                <p class="mt-4 text-gray-700 leading-relaxed">QUBEx is our hardware appliance for secure key lifecycle management. It provides quantum-safe symmetric key exchange and uses Quantum Random Number Generators (QRNG) to ensure true entropy. QUBEx is designed to be FIPS-ready and is the physical backbone for mission-critical security.</p>
+                                <ul class="mt-4 list-disc list-inside space-y-2 text-gray-700">
+                                    <li>**Key features:** Dual-tunnel architecture for data and key delivery, HSM functionality.</li>
+                                    <li>**Roadmap:** Starting as a rack-mounted appliance, with plans for edge and cloud-adapter variants.</li>
+                                </ul>
+                            </div>
+                            <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg">
+                                <img src="https://placehold.co/400x250/E0F2FE/075985?text=QUBEx+Hardware+Appliance" alt="QUBEx hardware appliance" class="rounded-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Static Solution Overview for Print -->
+             <div class="print-only-solution-overview" style="display: none;">
+                <div class="card p-8 md:p-12 mt-8">
+                    <h3 class="text-2xl font-bold accent-color">Moontrace VANTAGE</h3>
+                    <p class="mt-2 text-gray-700 leading-relaxed"><strong>Crypto Posture Visibility & Asset Discovery.</strong> A comprehensive scanning and analytics engine that provides CISOs and DevOps teams with a clear, real-time view of their cryptographic surface. It generates a Cryptographic Bill of Materials (CBOM) and a Software Bill of Materials (SBOM), and flags vulnerabilities like weak TLS versions.</p>
+                    <h3 class="text-2xl font-bold accent-color mt-6">Moontrace APX</h3>
+                    <p class="mt-2 text-gray-700 leading-relaxed"><strong>Crypto-Agile Migration Toolkit.</strong> A no-code/low-code platform that simplifies the complex process of migrating legacy systems to hybrid or pure PQC stacks. It automates certificate and protocol upgrades using NIST-standardized PQC algorithms.</p>
+                    <h3 class="text-2xl font-bold accent-color mt-6">Moontrace VPN</h3>
+                    <p class="mt-2 text-gray-700 leading-relaxed"><strong>Quantum-Resilient Secure Tunneling.</strong> A PQC-enabled VPN that provides secure tunneling for all network traffic. It uses a hybrid mode to encrypt traffic with both classical and PQC algorithms, protecting data-in-transit from "Harvest Now, Decrypt Later" attacks.</p>
+                    <h3 class="text-2xl font-bold accent-color mt-6">Moontrace QUBEx</h3>
+                    <p class="mt-2 text-gray-700 leading-relaxed"><strong>Hardware-Based Quantum Key Management System.</strong> A robust hardware appliance for secure, quantum-safe key lifecycle management. QUBEx integrates with Quantum Random Number Generators (QRNGs) and is designed to be FIPS-ready, serving as the physical backbone for mission-critical security.</p>
+                </div>
+             </div>
+        </section>
+
+        <!-- 5. Architecture & Technology -->
+        <section id="architecture">
+            <h2 class="section-title text-center">5. Architecture & Technology</h2>
+            <p class="section-subtitle mt-4 text-center">An integrated platform for cryptographic lifecycle management.</p>
+            <div class="mt-12 card p-8 md:p-12">
+                <h3 class="text-2xl font-bold text-center text-slate-800">System Diagram: Moontrace Platform Interoperability</h3>
+                <div class="mt-8 relative">
+                    <div class="flex flex-col md:flex-row items-center justify-between text-center space-y-8 md:space-y-0 md:space-x-8">
+                        <div class="flow-node">
+                            <span class="text-4xl">📊</span>
+                            <p class="mt-2 text-lg font-bold text-slate-800">VANTAGE</p>
+                            <p class="text-sm text-gray-700 mt-1">Discovery & Risk Assessment</p>
+                        </div>
+                        <div class="hidden md:block flow-line w-20 h-0.5"></div>
+                        <div class="flow-node">
+                            <span class="text-4xl">🔄</span>
+                            <p class="mt-2 text-lg font-bold text-slate-800">APX</p>
+                            <p class="text-sm text-gray-700 mt-1">Migration & Agility</p>
+                        </div>
+                        <div class="hidden md:block flow-line w-20 h-0.5"></div>
+                        <div class="flow-node">
+                            <span class="text-4xl">🔒</span>
+                            <p class="mt-2 text-lg font-bold text-slate-800">VPN</p>
+                            <p class="text-sm text-gray-700 mt-1">Secure Transport</p>
+                        </div>
+                        <div class="hidden md:block flow-line w-20 h-0.5"></div>
+                        <div class="flow-node">
+                            <span class="text-4xl">🔑</span>
+                            <p class="mt-2 text-lg font-bold text-slate-800">QUBEx</p>
+                            <p class="text-sm text-gray-700 mt-1">Key Management & Entropy</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center text-gray-700">
+                        <p class="font-semibold">Cryptographic protocols used:</p>
+                        <p class="mt-1">NIST-standardized PQC algorithms (Kyber, Dilithium) in hybrid modes, TLS 1.3, and proprietary key exchange protocols for QUBEx.</p>
+                        <p class="mt-2 font-semibold">Entropy Generation:</p>
+                        <p class="mt-1">QUBEx integrates with QRNG for true random number generation, providing a superior foundation for cryptographic keys.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Target Users & Use Cases -->
+        <section id="target-users">
+            <h2 class="section-title text-center">6. Target Users & Use Cases</h2>
+            <p class="section-subtitle mt-4 text-center">Moontrace serves a diverse set of users with distinct security needs.</p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-6 text-center">
+                    <span class="text-4xl text-slate-800">🏢</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-4">Enterprises</h3>
+                    <p class="mt-2 text-gray-700">Migrating complex PKI stacks and ensuring GDPR compliance.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <span class="text-4xl text-slate-800">🏛️</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-4">Governments & Defense</h3>
+                    <p class="mt-2 text-gray-700">Securing long-term secrets and mission-critical communications.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <span class="text-4xl text-slate-800">💻</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-4">Developers & Innovators</h3>
+                    <p class="mt-2 text-gray-700">Building new systems with post-quantum security as a native feature.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Market Landscape -->
+        <section id="market-landscape">
+            <h2 class="section-title text-center">7. Market Landscape</h2>
+            <p class="section-subtitle mt-4 text-center">Moontrace's unique position in the quantum-readiness ecosystem.</p>
+            <div class="mt-8 card p-8 md:p-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">The Challenge of Fragmentation</h3>
+                        <p class="mt-4 text-gray-700 leading-relaxed">The market for PQC is highly fragmented, with solutions falling into a few key categories: expensive, proprietary enterprise systems; open-source projects that require significant expertise to implement; and academic tools that are not production-ready.</p>
+                        <p class="mt-4 text-gray-700 leading-relaxed font-bold">Moontrace fills this gap by offering an enterprise-grade, integrated solution built on an open, developer-friendly foundation.</p>
+                    </div>
+                    <div class="flex justify-center p-4">
+                        <img src="https://placehold.co/400x250/E0F2FE/075985?text=Market+Positioning+Diagram" alt="Market positioning diagram" class="rounded-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Business Model & Monetization -->
+        <section id="business-model">
+            <h2 class="section-title text-center">8. Business Model & Monetization</h2>
+            <p class="section-subtitle mt-4 text-center">A flexible model to serve diverse market needs.</p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-6 text-center">
+                    <span class="text-4xl text-slate-800">☁️</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-4">SaaS Licensing</h3>
+                    <p class="mt-2 text-gray-700">Subscription-based models for VANTAGE, APX, and VPN, with per-seat or per-use pricing.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <span class="text-4xl text-slate-800">🔑</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-4">Hardware + Subscription</h3>
+                    <p class="mt-2 text-gray-700">One-time purchase of QUBEx appliances, complemented by annual support fees.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <span class="text-4xl text-slate-800">🤝</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-4">Professional Services</h3>
+                    <p class="mt-2 text-gray-700">Offering crypto audits, integration support, and compliance advisory services.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Roadmap -->
+        <section id="roadmap">
+            <h2 class="section-title text-center">9. Roadmap</h2>
+            <p class="section-subtitle mt-4 text-center">Key milestones on our path to a quantum-resilient future.</p>
+            <div class="mt-12 max-w-4xl mx-auto">
+                <div class="relative pl-8 border-l-4 border-slate-300 space-y-12">
+                    <div class="relative">
+                        <div class="absolute -left-10 top-0 h-5 w-5 bg-slate-500 rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-slate-800">Q3 2025: APX Beta with PQC</h3>
+                        <p class="text-gray-700 mt-1">Launch of APX beta with full support for NIST PQC algorithms.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-10 top-0 h-5 w-5 bg-slate-500 rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-slate-800">Q4 2025: SaaS Suite Launch</h3>
+                        <p class="text-gray-700 mt-1">VANTAGE and APX released as a full SaaS suite.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-10 top-0 h-5 w-5 bg-slate-500 rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-slate-800">Q2 2026: QUBEx Prototype</h3>
+                        <p class="text-gray-700 mt-1">QUBEx hardware prototype ready for pilot programs.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-10 top-0 h-5 w-5 bg-slate-500 rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-slate-800">Q3 2026: FIPS-140-3 Readiness</h3>
+                        <p class="text-gray-700 mt-1">Initiating FIPS certification process for key modules.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Team & Advisors (Placeholder) -->
+        <section id="team">
+            <h2 class="section-title text-center">10. Team & Advisors</h2>
+            <p class="section-subtitle mt-4 text-center">A team of experts dedicated to building the future of cryptography.</p>
+            <div class="mt-8 card p-8 text-center">
+                <p class="text-gray-700">Details on founding team, security advisors, and research collaborators will be presented here.</p>
+            </div>
+        </section>
+
+        <!-- 11. FAQs -->
+        <section id="faqs">
+            <h2 class="section-title text-center">11. Frequently Asked Questions</h2>
+            <p class="section-subtitle mt-4 text-center">Addressing common concerns from key stakeholders.</p>
+            <div class="mt-8 max-w-4xl mx-auto space-y-4">
+                <div class="card accordion-item">
+                    <button class="accordion-header w-full p-6 flex justify-between items-center text-left font-semibold text-lg">
+                        <span>Why do I need to address PQC now?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="p-6 pt-0 text-gray-700">The "Harvest Now, Decrypt Later" threat model means that data encrypted today can be stored and later decrypted by a powerful quantum computer. The time it takes to fully migrate to PQC is significant, so starting the transition now is crucial to protect long-term secrets. The threat is not a distant future risk, but a present-day reality for all organizations.</p>
+                    </div>
+                </div>
+                <div class="card accordion-item">
+                    <button class="accordion-header w-full p-6 flex justify-between items-center text-left font-semibold text-lg">
+                        <span>What are the risks of using hybrid crypto?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="p-6 pt-0 text-gray-700">Hybrid crypto, combining classical and PQC algorithms, is a key strategy for a phased migration. The primary risk is implementation complexity. Moontrace’s tools are designed to manage this complexity, ensuring the combined security of both algorithms without introducing new vulnerabilities. This approach provides immediate protection and a smooth transition path.</p>
+                    </div>
+                </div>
+                <div class="card accordion-item">
+                    <button class="accordion-header w-full p-6 flex justify-between items-center text-left font-semibold text-lg">
+                        <span>How are you better than existing VPNs or key managers?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="p-6 pt-0 text-gray-700">Existing solutions lack native crypto-agility and were not designed to be post-quantum secure. Moontrace’s solutions are built from the ground up to be quantum-resilient and integrated. Our VPN, for example, uses a hybrid PQC key exchange, and QUBEx provides true quantum entropy and key management, features absent from legacy systems.</p>
+                    </div>
+                </div>
+                <div class="card accordion-item">
+                    <button class="accordion-header w-full p-6 flex justify-between items-center text-left font-semibold text-lg">
+                        <span>How do you handle regulatory compliance?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="p-6 pt-0 text-gray-700">Moontrace's VANTAGE tool assists with compliance by generating CBOMs and flagging non-compliant algorithms. QUBEx is designed for FIPS 140-3 readiness, and our solutions are aligned with emerging standards like NIST SP 800-208 and NSM-10, providing a clear path to regulatory compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. Appendix -->
+        <section id="appendix">
+            <h2 class="section-title text-center">12. Appendix</h2>
+            <p class="section-subtitle mt-4 text-center">Glossary of Key Terms</p>
+            <div class="mt-8 max-w-4xl mx-auto card p-8 md:p-12">
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>**CBOM (Cryptographic Bill of Materials):** A complete inventory of all cryptographic components, algorithms, and dependencies used within a system.</li>
+                    <li>**PQC (Post-Quantum Cryptography):** Algorithms designed to be secure against attacks from both classical and quantum computers.</li>
+                    <li>**HSM (Hardware Security Module):** A physical computing device that safeguards and manages digital keys for strong authentication.</li>
+                    <li>**TLS (Transport Layer Security):** The standard security protocol for establishing encrypted links between a web server and a browser.</li>
+                    <li>**CRYSTALS-Kyber:** A lattice-based key encapsulation mechanism selected by NIST for standardization.</li>
+                    <li>**Shor’s Algorithm:** A quantum algorithm that can efficiently factor large numbers, posing a threat to asymmetric cryptography like RSA.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-white mt-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+            <h3 class="text-2xl font-bold">Secure the present. Prepare for the quantum future.</h3>
+            <p class="mt-2 text-slate-300">Moontrace Engineering | Built in India, for the World.</p>
+        </div>
+    </footer>
+    
+    <!-- AI Expert Modal -->
+    <div id="ai-expert-modal-overlay" class="ai-modal-overlay no-print">
+        <div class="ai-modal-content">
+            <button id="ai-modal-close-button" class="ai-modal-close-button">&times;</button>
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 text-center">Ask Our AI Expert</h3>
+            <p class="text-slate-700 text-sm text-center">Ask a question about PQC algorithms, threats, or Moontrace's solutions.</p>
+            <textarea id="ai-question-input" class="ai-input-area" placeholder="e.g., Explain the difference between Kyber and Dilithium."></textarea>
+            <button id="ai-submit-question-btn" class="ai-button w-full bg-slate-800 hover:bg-slate-700">Ask AI Expert</button>
+            <div id="ai-loading-spinner" class="ai-loading-spinner"></div>
+            <div id="ai-response-area" class="ai-response-area bg-gray-50 text-gray-800 mt-4 overflow-auto" style="min-height: 150px;">
+                Your AI expert's response will appear here.
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const tabs = document.querySelectorAll('#solution-tabs button');
+            const panels = document.querySelectorAll('.solution-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabIndex = tab.dataset.tabIndex;
+
+                    tabs.forEach(t => t.classList.remove('active-tab'));
+                    tab.classList.add('active-tab');
+
+                    panels.forEach(panel => {
+                        if (panel.dataset.panelIndex === tabIndex) {
+                            panel.classList.remove('hidden');
+                        } else {
+                            panel.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                const icon = header.querySelector('.accordion-icon');
+                const content = header.nextElementSibling;
+                header.addEventListener('click', () => {
+                    const isExpanded = header.classList.toggle('expanded');
+                    if (isExpanded) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.textContent = '-';
+                    } else {
+                        content.style.maxHeight = null;
+                        icon.textContent = '+';
+                    }
+                });
+            });
+
+            // AI Expert Modal Logic
+            const openAiExpertModalBtn = document.getElementById('open-ai-expert-modal-btn');
+            const aiExpertModalOverlay = document.getElementById('ai-expert-modal-overlay');
+            const aiModalCloseButton = document.getElementById('ai-modal-close-button');
+            const aiQuestionInput = document.getElementById('ai-question-input');
+            const aiSubmitQuestionBtn = document.getElementById('ai-submit-question-btn');
+            const aiLoadingSpinner = document.getElementById('ai-loading-spinner');
+            const aiResponseArea = document.getElementById('ai-response-area');
+
+            if (openAiExpertModalBtn) {
+                openAiExpertModalBtn.addEventListener('click', () => {
+                    aiExpertModalOverlay.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            aiModalCloseButton.addEventListener('click', () => {
+                aiExpertModalOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+            aiExpertModalOverlay.addEventListener('click', (event) => {
+                if (event.target === aiExpertModalOverlay) {
+                    aiExpertModalOverlay.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            aiSubmitQuestionBtn.addEventListener('click', async () => {
+                const userQuestion = aiQuestionInput.value.trim();
+                if (!userQuestion) {
+                    aiResponseArea.textContent = 'Please enter a question.';
+                    return;
+                }
+                
+                aiSubmitQuestionBtn.disabled = true;
+                aiLoadingSpinner.style.display = 'block';
+                aiResponseArea.textContent = 'Thinking...';
+
+                const prompt = `Act as a quantum cryptography expert for Moontrace Engineering. Provide a concise, professional answer to the following question. Reference Moontrace's solutions where relevant. Question: "${userQuestion}"`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        aiResponseArea.textContent = text;
+                    } else {
+                        aiResponseArea.textContent = 'Sorry, I could not generate a response.';
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    aiResponseArea.textContent = 'An error occurred. Please try again.';
+                } finally {
+                    aiSubmitQuestionBtn.disabled = false;
+                    aiLoadingSpinner.style.display = 'none';
+                }
+            });
+
+            // Market Growth Charts
+            const globalMarketCtx = document.getElementById('globalMarketChart');
+            const naMarketCtx = document.getElementById('naMarketChart');
+            const indianMarketCtx = document.getElementById('indianMarketChart');
+            
+            const globalMarketLabels = ['2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034'];
+            const globalMarketData = [1.68, 2.31, 3.18, 4.38, 6.03, 8.31, 11.45, 15.77, 21.73, 29.95];
+            
+            const naMarketLabels = ['2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034'];
+            const naMarketData = [0.46, 0.64, 0.88, 1.21, 1.66, 2.29, 3.15, 4.34, 5.98, 8.24];
+
+            const indianMarketLabels = ['2025', '2026', '2027', '2028', '2029', '2030'];
+            const indianMarketDatasets = [
+                {
+                    label: 'Defense',
+                    data: [15, 25, 40, 60, 90, 130],
+                    borderColor: '#0369A1',
+                    backgroundColor: 'rgba(3, 105, 161, 0.1)',
+                    fill: false,
+                    tension: 0.4
+                },
+                {
+                    label: 'Health',
+                    data: [10, 18, 28, 42, 65, 95],
+                    borderColor: '#7DD3FC',
+                    backgroundColor: 'rgba(125, 211, 252, 0.1)',
+                    fill: false,
+                    tension: 0.4
+                },
+                {
+                    label: 'Finance',
+                    data: [20, 32, 50, 75, 110, 160],
+                    borderColor: '#075985',
+                    backgroundColor: 'rgba(7, 89, 133, 0.1)',
+                    fill: false,
+                    tension: 0.4
+                }
+            ];
+            
+            if (globalMarketCtx) {
+                new Chart(globalMarketCtx, {
+                    type: 'line',
+                    data: {
+                        labels: globalMarketLabels,
+                        datasets: [{
+                            label: 'Market Size (in Billions USD)',
+                            data: globalMarketData,
+                            borderColor: '#0369A1',
+                            backgroundColor: 'rgba(3, 105, 161, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#0369A1',
+                            pointHoverRadius: 7,
+                            pointHoverBackgroundColor: '#0284C7',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Market Size (in Billions USD)'
+                                },
+                                grid: { color: '#E0F2FE' }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+
+            if (naMarketCtx) {
+                new Chart(naMarketCtx, {
+                    type: 'line',
+                    data: {
+                        labels: naMarketLabels,
+                        datasets: [{
+                            label: 'Market Size (in Billions USD)',
+                            data: naMarketData,
+                            borderColor: '#0369A1',
+                            backgroundColor: 'rgba(3, 105, 161, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#0369A1',
+                            pointHoverRadius: 7,
+                            pointHoverBackgroundColor: '#0284C7',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Market Size (in Billions USD)'
+                                },
+                                grid: { color: '#E0F2FE' }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+
+            if (indianMarketCtx) {
+                new Chart(indianMarketCtx, {
+                    type: 'line',
+                    data: {
+                        labels: indianMarketLabels,
+                        datasets: indianMarketDatasets
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Market Size (in Millions USD)'
+                                },
+                                grid: { color: '#E0F2FE' }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#1F2937'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
