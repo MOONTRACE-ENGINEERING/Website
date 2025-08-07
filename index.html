@@ -503,63 +503,152 @@
         }
       }
 
-      .pdf-modal-overlay {
+      /* New "Coming Soon" Modal */
+      #coming-soon-modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 0.7);
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 101;
+        z-index: 100;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.4s ease, visibility 0.4s ease;
       }
-      .pdf-modal-overlay.show {
+      #coming-soon-modal-overlay.show {
         opacity: 1;
         visibility: visible;
       }
-      .pdf-modal-content {
-        position: relative;
-        width: 90%;
-        height: 90%;
+      #coming-soon-modal-overlay .modal-content {
         background-color: white;
+        padding: 2.5rem;
         border-radius: 0.75rem;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 95%;
+        max-height: 95%;
+        overflow-y: auto;
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.4s ease-out;
       }
-      .pdf-modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        background-color: #f3f4f6;
-        border-bottom: 1px solid #e5e7eb;
+      #coming-soon-modal-overlay.show .modal-content {
+        transform: translateY(0) scale(1);
       }
-      .pdf-modal-header h4 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #1f2937;
-      }
-      .pdf-modal-close {
-        font-size: 1.75rem;
-        color: #6b7280;
-        cursor: pointer;
+      #coming-soon-modal-overlay .modal-close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
         background: none;
         border: none;
+        font-size: 1.75rem;
+        color: #666;
+        cursor: pointer;
         transition: color 0.2s;
       }
-      .pdf-modal-close:hover {
-        color: #374151;
+      #coming-soon-modal-overlay .modal-close-button:hover {
+        color: #333;
       }
-      .pdf-iframe {
+
+      /* Contact Modal Specific Styles */
+      #contact-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Higher z-index to be on top of everything */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+      }
+      #contact-modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      #contact-modal-iframe {
+        width: 90%; /* Adjust width as needed */
+        max-width: 700px; /* Max width for the iframe content */
+        height: 90%; /* Adjust height as needed */
+        max-height: 600px; /* Max height for the iframe content */
         border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        background-color: white; /* Fallback background */
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.4s ease-out;
+      }
+      #contact-modal-overlay.show #contact-modal-iframe {
+        transform: translateY(0) scale(1);
+      }
+      .contact-modal-close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        color: #fff; /* White close button for dark overlay */
+        cursor: pointer;
+        z-index: 1001; /* Above iframe */
+        transition: color 0.2s;
+      }
+      .contact-modal-close-button:hover {
+        color: #ccc;
+      }
+
+      /* Contact Section Specific Styling */
+      .contact-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem; /* Space between direct contact and button */
+      }
+      @media (min-width: 768px) {
+        .contact-content-wrapper {
+          flex-direction: row;
+          justify-content: center;
+          gap: 4rem; /* More space on desktop */
+        }
+      }
+
+      .direct-contact-info {
+        text-align: center;
+        padding-right: 0; /* No padding-right on mobile */
+        border-right: none; /* No border on mobile */
+        padding-bottom: 2rem; /* Padding below for mobile separator */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* White separator for dark background */
+        width: 100%; /* Take full width on mobile */
+      }
+
+      @media (min-width: 768px) {
+        .direct-contact-info {
+          text-align: right; /* Align text to right on desktop */
+          padding-right: 2rem; /* Padding for vertical separator */
+          border-right: 1px solid rgba(255, 255, 255, 0.2); /* Vertical separator */
+          padding-bottom: 0; /* No bottom padding on desktop */
+          border-bottom: none; /* No bottom border on desktop */
+          width: auto; /* Shrink to content on desktop */
+        }
+      }
+
+      .get-in-touch-button-container {
+        text-align: center;
+        width: 100%; /* Take full width on mobile */
+      }
+
+      @media (min-width: 768px) {
+        .get-in-touch-button-container {
+          text-align: left; /* Align button to left on desktop */
+          width: auto; /* Shrink to content on desktop */
+        }
       }
     </style>
   </head>
@@ -677,8 +766,8 @@
         <a href="#whymoontrace" class="block nav-link font-medium"
           >Why Moontrace?</a
         >
-       
         <a href="#about" class="block nav-link font-medium py-2">About</a>
+       
         <a
           href="careers.html"
           class="block bg-black text-white text-center mt-2 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
@@ -892,7 +981,7 @@
                 </button>
                 <button id="next-solution-btn" class="solution-nav-button right hidden md:flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
             </div>
@@ -1309,11 +1398,6 @@
                     <p class="mt-4 font-semibold">
                       Our Funding Instrument: ISAFE Notes (Cap + Discount)
                     </p>
-                    <p class="mt-2">
-                      We prefer to use the 100x VC's Standard ISAFE (India
-                      Simple Agreement for Future Equity) for all early-stage
-                      investment rounds, featuring:
-                    </p>
                     <ul class="list-disc list-inside ml-4 mt-2">
                       <li>
                         <strong>Valuation Cap:</strong> Ensures that your early
@@ -1347,39 +1431,68 @@
         </div>
       </section>
 
-      <section id="contact" class="py-20 bg-gray-800 text-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center">
-            <h2 class="text-white font-bold tracking-tight sm:text-4xl">
-              Let's Build the Quantum-Safe Future.
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-              We're actively seeking collaborators, innovators, and partners who
-              share our vision for securing the quantum era. Connect with us.
-            </p>
-          </div>
-          <div class="mt-16 max-w-xl mx-auto animated-item">
-            <div class="text-center space-y-4">
-              <p class="text-lg">Get in touch directly:</p>
-              <p class="text-lg font-semibold">Bharat Raghuvanshi</p>
-              <p>
-                <a
-                  href="mailto:bharat.moontrace@gmail.com"
-                  class="text-gray-400 hover:text-gray-300 transition"
-                  >bharat.moontrace@gmail.com</a
-                >
-              </p>
-              <p>
-                <a
-                  href="tel:+918887748365"
-                  class="text-gray-400 hover:text-gray-300 transition"
-                  >+91 8887748365</a
-                >
-              </p>
-            </div>
-          </div>
+     <section id="contact" class="py-20 bg-gray-800 text-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Heading -->
+    <div class="text-center">
+      <h2 class="text-white font-extrabold text-3xl sm:text-4xl tracking-tight">
+        Let's Build the Quantum-Safe Future.
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+        We're actively seeking collaborators, innovators, and partners who share our vision for securing the quantum era. Connect with us.
+      </p>
+    </div>
+
+    <!-- Contact Info + Divider + CTA -->
+    <div class="mt-16 max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row items-stretch justify-center gap-10 md:gap-16">
+
+        <!-- Left: Direct Contact -->
+        <div class="flex-1 text-center md:text-right flex flex-col justify-center">
+          <p class="text-lg">Get in touch directly:</p>
+          <p class="text-lg font-semibold">Bharat Raghuvanshi</p>
+          <p>
+            <a
+              href="mailto:bharat.moontrace@gmail.com"
+              class="text-gray-400 hover:text-gray-300 transition"
+            >
+              bharat.moontrace@gmail.com
+            </a>
+          </p>
+          <p>
+            <a
+              href="tel:+918887748365"
+              class="text-gray-400 hover:text-gray-300 transition"
+            >
+              +91 8887748365
+            </a>
+          </p>
         </div>
-      </section>
+
+        <!-- Divider -->
+        <div class="hidden md:flex items-center">
+          <div class="w-px h-full bg-gray-600"></div>
+        </div>
+
+        <!-- Right: CTA -->
+        <div class="flex-1 text-center flex flex-col justify-center items-center">
+          <p class="text-lg mb-4">Prefer to send us a message?</p>
+          <button
+            id="contact-form-button"
+            class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold text-base hover:bg-blue-700 transition"
+          >
+            Get in Touch
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
     </main>
 
     <footer class="bg-gray-900 text-gray-400">
@@ -1400,6 +1513,7 @@
             <li>
               <a href="assets/pdfs/Investor_policy.pdf" target="_blank">Investor Relations</a>
             </li>
+            <li><a href="regulatory-hub.html">Regulatory Hub</a></li> <!-- New Footer Link -->
           </ul>
           <p>
             &copy; 2025 Moontrace Engineering Research and Consulting | All
@@ -1475,7 +1589,7 @@
             /></svg
           >About</a
         >
-        <a href="#contact" class="bottom-nav-link"
+        <a href="#" id="mobile-contact-link-bottom" class="bottom-nav-link"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -1544,10 +1658,6 @@
           <li>This occurred before the financial institution upgraded its environment during its predicted timeframe of 3 to 4 years (Y), and hackers were able to take advantage of this sensitive customer data.</li>
         </ul>
 
-        <p class="text-gray-700 mt-4 leading-relaxed">
-          Mosca's theorem serves as a clear reminder of the need for organizations to begin applying diligence in the Post Quantum space right away. In order to evaluate the best forms of crypto-agility that can keep your systems safe and secure in advance of the quantum future, Mosca’s theory presents an optimistic strategy. Moontrace Engineering is able to provide quantum-resistant solutions that enable businesses to defend their systems against assaults based on quantum computers thanks to significant time and talent investments in post-quantum cryptography.
-        </p>
-
         <div class="video-container">
           <iframe
             src="https://www.youtube.com/embed/ewDE7yaKZyw"
@@ -1562,26 +1672,10 @@
       </div>
     </div>
 
-    <!-- Whitepaper PDF Button -->
-    <button id="pdf-button" aria-label="Read whitepaper" title="Read whitepaper" style="padding:0; background:none; border:none; width:60px; height:60px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+    <!-- Whitepaper PDF Button - Updated to link to whitepaper.html -->
+    <a href="whitepaper.html" id="pdf-button" aria-label="Read whitepaper" title="Read whitepaper" style="padding:0; background:none; border:none; width:60px; height:60px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center;">
         <img src="assets/button.png" alt="Moontrace Whitepaper" style="width:60px; height:60px; object-fit:cover; border-radius:50%; display:block;" />
-    </button>
-    
-    <!-- Whitepaper PDF Modal -->
-    <div id="pdf-modal-overlay" class="pdf-modal-overlay">
-      <div class="pdf-modal-content">
-        <div class="pdf-modal-header">
-          <h4>Moontrace Engineering Whitepaper</h4>
-          <button id="pdf-modal-close" class="pdf-modal-close">&times;</button>
-        </div>
-        <iframe
-          id="pdf-iframe"
-          class="pdf-iframe"
-          src="assets/pdfs/whitepaper.pdf"
-          title="Moontrace Whitepaper"
-        ></iframe>
-      </div>
-    </div>
+    </a>
     
     <!-- New "Coming Soon" Modal -->
     <div id="coming-soon-modal-overlay" class="modal-overlay">
@@ -1590,6 +1684,12 @@
             <h3 class="text-2xl font-bold text-gray-900 mb-4">Launching Soon!</h3>
             <p class="text-lg text-gray-700">We are actively developing our tools and will be launching soon. Stay tuned!</p>
         </div>
+    </div>
+
+    <!-- Contact Modal Overlay -->
+    <div id="contact-modal-overlay" class="modal-overlay">
+      <button id="contact-modal-close" class="contact-modal-close-button">&times;</button>
+      <iframe id="contact-modal-iframe" src="contact-modal.html" title="Contact Us Form"></iframe>
     </div>
 
     <script>
@@ -2179,54 +2279,6 @@
             });
         }
         
-        // --- Whitepaper PDF Modal Logic (new) ---
-        const pdfButton = document.getElementById('pdf-button');
-        const pdfModalOverlay = document.getElementById('pdf-modal-overlay');
-        const pdfModalClose = document.getElementById('pdf-modal-close');
-        const pdfIframe = document.getElementById('pdf-iframe');
-        const pdfUrl = 'assets/pdfs/whitepaper.pdf';
-
-        // Function to show the PDF modal
-        function showPdfModal() {
-          pdfModalOverlay.classList.add('show');
-          document.body.style.overflow = 'hidden'; // Prevent scrolling background
-        }
-
-        // Function to hide the PDF modal
-        function hidePdfModal() {
-          pdfModalOverlay.classList.remove('show');
-          document.body.style.overflow = ''; // Restore scrolling
-        }
-
-        // Event listener to open modal when button is clicked
-        if (pdfButton) {
-          pdfButton.addEventListener('click', () => {
-            // Check screen width
-            if (window.innerWidth <= 768) {
-              // On mobile, open in a new tab
-              window.open(pdfUrl, '_blank');
-            } else {
-              // On desktop, show the modal
-              showPdfModal();
-            }
-          });
-        }
-
-        // Event listener to close modal when close button is clicked
-        if (pdfModalClose) {
-          pdfModalClose.addEventListener('click', hidePdfModal);
-        }
-        
-        // Event listener to close modal when clicking outside the content (on the overlay)
-        if (pdfModalOverlay) {
-            pdfModalOverlay.addEventListener('click', (event) => {
-                // Check if the click occurred directly on the overlay, not its children
-                if (event.target === pdfModalOverlay) {
-                    hidePdfModal();
-                }
-            });
-        }
-
         // --- New "Coming Soon" Modal Logic ---
         const ctaButtons = document.querySelectorAll('.cta-button');
         const comingSoonModalOverlay = document.getElementById('coming-soon-modal-overlay');
@@ -2264,6 +2316,66 @@
                 // Check if the click occurred directly on the overlay, not its children
                 if (event.target === comingSoonModalOverlay) {
                     hideComingSoonModal();
+                }
+            });
+        }
+
+        // --- Contact Modal Logic (new) ---
+        const contactModalOverlay = document.getElementById('contact-modal-overlay');
+        const contactModalCloseButton = document.getElementById('contact-modal-close');
+        const desktopContactLink = document.getElementById('desktop-contact-link');
+        const mobileContactLink = document.getElementById('mobile-contact-link'); // Top mobile nav
+        const mobileContactLinkBottom = document.getElementById('mobile-contact-link-bottom'); // Bottom mobile nav
+        const contactFormButton = document.getElementById('contact-form-button'); // New button in contact section
+
+        function showContactModal() {
+            contactModalOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        function hideContactModal() {
+            contactModalOverlay.classList.remove('show');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Expose hideContactModal to the iframe content (contact-modal.html)
+        window.hideContactModal = hideContactModal;
+
+        if (desktopContactLink) {
+            desktopContactLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showContactModal();
+            });
+        }
+        if (mobileContactLink) {
+            mobileContactLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileMenu.classList.add("hidden"); // Hide mobile menu first
+                showContactModal();
+            });
+        }
+        if (mobileContactLinkBottom) {
+            mobileContactLinkBottom.addEventListener('click', (e) => {
+                e.preventDefault();
+                showContactModal();
+            });
+        }
+        // Event listener for the new "Get in Touch" button in the contact section
+        if (contactFormButton) {
+            contactFormButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                showContactModal();
+            });
+        }
+
+        if (contactModalCloseButton) {
+            contactModalCloseButton.addEventListener('click', hideContactModal);
+        }
+
+        if (contactModalOverlay) {
+            contactModalOverlay.addEventListener('click', (event) => {
+                if (event.target === contactModalOverlay) {
+                    hideContactModal();
                 }
             });
         }
