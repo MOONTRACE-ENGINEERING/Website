@@ -395,7 +395,7 @@
         z-index: 100;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.4s ease, visibility 0.4s ease; /* Enhanced transition */
+        transition: opacity 0.5s ease, visibility 0.5s ease; /* Enhanced transition */
       }
       .modal-overlay.show {
         opacity: 1;
@@ -411,7 +411,7 @@
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95); /* Initial state for transition */
-        transition: all 0.4s ease-out; /* Enhanced transition */
+        transition: all 0.5s ease-out; /* Enhanced transition */
         
         /* Hide scrollbar */
         scrollbar-width: none; /* For Firefox */
@@ -517,7 +517,7 @@
         z-index: 100;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
+        transition: opacity 0.5s ease, visibility 0.5s ease; /* Enhanced transition */
       }
       #coming-soon-modal-overlay.show {
         opacity: 1;
@@ -533,7 +533,7 @@
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95);
-        transition: all 0.4s ease-out;
+        transition: all 0.5s ease-out; /* Enhanced transition */
       }
       #coming-soon-modal-overlay.show .modal-content {
         transform: translateY(0) scale(1);
@@ -551,57 +551,6 @@
       }
       #coming-soon-modal-overlay .modal-close-button:hover {
         color: #333;
-      }
-
-      /* Contact Modal Specific Styles */
-      #contact-modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000; /* Higher z-index to be on top of everything */
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
-      }
-      #contact-modal-overlay.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      #contact-modal-iframe {
-        width: 90%; /* Adjust width as needed */
-        max-width: 700px; /* Max width for the iframe content */
-        height: 90%; /* Adjust height as needed */
-        max-height: 600px; /* Max height for the iframe content */
-        border: none;
-        border-radius: 0.75rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        background-color: white; /* Fallback background */
-        transform: translateY(20px) scale(0.95);
-        transition: all 0.4s ease-out;
-      }
-      #contact-modal-overlay.show #contact-modal-iframe {
-        transform: translateY(0) scale(1);
-      }
-      .contact-modal-close-button {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        font-size: 1.75rem;
-        color: #fff; /* White close button for dark overlay */
-        cursor: pointer;
-        z-index: 1001; /* Above iframe */
-        transition: color 0.2s;
-      }
-      .contact-modal-close-button:hover {
-        color: #ccc;
       }
 
       /* Contact Section Specific Styling */
@@ -648,6 +597,175 @@
         .get-in-touch-button-container {
           text-align: left; /* Align button to left on desktop */
           width: auto; /* Shrink to content on desktop */
+        }
+      }
+
+      /* New Contact Popup Modal Styles */
+      #contact-popup-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Translucent background */
+        backdrop-filter: blur(5px); /* Added blur effect */
+        -webkit-backdrop-filter: blur(5px); /* For Safari */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Ensure it's on top */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease; /* Enhanced transition for backdrop-filter */
+      }
+      #contact-popup-modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      #contact-popup-modal-overlay .modal-content {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 90%; /* Adjust max-width for responsiveness */
+        width: 500px; /* Fixed width for larger screens */
+        max-height: 95%;
+        overflow-y: auto;
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.5s ease-out; /* Enhanced transition */
+        text-align: center; /* Center content inside */
+      }
+      #contact-popup-modal-overlay.show .modal-content {
+        transform: translateY(0) scale(1);
+      }
+      #contact-popup-modal-overlay .modal-close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        color: #666;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      #contact-popup-modal-overlay .modal-close-button:hover {
+        color: #333;
+      }
+      #contact-popup-modal-overlay .company-logo {
+        max-width: 100px; /* Adjust logo size */
+        height: auto;
+        margin: 0 auto 1.5rem auto; /* Center logo and add bottom margin */
+      }
+      #contact-popup-modal-overlay .contact-form label {
+        display: block;
+        text-align: left;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+      #contact-popup-modal-overlay .contact-form input,
+      #contact-popup-modal-overlay .contact-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        box-sizing: border-box; /* Include padding in width */
+        transition: border-color 0.2s, box-shadow 0.2s; /* Added transition for focus */
+      }
+      #contact-popup-modal-overlay .contact-form input:focus,
+      #contact-popup-modal-overlay .contact-form textarea:focus {
+        outline: none;
+        border-color: #0052cc; /* Blue border on focus */
+        box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.25); /* Blue shadow on focus */
+      }
+      #contact-popup-modal-overlay .contact-form textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      #contact-popup-modal-overlay .contact-form button {
+        background-color: #0052cc;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+      }
+      #contact-popup-modal-overlay .contact-form button:hover {
+        background-color: #003f99;
+      }
+      #contact-popup-modal-overlay .contact-form button:disabled {
+        background-color: #a0aec0;
+        cursor: not-allowed;
+      }
+      /* Styles for loading spinner inside the modal */
+      .modal-loading-spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #0052cc;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 1rem auto;
+      }
+      /* Styles for message display */
+      .modal-message {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        text-align: center;
+      }
+      .modal-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .modal-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      /* New styles for Whitepaper Invitation Popup */
+      #whitepaper-popup {
+        position: fixed;
+        bottom: 100px; /* Position above the PDF button (20px bottom + 60px height + 10px margin) */
+        right: 30px; /* Align right edge with PDF button */
+        width: 280px; /* Adjust width as needed */
+        padding: 0.75rem 1rem;
+        background-color: #378bf9; /* Dark background */
+        color: #ffffff;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        font-size: 0.875rem;
+        font-weight: 500;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px); /* Initial slight offset for animation */
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0.5s ease;
+        z-index: 101; /* Above the PDF button but below modals */
+        /* Center horizontally relative to the button */
+        transform: translateX(calc(-50% + 30px)); /* Half its width left, half button width right */
+      }
+      #whitepaper-popup.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      /* Adjust for mobile bottom nav overlap */
+      @media (max-width: 768px) {
+        #whitepaper-popup {
+          bottom: 150px; /* Adjust to be above the mobile bottom nav and PDF button */
         }
       }
     </style>
@@ -895,7 +1013,7 @@
                                 <div class="text-left">
                                     <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Cryptographic Posture Visibility</h3>
                                     <p class="text-gray-600 mb-3">Gain complete visibility into your cryptographic posture. We identify what needs fixing, where, and why, providing a clear roadmap to quantum readiness.</p>
-                                    <p class="text-gray-600">Our Vantage tool scans your entire digital ecosystem—from code repositories to live applications—to create a comprehensive inventory of all cryptographic assets.</p>
+                                    <p class="text-600">Our Vantage tool scans your entire digital ecosystem—from code repositories to live applications—to create a comprehensive inventory of all cryptographic assets.</p>
                                     <a href="#" class="cta-button">Learn More about Vantage</a>
                                 </div>
                            </div>
@@ -968,7 +1086,7 @@
                             </div>
                             <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
                                 <!-- Image hidden on mobile -->
-                                <img src="https://placehold.co/600x400/4a3f56/ffffff?text=QUBEx" alt="Moontrace QUBEx Tool" class="h-auto w-full rounded-lg shadow-md">
+                                <img src="https://placehold.co/600x400/4a3f56/ffffff?text=QUBEx" class="h-auto w-full rounded-lg shadow-md">
                            </div>
                         </div>
                     </div>
@@ -1477,10 +1595,11 @@
         <!-- Right: CTA -->
         <div class="flex-1 text-center flex flex-col justify-center items-center">
           <p class="text-lg mb-4">Prefer to send us a message?</p>
+          <!-- The "Get in Touch" button now triggers the new popup modal -->
           <button
             id="contact-form-button"
             class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold text-base hover:bg-blue-700 transition"
-          >
+            >
             Get in Touch
           </button>
         </div>
@@ -1541,7 +1660,7 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-            /></svg
+            /></svg>
           >Home</a
         >
         <a href="#solutions" class="bottom-nav-link"
@@ -1589,6 +1708,8 @@
             /></svg
           >About</a
         >
+        <!-- Removed contact link from bottom nav as it's no longer a modal -->
+        <!--
         <a href="#" id="mobile-contact-link-bottom" class="bottom-nav-link"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -1601,9 +1722,10 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
-            /></svg
+            /></svg>
           >Contact</a
         >
+        -->
       </div>
     </nav>
 
@@ -1622,11 +1744,11 @@
 
         <h4 class="text-xl font-bold text-blue-400 border-b border-blue-200 pb-2 mb-4">Explanation:</h4>
         <p class="text-lg italic text-gray-800 mb-4 leading-relaxed">
-          "There is a <span class="text-blue-400 font-bold">1 in 7 chance</span> that some fundamental public-key crypto will be broken by quantum by <span class="text-blue-400 font-bold">2026</span>, and a <span class="text-blue-400 font-bold">1 in 2 chance</span> of the same by <span class="text-blue-400 font-bold">2031</span>."
+          "There is a <span class="font-bold">1 in 7 chance</span> that some fundamental public-key crypto will be broken by quantum by <span class="font-bold">2026</span>, and a <span class="font-bold">1 in 2 chance</span> of the same by <span class="font-bold">2031</span>."
           <span class="block text-base font-normal text-gray-500 mt-1">– Dr. Michele Mosca, (April 2015)</span>
         </p>
         <p class="text-gray-700 mb-6 leading-relaxed">
-          According to Michele Mosca's Theorem <span class="font-extrabold text-blue-400">(X + Y) > Z</span>, if the amount of time that data must remain secure (<span class="font-bold">X</span>) plus the time it takes to upgrade cryptographic systems (<span class="font-bold">Y</span>) is greater than when quantum computers come online with enough power to break cryptography (<span class="font-bold">Z</span>), you have already run out of time.
+          According to Michele Mosca's Theorem <span class="font-extrabold">(X + Y) > Z</span>, if the amount of time that data must remain secure (<span class="font-bold">X</span>) plus the time it takes to upgrade cryptographic systems (<span class="font-bold">Y</span>) is greater than when quantum computers come online with enough power to break cryptography (<span class="font-bold">Z</span>), you have already run out of time.
         </p>
 
         <h4 class="text-xl font-bold text-blue-400 border-b border-blue-200 pb-2 mb-4">Here is a basic example of the theorem:</h4>
@@ -1686,10 +1808,36 @@
         </div>
     </div>
 
-    <!-- Contact Modal Overlay -->
-    <div id="contact-modal-overlay" class="modal-overlay">
-      <button id="contact-modal-close" class="contact-modal-close-button">&times;</button>
-      <iframe id="contact-modal-iframe" src="contact-modal.html" title="Contact Us Form"></iframe>
+    <!-- New Contact Popup Modal -->
+    <div id="contact-popup-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="contact-popup-modal-close" class="modal-close-button" aria-label="Close contact form">&times;</button>
+            <img src="assets/finalbg.png" alt="Moontrace Engineering Logo" class="company-logo">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Get in Touch with Moontrace</h3>
+            <p class="text-gray-700 mb-6">We'd love to hear from you! Please fill out the form below.</p>
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/mdkdpakv" method="POST">
+                <div class="mb-4">
+                    <label for="contact-name">Name</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required>
+                </div>
+                <div class="mb-6">
+                    <label for="contact-message">Message</label>
+                    <textarea id="contact-message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" id="contact-submit-button">Send Message</button>
+                <div id="contact-loading-spinner" class="modal-loading-spinner hidden"></div>
+                <div id="contact-message-display" class="modal-message hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Whitepaper Invitation Popup -->
+    <div id="whitepaper-popup" class="whitepaper-popup">
+        <p>Access our Whitepaper for in-depth insights!</p>
     </div>
 
     <script>
@@ -2279,7 +2427,7 @@
             });
         }
         
-        // --- New "Coming Soon" Modal Logic ---
+        // --- "Coming Soon" Modal Logic (for CTA buttons) ---
         const ctaButtons = document.querySelectorAll('.cta-button');
         const comingSoonModalOverlay = document.getElementById('coming-soon-modal-overlay');
         const comingSoonModalClose = document.getElementById('coming-soon-modal-close');
@@ -2320,65 +2468,117 @@
             });
         }
 
-        // --- Contact Modal Logic (new) ---
-        const contactModalOverlay = document.getElementById('contact-modal-overlay');
-        const contactModalCloseButton = document.getElementById('contact-modal-close');
-        const desktopContactLink = document.getElementById('desktop-contact-link');
-        const mobileContactLink = document.getElementById('mobile-contact-link'); // Top mobile nav
-        const mobileContactLinkBottom = document.getElementById('mobile-contact-link-bottom'); // Bottom mobile nav
-        const contactFormButton = document.getElementById('contact-form-button'); // New button in contact section
+        // --- New Contact Popup Modal Logic ---
+        const contactFormButton = document.getElementById('contact-form-button');
+        const contactPopupModalOverlay = document.getElementById('contact-popup-modal-overlay');
+        const contactPopupModalClose = document.getElementById('contact-popup-modal-close');
+        const contactForm = document.getElementById('contact-form');
+        const contactSubmitButton = document.getElementById('contact-submit-button');
+        const contactLoadingSpinner = document.getElementById('contact-loading-spinner');
+        const contactMessageDisplay = document.getElementById('contact-message-display');
 
-        function showContactModal() {
-            contactModalOverlay.classList.add('show');
+        // Function to show the contact popup modal
+        function showContactPopupModal() {
+            contactPopupModalOverlay.classList.add('show');
             document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            // Reset form and messages when opening
+            contactForm.reset();
+            contactMessageDisplay.classList.add('hidden');
+            contactMessageDisplay.textContent = '';
+            contactSubmitButton.disabled = false;
         }
 
-        function hideContactModal() {
-            contactModalOverlay.classList.remove('show');
+        // Function to hide the contact popup modal
+        function hideContactPopupModal() {
+            contactPopupModalOverlay.classList.remove('show');
             document.body.style.overflow = ''; // Restore scrolling
         }
 
-        // Expose hideContactModal to the iframe content (contact-modal.html)
-        window.hideContactModal = hideContactModal;
-
-        if (desktopContactLink) {
-            desktopContactLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                showContactModal();
-            });
-        }
-        if (mobileContactLink) {
-            mobileContactLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                mobileMenu.classList.add("hidden"); // Hide mobile menu first
-                showContactModal();
-            });
-        }
-        if (mobileContactLinkBottom) {
-            mobileContactLinkBottom.addEventListener('click', (e) => {
-                e.preventDefault();
-                showContactModal();
-            });
-        }
-        // Event listener for the new "Get in Touch" button in the contact section
+        // Event listener for the "Get in Touch" button in the contact section
         if (contactFormButton) {
-            contactFormButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                showContactModal();
-            });
+            contactFormButton.addEventListener('click', showContactPopupModal);
         }
 
-        if (contactModalCloseButton) {
-            contactModalCloseButton.addEventListener('click', hideContactModal);
+        // Event listener to close modal when close button is clicked
+        if (contactPopupModalClose) {
+            contactPopupModalClose.addEventListener('click', hideContactPopupModal);
         }
-
-        if (contactModalOverlay) {
-            contactModalOverlay.addEventListener('click', (event) => {
-                if (event.target === contactModalOverlay) {
-                    hideContactModal();
+        
+        // Event listener to close modal when clicking outside the content (on the overlay)
+        if (contactPopupModalOverlay) {
+            contactPopupModalOverlay.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the overlay, not its children
+                if (event.target === contactPopupModalOverlay) {
+                    hideContactPopupModal();
                 }
             });
         }
+
+        // Form submission logic for Formspree
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                contactSubmitButton.disabled = true; // Disable button
+                contactLoadingSpinner.classList.remove('hidden'); // Show spinner
+                contactMessageDisplay.classList.add('hidden'); // Hide previous messages
+                contactMessageDisplay.textContent = '';
+
+                const formData = new FormData(contactForm);
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: contactForm.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    console.log('Formspree response status:', response.status); // Debugging
+                    const data = await response.json();
+                    console.log('Formspree response data:', data); // Debugging
+
+                    if (response.ok) {
+                        contactMessageDisplay.classList.remove('hidden', 'error');
+                        contactMessageDisplay.classList.add('success');
+                        contactMessageDisplay.textContent = 'Thank you for your message! We will get back to you soon.';
+                        contactForm.reset(); // Clear form fields on success
+                        setTimeout(hideContactPopupModal, 3000); // Hide modal after 3 seconds
+                    } else {
+                        contactMessageDisplay.classList.remove('hidden', 'success');
+                        contactMessageDisplay.classList.add('error');
+                        if (data.errors) {
+                            contactMessageDisplay.textContent = data.errors.map(error => error.message).join(', ');
+                        } else {
+                            contactMessageDisplay.textContent = 'Oops! There was a problem sending your message.';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    contactMessageDisplay.classList.remove('hidden', 'success');
+                    contactMessageDisplay.classList.add('error');
+                    contactMessageDisplay.textContent = 'Network error. Please try again later.';
+                } finally {
+                    contactLoadingSpinner.classList.add('hidden'); // Hide spinner
+                    contactSubmitButton.disabled = false; // Re-enable button
+                }
+            });
+        }
+
+        // --- Whitepaper Invitation Popup Logic ---
+        const whitepaperPopup = document.getElementById('whitepaper-popup');
+        const whitepaperButton = document.getElementById('pdf-button'); // Assuming this is the whitepaper button
+
+        function showWhitepaperPopup() {
+            whitepaperPopup.classList.add('show');
+            // Hide after 5 seconds
+            setTimeout(() => {
+                whitepaperPopup.classList.remove('show');
+            }, 5000); // Popup stays for 5 seconds
+        }
+
+        // Show the popup after 3 seconds of page load
+        setTimeout(showWhitepaperPopup, 3000); // Popup appears after 3 seconds
       });
     </script>
   </body>
