@@ -1,502 +1,320 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moontrace Engineering | Whitepaper</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="assets/finalbg.png" />
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #f3f4f6; /* Light gray background */
-        color: #1a1a1a;
-        display: flex;
-        flex-direction: column; /* Allow header/footer to stack */
-        min-height: 100vh;
-        margin: 0; /* Remove default body margin */
-      }
-      main {
-        flex-grow: 1; /* Allow main content to take available space */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem; /* Padding around the main content wrapper */
-      }
-      .main-content-wrapper {
-        background-color: #ffffff;
-        border-radius: 0.75rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        padding: 2rem;
-        max-width: 1400px; /* Increased max-width for better spacing */
-        width: 100%;
-        display: flex;
-        flex-direction: column; /* Default to column for mobile */
-        gap: 3rem; /* Increased gap for better separation */
-      }
-      @media (min-width: 768px) {
-        .main-content-wrapper {
-          flex-direction: row; /* Row for desktop */
-          padding: 3rem;
-          gap: 4rem; /* Further increased gap for desktop */
-        }
-      }
-      .form-group {
-        margin-bottom: 1.25rem;
-      }
-      .form-group label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: #374151;
-      }
-      .form-group input,
-      .form-group select {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        border: 1px solid #d1d5db;
-        border-radius: 0.5rem;
-        font-size: 1rem;
-        color: #374151;
-        background-color: #f9fafb;
-        transition: border-color 0.2s, box-shadow 0.2s;
-      }
-      .form-group input:focus,
-      .form-group select:focus {
-        outline: none;
-        border-color: #0052cc;
-        box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.25);
-      }
-      .submit-button {
-        background-color: #0052cc;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        cursor: pointer;
-      }
-      .submit-button:hover {
-        background-color: #003f99;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-      }
-      .back-to-home {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #0052cc;
-        font-weight: 500;
-        text-decoration: none;
-        margin-top: 1.5rem;
-        transition: color 0.2s ease;
-      }
-      .back-to-home:hover {
-        color: #003f99;
-        text-decoration: underline;
-      }
-      .text-content {
-        flex: 1; /* Allow text content to grow */
-        padding-right: 2rem; /* Add padding for the separator line */
-        border-right: 1px solid #e5e7eb; /* Separator line */
-      }
-      @media (max-width: 767px) {
-        .text-content {
-          padding-right: 0; /* Remove padding on mobile */
-          border-right: none; /* Remove border on mobile */
-          padding-bottom: 2rem; /* Add padding below text on mobile */
-          border-bottom: 1px solid #e5e7eb; /* Add horizontal separator on mobile */
-        }
-      }
-      .form-section {
-        flex: 1; /* Allow form section to grow */
-        position: relative; /* Needed for background image positioning */
-        background-image: url('image_6eb8a4.jpg'); /* Your background image */
-        background-size: cover;
-        background-position: center;
-        border-radius: 0.75rem; /* Match container border-radius */
-        overflow: hidden; /* Ensure image stays within bounds */
-        display: flex; /* Use flex to center content vertically */
-        align-items: center; /* Center content vertically */
-        justify-content: center; /* Center content horizontally */
-        padding: 2rem; /* Add padding for content inside form section */
-      }
-      .form-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white overlay */
-        border-radius: 0.75rem; /* Match parent border-radius */
-        z-index: 1; /* Place above background image */
-      }
-      .form-content {
-        position: relative; /* Place above overlay */
-        z-index: 2;
-        width: 100%; /* Ensure form content takes full width */
-        max-width: 450px; /* Constrain form width for better aesthetics */
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moontrace Engineering | Whitepaper Download</title>
 
-      /* Header styles */
-      header {
-        background-color: #ffffff;
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid #e5e7eb;
-        height: 64px; /* h-16 */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        width: 100%;
-      }
-      header .logo {
-        text-xl tracking-wider;
-      }
-      header .logo .font-bold {
-        font-weight: 700; /* font-bold */
-        color: #1a1a1a; /* text-black */
-        font-size: 1.125rem; /* text-lg */
-      }
-      header .logo .text-red-600 {
-        color: #dc2626; /* text-red-600 */
-        font-size: 1rem; /* text-base */
-      }
-      header .logo .text-gray-700 {
-        color: #374151; /* text-gray-700 */
-        font-size: 1rem; /* text-base */
-      }
-      @media (min-width: 768px) {
-        header {
-          height: 80px; /* md:h-20 */
-        }
-        header .logo .font-bold {
-          font-size: 1.25rem; /* md:text-xl */
-        }
-        header .logo .text-red-600,
-        header .logo .text-gray-700 {
-          font-size: 1.125rem; /* md:text-lg */
-        }
-      }
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-      /* Footer styles */
-      footer {
-        background-color: #000000;
-        color: #cccccc;
-        padding: 1.5rem 0;
-        font-size: 0.875rem;
-        border-top: 1px solid #222222;
-        text-align: center;
-      }
-      footer a {
-        color: #cccccc;
-        text-decoration: none;
-        transition: color 0.2s ease-in-out;
-      }
-      footer a:hover {
-        color: #ffffff;
-      }
-      footer ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.5rem;
-        margin-bottom: 1rem;
-        padding: 0;
-        list-style: none;
-      }
-      footer li {
-        margin: 0;
-        padding: 0;
-      }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
-      /* Checkbox alignment */
-      .form-group.checkbox-group {
-        display: flex;
-        align-items: flex-start; /* Align text to top if it wraps */
-        margin-top: 1.5rem; /* Adjusted margin-top for better spacing */
-      }
-      .form-group.checkbox-group input[type="checkbox"] {
-        flex-shrink: 0; /* Prevent checkbox from shrinking */
-        margin-top: 0.25rem; /* Adjust vertical alignment of checkbox */
-        margin-right: 0.75rem; /* Space between checkbox and text */
-        width: 1.25rem; /* Standard checkbox size */
-        height: 1.25rem; /* Standard checkbox size */
-      }
-      .form-group.checkbox-group label {
-        display: flex; /* Use flex for the label content */
-        align-items: flex-start; /* Align text to top if it wraps */
-        margin-bottom: 0; /* Remove default label margin-bottom */
-        font-weight: 400; /* Regular font weight for body text */
-      }
-      .form-group.checkbox-group .text-sm {
-        font-size: 0.875rem; /* Ensure text size is consistent */
-        line-height: 1.25rem; /* Adjust line height for readability */
-        color: #4b5563; /* Slightly darker gray for better contrast */
-      }
-      .form-group.checkbox-group .text-xs {
-        font-size: 0.75rem;
-        line-height: 1rem;
-        color: #6b7280;
-      }
+  <style>
+    :root {
+      --color-primary: #1e3a8a;
+      --color-secondary: #3b82f6;
+      --color-text-primary: #111827;
+      --color-text-secondary: #4b5563;
+      --color-background: #f9fafb;
+      --color-surface: #ffffff;
+      --font-body: "Inter", sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text-primary);
+      background-color: var(--color-background);
+    }
+    .form-input {
+      background-color: #f9fafb;
+      border: 1px solid #d1d5db;
+      color: var(--color-text-primary);
+      padding: 0.875rem 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      transition: all 0.2s ease-in-out;
+      font-weight: 500;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-secondary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      background-color: var(--color-surface);
+    }
+    .form-input.valid {
+      border-color: #10b981;
+    }
+    .form-input.invalid {
+      border-color: #ef4444;
+    }
+    .submit-button {
+      background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+      color: white;
+      font-weight: 700;
+      padding: 0.875rem 1.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      width: 100%;
+      background-size: 200% auto;
+    }
+    .submit-button:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .submit-button:disabled {
+      background-image: none;
+      background-color: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .back-link {
+      color: var(--color-text-secondary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: var(--color-primary);
+    }
+    .list-icon {
+      color: var(--color-secondary);
+    }
+    .main-container {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      border: 1px solid #e5e7eb;
+    }
+    .form-message {
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    .form-message-success {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+    .form-message-error {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+  </style>
+</head>
 
-      /* Error message styling */
-      .error-message {
-        color: #ef4444; /* Red color */
-        font-size: 0.875rem; /* text-sm */
-        margin-top: 0.5rem;
-      }
-    </style>
-  </head>
-  <body>
-     <header id="header" class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
-            <a href="index.html" class="text-xl tracking-wider flex items-center gap-2">
-                <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
-                <span class="font-normal text-red-600 text-base md:text-lg">|</span>
-                <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
-            </a>
-            <!-- Desktop Button -->
-            <a href="MTLabs.html" class="hidden sm:inline-block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Back to Main Site</a>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-toggle" class="sm:hidden flex items-center px-3 py-2 border rounded text-gray-700 border-gray-300 hover:bg-gray-100 focus:outline-none" aria-label="Open menu">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
-                </svg>
-            </button>
-        </nav>
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="sm:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg hidden">
-            <div class="px-4 py-4 flex flex-col gap-2">
-                <a href="MTLabs.html" class="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition text-center">Back to Main Site</a>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
+  <div class="w-full max-w-6xl mx-auto">
+    <div class="main-container grid grid-cols-1 lg:grid-cols-2 bg-white rounded-2xl overflow-hidden">
+      
+      <!-- Left Side -->
+      <div class="flex flex-col justify-center p-8 sm:p-12 lg:p-16">
+        <div class="flex items-center justify-between mb-8">
+          <a href="index.html" class="inline-block">
+            <div class="text-xl tracking-wider flex items-center gap-2">
+              <span class="font-bold text-black text-lg">MOONTRACE</span>
+              <span class="font-normal text-red-600 text-base">|</span>
+              <span class="font-normal text-gray-700 text-base">ENGINEERING</span>
             </div>
+          </a>
         </div>
-        <script>
-            // Mobile menu toggle logic
-            document.addEventListener('DOMContentLoaded', function () {
-                const menuToggle = document.getElementById('mobile-menu-toggle');
-                const mobileMenu = document.getElementById('mobile-menu');
-                menuToggle.addEventListener('click', function () {
-                    mobileMenu.classList.toggle('hidden');
-                });
-                // Optional: Hide menu when clicking outside
-                document.addEventListener('click', function (e) {
-                    if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
-            });
-        </script>
-    </header>
 
-    <main>
-      <div class="main-content-wrapper">
-        <div class="text-content">
-          <h1 class="text-3xl md:text-4xl font-black tracking-tight text-gray-900 mb-6">
-            Quantum-Ready Today: A Comprehensive Guide to Securing Digital Infrastructure in the Post-Quantum Era
-          </h1>
-          <p class="text-lg text-gray-700 mb-4">
-            The advent of quantum computing poses a fundamental threat to classical cryptography. Moontrace confronts this disruption head-on with a full-stack platform designed to manage the entire cryptographic lifecycle, safeguarding sensitive data against future threats like "Harvest Now, Decrypt Later" attacks.
-          </p>
-          <p class="text-lg text-gray-700 mb-8">
-            Download our comprehensive whitepaper to understand the imminent quantum threat and how Moontrace Engineering provides a cohesive suite of cutting-edge tools—VANTAGE, APX, Moontrace VPN, and QUBEX—to ensure a seamless transition to a quantum-safe posture.
-          </p>
-          <a href="index.html" class="back-to-home">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-            </svg>
+        <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900 mb-6">
+          Quantum-Ready Today: A Guide to Securing Digital Infrastructure
+        </h1>
+        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+          The advent of quantum computing poses a fundamental threat to classical cryptography. Our whitepaper provides a comprehensive overview of this disruption and our full-stack platform designed to manage the entire cryptographic lifecycle.
+        </p>
+
+        <h2 class="text-xl font-bold text-gray-800 mb-4">What You'll Learn:</h2>
+        <ul class="space-y-4 mb-10">
+          <li class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="list-icon flex-shrink-0 w-6 h-6 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM8.5 12.5a1 1 0 01-1.414 0l-2-2a1 1 0 111.414-1.414L8 10.086l3.5-3.5a1 1 0 111.414 1.414l-4 4z" clip-rule="evenodd" /></svg>
+            <span><strong>The Imminent Quantum Threat:</strong> Understand "Harvest Now, Decrypt Later" attacks and why the risk is already here.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="list-icon flex-shrink-0 w-6 h-6 mt-1" viewBox="0 0 20 20" fill="currentColor"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a1 1 0 011-1h14a1 1 0 110 2H3a1 1 0 01-1-1z" /></svg>
+            <span><strong>A Step-by-Step Migration Path:</strong> Learn about our four-stage process for a seamless transition to a quantum-safe posture.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="list-icon flex-shrink-0 w-6 h-6 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.982.034 2.285-.948 2.286-1.56.38-1.56 2.6 0 2.98.982.54 2.285-.034 2.286.948-.836 1.372.734 2.942 2.106 2.106.982-.54 2.285.034.948 2.286.38 1.56 2.6 1.56 2.98 0 .982-.54 2.285.034 2.286-.948 1.372.836 2.942-.734 2.106-2.106-.54-.982-.034-2.285.948-2.286 1.56-.38 1.56-2.6 0-2.98-.982-.54-2.285.034-.948-2.286.836-1.372-.734-2.942-2.106-2.106A1.532 1.532 0 0111.49 3.17zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg>
+            <span><strong>Our Cutting-Edge Tool Suite:</strong> Get an overview of VANTAGE, APX, Moontrace VPN, and QUBEX.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Side -->
+      <div class="bg-gray-50 p-8 sm:p-12 lg:p-16 relative">
+        <img src="assets/button.png"Shield Icon" class="absolute top-8 right-8 w-12 h-12 hidden sm:block" onerror="this.onerror=null;this.src='assets/button.png';">
+
+        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Access the Whitepaper</h3>
+        <p class="mt-2 text-gray-600">Fill out the form below to get your free copy.</p>
+        
+        <!-- FormSpree Integration: The 'action' attribute is updated to your Formspree endpoint. -->
+        <form id="whitepaperForm" action="https://formspree.io/f/xpwlozaq" method="POST" class="mt-8 space-y-5" novalidate>
+          <input type="text" name="website" id="website" class="hidden" tabindex="-1" autocomplete="off">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
+              <input type="text" id="firstName" name="firstName" class="form-input" required>
+            </div>
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" class="form-input" required>
+            </div>
+          </div>
+
+          <div>
+            <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">Company Name *</label>
+            <input type="text" id="companyName" name="companyName" class="form-input" required>
+          </div>
+
+          <div>
+            <label for="businessEmail" class="block text-sm font-medium text-gray-700 mb-1">Business Email *</label>
+            <input type="email" id="businessEmail" name="businessEmail" class="form-input" required aria-describedby="emailError">
+            <p id="emailError" class="text-red-600 text-sm mt-1 hidden" aria-live="polite">
+              Please enter a valid organizational email address.
+            </p>
+          </div>
+
+          <div id="formMessageContainer" aria-live="polite"></div>
+
+          <div class="pt-2">
+            <button type="submit" class="submit-button mt-4 sm:mt-0">Download Now</button>
+          </div>
+        </form>
+
+        <div class="mt-8 text-center">
+          <a href="index.html" class="back-link inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
             Back to Home
           </a>
         </div>
-        <div class="form-section">
-          <div class="form-overlay"></div>
-          <div class="form-content">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">Access the Whitepaper</h2>
-            <form id="whitepaper-form" action="https://formspree.io/f/xpwlozaq" method="POST" class="mt-8">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="form-group">
-                  <label for="first-name">First Name</label>
-                  <input type="text" id="first-name" name="firstName" required class="focus:border-blue-500 focus:ring-blue-500 rounded-md" />
-                </div>
-                <div class="form-group">
-                  <label for="last-name">Last Name</label>
-                  <input type="text" id="last-name" name="lastName" required class="focus:border-blue-500 focus:ring-blue-500 rounded-md" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="company-name">Company Name</label>
-                  <input type="text" id="company-name" name="companyName" required class="focus:border-blue-500 focus:ring-blue-500 rounded-md" />
-              </div>
-              <div class="form-group">
-                <label for="job-title">Job Title</label>
-                <input type="text" id="job-title" name="jobTitle" required class="focus:border-blue-500 focus:ring-blue-500 rounded-md" />
-              </div>
-              <div class="form-group">
-                <label for="business-email">Business Email</label>
-                <input type="email" id="business-email" name="email" required class="focus:border-blue-500 focus:ring-blue-500 rounded-md" />
-                <p id="email-error" class="error-message hidden">Please use an organizational email address.</p>
-              </div>
-              <div class="form-group">
-                <label for="industry">Industry</label>
-                <select id="industry" name="industry" required class="focus:border-blue-500 focus:ring-blue-500 rounded-md">
-                  <option value="">Select your industry</option>
-                  <option value="government">Government & Public Sector</option>
-                  <option value="healthcare">Healthcare</option>
-                  <option value="finance">Finance</option>
-                  <option value="critical-infrastructure">Critical Infrastructure</option>
-                  <option value="defense">Defense & Military</option>
-                  <option value="technology">Technology</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="form-group checkbox-group">
-                <input type="checkbox" id="consent" name="consent" class="form-checkbox h-5 w-5 text-blue-600 rounded" />
-                <div>
-                  <label for="consent" class="text-sm">
-                    I agree to receive other communications from Moontrace.
-                  </label>
-                  <p class="text-xs mt-1">
-                    You may unsubscribe from these communications at any time. For more information, please review our Privacy Policy.
-                  </p>
-                </div>
-              </div>
-              <button type="submit" class="submit-button mt-6">Access Whitepaper</button>
-            </form>
-          </div>
-        </div>
       </div>
-    </main>
+    </div>
+  </div>
 
-    <footer>
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <ul>
-          <li><a href="careers.html">Careers</a></li>
-          <li>
-            <a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a>
-          </li>
-          <li><a href="https://www.instagram.com/moontrace_hq/">Instagram</a></li>
-          <li>
-            <a href="https://x.com/Moontrace_HQ">X</a></li>
-          <li>
-            <a href="assets/pdfs/whymoon.pdf" target="_blank">Manifesto</a>
-          </li>
-          <li>
-            <a href="assets/pdfs/Investor_policy.pdf" target="_blank">Investor Relations</a>
-          </li>
-        </ul>
-        <p>
-          &copy; 2025 Moontrace Engineering Research and Consulting | All
-          Rights Reserved.
-        </p>
-        <p class="mt-2">Built in India, for the World.</p>
-      </div>
-    </footer>
+  <!-- Script -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      const whitepaperForm = document.getElementById('whitepaperForm');
+      const businessEmailInput = document.getElementById('businessEmail');
+      const emailError = document.getElementById('emailError');
+      const messageContainer = document.getElementById('formMessageContainer');
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const whitepaperForm = document.getElementById('whitepaper-form');
-        const businessEmailInput = document.getElementById('business-email');
-        const emailError = document.getElementById('email-error');
+      const nonOrgEmailDomains = [
+        'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
+        'aol.com', 'icloud.com', 'live.com', 'msn.com'
+      ];
 
-        // List of common free email domains
-        const freeEmailDomains = [
-          'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com',
-          'icloud.com', 'protonmail.com', 'mail.com', 'gmx.com', 'zoho.com',
-          'yandex.com', 'live.com', 'msn.com', 'comcast.net', 'verizon.net',
-          'att.net', 'bellsouth.net', 'charter.net', 'cox.net', 'earthlink.net',
-          'juno.com', 'netscape.net', 'sbcglobal.net', 'suddenlink.net',
-          'frontier.com', 'optimum.net', 'web.de', 'freenet.de', 't-online.de',
-          'libero.it', 'orange.fr', 'laposte.net', 'wanadoo.fr', 'qq.com',
-          '163.com', '126.com', 'sina.com', 'sohu.com'
-        ];
+      function isValidOrganizationalEmail(email) {
+        if (!email || email.indexOf('@') === -1) return false;
+        const domain = email.split('@')[1].toLowerCase();
+        return !nonOrgEmailDomains.includes(domain);
+      }
 
-        function isValidOrganizationalEmail(email) {
-          const domain = email.substring(email.lastIndexOf('@') + 1);
-          return !freeEmailDomains.includes(domain.toLowerCase());
-        }
+      function showMessage(message, isSuccess) {
+        messageContainer.innerHTML = '';
+        const messageDiv = document.createElement('div');
+        messageDiv.className = isSuccess ? 'form-message form-message-success' : 'form-message form-message-error';
+        messageDiv.innerHTML = message;
+        messageContainer.appendChild(messageDiv);
+      }
 
-        function validateEmailField() {
-          if (!isValidOrganizationalEmail(businessEmailInput.value)) {
-            emailError.classList.remove('hidden');
-            businessEmailInput.classList.add('border-red-500'); // Add red border for error
-            return false;
-          } else {
-            emailError.classList.add('hidden');
-            businessEmailInput.classList.remove('border-red-500'); // Remove red border
-            return true;
-          }
-        }
-
-        // Validate on blur and input
-        businessEmailInput.addEventListener('blur', validateEmailField);
-        businessEmailInput.addEventListener('input', validateEmailField);
-
-
-        whitepaperForm.addEventListener('submit', async function(event) {
-          event.preventDefault(); // Prevent default form submission
-
-          // Perform all client-side validations
-          let formIsValid = true;
-
-          // Validate email
-          if (!validateEmailField()) {
-            formIsValid = false;
-          }
-
-          // Check HTML5 validity for other required fields
-          if (!whitepaperForm.checkValidity()) {
-            formIsValid = false;
-          }
-
-          if (!formIsValid) {
-            // If form is not valid, trigger HTML5 validation messages
-            whitepaperForm.reportValidity();
-            return; // Stop submission
-          }
-
-          // If all client-side validations pass, proceed with Formspree submission
-          const form = event.target;
-          const formData = new FormData(form);
-
-          try {
-            const response = await fetch(form.action, {
-              method: form.method,
-              body: formData,
-              headers: {
-                'Accept': 'application/json' // Request JSON response from Formspree
-              }
-            });
-
-            if (response.ok) {
-              // If Formspree submission is successful, redirect to the PDF
-              window.location.href = 'assets/pdfs/whitepaper.pdf';
-            } else {
-              // Handle errors from Formspree (e.g., invalid email, rate limiting)
-              const data = await response.json();
-              if (data.errors) {
-                // Display specific error messages from Formspree
-                alert('Form submission failed: ' + data.errors.map(e => e.message).join(', '));
-              } else {
-                alert('Form submission failed. Please try again.');
-              }
-            }
-          } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('An error occurred. Please try again later.');
-          }
-        });
+      businessEmailInput.addEventListener('input', () => {
+        businessEmailInput.classList.remove('invalid', 'valid');
+        emailError.classList.add('hidden');
       });
-    </script>
-  </body>
+
+      whitepaperForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        messageContainer.innerHTML = '';
+
+        // Honeypot check
+        if (whitepaperForm.website && whitepaperForm.website.value) {
+          return;
+        }
+
+        // Basic HTML5 validation check
+        if (!whitepaperForm.checkValidity()) {
+          whitepaperForm.reportValidity();
+          return;
+        }
+
+        // Custom email validation
+        if (!isValidOrganizationalEmail(businessEmailInput.value)) {
+          emailError.classList.remove('hidden');
+          businessEmailInput.focus();
+          businessEmailInput.classList.add('invalid');
+          businessEmailInput.setAttribute('aria-invalid', 'true');
+          return;
+        } else {
+          businessEmailInput.classList.remove('invalid');
+          businessEmailInput.classList.add('valid');
+          businessEmailInput.removeAttribute('aria-invalid');
+        }
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitButton = form.querySelector('.submit-button');
+        submitButton.textContent = 'Processing...';
+        submitButton.disabled = true;
+
+        // --- FormSpree Submission Logic ---
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // If submission to Formspree is successful
+            const pdfUrl = 'assets/pdfs/whitepaper.pdf'; // Ensure this path is correct
+            window.open(pdfUrl, '_blank');
+
+            showMessage(
+              `✅ Success! Your whitepaper should open in a new tab. 
+              <br><a href="${pdfUrl}" target="_blank" rel="noopener" class="underline text-blue-700">Click here</a> if it didn't.`,
+              true
+            );
+            whitepaperForm.reset();
+            // Reset validation styles
+            businessEmailInput.classList.remove('valid', 'invalid');
+
+          } else {
+            // If Formspree returns an error
+            const data = await response.json();
+            if (Object.hasOwn(data, 'errors')) {
+                const errorMessages = data["errors"].map(error => error["message"]).join(", ");
+                showMessage(`Could not submit form: ${errorMessages}`, false);
+            } else {
+                showMessage('An error occurred while submitting the form. Please try again.', false);
+            }
+          }
+        } catch (error) {
+          // If there's a network error
+          console.error('Submission error:', error);
+          showMessage('A network error occurred. Please check your connection and try again.', false);
+        } finally {
+          // Re-enable the button
+          submitButton.textContent = 'Download Now';
+          submitButton.disabled = false;
+        }
+      });
+    });
+  </script>
+</body>
 </html>
