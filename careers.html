@@ -99,6 +99,81 @@
         .fade-in-out.show {
             opacity: 1;
         }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-overlay.hidden-display { /* New class to fully hide the modal */
+            display: none;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s ease-out;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0) scale(1);
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .modal-close-button:hover {
+            color: #333;
+        }
+        /* Custom Message Box for alerts */
+        .message-box {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+        .message-box.error {
+            background-color: #dc2626; /* red-600 */
+        }
+        .message-box.success {
+            background-color: #16a34a; /* green-600 */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -111,7 +186,7 @@
                 <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
             </a>
             <!-- Desktop Button -->
-            <a href="MTLabs.html" class="hidden sm:inline-block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Back to Main Site</a>
+            <a href="index.html" class="hidden sm:inline-block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Back to Main Site</a>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-toggle" class="sm:hidden flex items-center px-3 py-2 border rounded text-gray-700 border-gray-300 hover:bg-gray-100 focus:outline-none" aria-label="Open menu">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,25 +197,9 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="sm:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg hidden">
             <div class="px-4 py-4 flex flex-col gap-2">
-                <a href="MTLabs.html" class="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition text-center">Back to Main Site</a>
+                <a href="index.html" class="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition text-center">Back to Main Site</a>
             </div>
         </div>
-        <script>
-            // Mobile menu toggle logic
-            document.addEventListener('DOMContentLoaded', function () {
-                const menuToggle = document.getElementById('mobile-menu-toggle');
-                const mobileMenu = document.getElementById('mobile-menu');
-                menuToggle.addEventListener('click', function () {
-                    mobileMenu.classList.toggle('hidden');
-                });
-                // Optional: Hide menu when clicking outside
-                document.addEventListener('click', function (e) {
-                    if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
-            });
-        </script>
     </header>
 
     <main>
@@ -174,248 +233,323 @@
             </div>
         </section>
 
-    
+        <!-- Company Culture & Benefits Section -->
+        <section id="culture-benefits" class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-12">Our Culture & Benefits</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Impact-Driven Work</h3>
+                        <p class="text-gray-600">Solve real-world, high-stakes cybersecurity challenges that protect global infrastructure and data.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.206 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.794 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.794 5 16.5 5c1.706 0 3.332.477 4.5 1.253v13C19.832 18.477 18.206 18 16.5 18c-1.706 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Continuous Learning</h3>
+                        <p class="text-gray-600">Access to cutting-edge research, conferences, and a team of experts in quantum and cryptography.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Flexible Work</h3>
+                        <p class="text-gray-600">Enjoy the flexibility of remote work options and a focus on results, not just hours.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-9a2 2 0 00-2-2h-2V7a2 2 0 00-2-2H9a2 2 0 00-2 2v3H5a2 2 0 00-2 2v6m3-3h10v-2H6v2zm0 0v2H6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Collaborative Environment</h3>
+                        <p class="text-gray-600">Work alongside passionate experts in a supportive and open environment.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3-.895-3-2 1.343-2 3-2z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Meaningful Equity</h3>
+                        <p class="text-gray-600">Be a true owner in our journey with competitive equity packages.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-blue-600 mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 12H7m3 0l3-3m-3 3l3 3m-3-3v3m0-3V9m0 3h3m0 0l-3-3m3 3l-3 3m-3-3h3m0 0l-3-3m3 3l-3 3" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Global Impact</h3>
+                        <p class="text-gray-600">Contribute to securing critical systems worldwide, from India to the globe.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Job Listings Section -->
         <section id="job-listings-section" class="py-16">
              <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Current Openings</h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-        Explore the roles we're actively hiring for. Don't see a fit? Reach out anyway!
-      </p>
-    </div>
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Current Openings</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                        Explore the roles we're actively hiring for. Don't see a fit? Reach out anyway!
+                    </p>
+                </div>
 
-    <!-- Filter Buttons -->
-    <div id="job-filters" class="mt-12 flex justify-center flex-wrap gap-3">
-      <button class="filter-button active" data-filter="all">All</button>
-      <button class="filter-button" data-filter="engineering">Engineering</button>
-      <button class="filter-button" data-filter="security">Security</button>
-      <button class="filter-button" data-filter="analyst">Analyst/Consulting</button>
-      <button class="filter-button" data-filter="writing">Writing</button>
-      <button class="filter-button" data-filter="research">Student Research</button>
-    </div>
+                <!-- Search Bar -->
+                <div class="mt-8 mb-8 max-w-xl mx-auto">
+                    <input type="text" id="job-search-input" placeholder="Search job titles or keywords..." class="form-input w-full px-4 py-2 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" aria-label="Search job listings">
+                </div>
 
-    <!-- Job Cards Grid -->
+                <!-- Filter Buttons -->
+                <div id="job-filters" class="mt-12 flex justify-center flex-wrap gap-3">
+                    <button class="filter-button active" data-filter="all">All</button>
+                    <button class="filter-button" data-filter="engineering">Engineering</button>
+                    <button class="filter-button" data-filter="security">Security</button>
+                    <button class="filter-button" data-filter="analyst">Analyst/Consulting</button>
+                    <button class="filter-button" data-filter="writing">Writing</button>
+                    <button class="filter-button" data-filter="research">Student Research</button>
+                    <button class="filter-button" data-filter="hardware">Hardware</button>
+                </div>
 
-    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8" id="job-listings">
+                <!-- Job Cards Grid -->
+                <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8" id="job-listings">
 
-  <!-- Frontend Engineer -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Frontend Engineer</h3>
-        <p class="text-gray-600 font-semibold">Remote | Global</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Craft intuitive user interfaces for our cryptographic dashboards (VANTAGE/APX). Own UI/UX from concept to deployment. React/Vue and Tailwind experience preferred.</p>
-      <button class="apply-now-button" data-job-title="Frontend Engineer">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- Backend / Systems Engineer -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Backend / Systems Engineer</h3>
-        <p class="text-gray-600 font-semibold">Remote | Global</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Architect APIs and scanning engines for PQC posture, migration, and key management. Experience with Golang, Rust, or Python is a plus.</p>
-      <button class="apply-now-button" data-job-title="Backend / Systems Engineer">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- DevOps / Infrastructure Engineer -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="engineering">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">DevOps / Infrastructure Engineer</h3>
-        <p class="text-gray-600 font-semibold">Remote | Global</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Build secure CI/CD pipelines, automate crypto testing workflows, and deploy VMs for cryptographic services. Familiarity with AWS/GCP and container security essential.</p>
-      <button class="apply-now-button" data-job-title="DevOps / Infrastructure Engineer">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- Cryptography / Security Engineer -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="security">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cryptography / Security Engineer</h3>
-        <p class="text-gray-600 font-semibold">Remote | Global</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Implement and audit PQC schemes. Experience with CRYSTALS-Kyber, Dilithium, NTRU, or BIKE is ideal. Contribute to protocol design and security models for QUBEx.</p>
-      <button class="apply-now-button" data-job-title="Cryptography / Security Engineer">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- Cybersecurity Analyst -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="analyst">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cybersecurity Analyst</h3>
-        <p class="text-gray-600 font-semibold">Remote | Global</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Support cryptographic posture assessments, threat modeling, and compliance monitoring. Familiarity with NIST, FIPS, and CBOM generation required.</p>
-      <button class="apply-now-button" data-job-title="Cybersecurity Analyst">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- Technical Writer (PQC) -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="writing">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Technical Writer (PQC)</h3>
-        <p class="text-gray-600 font-semibold">Remote | Global</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Write clear documentation for cryptographic tools and APIs. Experience with Markdown, Git, and technical blog writing preferred.</p>
-      <button class="apply-now-button" data-job-title="Technical Writer (PQC)">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- Student Researcher (MTLabs) -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="research">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Student Researcher (MTLabs)</h3>
-        <p class="text-gray-600 font-semibold">Remote | Open to Students</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Contribute to PQC algorithm research, benchmarking, and applications for embedded/IoT systems. Great for thesis projects.</p>
-      <button class="apply-now-button" data-job-title="Student Researcher (MTLabs)">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- Hardware Research Intern (Embedded PQC) -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="research">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Hardware Research Intern (Embedded PQC)</h3>
-        <p class="text-gray-600 font-semibold">Remote | Internship</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Design PQC-ready logic blocks for secure key management. Background in VHDL/Verilog, microcontrollers, and side-channel protections a plus.</p>
-      <button class="apply-now-button" data-job-title="Hardware Research Intern">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- Software Research Intern (VANTAGE/APX) -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="research">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Software Research Intern (VANTAGE/APX)</h3>
-        <p class="text-gray-600 font-semibold">Remote | Internship</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Prototype cryptographic scanners and PQC migration agents. Ideal for students interested in applied cryptography and automation tools.</p>
-      <button class="apply-now-button" data-job-title="Software Research Intern">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- NEW: Hardware Systems Engineer (QUBEx) -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="hardware">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Hardware Systems Engineer (QUBEx)</h3>
-        <p class="text-gray-600 font-semibold">Remote | Hybrid | Preferred: India</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Lead embedded development for QUBEx: a quantum-safe key management appliance. Experience with secure hardware design, HSMs, and embedded cryptography essential.</p>
-      <button class="apply-now-button" data-job-title="Hardware Systems Engineer (QUBEx)">Apply Now</button>
-    </div>
-  </div>
-
-  <!-- NEW: FPGA / QRNG Integration Engineer -->
-  <div class="job-card-compact card p-6 sm:p-8" data-category="hardware">
-    <button class="job-card-header w-full flex justify-between items-center text-left">
-      <div>
-        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">FPGA / QRNG Integration Engineer</h3>
-        <p class="text-gray-600 font-semibold">Remote | Contract or Full-time</p>
-      </div>
-      <span class="job-card-icon text-gray-400">+</span>
-    </button>
-    <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
-      <p class="text-gray-700 mb-4">Develop and integrate FPGA logic for true quantum random number generation. Prior experience with PCIe, entropy extraction, and signal integrity required.</p>
-      <button class="apply-now-button" data-job-title="FPGA / QRNG Integration Engineer">Apply Now</button>
-    </div>
-  </div>
-
-    </div>
-
-            </div>
-        </section>
-
-
-
-                <!-- Job Application Form Container -->
-                <div id="job-application-container" class="hidden mt-16 max-w-3xl mx-auto">
-                    <!-- The Form Itself -->
-                    <form id="job-application-form" class="p-8 sm:p-10 card">
-                        <input type="hidden" name="job_title" id="hidden-job-title">
-                        <button type="button" id="back-to-jobs-button" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center font-semibold">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                            Back to Job Listings
-                        </button>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Apply for <span id="application-job-title" class="text-blue-600"></span></h2>
-                        
-                        <div class="space-y-6">
-                            <div><label for="applicant-name" class="form-field-label block mb-2">Name<span class="text-red-500">*</span></label><input type="text" name="name" id="applicant-name" class="form-input w-full" placeholder="Your Full Name" required /></div>
-                            <div><label for="applicant-email" class="form-field-label block mb-2">Email<span class="text-red-500">*</span></label><input type="email" name="email" id="applicant-email" class="form-input w-full" placeholder="you@example.com" required /></div>
-                            <div><label for="applicant-location" class="form-field-label block mb-2">Location (City, Country)</label><input type="text" name="location" id="applicant-location" class="form-input w-full" placeholder="e.g., Bengaluru, India"/></div>
-                            <div><label for="linkedin-profile" class="form-field-label block mb-2">LinkedIn Profile (URL)</label><input type="url" name="linkedin_url" id="linkedin-profile" class="form-input w-full" placeholder="https://linkedin.com/in/yourprofile"/></div>
-                            <div><label for="portfolio-site" class="form-field-label block mb-2">Portfolio, GitHub, or Personal Site (URL)</label><input type="url" name="portfolio_url" id="portfolio-site" class="form-input w-full" placeholder="https://github.com/yourprofile"/></div>
+                    <!-- Frontend Engineer -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="engineering" data-job-details-id="frontend-engineer-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
                             <div>
-                                <label class="form-field-label block mb-2">Resume / CV</label>
-                                <div class="flex items-center border border-gray-300 rounded-md p-3 bg-gray-50">
-                                    <button type="button" id="upload-resume-button" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                                        Upload File
-                                    </button>
-                                    <span class="ml-3 text-gray-500 italic text-sm">No file chosen (Attach manually in email)</span>
-                                </div>
-                                <input type="file" id="resume-file-input" class="hidden" disabled/>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Frontend Engineer</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Global</p>
                             </div>
-                            <div><label for="motivations" class="form-field-label block mb-2">Why are you interested in Moontrace Engineering?</label><textarea name="motivations" id="motivations" class="form-textarea w-full" rows="5" placeholder="Tell us about your interest..."></textarea></div>
-                            <div><label for="project-problem" class="form-field-label block mb-2">Briefly describe a recent project or challenge you're proud of:</label><textarea name="project_challenge" id="project-problem" class="form-textarea w-full" rows="7" placeholder="Keep it short, thoughtful, and human."></textarea></div>
-                            <div><label for="how-heard" class="form-field-label block mb-2">How did you hear about us?</label><input type="text" name="how_heard" id="how-heard" class="form-input w-full" placeholder="e.g., LinkedIn, referral, Google Search"/></div>
-                            <div class="pt-2">
-                                <button type="submit" id="submit-application-button" class="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition disabled:bg-gray-400">
-                                    Submit Application
-                                </button>
-                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Craft intuitive user interfaces for our cryptographic dashboards (VANTAGE/APX). Own UI/UX from concept to deployment. React/Vue and Tailwind experience preferred.</p>
+                            <button class="apply-now-button" data-job-title="Frontend Engineer">Apply Now</button>
                         </div>
-                    </form>
-                    <!-- Success Message Container -->
-                    <div id="form-success-message" class="hidden text-center py-10 card"></div>
+                    </div>
+
+                    <!-- Backend / Systems Engineer -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="engineering" data-job-details-id="backend-engineer-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Backend / Systems Engineer</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Global</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Architect APIs and scanning engines for PQC posture, migration, and key management. Experience with Golang, Rust, or Python is a plus.</p>
+                            <button class="apply-now-button" data-job-title="Backend / Systems Engineer">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- DevOps / Infrastructure Engineer -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="engineering" data-job-details-id="devops-engineer-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">DevOps / Infrastructure Engineer</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Global</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Build secure CI/CD pipelines, automate crypto testing workflows, and deploy VMs for cryptographic services. Familiarity with AWS/GCP and container security essential.</p>
+                            <button class="apply-now-button" data-job-title="DevOps / Infrastructure Engineer">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Cryptography / Security Engineer -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="security" data-job-details-id="cryptography-engineer-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cryptography / Security Engineer</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Global</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Implement and audit PQC schemes. Experience with CRYSTALS-Kyber, Dilithium, NTRU, or BIKE is ideal. Contribute to protocol design and security models for QUBEx.</p>
+                            <button class="apply-now-button" data-job-title="Cryptography / Security Engineer">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Cybersecurity Analyst -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="analyst" data-job-details-id="cybersecurity-analyst-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Cybersecurity Analyst</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Global</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Support cryptographic posture assessments, threat modeling, and compliance monitoring. Familiarity with NIST, FIPS, and CBOM generation required.</p>
+                            <button class="apply-now-button" data-job-title="Cybersecurity Analyst">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Technical Writer (PQC) -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="writing" data-job-details-id="technical-writer-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Technical Writer (PQC)</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Global</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Write clear documentation for cryptographic tools and APIs. Experience with Markdown, Git, and technical blog writing preferred.</p>
+                            <button class="apply-now-button" data-job-title="Technical Writer (PQC)">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Student Researcher (MTLabs) -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="research" data-job-details-id="student-researcher-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Student Researcher (MTLabs)</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Open to Students</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Contribute to PQC algorithm research, benchmarking, and applications for embedded/IoT systems. Great for thesis projects.</p>
+                            <button class="apply-now-button" data-job-title="Student Researcher (MTLabs)">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Research Intern (Embedded PQC) -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="research" data-job-details-id="hardware-research-intern-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Hardware Research Intern (Embedded PQC)</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Internship</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Design PQC-ready logic blocks for secure key management. Background in VHDL/Verilog, microcontrollers, and side-channel protections a plus.</p>
+                            <button class="apply-now-button" data-job-title="Hardware Research Intern">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Software Research Intern (VANTAGE/APX) -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="research" data-job-details-id="software-research-intern-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Software Research Intern (VANTAGE/APX)</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Internship</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Prototype cryptographic scanners and PQC migration agents. Ideal for students interested in applied cryptography and automation tools.</p>
+                            <button class="apply-now-button" data-job-title="Software Research Intern">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Systems Engineer (QUBEx) -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="hardware" data-job-details-id="hardware-systems-engineer-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Hardware Systems Engineer (QUBEx)</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Hybrid | Preferred: India</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Lead embedded development for QUBEx: a quantum-safe key management appliance. Experience with secure hardware design, HSMs, and embedded cryptography essential.</p>
+                            <button class="apply-now-button" data-job-title="Hardware Systems Engineer (QUBEx)">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <!-- FPGA / QRNG Integration Engineer -->
+                    <div class="job-card-compact card p-6 sm:p-8" data-category="hardware" data-job-details-id="fpga-qrng-engineer-details">
+                        <button class="job-card-header w-full flex justify-between items-center text-left">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">FPGA / QRNG Integration Engineer</h3>
+                                <p class="text-gray-600 font-semibold">Remote | Contract or Full-time</p>
+                            </div>
+                            <span class="job-card-icon text-gray-400">+</span>
+                        </button>
+                        <div class="job-card-content border-t border-gray-200 pt-5 text-gray-600">
+                            <p class="text-gray-700 mb-4">Develop and integrate FPGA logic for true quantum random number generation. Prior experience with PCIe, entropy extraction, and signal integrity required.</p>
+                            <button class="apply-now-button" data-job-title="FPGA / QRNG Integration Engineer">Apply Now</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
+
+        <!-- Job Application Form Container -->
+        <div id="job-application-container" class="hidden mt-16 max-w-3xl mx-auto">
+            <!-- The Form Itself -->
+            <form id="job-application-form" class="p-8 sm:p-10 card">
+                <input type="hidden" name="job_title" id="hidden-job-title">
+                <button type="button" id="back-to-jobs-button" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center font-semibold" aria-label="Back to Job Listings">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                    Back to Job Listings
+                </button>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Apply for <span id="application-job-title" class="text-blue-600"></span></h2>
+                
+                <div class="space-y-6">
+                    <div><label for="applicant-name" class="form-field-label block mb-2">Name<span class="text-red-500">*</span></label><input type="text" name="name" id="applicant-name" class="form-input w-full" placeholder="Your Full Name" required /></div>
+                    <div><label for="applicant-email" class="form-field-label block mb-2">Email<span class="text-red-500">*</span></label><input type="email" name="email" id="applicant-email" class="form-input w-full" placeholder="you@example.com" required /></div>
+                    <div><label for="applicant-location" class="form-field-label block mb-2">Location (City, Country)</label><input type="text" name="location" id="applicant-location" class="form-input w-full" placeholder="e.g., Bengaluru, India"/></div>
+                    <div><label for="linkedin-profile" class="form-field-label block mb-2">LinkedIn Profile (URL)</label><input type="url" name="linkedin_url" id="linkedin-profile" class="form-input w-full" placeholder="https://linkedin.com/in/yourprofile"/></div>
+                    <div><label for="portfolio-site" class="form-field-label block mb-2">Portfolio, GitHub, or Personal Site (URL)</label><input type="url" name="portfolio_url" id="portfolio-site" class="form-input w-full" placeholder="https://github.com/yourprofile"/></div>
+                    <div>
+                        <label class="form-field-label block mb-2">Resume / CV</label>
+                        <div class="flex items-center border border-gray-300 rounded-md p-3 bg-gray-50">
+                            <button type="button" id="upload-resume-button" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition flex items-center" aria-label="Upload Resume">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                                Upload File
+                            </button>
+                            <span class="ml-3 text-gray-500 italic text-sm">No file chosen (Attach manually in email)</span>
+                        </div>
+                        <input type="file" id="resume-file-input" class="hidden" disabled/>
+                    </div>
+                    <div><label for="motivations" class="form-field-label block mb-2">Why are you interested in Moontrace Engineering?</label><textarea name="motivations" id="motivations" class="form-textarea w-full" rows="5" placeholder="Tell us about your interest..."></textarea></div>
+                    <div><label for="project-problem" class="form-field-label block mb-2">Briefly describe a recent project or challenge you're proud of:</label><textarea name="project_challenge" id="project-problem" class="form-textarea w-full" rows="7" placeholder="Keep it short, thoughtful, and human."></textarea></div>
+                    <div><label for="how-heard" class="form-field-label block mb-2">How did you hear about us?</label><input type="text" name="how_heard" id="how-heard" class="form-input w-full" placeholder="e.g., LinkedIn, referral, Google Search"/></div>
+                    <div class="pt-2">
+                        <button type="submit" id="submit-application-button" class="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition disabled:bg-gray-400">
+                            Submit Application
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- Success Message Container -->
+            <div id="form-success-message" class="hidden text-center py-10 card"></div>
+        </div>
+
+        <!-- Job Details Modal Structure -->
+        <div id="job-details-modal-overlay" class="modal-overlay" aria-modal="true" role="dialog">
+            <div class="modal-content">
+                <button id="job-details-modal-close" class="modal-close-button" aria-label="Close job details">×</button>
+                <h3 id="modal-job-title" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2"></h3>
+                <p id="modal-job-location" class="text-gray-600 font-semibold mb-4"></p>
+                <div id="modal-job-description" class="text-gray-700 leading-relaxed mb-6">
+                    <!-- Detailed description will be injected here -->
+                </div>
+                <button id="modal-apply-button" class="apply-now-button px-6 py-3 text-lg w-full" aria-label="Apply for this role">Apply for this Role</button>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-gray-900 text-gray-400">
@@ -429,70 +563,357 @@
     </footer>
 
     <script>
-        // Wait for the DOM to be fully loaded before running the script
-        document.addEventListener('DOMContentLoaded', function () {
+        // Mock detailed job descriptions (replace with real content as needed)
+        const detailedJobDescriptions = {
+            "frontend-engineer-details": {
+                title: "Frontend Engineer",
+                location: "Remote | Global",
+                description: `
+                    <p class="mb-3">We are seeking a talented Frontend Engineer to design and implement intuitive and responsive user interfaces for our suite of cybersecurity products, including our cryptographic posture visibility platform (VANTAGE) and crypto-agility solution (APX).</p>
+                    <p class="mb-3">You will be responsible for the entire UI/UX lifecycle, from wireframing and prototyping to development, testing, and deployment. This role requires a strong eye for design, a deep understanding of modern web technologies, and a passion for creating seamless user experiences in a highly technical domain.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Develop and maintain scalable, high-performance web applications using modern JavaScript frameworks (React, Vue, or Angular).</li>
+                        <li>Collaborate with product managers, backend engineers, and cryptography experts to translate complex security concepts into user-friendly interfaces.</li>
+                        <li>Ensure cross-browser compatibility, accessibility (WCAG), and optimal performance across various devices.</li>
+                        <li>Implement responsive designs using Tailwind CSS and other modern styling techniques.</li>
+                        <li>Participate in code reviews, contribute to architectural discussions, and mentor junior developers.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>3+ years of experience in frontend web development.</li>
+                        <li>Proficiency in HTML5, CSS3, and JavaScript (ES6+).</li>
+                        <li>Extensive experience with at least one modern JavaScript framework (React, Vue, or Angular).</li>
+                        <li>Strong understanding of RESTful APIs and asynchronous programming.</li>
+                        <li>Experience with version control systems (Git).</li>
+                        <li>Excellent problem-solving skills and attention to detail.</li>
+                    </ul>
+                `
+            },
+            "backend-engineer-details": {
+                title: "Backend / Systems Engineer",
+                location: "Remote | Global",
+                description: `
+                    <p class="mb-3">We are looking for a skilled Backend / Systems Engineer to build robust, scalable, and secure backend services for our cryptographic solutions. You will be instrumental in designing and implementing APIs, data processing pipelines, and core system components that power our platforms.</p>
+                    <p class="mb-3">This role involves working closely with our cryptography and frontend teams to ensure seamless integration and high performance. A strong understanding of system architecture, data integrity, and security best practices is crucial.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Design, develop, and maintain high-performance backend services and APIs.</li>
+                        <li>Implement data storage solutions and ensure data security and integrity.</li>
+                        <li>Collaborate on system architecture and design decisions.</li>
+                        <li>Optimize applications for maximum speed and scalability.</li>
+                        <li>Write comprehensive unit and integration tests.</li>
+                        <li>Participate in code reviews and contribute to improving engineering standards.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>3+ years of experience in backend development.</li>
+                        <li>Proficiency in Golang, Rust, Python, or Java.</li>
+                        <li>Experience with database systems (SQL, NoSQL).</li>
+                        <li>Familiarity with cloud platforms (AWS, GCP, Azure).</li>
+                        <li>Understanding of microservices architecture and distributed systems.</li>
+                        <li>Strong problem-solving and debugging skills.</li>
+                    </ul>
+                `
+            },
+            "devops-engineer-details": {
+                title: "DevOps / Infrastructure Engineer",
+                location: "Remote | Global",
+                description: `
+                    <p class="mb-3">We are seeking a proactive DevOps / Infrastructure Engineer to build, maintain, and scale our secure development and deployment environments. You will be responsible for automating our CI/CD pipelines, managing cloud infrastructure, and ensuring the security and reliability of our systems.</p>
+                    <p class="mb-3">This role requires expertise in cloud services, containerization, and infrastructure as code, with a strong focus on cybersecurity best practices.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Design and implement secure, automated CI/CD pipelines.</li>
+                        <li>Manage and optimize cloud infrastructure (AWS, GCP, Azure).</li>
+                        <li>Implement and maintain containerization (Docker, Kubernetes) and orchestration solutions.</li>
+                        <li>Automate infrastructure provisioning and configuration using tools like Terraform or Ansible.</li>
+                        <li>Monitor system performance, troubleshoot issues, and ensure high availability.</li>
+                        <li>Implement security best practices across infrastructure and development workflows.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>3+ years of experience in DevOps or SRE roles.</li>
+                        <li>Strong experience with cloud platforms (AWS, GCP, or Azure).</li>
+                        <li>Proficiency with Docker and Kubernetes.</li>
+                        <li>Experience with CI/CD tools (Jenkins, GitLab CI, GitHub Actions).</li>
+                        <li>Familiarity with scripting languages (Bash, Python).</li>
+                        <li>Understanding of network security, firewalls, and access control.</li>
+                    </ul>
+                `
+            },
+            "cryptography-engineer-details": {
+                title: "Cryptography / Security Engineer",
+                location: "Remote | Global",
+                description: `
+                    <p class="mb-3">We are looking for an experienced Cryptography / Security Engineer to join our core R&D team. You will be involved in the research, design, implementation, and auditing of post-quantum cryptographic schemes and secure protocols for our cutting-edge products.</p>
+                    <p class="mb-3">This role requires deep expertise in cryptographic primitives, a strong understanding of security models, and the ability to translate complex theoretical concepts into practical, secure solutions.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Research, evaluate, and implement post-quantum cryptographic algorithms (e.g., CRYSTALS-Kyber, Dilithium, NTRU, Falcon).</li>
+                        <li>Design and analyze secure communication protocols and key management systems.</li>
+                        <li>Conduct security audits and vulnerability assessments of cryptographic implementations.</li>
+                        <li>Contribute to the development of secure hardware and software components.</li>
+                        <li>Stay up-to-date with the latest advancements in cryptography and quantum computing.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>3+ years of experience in cryptography engineering or a related security role.</li>
+                        <li>Strong background in theoretical and applied cryptography.</li>
+                        <li>Proficiency in C/C++, Rust, or Go for cryptographic implementations.</li>
+                        <li>Familiarity with NIST PQC standardization process and finalists.</li>
+                        <li>Experience with cryptographic libraries and tools.</li>
+                        <li>Master's or Ph.D. in Computer Science, Mathematics, or a related field (preferred).</li>
+                    </ul>
+                `
+            },
+            "cybersecurity-analyst-details": {
+                title: "Cybersecurity Analyst",
+                location: "Remote | Global",
+                description: `
+                    <p class="mb-3">We are seeking a diligent Cybersecurity Analyst to support our efforts in cryptographic posture assessment, threat modeling, and compliance monitoring. You will play a crucial role in identifying cryptographic weaknesses and ensuring our clients' systems meet stringent security standards.</p>
+                    <p class="mb-3">This position requires a keen eye for detail, strong analytical skills, and familiarity with various cybersecurity frameworks and tools.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Perform cryptographic posture assessments across client infrastructures.</li>
+                        <li>Conduct threat modeling and risk analysis for new and existing systems.</li>
+                        <li>Monitor for cryptographic vulnerabilities and emerging quantum threats.</li>
+                        <li>Assist in generating Cryptographic Bill of Materials (CBOMs).</li>
+                        <li>Ensure compliance with industry standards and regulations (e.g., NIST, FIPS, GDPR, HIPAA).</li>
+                        <li>Prepare detailed reports and recommendations for security improvements.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>2+ years of experience in cybersecurity analysis or a related field.</li>
+                        <li>Understanding of cryptographic principles and common algorithms.</li>
+                        <li>Familiarity with cybersecurity frameworks (NIST Cybersecurity Framework, ISO 27001).</li>
+                        <li>Experience with vulnerability scanning and penetration testing tools.</li>
+                        <li>Strong analytical and problem-solving skills.</li>
+                        <li>Excellent written and verbal communication.</li>
+                    </ul>
+                `
+            },
+            "technical-writer-details": {
+                title: "Technical Writer (PQC)",
+                location: "Remote | Global",
+                description: `
+                    <p class="mb-3">We are looking for a talented Technical Writer to create clear, concise, and comprehensive documentation for our post-quantum cryptography products and APIs. You will translate complex technical concepts into user-friendly guides, API references, and blog posts.</p>
+                    <p class="mb-3">This role requires strong writing skills, attention to detail, and the ability to understand and explain highly technical cybersecurity topics to diverse audiences, from developers to business leaders.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Develop and maintain high-quality technical documentation, including user manuals, API documentation, and integration guides.</li>
+                        <li>Collaborate with engineers and product managers to understand complex technical concepts.</li>
+                        <li>Write engaging blog posts and articles on post-quantum cryptography and cybersecurity trends.</li>
+                        <li>Ensure documentation is accurate, up-to-date, and adheres to brand guidelines.</li>
+                        <li>Manage documentation versions using Git and other content management tools.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>2+ years of experience in technical writing, preferably in cybersecurity or a related tech field.</li>
+                        <li>Excellent written and verbal communication skills.</li>
+                        <li>Ability to understand and explain complex technical concepts clearly.</li>
+                        <li>Experience with Markdown, reStructuredText, or similar documentation formats.</li>
+                        <li>Familiarity with version control systems (Git).</li>
+                        <li>Portfolio of technical writing samples required.</li>
+                    </ul>
+                `
+            },
+            "student-researcher-details": {
+                title: "Student Researcher (MTLabs)",
+                location: "Remote | Open to Students",
+                description: `
+                    <p class="mb-3">MTLabs is offering a unique opportunity for a Student Researcher to contribute to cutting-edge research in post-quantum cryptography. This role is ideal for graduate students looking to apply theoretical knowledge to practical problems in cybersecurity.</p>
+                    <p class="mb-3">You will work alongside our senior researchers on projects related to algorithm benchmarking, side-channel analysis, and the application of PQC to embedded and IoT systems. This can be an excellent opportunity for a thesis project or independent study.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Conduct literature reviews and analyze existing research in PQC.</li>
+                        <li>Implement and benchmark PQC algorithms on various platforms.</li>
+                        <li>Contribute to the design and analysis of new cryptographic protocols.</li>
+                        <li>Assist in preparing research papers and presentations.</li>
+                        <li>Collaborate with the MTLabs team on ongoing projects.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Currently enrolled in a Master's or Ph.D. program in Computer Science, Electrical Engineering, Mathematics, or a related field.</li>
+                        <li>Strong academic record in cryptography, algorithms, or cybersecurity.</li>
+                        <li>Proficiency in at least one programming language (e.g., Python, C/C++).</li>
+                        <li>Ability to work independently and as part of a research team.</li>
+                        <li>Prior research experience or coursework in cryptography is a plus.</li>
+                    </ul>
+                `
+            },
+            "hardware-research-intern-details": {
+                title: "Hardware Research Intern (Embedded PQC)",
+                location: "Remote | Internship",
+                description: `
+                    <p class="mb-3">We are looking for a motivated Hardware Research Intern to explore and develop PQC-ready logic blocks for secure key management in embedded systems. This internship offers hands-on experience in hardware design for cybersecurity.</p>
+                    <p class="mb-3">You will work closely with our hardware and cryptography teams, focusing on designing efficient and secure cryptographic accelerators, investigating side-channel attack countermeasures, and integrating quantum random number generators.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Assist in the design and simulation of hardware modules for cryptographic operations.</li>
+                        <li>Research and evaluate hardware implementations of PQC algorithms.</li>
+                        <li>Investigate techniques for side-channel attack protection.</li>
+                        <li>Contribute to the integration of quantum random number generators (QRNGs).</li>
+                        <li>Document design choices and experimental results.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Currently enrolled in an Electrical Engineering, Computer Engineering, or related undergraduate/graduate program.</li>
+                        <li>Familiarity with digital logic design and FPGA/ASIC development flows.</li>
+                        <li>Knowledge of VHDL or Verilog.</li>
+                        <li>Basic understanding of cryptographic concepts.</li>
+                        <li>Strong problem-solving and analytical skills.</li>
+                    </ul>
+                `
+            },
+            "software-research-intern-details": {
+                title: "Software Research Intern (VANTAGE/APX)",
+                location: "Remote | Internship",
+                description: `
+                    <p class="mb-3">Moontrace Engineering is offering a Software Research Internship focused on prototyping cryptographic scanners and PQC migration agents for our VANTAGE and APX platforms. This is an ideal opportunity for students passionate about applied cryptography and automation tools.</p>
+                    <p class="mb-3">You will gain practical experience in developing tools that analyze cryptographic postures, identify vulnerabilities, and automate the transition to quantum-safe algorithms in real-world applications.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Develop proof-of-concept tools for scanning cryptographic assets in software.</li>
+                        <li>Prototype agents for automated cryptographic migration and agility.</li>
+                        <li>Research and integrate new PQC algorithms into existing software frameworks.</li>
+                        <li>Conduct experiments and analyze performance data of cryptographic operations.</li>
+                        <li>Collaborate with senior engineers on project design and implementation.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Currently enrolled in a Computer Science, Software Engineering, or related undergraduate/graduate program.</li>
+                        <li>Proficiency in Python, Java, or Go.</li>
+                        <li>Basic understanding of cybersecurity and cryptographic concepts.</li>
+                        <li>Familiarity with API design and software development principles.</li>
+                        <li>Strong analytical and problem-solving skills.</li>
+                    </ul>
+                `
+            },
+            "hardware-systems-engineer-details": {
+                title: "Hardware Systems Engineer (QUBEx)",
+                location: "Remote | Hybrid | Preferred: India",
+                description: `
+                    <p class="mb-3">We are seeking a lead Hardware Systems Engineer to drive the embedded development for QUBEx, our quantum-safe key management appliance. This is a critical role for someone with deep expertise in secure hardware design and embedded cryptography.</p>
+                    <p class="mb-3">You will be responsible for the full lifecycle of hardware development, from architectural design and component selection to firmware development, testing, and manufacturing support. Experience with Hardware Security Modules (HSMs) and side-channel attack countermeasures is essential.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Lead the design and development of secure embedded systems for QUBEx.</li>
+                        <li>Architect and implement secure boot, firmware updates, and trusted execution environments.</li>
+                        <li>Integrate cryptographic modules and ensure their secure operation.</li>
+                        <li>Conduct hardware security reviews and penetration testing.</li>
+                        <li>Collaborate with software and cryptography teams to ensure seamless hardware-software interaction.</li>
+                        <li>Manage relationships with hardware vendors and manufacturers.</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>5+ years of experience in embedded systems development with a strong focus on hardware security.</li>
+                        <li>Expertise in microcontroller programming (e.g., ARM Cortex-M/R), RTOS, and low-level drivers.</li>
+                        <li>Strong understanding of cryptographic hardware accelerators and secure element integration.</li>
+                        <li>Experience with secure hardware design principles and attack vectors.</li>
+                        <li>Proficiency in C/C++ for embedded systems.</li>
+                        <li>Familiarity with industry security certifications (e.g., FIPS 140-2).</li>
+                    </ul>
+                `
+            },
+            "fpga-qrng-engineer-details": {
+                title: "FPGA / QRNG Integration Engineer",
+                location: "Remote | Contract or Full-time",
+                description: `
+                    <p class="mb-3">We are looking for an FPGA / QRNG Integration Engineer to develop and integrate FPGA logic for true quantum random number generation (QRNG) within our QUBEx appliance. This role is crucial for ensuring the highest level of entropy and randomness for cryptographic keys.</p>
+                    <p class="mb-3">You will work on the cutting edge of hardware security, focusing on high-speed data acquisition, entropy extraction techniques, and secure integration of QRNGs into our hardware platform. Experience with high-speed interfaces like PCIe and ensuring signal integrity is highly valued.</p>
+                    <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
+                    <ul class="list-disc list-inside mb-3">
+                        <li>Design, develop, and verify FPGA logic for QRNG and cryptographic acceleration.</li>
+                        <li>Implement high-speed interfaces (e.g., PCIe, Ethernet) for data transfer.</li>
+                        <li>Develop and optimize entropy extraction and conditioning algorithms.</li>
+                        <li>Conduct rigorous testing and validation of QRNG output for randomness and bias.</li>
+                        <li>Collaborate with hardware and software teams for seamless integration into QUBEx.</li>
+                        <li>Ensure compliance with relevant industry standards for randomness (e.g., NIST SP 800-90A/B/C).</li>
+                    </ul>
+                    <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
+                    <ul class="list-disc list-inside">
+                        <li>3+ years of experience in FPGA design and verification.</li>
+                        <li>Proficiency in VHDL/Verilog.</li>
+                        <li>Experience with high-speed digital design and signal integrity.</li>
+                        <li>Understanding of random number generation principles, especially quantum entropy sources.</li>
+                        <li>Familiarity with PCIe or other high-speed serial interfaces.</li>
+                        <li>Strong debugging and troubleshooting skills for hardware.</li>
+                    </ul>
+                `
+            }
+        };
 
-            // Get references to all the major sections and elements we'll be working with
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
             const jobListingsSection = document.getElementById('job-listings-section');
             const jobApplicationContainer = document.getElementById('job-application-container');
             const applicationJobTitle = document.getElementById('application-job-title');
             const hiddenJobTitleInput = document.getElementById('hidden-job-title');
             const applicationForm = document.getElementById('job-application-form');
             const successMessageContainer = document.getElementById('form-success-message');
+            const jobSearchInput = document.getElementById('job-search-input');
+            const jobCards = document.querySelectorAll('#job-listings .job-card-compact');
+            const jobDetailsModalOverlay = document.getElementById('job-details-modal-overlay');
+            const jobDetailsModalClose = document.getElementById('job-details-modal-close');
+            const modalJobTitle = document.getElementById('modal-job-title');
+            const modalJobLocation = document.getElementById('modal-job-location');
+            const modalJobDescription = document.getElementById('modal-job-description');
+            const modalApplyButton = document.getElementById('modal-apply-button');
+
+
+            // --- Mobile menu toggle logic ---
+            mobileMenuToggle.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.addEventListener('click', function (e) {
+                if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
 
             // --- Dynamic Philosophy Text Logic ---
             const dynamicPhilosophyText = document.getElementById('dynamic-philosophy-text');
-
             const philosophyData = [
                 "Build with Purpose",
                 "One Team, One Goal",
-                "Innovate Relentlessly"
+                "Innovate Relentlessly",
+                "Embrace Openness",
+                "Drive Global Impact",
+                "Champion Trust"
             ];
             let currentTextIndex = 0;
 
             function updatePhilosophyText() {
-                // Remove 'show' class to start fade-out
                 dynamicPhilosophyText.classList.remove('show');
-
                 setTimeout(() => {
                     const text = philosophyData[currentTextIndex];
-
                     if (text.includes(',')) {
-                        // If the text contains a comma, split it and apply blue color to the second part
                         const parts = text.split(',');
                         dynamicPhilosophyText.innerHTML = `${parts[0]}, <span class="text-blue-600">${parts[1]}</span>`;
                     } else {
                         dynamicPhilosophyText.textContent = text;
                     }
-
-                    // Add 'show' class to start fade-in
                     dynamicPhilosophyText.classList.add('show');
-
                     currentTextIndex = (currentTextIndex + 1) % philosophyData.length;
-                }, 500); // Wait for fade-out to complete before changing content
+                }, 500);
             }
-
-            // Initial text set
             updatePhilosophyText();
-            // Set interval for changing text every 3 seconds
             setInterval(updatePhilosophyText, 3000);
 
-
-            // --- Accordion Logic for Job Cards ---
-            // Allows each job card to expand and collapse
+            // --- Accordion Logic for Job Cards (for compact view) ---
             const jobCardHeaders = document.querySelectorAll('.job-card-header');
             jobCardHeaders.forEach(header => {
                 header.addEventListener('click', () => {
                     const content = header.nextElementSibling;
-                    
-                    // This part ensures only one card is open at a time
+                    // Close all other open cards
                     document.querySelectorAll('.job-card-content.open').forEach(openContent => {
                         if (openContent !== content) {
                             openContent.classList.remove('open');
                             openContent.previousElementSibling.classList.remove('open');
                         }
                     });
-
                     // Toggle the clicked card
                     content.classList.toggle('open');
                     header.classList.toggle('open');
@@ -500,19 +921,12 @@
             });
 
             // --- Job Filter Logic ---
-            // Handles the filtering of job cards by category
             const filterButtons = document.querySelectorAll('#job-filters .filter-button');
-            const jobCards = document.querySelectorAll('#job-listings .job-card-compact');
-            
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const filter = button.getAttribute('data-filter');
-                    
-                    // Update the active state on the buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    
-                    // Show or hide job cards based on the selected filter
                     jobCards.forEach(card => {
                         const cardCategory = card.getAttribute('data-category');
                         if (filter === 'all' || cardCategory === filter) {
@@ -521,33 +935,90 @@
                             card.style.display = 'none';
                         }
                     });
+                    jobSearchInput.value = ''; // Clear search when filter is applied
                 });
             });
 
-            // --- Form Navigation Logic ---
-            // Shows the application form when an "Apply Now" button is clicked
+            // --- Job Search Logic ---
+            jobSearchInput.addEventListener('keyup', () => {
+                const searchTerm = jobSearchInput.value.toLowerCase();
+                filterButtons.forEach(btn => btn.classList.remove('active')); // Deactivate filters on search
+                jobCards.forEach(card => {
+                    const jobTitle = card.querySelector('h3').textContent.toLowerCase();
+                    const jobLocation = card.querySelector('p').textContent.toLowerCase();
+                    const jobDescription = card.querySelector('.job-card-content p').textContent.toLowerCase();
+                    if (jobTitle.includes(searchTerm) || jobLocation.includes(searchTerm) || jobDescription.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // --- Job Details Modal Logic ---
             const applyButtons = document.querySelectorAll('.apply-now-button');
             applyButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
-                    event.stopPropagation(); // Prevents the accordion from closing
+                    event.stopPropagation(); // Prevent accordion from toggling
                     const jobTitle = button.getAttribute('data-job-title');
-                    
-                    // Populate the form with the correct job title
-                    applicationJobTitle.textContent = jobTitle;
-                    hiddenJobTitleInput.value = jobTitle;
-                    
-                    // Switch views from listings to the form
-                    jobListingsSection.classList.add('hidden');
-                    jobApplicationContainer.classList.remove('hidden');
-                    applicationForm.classList.remove('hidden');
-                    successMessageContainer.classList.add('hidden');
-                    
-                    // Scroll the form into view
-                    window.scrollTo({ top: jobApplicationContainer.offsetTop - 100, behavior: 'smooth' });
+                    const jobDetailsId = button.closest('.job-card-compact').getAttribute('data-job-details-id');
+                    const jobDetails = detailedJobDescriptions[jobDetailsId];
+
+                    if (jobDetails) {
+                        modalJobTitle.textContent = jobDetails.title;
+                        modalJobLocation.textContent = jobDetails.location;
+                        modalJobDescription.innerHTML = jobDetails.description; // Use innerHTML for rich content
+                        modalApplyButton.setAttribute('data-job-title', jobDetails.title); // Pass job title to modal's apply button
+
+                        jobDetailsModalOverlay.classList.add('show');
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling background
+                    } else {
+                        showMessageBox('Job details not found. Please try again later.', 'error');
+                    }
                 });
             });
 
-            // Handles the "Back to Job Listings" button
+            jobDetailsModalClose.addEventListener('click', () => {
+                jobDetailsModalOverlay.classList.remove('show');
+                // Use a timeout to ensure the transition completes before hiding display
+                setTimeout(() => {
+                    jobDetailsModalOverlay.classList.add('hidden-display');
+                }, 300); // Match this to your CSS transition duration
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+
+            jobDetailsModalOverlay.addEventListener('click', (event) => {
+                if (event.target === jobDetailsModalOverlay) {
+                    jobDetailsModalOverlay.classList.remove('show');
+                    // Use a timeout to ensure the transition completes before hiding display
+                    setTimeout(() => {
+                        jobDetailsModalOverlay.classList.add('hidden-display');
+                    }, 300); // Match this to your CSS transition duration
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // --- Modal Apply Button to Main Form Logic ---
+            modalApplyButton.addEventListener('click', () => {
+                const jobTitle = modalApplyButton.getAttribute('data-job-title');
+                applicationJobTitle.textContent = jobTitle;
+                hiddenJobTitleInput.value = jobTitle;
+                
+                jobDetailsModalOverlay.classList.remove('show'); // Hide job details modal
+                jobDetailsModalOverlay.classList.add('hidden-display'); // Ensure it's fully hidden
+                document.body.style.overflow = ''; // Restore body overflow before scrolling
+                
+                jobListingsSection.classList.add('hidden'); // Hide job listings
+                jobApplicationContainer.classList.remove('hidden'); // Show application form
+                applicationForm.classList.remove('hidden'); // Ensure form is visible
+                successMessageContainer.classList.add('hidden'); // Hide success message if previously shown
+                
+                // Scroll the form into view
+                jobApplicationContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+
+            // --- Form Navigation Logic (Back to Job Listings) ---
             const backButton = document.getElementById('back-to-jobs-button');
             backButton.addEventListener('click', () => {
                 jobApplicationContainer.classList.add('hidden');
@@ -557,16 +1028,14 @@
             
             // --- Form Submission Handler (using AJAX with Formspree) ---
             applicationForm.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
+                event.preventDefault();
                 
                 const submitButton = document.getElementById('submit-application-button');
                 const formData = new FormData(applicationForm);
                 const applicantName = formData.get('name');
                 const applicantEmail = formData.get('email');
 
-                // Simple validation
                 if (!applicantName || !applicantEmail) {
-                    // Using a custom message box instead of alert()
                     showMessageBox('Please fill out all required fields (*).', 'error');
                     return;
                 }
@@ -574,7 +1043,6 @@
                 submitButton.disabled = true;
                 submitButton.textContent = 'Submitting...';
 
-                // Send the form data to Formspree
                 fetch('https://formspree.io/f/mvgqaege', {
                     method: 'POST',
                     body: formData,
@@ -584,7 +1052,6 @@
                 })
                 .then(response => {
                     if (response.ok) {
-                        // If submission is successful, show the success message
                         applicationForm.classList.add('hidden');
                         successMessageContainer.innerHTML = `
                             <h2 class="text-3xl font-bold text-gray-900 mb-4">Thank You, ${applicantName}!</h2>
@@ -596,15 +1063,13 @@
                         `;
                         successMessageContainer.classList.remove('hidden');
                         
-                        // Add event listener for the new "Back" button
                         document.getElementById('back-to-jobs-button-after-submit').addEventListener('click', () => {
-                           window.location.reload();
+                           // This reloads the page, effectively resetting the form and showing all listings
+                           window.location.reload(); 
                         });
                     } else {
-                        // If there's a server-side error
                         response.json().then(data => {
                             const errorMessage = data.errors ? data.errors.map(e => e.message).join(', ') : 'There was a problem submitting your form.';
-                            // Using a custom message box instead of alert()
                             showMessageBox(`Oops! ${errorMessage}`, 'error');
                         });
                         submitButton.disabled = false;
@@ -612,8 +1077,7 @@
                     }
                 })
                 .catch(error => {
-                    // If there's a network error
-                    // Using a custom message box instead of alert()
+                    console.error('Form submission error:', error);
                     showMessageBox('Oops! There was a network error. Please try again.', 'error');
                     submitButton.disabled = false;
                     submitButton.textContent = 'Submit Application';
@@ -622,21 +1086,31 @@
 
             // Custom Message Box Function (replaces alert)
             function showMessageBox(message, type = 'info') {
-                const messageBox = document.createElement('div');
-                messageBox.classList.add('fixed', 'bottom-4', 'right-4', 'p-4', 'rounded-lg', 'shadow-lg', 'text-white', 'z-[999]');
+                let messageBox = document.querySelector('.message-box');
+                if (!messageBox) {
+                    messageBox = document.createElement('div');
+                    messageBox.classList.add('message-box');
+                    document.body.appendChild(messageBox);
+                }
                 
+                messageBox.textContent = message;
+                messageBox.classList.remove('bg-red-600', 'bg-gray-800', 'bg-green-600', 'show'); // Clear previous states
                 if (type === 'error') {
                     messageBox.classList.add('bg-red-600');
+                } else if (type === 'success') {
+                    messageBox.classList.add('bg-green-600');
                 } else {
                     messageBox.classList.add('bg-gray-800');
                 }
                 
-                messageBox.textContent = message;
-                document.body.appendChild(messageBox);
-
                 setTimeout(() => {
-                    messageBox.remove();
-                }, 3000); // Message disappears after 3 seconds
+                    messageBox.classList.add('show');
+                }, 10); // Small delay to ensure transition works
+                
+                setTimeout(() => {
+                    messageBox.classList.remove('show');
+                    setTimeout(() => messageBox.remove(), 300); // Remove after fade out
+                }, 3000);
             }
         });
     </script>
