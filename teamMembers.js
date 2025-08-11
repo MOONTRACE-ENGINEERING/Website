@@ -5,7 +5,7 @@ window.teamMembers = [
   {
     id: 'hemraj',
     name: 'Dr. Hemraj S. Lamkuche',
-    title: 'Advisor & Lead Researcher',
+    title: 'Principle Cryptologist & Advisor',
     image: 'assets/team/p2.jpg',
     linkedin: 'https://www.linkedin.com/in/dr-hemraj-lamkuche-4b760040/',
     googleScholar: 'https://scholar.google.co.in/citations?hl=en&user=sqNVq48AAAAJ&view_op=list_works',
