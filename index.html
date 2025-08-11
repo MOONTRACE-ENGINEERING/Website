@@ -395,7 +395,7 @@
         z-index: 100;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.5s ease, visibility 0.5s ease; /* Enhanced transition */
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Faster transition */
       }
       .modal-overlay.show {
         opacity: 1;
@@ -407,11 +407,11 @@
         border-radius: 0.75rem;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         max-width: 95%; /* Slightly wider */
-        max-height: 95%; /* Slightly taller */
+        max-height: 95%;
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95); /* Initial state for transition */
-        transition: all 0.5s ease-out; /* Enhanced transition */
+        transition: all 0.3s ease-out; /* Faster transition */
         
         /* Hide scrollbar */
         scrollbar-width: none; /* For Firefox */
@@ -430,7 +430,7 @@
         right: 1rem;
         background: none;
         border: none;
-        font-size: 1.75rem; /* Slightly larger close button */
+        font-size: 1.75rem;
         color: #666;
         cursor: pointer;
         transition: color 0.2s;
@@ -517,7 +517,7 @@
         z-index: 100;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.5s ease, visibility 0.5s ease; /* Enhanced transition */
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Faster transition */
       }
       #coming-soon-modal-overlay.show {
         opacity: 1;
@@ -533,7 +533,7 @@
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95);
-        transition: all 0.5s ease-out; /* Enhanced transition */
+        transition: all 0.3s ease-out; /* Faster transition */
       }
       #coming-soon-modal-overlay.show .modal-content {
         transform: translateY(0) scale(1);
@@ -616,7 +616,7 @@
         z-index: 1000; /* Ensure it's on top */
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.5s ease, visibility 0.5s ease, backdrop-filter 0.5s ease; /* Enhanced transition for backdrop-filter */
+        transition: opacity 0.3s ease, visibility 0.3s ease, backdrop-filter 0.3s ease; /* Faster transition for backdrop-filter */
       }
       #contact-popup-modal-overlay.show {
         opacity: 1;
@@ -633,7 +633,7 @@
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95);
-        transition: all 0.5s ease-out; /* Enhanced transition */
+        transition: all 0.3s ease-out; /* Faster transition */
         text-align: center; /* Center content inside */
       }
       #contact-popup-modal-overlay.show .modal-content {
@@ -650,7 +650,7 @@
         cursor: pointer;
         transition: color 0.2s;
       }
-      #contact-popup-modal-overlay .modal-close-button:hover {
+      .modal-close-button:hover {
         color: #333;
       }
       #contact-popup-modal-overlay .company-logo {
@@ -811,7 +811,7 @@
         id="flash-banner-prev"
         aria-label="Previous"
       >
-        &#8592;
+        ←
       </button>
       <div class="flash-banner-content" id="flash-banner-content">
         <!-- JS will inject content here -->
@@ -821,7 +821,7 @@
         id="flash-banner-next"
         aria-label="Next"
       >
-        &#8594;
+        →
       </button>
     </div>
 
@@ -843,7 +843,7 @@
         <div class="hidden md:flex items-center space-x-12">
           <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
           <a href="#solutions" class="nav-link font-medium">Solutions</a>
-          <a href="#defense" class="nav-link font-medium">Defense</a>
+          <a href="#critical-systems" class="nav-link font-medium">Standards</a>
           <a href="#whymoontrace" class="nav-link font-medium"
             >Why Moontrace?</a
           >
@@ -880,7 +880,7 @@
       >
         <a href="MTLabs.html" class="block nav-link font-medium py-2">MTLabs</a>
         <a href="#solutions" class="block nav-link font-medium py-2">Solutions</a>
-        <a href="#defense" class="block nav-link font-medium py-2">Defense</a>
+        <a href="#critical-systems" class="block nav-link font-medium py-2">Standards</a>
         <a href="#whymoontrace" class="block nav-link font-medium"
           >Why Moontrace?</a
         >
@@ -967,7 +967,7 @@
           <!-- Mosca Quote Section -->
           <div id="mosca-quote-section" class="mt-16 text-center text-gray-300 cursor-pointer mosca-quote-clickable">
             <p class="text-lg md:text-xl italic max-w-3xl mx-auto">
-              "There is a 1 in 7 chance that some fundamental public-key crypto will be broken by quantum by 2026, and a 1 in 2 chance of the same by 2031."
+              "There is a <span class="font-bold">1 in 7 chance</span> that some fundamental public-key crypto will be broken by quantum by <span class="font-bold">2026</span>, and a <span class="font-bold">1 in 2 chance</span> of the same by <span class="font-bold">2031</span>."
             </p>
             <p class="text-sm md:text-base font-semibold mt-2">
               – Dr. Michele Mosca
@@ -1155,27 +1155,25 @@
         </div>
       </section>
 
-      <section id="defense" class="py-20">
+      <section id="critical-systems" class="py-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
             <h2
               class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
             >
-              Specialized Solutions: Defense & Embedded Systems
+              Advanced Cryptography for Critical Systems: Enterprise to Edge
             </h2>
             <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
-              Developing battlefield-ready, lightweight PQC algorithms to secure
-              critical defense systems in the world's most demanding
-              environments.
+              We develop lightweight, high-performance cryptographic solutions optimized for a wide range of critical systems. From robust enterprise servers and secure cloud environments to resource-constrained embedded devices and industrial IoT, our expertise ensures quantum-resilient and future-proof security in the most demanding operational landscapes.
             </p>
           </div>
           <div class="mt-16 bg-white p-8 md:p-12 rounded-xl shadow-lg">
             <h3 class="text-2xl font-bold text-gray-800 text-center mt-12">
-              PQC Performance Benchmarks on Embedded Systems
+              Interactive Performance: PQC on Embedded Systems
             </h3>
             <p class="text-center text-gray-600 mt-2 mb-8">
-              Interactively explore the trade-offs between PQC algorithms on a
-              resource-constrained ARM Cortex-A53 device. Lower bars indicate
+              Explore the trade-offs between NIST PQC algorithms on a
+              resource-constrained ARM Cortex-A53 device. This demonstrates our capability to optimize advanced cryptographic primitives for edge computing and other low-power environments. Lower bars indicate
               better performance.
             </p>
             <div
@@ -1216,6 +1214,11 @@
             <div class="chart-container">
               <div id="chart-loading-spinner" class="loading-spinner"></div>
               <canvas id="pqcChart" class="hidden"></canvas>
+            </div>
+            <div class="mt-10 text-center">
+              <a href="#" id="performance-cta-button" class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition inline-block">
+                  See How We Can Secure Your Project
+              </a>
             </div>
           </div>
         </div>
@@ -1286,15 +1289,15 @@
                 </svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900">
-                Dual Expertise: QSaaS & Defense
+                Dual Expertise: QSaaS & Critical System Security
               </h3>
               <p class="mt-2 text-gray-600">
                 From comprehensive enterprise QSaaS to specialized lightweight
-                algorithms for battlefield deployment, we cover the full
-                spectrum of quantum security needs.
+                algorithms for critical system deployment, we cover the full
+                spectrum of advanced security needs.
               </p>
             </div>
-            <div class="card p-8 md:col-span-1 lg:col-span-1 animated-item">
+            <div class="card p-8 animated-item">
               <div class="card-icon-container">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -1306,6 +1309,20 @@
               <p class="mt-2 text-gray-600">
                 We are driven by a singular mission: to move every organization
                 from compromised to confident in the quantum era.
+              </p>
+            </div>
+            <!-- NEW CARD: Agentic AI & Intelligent Automation -->
+            <div class="card p-8 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9.893 18.027M16 16.22V17.5M16 6.5V7.77m-1.5 5.5h-6M12 21.75c-1.892 0-3.717-.347-5.433-1.043C3.86 19.546 2.25 17.5 2.25 15V9c0-2.25 1.86-4.296 4.317-5.207A9.004 9.004 0 0112 2.25c1.892 0 3.717.347 5.433 1.043C20.14 4.704 21.75 6.75 21.75 9v6c0 2.25-1.86 4.296-4.317 5.207A9.004 9.004 0 0112 21.75z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Agentic AI & Intelligent Automation
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Beyond static defenses, our solutions leverage advanced AI and automation to proactively detect, adapt to, and neutralize emerging threats, ensuring self-managing security.
               </p>
             </div>
           </div>
@@ -1382,6 +1399,58 @@
               <p class="mt-2 text-gray-600">
                 Providing military-grade, lightweight PQC for tactical
                 communications and battlefield systems under extreme conditions.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Financial Services
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Safeguarding sensitive financial transactions, long-term customer data, and blockchain integrity against quantum attacks and evolving regulatory demands.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18L14.25 12L8.25 6" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Automotive
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Securing connected vehicle systems, autonomous driving data, and vehicle-to-everything (V2X) communication to prevent quantum-enabled cyber-physical attacks.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75A2.25 2.25 0 0015.75 1.5H13.5m-3 0V3.75m3-2.25V3.75M9 15.75h3m-3 3h3m-3-6h3m3-6h.008v.008H15V9.75h.008z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Manufacturing & IoT
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Protecting industrial control systems, smart factory data, and vast networks of IoT devices from quantum-era vulnerabilities.
+              </p>
+            </div>
+             <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.106l-1.412-.353a1.125 1.125 0 01-.924-.924L19.5 8.4c0-.21-.129-.381-.363-.455l-3.75-1.001a1.125 1.125 0 01-.924-.924V3.375c0-.516-.351-.966-.852-1.106L12 1.5H10.5a2.25 2.25 0 00-2.25 2.25v2.818c0 .516-.351.966-.852 1.106L4.25 9.75c-.234.074-.363.245-.363.455v3.182c0 .516-.351.966-.852 1.106l-1.412.353a1.125 1.125 0 01-.924.924L2.25 18.75z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Telecommunications
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Fortifying 5G networks, satellite communications, and global data transmission against quantum decryption and future-proofing critical communication infrastructure.
               </p>
             </div>
           </div>
@@ -1610,8 +1679,6 @@
 </section>
 
 
-
-
     </main>
 
     <footer class="bg-gray-900 text-gray-400">
@@ -1635,7 +1702,7 @@
             <li><a href="regulatory-hub.html">Regulatory Hub</a></li> <!-- New Footer Link -->
           </ul>
           <p>
-            &copy; 2025 Moontrace Engineering Research and Consulting | All
+            © 2025 Moontrace Engineering Research and Consulting | All
             Rights Reserved.
           </p>
           <p class="mt-2">Built in India, for the World.</p>
@@ -1675,7 +1742,7 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M9.75 17L12 20.25l2.25-3.25M21 9l-3.354-3.354A4.5 4.5 0 0014.28 4.792L12 7.5l-2.28-2.708A4.5 4.5 0 005.354 5.646L2 9m19 0H2m19 0a2 2 0 012 2v6a2 2 0 01-2 2H2a2 2 0 01-2-2v-6a2 2 0 012-2z"
-            /></svg
+            /></svg>
           >Solutions</a
         >
         <a href="careers.html" class="bottom-nav-link"
@@ -1690,7 +1757,7 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M21 13V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
-            /></svg
+            /></svg>
           >Careers</a
         >
         <a href="#about" class="bottom-nav-link"
@@ -1705,7 +1772,7 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            /></svg
+            /></svg>
           >About</a
         >
         <!-- Removed contact link from bottom nav as it's no longer a modal -->
@@ -1732,7 +1799,7 @@
     <!-- Mosca Theorem Modal -->
     <div id="mosca-modal-overlay" class="modal-overlay">
       <div class="modal-content">
-        <button id="mosca-modal-close" class="modal-close-button">&times;</button>
+        <button id="mosca-modal-close" class="modal-close-button">×</button>
         <h3 class="text-2xl font-extrabold text-blue-400 mb-4 text-center">
           Dr. Michele Mosca's Theorem: The Path to Post-Quantum Preparation
         </h3>
@@ -1772,14 +1839,6 @@
           </li>
         </ul>
 
-        <h4 class="text-xl font-bold text-blue-400 border-b border-blue-200 pb-2 mb-4">An example would be:</h4>
-        <ul class="list-disc list-inside text-gray-700 mb-6 pl-5 leading-relaxed">
-          <li class="mb-2"><span class="font-bold">X</span> - A financial institution needs to look after personal customer data for the longevity of the customer relationship for as long as needed, in compliance with data protection laws such as GDPR, for example. In this example, let’s say between 1 and 10 years.</li>
-          <li class="mb-2"><span class="font-bold">Y</span> - The financial institution forecasts that it will take between 3 and 4 years to upgrade to a fully quantum-safe environment.</li>
-          <li><span class="font-bold">Z</span> - Quantum computers arrive within the next 3 to 4 years with the power to break cryptography and customer data is exposed.</li>
-          <li>This occurred before the financial institution upgraded its environment during its predicted timeframe of 3 to 4 years (Y), and hackers were able to take advantage of this sensitive customer data.</li>
-        </ul>
-
         <div class="video-container">
           <iframe
             src="https://www.youtube.com/embed/ewDE7yaKZyw"
@@ -1802,7 +1861,7 @@
     <!-- New "Coming Soon" Modal -->
     <div id="coming-soon-modal-overlay" class="modal-overlay">
         <div class="modal-content text-center max-w-sm p-8">
-            <button id="coming-soon-modal-close" class="modal-close-button">&times;</button>
+            <button id="coming-soon-modal-close" class="modal-close-button">×</button>
             <h3 class="text-2xl font-bold text-gray-900 mb-4">Launching Soon!</h3>
             <p class="text-lg text-gray-700">We are actively developing our tools and will be launching soon. Stay tuned!</p>
         </div>
@@ -1811,7 +1870,7 @@
     <!-- New Contact Popup Modal -->
     <div id="contact-popup-modal-overlay" class="modal-overlay">
         <div class="modal-content">
-            <button id="contact-popup-modal-close" class="modal-close-button" aria-label="Close contact form">&times;</button>
+            <button id="contact-popup-modal-close" class="modal-close-button" aria-label="Close contact form">×</button>
             <img src="assets/button.png" alt="Moontrace Engineering Logo" class="company-logo">
             <h3 class="text-2xl font-bold text-gray-900 mb-4">Get in Touch with Moontrace</h3>
             <p class="text-gray-700 mb-6">We'd love to hear from you! Please fill out the form below.</p>
@@ -2470,6 +2529,7 @@
 
         // --- New Contact Popup Modal Logic ---
         const contactFormButton = document.getElementById('contact-form-button');
+        const performanceCtaButton = document.getElementById('performance-cta-button'); // New CTA button
         const contactPopupModalOverlay = document.getElementById('contact-popup-modal-overlay');
         const contactPopupModalClose = document.getElementById('contact-popup-modal-close');
         const contactForm = document.getElementById('contact-form');
@@ -2498,6 +2558,15 @@
         if (contactFormButton) {
             contactFormButton.addEventListener('click', showContactPopupModal);
         }
+
+        // Event listener for the new "See How We Can Secure Your Project" button
+        if (performanceCtaButton) {
+            performanceCtaButton.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                showContactPopupModal();
+            });
+        }
+
 
         // Event listener to close modal when close button is clicked
         if (contactPopupModalClose) {
@@ -2543,7 +2612,7 @@
                         contactMessageDisplay.classList.add('success');
                         contactMessageDisplay.textContent = 'Thank you for your message! We will get back to you soon.';
                         contactForm.reset(); // Clear form fields on success
-                        setTimeout(hideContactPopupModal, 3000); // Hide modal after 3 seconds
+                        setTimeout(hideContactPopupModal, 1500); // Hide modal after 1.5 seconds (faster)
                     } else {
                         contactMessageDisplay.classList.remove('hidden', 'success');
                         contactMessageDisplay.classList.add('error');
@@ -2565,7 +2634,7 @@
             });
         }
 
-        // --- Whitepaper Invitation Popup Logic ---
+        // --- Whitepaper Invitation Popup Logic --
         const whitepaperPopup = document.getElementById('whitepaper-popup');
         const whitepaperButton = document.getElementById('pdf-button'); // Assuming this is the whitepaper button
 
