@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moontrace Engineering Intern Screening</title>
+    <link rel="icon" type="image/png" href="finalbg.png" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom font for a professional look */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f5f5dc; /* Creme background */
+        color: #333; /* Dark text for readability */
+        /* Add this for a subtle diagonal line pattern */
+      
+        background-image: repeating-linear-gradient(
+            0deg,
+            #ecead6 0px,
+            #ecead6 1px,
+            transparent 1px,
+            transparent 32px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            #ecead6 0px,
+            #ecead6 1px,
+            transparent 1px,
+            transparent 32px
+          );
+     
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #e0e0e0;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #aaa;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #888;
+      }
+
+      /* Minimalist input and textarea styles for light theme */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"],
+      textarea,
+      select {
+        background-color: #ffffff; /* White background for inputs */
+        border-color: #ccc; /* Light grey border */
+        color: #333;
+        padding: 0.75rem; /* Consistent padding */
+        border-radius: 0.5rem; /* Consistent border-radius */
+        transition: border-color 0.2s, box-shadow 0.2s; /* Smooth transitions */
+      }
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus,
+      input[type="number"]:focus,
+      input[type="date"]:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #6b7280; /* Tailwind gray-500 on focus */
+        box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2); /* Subtle shadow on focus */
+      }
+
+      input[type="file"] {
+        color: #333;
+      }
+      input[type="file"]::file-selector-button {
+        background-color: #e0e0e0;
+        color: #333;
+        border-color: #ccc;
+      }
+      input[type="file"]::file-selector-button:hover {
+        background-color: #d0d0d0;
+      }
+
+      /* Hide elements during print for a cleaner PDF */
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        body {
+          background-color: #fff; /* White background for print */
+          margin: 0;
+          padding: 0;
+        }
+        .shadow-lg,
+        .border,
+        .rounded-xl {
+          box-shadow: none !important;
+          border: none !important;
+          border-radius: 0 !important;
+        }
+        .p-6,
+        .p-8,
+        .p-10 {
+          padding: 0 !important;
+        }
+        .mb-8 {
+          margin-bottom: 0.5rem !important;
+        }
+        h2 {
+          margin-top: 1rem !important;
+          margin-bottom: 0.5rem !important;
+          font-size: 1.25rem !important; /* Smaller headings for print */
+          border-bottom: 1px solid #ccc !important;
+          padding-bottom: 0.25rem !important;
+        }
+        label,
+        input,
+        select,
+        textarea {
+          font-size: 0.85rem !important; /* Smaller text for inputs */
+        }
+        input[type="file"] {
+          display: none !important; /* Hide file input in print */
+        }
+        /* Show image previews only in print */
+        .id-preview-container,
+        .signature-preview-container {
+          display: block !important;
+        }
+      }
+
+      /* Custom Message Box for alerts */
+      .message-box {
+          position: fixed;
+          bottom: 1rem;
+          right: 1rem;
+          padding: 0.75rem 1.5rem;
+          border-radius: 0.5rem;
+          color: white;
+          font-weight: 500;
+          z-index: 1000;
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+      }
+      .message-box.show {
+          opacity: 1;
+      }
+      .message-box.error {
+          background-color: #dc2626; /* red-600 */
+      }
+      .message-box.success {
+          background-color: #16a34a; /* green-600 */
+      }
+
+      /* Loading Spinner for Submit Button */
+      .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #ffffff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
+    <div
+      id="mainContainer"
+      class="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 max-w-4xl w-full border border-gray-200"
+    >
+      <!-- Company Logo/Header -->
+      <div class="text-center mb-8">
+        <div class="flex flex-col items-center justify-center">
+          <div class="flex items-center justify-center">
+            <img
+              src="assets/button.png"
+              alt="Moontrace Logo"
+              class="h-50 w-20 mr-5 object-contain"
+              style="background: transparent"
+            />
+            <div class="text-4xl tracking-wider">
+              <span class="font-bold text-black text-lg md:text-4xl">MOONTRACE</span>
+              <span class="font-normal text-red-600 text-base md:text-4xl">|</span>
+              <span class="font-normal text-gray-700 text-base md:text-4xl">ENGINEERING</span>
+            </div>
+          </div>
+          <div class="h-6"></div>
+    <hr class="w-full border-t-2 border-gray-300 my-4" />
+        </div>
+        <p class="text-xl sm:text-2xl text-black-1000 font-semibold">
+          Intern Screening Application
+        </p>
+        <p class="text-gray-500 mt-4 text-sm sm:text-base">
+          Please fill out this form accurately and completely.
+        </p>
+      </div>
+
+      <!-- Main Form Content Wrapper -->
+      <div id="internFormContent">
+        <form id="internForm" action="https://formspree.io/f/xkgzyolk" method="POST" enctype="multipart/form-data">
+          <!-- Personal Information Section -->
+          <section class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2
+              class="text-2xl sm:text-2xl font-bold text-gray-700 mb-6 border-b-2 border-gray-300 pb-2"
+            >
+              1. Personal Information
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="fullName"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Full Name <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="e.g., Bharat "
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Email Address <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="e.g., your.email@example.com"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="country"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Country <span class="text-red-500">*</span></label
+                >
+                <select
+                  id="country"
+                  name="country"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  required
+                >
+                  <option value="">Select your Country</option>
+                  <option value="US" data-code="+1">+1 United States</option>
+                  <option value="CA" data-code="+1">+1 Canada</option>
+                  <option value="GB" data-code="+44">+44 United Kingdom</option>
+                  <option value="IN" data-code="+91">+91 India</option>
+                  <option value="AU" data-code="+61">+61 Australia</option>
+                  <option value="DE" data-code="+49">+49 Germany</option>
+                  <option value="FR" data-code="+33">+33 France</option>
+                  <option value="JP" data-code="+81">+81 Japan</option>
+                  <option value="CN" data-code="+86">+86 China</option>
+                  <option value="BR" data-code="+55">+55 Brazil</option>
+                  <option value="MX" data-code="+52">+52 Mexico</option>
+                  <!-- Add more countries as needed -->
+                </select>
+              </div>
+              <div>
+                <label
+                  for="phone"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Phone Number <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="e.g., +91 9876543210"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="dob"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Date of Birth <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="date"
+                  id="dob"
+                  name="dob"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  required
+                />
+              </div>
+              <div class="md:col-span-2">
+                <label
+                  for="currentAddress"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Current Address <span class="text-red-500">*</span></label
+                >
+                <textarea
+                  id="currentAddress"
+                  name="currentAddress"
+                  rows="3"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="Street, City, State, Zip Code"
+                  required
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  for="residenceDuration"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >How long at current address?
+                  <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="residenceDuration"
+                  name="residenceDuration"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="e.g., 5 years, 6 months"
+                  required
+                />
+              </div>
+              <div class="md:col-span-2">
+                <label
+                  for="permanentAddress"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Permanent Address <span class="text-red-500">*</span></label
+                >
+                <textarea
+                  id="permanentAddress"
+                  name="permanentAddress"
+                  rows="3"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="Street, City, State, Zip Code (if different from current)"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </section>
+
+          <!-- Educational Background Section -->
+          <section class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2
+              class="text-2xl sm:text-2xl font-bold text-gray-700 mb-6 border-b-2 border-gray-300 pb-2"
+            >
+              2. Educational Background
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="university"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >University/College <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="university"
+                  name="university"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="e.g., Your University Name"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="degree"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Degree/Program <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="degree"
+                  name="degree"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="e.g., B.Tech in Computer Science"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="graduationYear"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Expected/Actual Graduation Year
+                  <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="number"
+                  id="graduationYear"
+                  name="graduationYear"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="YYYY"
+                  min="1900"
+                  max="2100"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="gpa"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >GPA/Percentage</label
+                >
+                <input
+                  type="text"
+                  id="gpa"
+                  name="gpa"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  placeholder="e.g., 3.8/4.0 or 85%"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Skills Section -->
+          <section class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2
+              class="text-2xl sm:text-2xl font-bold text-gray-700 mb-6 border-b-2 border-gray-300 pb-2"
+            >
+              3. Skills & Experience
+            </h2>
+            <div class="mb-4">
+              <label
+                for="technicalSkills"
+                class="block text-gray-700 text-sm font-semibold mb-2"
+                >Technical Skills</label
+              >
+              <textarea
+                id="technicalSkills"
+                name="technicalSkills"
+                rows="3"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                placeholder="List your relevant technical skills (e.g., Python, AutoCAD, SolidWorks, C++)"
+              ></textarea>
+            </div>
+            <div class="mb-4">
+              <label
+                for="softSkills"
+                class="block text-gray-700 text-sm font-semibold mb-2"
+                >Soft Skills</label
+              >
+              <textarea
+                id="softSkills"
+                name="softSkills"
+                rows="3"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                placeholder="List your soft skills (e.g., Teamwork, Communication, Problem-solving)"
+              ></textarea>
+            </div>
+            <div>
+              <label
+                for="relevantExperience"
+                class="block text-gray-700 text-sm font-semibold mb-2"
+                >Relevant Projects/Experience</label
+              >
+              <textarea
+                id="relevantExperience"
+                name="relevantExperience"
+                rows="4"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                placeholder="Describe any relevant projects, internships, or work experience"
+              ></textarea>
+            </div>
+          </section>
+
+          <!-- Non-Disclosure & Work Policy Section -->
+          <section class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2
+              class="text-2xl sm:text-2xl font-bold text-gray-700 mb-6 border-b-2 border-gray-300 pb-2"
+            >
+              4. Non-Disclosure & Work Policy Agreement
+            </h2>
+            <div
+              class="text-sm text-gray-600 leading-relaxed mb-4 p-4 bg-gray-100 rounded-lg border border-gray-300"
+            >
+              <p class="mb-2 font-semibold">
+                By checking the box below, I acknowledge and agree to the
+                following terms regarding Confidential Information and Moontrace
+                Engineering's Work Policy:
+              </p>
+              <ul class="list-disc list-inside space-y-2">
+                <li>
+                  <span class="font-medium text-gray-700">Confidentiality:</span>
+                  I understand that during my internship with Moontrace
+                  Engineering, I may be exposed to proprietary, confidential, or
+                  sensitive information, including but not limited to, trade
+                  secrets, intellectual property, business plans, financial data,
+                  client lists, technical specifications, product designs,
+                  software code, and internal processes ("Confidential
+                  Information").
+                </li>
+                <li>
+                  <span class="font-medium text-gray-700"
+                    >Non-Disclosure Obligation:</span
+                  >
+                  I agree to keep all Confidential Information strictly
+                  confidential and not to disclose, publish, or disseminate it to
+                  any third party, nor to use it for any purpose other than in the
+                  performance of my duties for Moontrace Engineering. This
+                  obligation extends beyond the termination of my internship.
+                </li>
+                <li>
+                  <span class="font-medium text-gray-700"
+                    >Return of Materials:</span
+                  >
+                  Upon termination of my internship for any reason, I agree to
+                  immediately return all documents, files, software, equipment, or
+                  other property of Moontrace Engineering, including all copies
+                  thereof, that contain Confidential Information.
+                </li>
+                <li>
+                  <span class="font-medium text-gray-700"
+                    >Work Policy Adherence:</span
+                  >
+                  I agree to abide by all policies, procedures, and guidelines of
+                  Moontrace Engineering, including but not limited to, those
+                  concerning workplace conduct, safety, intellectual property,
+                  internet usage, and data privacy, as they may be updated from
+                  time to time.
+                </li>
+                <li>
+                  <span class="font-medium text-gray-700"
+                    >Consequences of Breach:</span
+                  >
+                  I understand that any breach of this non-disclosure and work
+                  policy agreement may result in disciplinary action, up to and
+                  including immediate termination of my internship, and may also
+                  subject me to legal remedies available to Moontrace Engineering.
+                </li>
+              </ul>
+            </div>
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="ndaConsent"
+                name="ndaConsent"
+                class="form-checkbox h-5 w-5 text-gray-600 rounded focus:ring-gray-500 bg-white border-gray-300"
+                required
+              />
+              <label
+                for="ndaConsent"
+                class="ml-2 text-gray-700 text-sm font-semibold"
+                >I have read, understood, and agree to the Non-Disclosure & Work
+                Policy.</label
+              >
+            </div>
+          </section>
+
+          <!-- Government ID Submission Section -->
+          <section class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2
+              class="text-2xl sm:text-2xl font-bold text-gray-700 mb-6 border-b-2 border-gray-300 pb-2"
+            >
+              5. Government Approved ID
+            </h2>
+            <p class="text-sm text-gray-600 mb-4">
+              For verification purposes, please submit a copy of one
+              government-approved ID.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="idType"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Type of ID <span class="text-red-500">*</span></label
+                >
+                <select
+                  id="idType"
+                  name="idType"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                  required
+                >
+                  <option value="">Select ID Type</option>
+                  <option value="passport">Passport</option>
+                  <option value="aadhar">Aadhar Card</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="idFile"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                  >Upload ID Document <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="file"
+                  id="idFile"
+                  name="idFile"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-300 file:text-gray-800 hover:file:bg-gray-400 transition duration-200"
+                  required
+                />
+                <p class="text-xs text-gray-500 mt-1">
+                  Accepted formats: PDF, JPG, JPEG, PNG (Max file size: 5MB)
+                </p>
+                <div
+                  class="id-preview-container hidden mt-4 border border-gray-300 rounded-lg p-2 bg-gray-100 print:block"
+                >
+                  <p class="text-sm text-gray-700 mb-2 font-semibold">
+                    ID Preview (for print):
+                  </p>
+                  <img
+                    id="idPreview"
+                    src=""
+                    alt="ID Preview"
+                    class="w-full h-auto object-contain rounded-lg max-h-64 border border-gray-200"
+                    onerror="this.onerror=null;this.src='https://placehold.co/200x150/e0e0e0/333333?text=ID+Preview';"
+                    style="display: none"
+                  />
+                  <p
+                    id="idFileNameDisplay"
+                    class="text-xs text-gray-500 mt-2"
+                    style="display: none"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Additional Information and Consent -->
+          <section class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2
+              class="text-2xl sm:text-2xl font-bold text-gray-700 mb-6 border-b-2 border-gray-300 pb-2"
+            >
+              6. Additional Information
+            </h2>
+            <div class="mb-4">
+              <label
+                for="howYouHeard"
+                class="block text-gray-700 text-sm font-semibold mb-2"
+                >How did you hear about this internship?</label
+              >
+              <input
+                type="text"
+                id="howYouHeard"
+                name="howYouHeard"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                placeholder="e.g., University career fair, LinkedIn, Referral"
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                for="questions"
+                class="block text-gray-700 text-sm font-semibold mb-2"
+                >Do you have any questions for us?</label
+              >
+              <textarea
+                id="questions"
+                name="questions"
+                rows="3"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                placeholder="Type your questions here..."
+              ></textarea>
+            </div>
+          </section>
+
+          <!-- Signature and Declaration Section -->
+          <section class="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <h2
+              class="text-2xl sm:text-2xl font-bold text-gray-700 mb-6 border-b-2 border-gray-300 pb-2"
+            >
+              7. Signature & Declaration
+            </h2>
+            <div
+              class="text-sm text-gray-600 leading-relaxed mb-4 p-4 bg-gray-100 rounded-lg border border-gray-300"
+            >
+              <p class="font-semibold mb-2">
+                I hereby declare that all the information provided in this
+                application is true, accurate, and complete to the best of my
+                knowledge and belief.
+              </p>
+              <div class="flex items-start">
+                <input
+                  type="checkbox"
+                  id="accuracyDeclaration"
+                  name="accuracyDeclaration"
+                  class="form-checkbox h-5 w-5 text-gray-600 rounded focus:ring-gray-500 mt-1 bg-white border-gray-300"
+                  required
+                />
+                <label
+                  for="accuracyDeclaration"
+                  class="ml-2 text-gray-700 text-sm font-semibold"
+                  >I agree to the above declaration.</label
+                >
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="signatureDate"
+                class="block text-gray-700 text-sm font-semibold mb-2"
+                >Date <span class="text-red-500">*</span></label
+              >
+              <input
+                type="date"
+                id="signatureDate"
+                name="signatureDate"
+                class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-200"
+                readonly
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="signatureFile"
+                class="block text-gray-700 text-sm font-semibold mb-2"
+                >Upload Your Signature Photo
+                <span class="text-red-500">*</span></label
+              >
+              <input
+                type="file"
+                id="signatureFile"
+                name="signatureFile"
+                accept=".png,.jpg,.jpeg"
+                class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-300 file:text-gray-800 hover:file:bg-gray-400 transition duration-200"
+                required
+              />
+              <p class="text-xs text-gray-500 mt-1">
+                Accepted formats: PNG, JPG, JPEG (Max file size: 2MB)
+              </p>
+              <div
+                class="signature-preview-container hidden mt-4 border border-gray-300 rounded-lg p-2 bg-gray-100 print:block"
+              >
+                <p class="text-sm text-gray-700 mb-2 font-semibold">
+                  Signature Preview (for print):
+                </p>
+                <img
+                  id="signaturePreview"
+                  src=""
+                  alt="Signature Preview"
+                  class="w-full h-auto object-contain rounded-lg max-h-32 border border-gray-200"
+                  onerror="this.onerror=null;this.src='https://placehold.co/200x80/e0e0e0/333333?text=Signature+Preview';"
+                  style="display: none"
+                />
+                <p
+                  id="signatureFileNameDisplay"
+                  class="text-xs text-gray-500 mt-2"
+                  style="display: none"
+                ></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Submit and Download Buttons -->
+          <div
+            class="text-center space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row justify-center no-print"
+          >
+            <button
+              type="submit"
+              id="submitFormBtn"
+              class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Submit Application
+              <span id="submitSpinner" class="loading-spinner hidden"></span>
+            </button>
+            <button
+              type="button"
+              id="downloadPdfBtn"
+              class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50"
+            >
+              Print Form (as PDF)
+            </button>
+            <button
+              type="button"
+              id="downloadDataBtn"
+              class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50"
+            >
+              Download Form Data (JSON)
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Submission Message Container (Hidden by default) -->
+      <div id="submissionMessageContainer" class="hidden text-center py-10">
+        <h2 id="submissionMessageTitle" class="text-3xl font-bold text-gray-900 mb-4"></h2>
+        <p id="submissionMessageText" class="text-lg text-gray-600 mb-6"></p>
+        <button
+          type="button"
+          id="startNewApplicationBtn"
+          class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50"
+        >
+          Start New Application
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Automatic Date Collector
+      window.addEventListener("load", () => {
+        const signatureDateInput = document.getElementById("signatureDate");
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, "0"); // Months start at 0!
+        const dd = String(today.getDate()).padStart(2, "0");
+        signatureDateInput.value = `${yyyy}-${mm}-${dd}`;
+      });
+
+      // Phone number country code auto-fill logic
+      const countrySelect = document.getElementById("country");
+      const phoneInput = document.getElementById("phone");
+
+      const countryCodes = {
+        US: "+1",
+        CA: "+1",
+        GB: "+44",
+        IN: "+91",
+        AU: "+61",
+        DE: "+49",
+        FR: "+33",
+        JP: "+81",
+        CN: "+86",
+        BR: "+55",
+        MX: "+52",
+        // Add more country codes as needed
+      };
+
+      countrySelect.addEventListener("change", function () {
+        const selectedCountryCode = countryCodes[this.value];
+        if (selectedCountryCode) {
+          // Remove any existing country code prefix
+          let currentValue = phoneInput.value.replace(/^\+\d+\s*/, "");
+          phoneInput.value = selectedCountryCode + " " + currentValue;
+        } else {
+          // If no country or unknown country, remove any existing code
+          phoneInput.value = phoneInput.value.replace(/^\+\d+\s*/, "");
+        }
+      });
+
+      // Function to handle file preview
+      function setupFilePreview(
+        inputFileId,
+        previewImgId,
+        fileNameDisplayId,
+        containerClass
+      ) {
+        const inputFile = document.getElementById(inputFileId);
+        const previewImg = document.getElementById(previewImgId);
+        const fileNameDisplay = document.getElementById(fileNameDisplayId);
+        const previewContainer = document.querySelector(`.${containerClass}`);
+
+        inputFile.addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              previewImg.src = e.target.result;
+              previewImg.style.display = "block";
+              fileNameDisplay.textContent = file.name;
+              fileNameDisplay.style.display = "block";
+              previewContainer.classList.remove("hidden"); // Show container
+            };
+            reader.readAsDataURL(file);
+          } else {
+            previewImg.src = "";
+            previewImg.style.display = "none";
+            fileNameDisplay.textContent = "";
+            fileNameDisplay.style.display = "none";
+            previewContainer.classList.add("hidden"); // Hide container
+          }
+        });
+      }
+
+      // Setup previews for ID and Signature
+      setupFilePreview(
+        "idFile",
+        "idPreview",
+        "idFileNameDisplay",
+        "id-preview-container"
+      );
+      setupFilePreview(
+        "signatureFile",
+        "signaturePreview",
+        "signatureFileNameDisplay",
+        "signature-preview-container"
+      );
+
+      // Download PDF functionality (uses browser print)
+      document
+        .getElementById("downloadPdfBtn")
+        .addEventListener("click", function () {
+          window.print();
+        });
+
+      // Download Form Data (JSON)
+      document
+        .getElementById("downloadDataBtn")
+        .addEventListener("click", function () {
+          const form = document.getElementById("internForm");
+          const formData = {};
+
+          // Collect text inputs and textareas
+          form
+            .querySelectorAll(
+              'input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], textarea'
+            )
+            .forEach((input) => {
+              formData[input.name] = input.value;
+            });
+
+          // Collect select values
+          form.querySelectorAll("select").forEach((select) => {
+            formData[select.name] = select.value;
+          });
+
+          // Collect checkbox values
+          form
+            .querySelectorAll('input[type="checkbox"]')
+            .forEach((checkbox) => {
+              formData[checkbox.name] = checkbox.checked;
+            });
+
+          // Handle ID file input (only filename for JSON)
+          const idFile = document.getElementById("idFile");
+          if (idFile.files.length > 0) {
+            formData.idFileName = idFile.files[0].name;
+            formData.idFileSize = idFile.files[0].size;
+            formData.idFileType = idFile.files[0].type;
+          } else {
+            formData.idFileName = "No ID file uploaded";
+          }
+
+          // Handle Signature file input (only filename for JSON)
+          const signatureFile = document.getElementById("signatureFile");
+          if (signatureFile.files.length > 0) {
+            formData.signatureFileName = signatureFile.files[0].name;
+            formData.signatureFileSize = signatureFile.files[0].size;
+            formData.signatureFileType = signatureFile.files[0].type;
+          } else {
+            formData.signatureFileName = "No signature file uploaded";
+          }
+
+          const jsonData = JSON.stringify(formData, null, 2);
+          const blob = new Blob([jsonData], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "moontrace_intern_application.json";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        });
+
+      // Custom Message Box Function (replaces alert)
+      function showMessageBox(message, type = 'info') {
+          let messageBox = document.querySelector('.message-box');
+          if (!messageBox) {
+              messageBox = document.createElement('div');
+              messageBox.classList.add('message-box');
+              document.body.appendChild(messageBox);
+          }
+          
+          messageBox.textContent = message;
+          messageBox.classList.remove('bg-red-600', 'bg-gray-800', 'bg-green-600', 'show'); // Clear previous states
+          if (type === 'error') {
+              messageBox.classList.add('bg-red-600');
+          } else if (type === 'success') {
+              messageBox.classList.add('bg-green-600');
+          } else {
+              messageBox.classList.add('bg-gray-800');
+          }
+          
+          setTimeout(() => {
+              messageBox.classList.add('show');
+          }, 10); // Small delay to ensure transition works
+          
+          setTimeout(() => {
+              messageBox.classList.remove('show');
+              setTimeout(() => messageBox.remove(), 300); // Remove after fade out
+          }, 3000);
+      }
+
+      // Add client-side validation for ID file upload size
+      document
+        .getElementById("idFile")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const maxSize = 5 * 1024 * 1024; // 5 MB in bytes
+            if (file.size > maxSize) {
+              showMessageBox(
+                "ID file size exceeds the 5MB limit. Please choose a smaller file.",
+                "error"
+              );
+              event.target.value = ""; // Clear the file input
+            }
+          }
+        });
+
+      // Add client-side validation for Signature file upload size
+      document
+        .getElementById("signatureFile")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const maxSize = 2 * 1024 * 1024; // 2 MB in bytes
+            if (file.size > maxSize) {
+              showMessageBox(
+                "Signature file size exceeds the 2MB limit. Please choose a smaller file.",
+                "error"
+              );
+              event.target.value = ""; // Clear the file input
+            }
+          }
+        });
+
+      // Formspree Submission Logic
+      const internForm = document.getElementById('internForm');
+      const submitFormBtn = document.getElementById('submitFormBtn');
+      const submitSpinner = document.getElementById('submitSpinner');
+      const internFormContent = document.getElementById('internFormContent');
+      const submissionMessageContainer = document.getElementById('submissionMessageContainer');
+      const submissionMessageTitle = document.getElementById('submissionMessageTitle');
+      const submissionMessageText = document.getElementById('submissionMessageText');
+      const startNewApplicationBtn = document.getElementById('startNewApplicationBtn');
+
+
+      internForm.addEventListener('submit', async function(event) {
+          event.preventDefault(); // Prevent default form submission
+
+          submitFormBtn.disabled = true; // Disable button
+          submitSpinner.classList.remove('hidden'); // Show spinner
+          
+          const formData = new FormData(internForm);
+
+          try {
+              const response = await fetch(internForm.action, {
+                  method: 'POST',
+                  body: formData,
+                  headers: {
+                      'Accept': 'application/json'
+                  }
+              });
+
+              if (response.ok) {
+                  internForm.reset(); // Clear all form fields
+                  // Hide file previews after reset
+                  document.querySelector('.id-preview-container').classList.add('hidden');
+                  document.querySelector('.signature-preview-container').classList.add('hidden');
+                  document.getElementById('idPreview').style.display = 'none';
+                  document.getElementById('signaturePreview').style.display = 'none';
+                  document.getElementById('idFileNameDisplay').style.display = 'none';
+                  document.getElementById('signatureFileNameDisplay').style.display = 'none';
+
+                  // Show success message
+                  internFormContent.classList.add('hidden'); // Hide the form
+                  submissionMessageContainer.classList.remove('hidden'); // Show message container
+                  submissionMessageTitle.textContent = 'Application Submitted Successfully!';
+                  submissionMessageText.textContent = 'Thank you for your application. We will review it and get back to you soon.';
+                  submissionMessageContainer.style.color = '#155724'; // Green text for success
+                  submissionMessageContainer.style.backgroundColor = '#d4edda'; // Light green background
+                  submissionMessageContainer.style.border = '1px solid #c3e6cb'; // Green border
+
+              } else {
+                  const data = await response.json();
+                  const errorMessage = data.errors ? data.errors.map(e => e.message).join(', ') : 'There was a problem submitting your form.';
+                  
+                  // Show error message
+                  submissionMessageContainer.classList.remove('hidden'); // Show message container
+                  internFormContent.classList.remove('hidden'); // Keep form visible on error
+                  submissionMessageTitle.textContent = 'Submission Failed';
+                  submissionMessageText.textContent = `Oops! ${errorMessage} Please correct the errors and try again.`;
+                  submissionMessageContainer.style.color = '#721c24'; // Red text for error
+                  submissionMessageContainer.style.backgroundColor = '#f8d7da'; // Light red background
+                  submissionMessageContainer.style.border = '1px solid #f5c6cb'; // Red border
+              }
+          } catch (error) {
+              console.error('Form submission error:', error);
+              // Show network error message
+              submissionMessageContainer.classList.remove('hidden'); // Show message container
+              internFormContent.classList.remove('hidden'); // Keep form visible on network error
+              submissionMessageTitle.textContent = 'Network Error';
+              submissionMessageText.textContent = 'Could not connect to the server. Please check your internet connection and try again.';
+              submissionMessageContainer.style.color = '#721c24'; // Red text for error
+              submissionMessageContainer.style.backgroundColor = '#f8d7da'; // Light red background
+              submissionMessageContainer.style.border = '1px solid #f5c6cb'; // Red border
+          } finally {
+              submitFormBtn.disabled = false; // Re-enable button
+              submitSpinner.classList.add('hidden'); // Hide spinner
+          }
+      });
+
+      // Event listener for "Start New Application" button
+      startNewApplicationBtn.addEventListener('click', () => {
+          submissionMessageContainer.classList.add('hidden'); // Hide message container
+          internFormContent.classList.remove('hidden'); // Show the form again
+          internFormContent.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll to the form
+          // Reset message styles
+          submissionMessageContainer.style.color = '';
+          submissionMessageContainer.style.backgroundColor = '';
+          submissionMessageContainer.style.border = '';
+      });
+
+    </script>
+  </body>
+</html>

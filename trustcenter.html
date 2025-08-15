@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moontrace Engineering | Trust Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/finalbg.png" />
+    <style>
+      :root {
+        --color-primary: #0052cc;
+        --color-primary-dark: #003f99;
+        --color-text-primary: #111827;
+        --color-text-secondary: #4b5563;
+        --color-background: #f3f4f6;
+        --color-surface: #ffffff;
+        --font-body: "Inter", sans-serif;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background-color: var(--color-background);
+        color: var(--color-text-primary);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 30V30h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6H0V4h4zm0 30V30H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6H0V4h4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+      }
+      main {
+        flex-grow: 1;
+        padding: 0;
+      }
+      .hero-banner {
+        background: linear-gradient(135deg, #1a1a1a 0%, #276dcf 100%);
+        color: white;
+        padding: 4rem 1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .hero-banner h1 {
+        font-size: 2.8rem;
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: white;
+      }
+      .hero-banner p {
+        font-size: 1.125rem;
+        max-width: 800px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .content-container {
+        background-color: var(--color-surface);
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        max-width: 1000px;
+        margin: 0 auto 2rem auto;
+      }
+      @media (min-width: 768px) {
+        .hero-banner { padding: 6rem 1rem; }
+        .hero-banner h1 { font-size: 3.2rem; }
+        .content-container { padding: 3rem; }
+      }
+
+      h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--color-primary);
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+      h2::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 50px;
+          height: 3px;
+          background-color: var(--color-primary);
+          border-radius: 2px;
+      }
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        color: var(--color-text-primary);
+      }
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--color-text-secondary);
+        margin-bottom: 1rem;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 1rem;
+      }
+      li {
+        margin-bottom: 0.5rem;
+        color: var(--color-text-secondary);
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      a:hover {
+        color: var(--color-primary-dark);
+        
+      }
+      .link-list li {
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+      }
+      .link-list .link-icon {
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 1.25rem;
+        height: 1.25rem;
+        color: var(--color-primary);
+      }
+      .link-list a {
+        font-weight: 600;
+      }
+
+      header {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid #e5e7eb;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        width: 100%;
+      }
+      @media (min-width: 768px) {
+        header { height: 80px; padding: 0 2rem; }
+      }
+
+      footer {
+        background-color: #111827;
+        color: #9ca3af;
+        padding: 2rem 0;
+        font-size: 0.875rem;
+        text-align: center;
+      }
+      footer a {
+        color: #d1d5db;
+      }
+      footer a:hover {
+        color: white;
+      }
+      footer ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* --- START: Tab Navigation Styles --- */
+      .tab-navigation {
+        display: flex;
+        border-bottom: 2px solid #e5e7eb;
+        margin-bottom: 2rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tab-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        background-color: transparent;
+        border: none;
+        border-bottom: 3px solid transparent;
+        cursor: pointer;
+        transition: color 0.3s ease, border-color 0.3s ease;
+        white-space: nowrap;
+      }
+      .tab-button:hover {
+        color: var(--color-primary);
+      }
+      .tab-button.active {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* --- END: Tab Navigation Styles --- */
+
+      /* --- START: Search Bar Styles --- */
+      .search-container {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+      .search-input {
+        width: 100%;
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .search-input:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.25);
+      }
+      .search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #9ca3af;
+      }
+      /* --- END: Search Bar Styles --- */
+    </style>
+  </head>
+  <body>
+     <header id="header">
+        <nav class="container mx-auto flex items-center justify-between h-full">
+            <a href="index.html" class="text-xl tracking-wider flex items-center gap-2">
+                <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
+                <span class="font-normal text-red-600 text-base md:text-lg">|</span>
+                <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
+            </a>
+            <a href="index.html" class="hidden sm:inline-block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition">Back to Main Site</a>
+            <button id="mobile-menu-toggle" class="sm:hidden flex items-center px-3 py-2 border rounded text-gray-700 border-gray-300 hover:bg-gray-100 focus:outline-none" aria-label="Open menu">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="sm:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg hidden">
+            <div class="px-4 py-4 flex flex-col gap-2">
+                <a href="index.html" class="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition text-center">Back to Main Site</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+      <div class="hero-banner">
+        <h1>Moontrace Trust Center</h1>
+        <p>
+          Welcome to the Moontrace Trust Center. This is your central resource for understanding our commitment to security, compliance, and data protection in the post-quantum era. Here you'll find the information you need, whether you're a customer, developer, or partner.
+        </p>
+      </div>
+
+      <div class="content-container">
+        <!-- Search Bar -->
+        <div class="search-container">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+          <input type="text" id="trust-center-search" class="search-input" placeholder="Search Trust Center...">
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+          <button class="tab-button active" data-tab="compliance">Compliance & Reports</button>
+          <button class="tab-button" data-tab="security">Security & PQC</button>
+          <button class="tab-button" data-tab="developer">Developer Hub</button>
+          <button class="tab-button" data-tab="vendor">Vendor & Partner Alliances</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="compliance" class="tab-content active searchable-content">
+          <h2>Compliance & Reports</h2>
+          <p>
+            Moontrace is committed to meeting global standards for security and compliance. We continuously monitor the regulatory landscape to ensure our platform and services adhere to the latest requirements for data protection and privacy.
+          </p>
+          
+          <h3>Key Regulatory Bodies & Standardization Efforts</h3>
+          <p>
+            Governments and international bodies are actively working to standardize Post-Quantum Cryptography (PQC) algorithms. Staying informed about these efforts is crucial for compliance.
+          </p>
+          <ul class="link-list">
+            <li>
+              <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              <a href="https://csrc.nist.gov/projects/post-quantum-cryptography" target="_blank" rel="noopener noreferrer">
+                NIST Post-Quantum Cryptography (PQC) Project
+              </a>
+              <p class="text-sm text-gray-500">Leading the global effort to standardize quantum-resistant public-key cryptographic algorithms.</p>
+            </li>
+            <li>
+              <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              <a href="https://www.whitehouse.gov/briefing-room/statements-releases/2022/05/04/fact-sheet-white-house-announces-initiatives-to-support-quantum-technology-and-encourage-a-vibrant-quantum-workforce/" target="_blank" rel="noopener noreferrer">
+                U.S. National Security Memorandum 10 (NSM-10)
+              </a>
+              <p class="text-sm text-gray-500">Directs U.S. government agencies to migrate to PQC and sets deadlines for developing quantum-resistant systems.</p>
+            </li>
+             <li>
+            <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+            <a href="https://www.etsi.org/technologies/quantum-safe-cryptography" target="_blank" rel="noopener noreferrer">
+              ETSI - Quantum-Safe Cryptography (QSC)
+            </a>
+            <p class="text-sm text-gray-500">The European Telecommunications Standards Institute provides specifications for quantum-safe solutions.</p>
+          </li>
+          <li>
+            <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+            <a href="https://www.iso.org/committee/45306.html" target="_blank" rel="noopener noreferrer">
+              ISO/IEC JTC 1/SC 27 - IT Security Techniques
+            </a>
+            <p class="text-sm text-gray-500">This international committee is working on standardizing post-quantum algorithms.</p>
+          </li>
+          </ul>
+
+          <h3>Audit Reports & Certifications</h3>
+          <p>We undergo regular third-party audits to verify our security controls. Contact us for access to our latest reports.</p>
+           <ul class="link-list">
+            <li>
+              <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <a href="#" id="open-contact-modal-soc2">SOC 2 Type II Report</a>
+              <p class="text-sm text-gray-500">Details on controls relevant to security, availability, and confidentiality.</p>
+            </li>
+            <li>
+              <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <a href="#" id="open-contact-modal-iso">ISO 27001 Certification</a>
+              <p class="text-sm text-gray-500">Demonstrates our commitment to a systematic approach to managing sensitive company information.</p>
+            </li>
+             <li>
+              <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <a href="#" id="open-contact-modal-csa">CSA STAR Self-Assessment</a>
+              <p class="text-sm text-gray-500">Our completed Consensus Assessments Initiative Questionnaire (CAIQ) is available upon request.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div id="security" class="tab-content searchable-content">
+          <h2>Security & Post-Quantum Cryptography</h2>
+          <p>Security is the foundation of everything we do. We employ a multi-layered defense strategy to protect our systems and your data from current and future threats, including those posed by quantum computers.</p>
+          
+          <h3>Our PQC Implementation</h3>
+          <p>We are actively transitioning to quantum-resistant cryptography. Our approach includes:</p>
+          <ul class="list-disc list-inside ml-4">
+            <li><strong>NIST-Standardized Algorithms:</strong> We are implementing algorithms selected by the U.S. National Institute of Standards and Technology (NIST), such as ML-KEM for key exchange and ML-DSA for digital signatures.</li>
+            <li><strong>Hybrid Approach:</strong> During the transition, we use a hybrid implementation that combines the strengths of classical (e.g., RSA, ECC) and post-quantum algorithms. This ensures security against both classical and quantum attacks.</li>
+            <li><strong>Crypto-Agility:</strong> Our systems are designed to be crypto-agile, allowing us to quickly adapt and update cryptographic algorithms as new standards emerge and the threat landscape evolves.</li>
+          </ul>
+
+          <h3>Data Encryption</h3>
+          <p>We protect your data at every stage:</p>
+          <ul class="list-disc list-inside ml-4">
+            <li><strong>Encryption in Transit:</strong> All data transmitted between you and our services is encrypted using strong protocols like TLS 1.3, with hybrid key exchange mechanisms to ensure quantum resistance.</li>
+            <li><strong>Encryption at Rest:</strong> Data stored on our servers is encrypted using industry-standard AES-256 encryption.</li>
+          </ul>
+
+          <h3>Infrastructure Security</h3>
+          <p>Our infrastructure is architected for security and resilience:</p>
+           <ul class="list-disc list-inside ml-4">
+            <li><strong>Secure Cloud Environment:</strong> We leverage leading cloud providers and adhere to best practices for secure cloud configuration.</li>
+            <li><strong>Network Security:</strong> We use firewalls, intrusion detection systems, and other network security measures to protect against unauthorized access.</li>
+            <li><strong>Regular Penetration Testing:</strong> We engage independent security firms to conduct regular penetration tests of our systems to identify and remediate potential vulnerabilities.</li>
+          </ul>
+        </div>
+
+        <div id="developer" class="tab-content searchable-content">
+          <h2>Developer Hub</h2>
+          <p>
+            Building secure applications in the quantum era requires the right tools and knowledge. Our Developer Hub provides resources to help you integrate our quantum-safe solutions and build resilient applications.
+          </p>
+          <h3>API Documentation</h3>
+          <p>Explore our comprehensive API documentation to learn how to integrate with Moontrace services. Our APIs are designed to be simple, powerful, and secure.</p>
+          <a href="#" class="font-bold">View API Docs (Coming Soon)</a>
+
+          <h3>Secure Coding Guidelines</h3>
+          <p>Follow our best practices for secure coding to protect your applications from common vulnerabilities. We provide guidance on topics like input validation, authentication, and cryptographic implementation.</p>
+          <a href="#" class="font-bold">Read Development Guides (Coming Soon)</a>
+          
+          <h3>Integration Guides</h3>
+          <p>Our integration guides provide step-by-step instructions for incorporating our PQC solutions into your existing applications and workflows, minimizing disruption and accelerating your transition to quantum-safe security.</p>
+          <a href="#" class="font-bold">Explore Integration Paths (Coming Soon)</a>
+        </div>
+
+        <div id="vendor" class="tab-content searchable-content">
+          <h2>Vendor & Partner Alliances</h2>
+          <p>
+            We hold our vendors and partners to the same high security standards we set for ourselves. A secure supply chain is critical for building a trusted ecosystem.
+          </p>
+          <h3>Vendor Security</h3>
+          <p>All of our vendors undergo a rigorous security review process before we engage with them. We assess their security posture, compliance certifications, and data protection practices to ensure they meet our requirements.</p>
+
+          <h3>Partner Program</h3>
+          <p>We collaborate with leading technology companies and security experts to advance the adoption of post-quantum cryptography. Our partner program is designed to foster innovation and build a strong, quantum-resilient ecosystem.</p>
+          <p>Interested in partnering with us? <a href="#" id="open-contact-modal-partner" class="font-bold">Contact our partnership team.</a></p>
+        </div>
+
+        <hr class="my-12 border-gray-200" />
+        
+        <div class="searchable-content">
+            <h2>How Moontrace Builds Trust</h2>
+            <p>
+            Our solutions are built with security and compliance at their core, helping organizations navigate the complexities of the post-quantum transition while adhering to global standards and mandates.
+            </p>
+            <ul class="space-y-4">
+            <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <div>
+                <strong>NIST-Aligned Algorithms:</strong> Our platform integrates and supports NIST-standardized PQC algorithms, ensuring your cryptographic posture is aligned with recognized global benchmarks.
+                </div>
+            </li>
+            <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" /></svg>
+                <div>
+                <strong>Quantum Risk Assessments:</strong> We assist organizations in performing comprehensive quantum risk assessments, identifying vulnerabilities and prioritizing migration efforts to meet regulatory expectations.
+                </div>
+            </li>
+            <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-green-600 mr-3 mt-1 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21l-8.25-4.5m8.25 4.5V3m0 18l8.25-4.5M12 3l8.25 4.5M12 3L3.75 7.5m9 5.25l8.25-4.5M12 12.75L3.75 7.5" /></svg>
+                <div>
+                <strong>Cryptographic Agility:</strong> Our tools enable phased, hybrid crypto adoption, minimizing disruption and ensuring continuous compliance as new standards emerge.
+                </div>
+            </li>
+            </ul>
+        </div>
+
+        <p class="mt-12 text-center text-lg bg-blue-50 border border-blue-200 text-blue-800 p-6 rounded-lg">
+          Have more questions? <a href="#" id="open-contact-modal" class="font-bold">Contact us</a> for more detailed security and compliance information.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <ul>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="https://github.com/MOONTRACE-ENGINEERING" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.instagram.com/moontrace_hq/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://x.com/Moontrace_HQ" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li><a href="assets/pdfs/whymoon.pdf" target="_blank">Manifesto</a></li>
+        </ul>
+        <p>&copy; 2025 Moontrace Engineering Research and Consulting | All Rights Reserved.</p>
+        <p class="mt-2">Built in India, for the World.</p>
+      </div>
+    </footer>
+
+    <!-- ADDED: Contact Popup Modal HTML -->
+    <div id="contact-popup-modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[1000] opacity-0 invisible transition-opacity duration-300">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300">
+            <button id="contact-popup-modal-close" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close contact form">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="text-center">
+              <img src="assets/button.png" alt="Moontrace Engineering Logo" class="w-20 h-20 mx-auto mb-4" onerror="this.style.display='none'">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h3>
+              <p class="text-gray-600 mb-6">We'd love to hear from you! Please fill out the form below.</p>
+            </div>
+            <form id="contact-form" action="https://formspree.io/f/mdkdpakv" method="POST">
+                <div class="mb-4">
+                    <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Your Name" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <textarea id="contact-message" name="message" rows="4" placeholder="Your message here..." required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <button type="submit" id="contact-submit-button" class="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">Send Message</button>
+                <div id="contact-loading-spinner" class="hidden w-5 h-5 border-2 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-4"></div>
+                <div id="contact-message-display" class="hidden mt-4 text-center text-sm p-3 rounded-md"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mobile Menu Logic ---
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                document.addEventListener('click', (e) => {
+                    if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+
+            // --- Tab Navigation Logic ---
+            const tabs = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const target = document.getElementById(tab.dataset.tab);
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+                    target.classList.add('active');
+                });
+            });
+
+            // --- Search Logic ---
+            const searchInput = document.getElementById('trust-center-search');
+            const searchableContents = document.querySelectorAll('.searchable-content');
+            searchInput.addEventListener('keyup', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                searchableContents.forEach(content => {
+                    const text = content.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        // This is a simple implementation. A more advanced one would highlight matches.
+                        // For now, we just log to console to show it works.
+                        console.log(`Found '${searchTerm}' in content.`);
+                    }
+                });
+            });
+
+            // --- Contact Popup Modal Logic ---
+            const contactPopupModalOverlay = document.getElementById('contact-popup-modal-overlay');
+            const contactPopupModalClose = document.getElementById('contact-popup-modal-close');
+            const contactForm = document.getElementById('contact-form');
+            const contactSubmitButton = document.getElementById('contact-submit-button');
+            const contactLoadingSpinner = document.getElementById('contact-loading-spinner');
+            const contactMessageDisplay = document.getElementById('contact-message-display');
+
+            const openModalButtons = [
+                document.getElementById('open-contact-modal'),
+                document.getElementById('open-contact-modal-soc2'),
+                document.getElementById('open-contact-modal-iso'),
+                document.getElementById('open-contact-modal-csa'),
+                document.getElementById('open-contact-modal-partner'),
+            ];
+
+            function showContactPopupModal(e) {
+                if (e) e.preventDefault();
+                contactPopupModalOverlay.classList.remove('invisible', 'opacity-0');
+                contactPopupModalOverlay.querySelector('div').classList.remove('scale-95');
+                document.body.style.overflow = 'hidden';
+                contactForm.reset();
+                contactMessageDisplay.className = 'hidden mt-4 text-center text-sm p-3 rounded-md';
+                contactSubmitButton.disabled = false;
+            }
+
+            function hideContactPopupModal() {
+                contactPopupModalOverlay.classList.add('opacity-0');
+                contactPopupModalOverlay.querySelector('div').classList.add('scale-95');
+                setTimeout(() => {
+                    contactPopupModalOverlay.classList.add('invisible');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+
+            openModalButtons.forEach(btn => {
+                if (btn) btn.addEventListener('click', showContactPopupModal);
+            });
+
+            if (contactPopupModalClose) contactPopupModalClose.addEventListener('click', hideContactPopupModal);
+            if (contactPopupModalOverlay) {
+                contactPopupModalOverlay.addEventListener('click', (event) => {
+                    if (event.target === contactPopupModalOverlay) hideContactPopupModal();
+                });
+            }
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    contactSubmitButton.disabled = true;
+                    contactLoadingSpinner.classList.remove('hidden');
+                    contactMessageDisplay.className = 'hidden';
+
+                    const formData = new FormData(contactForm);
+                    try {
+                        const response = await fetch(contactForm.action, {
+                            method: contactForm.method,
+                            body: formData,
+                            headers: { 'Accept': 'application/json' }
+                        });
+
+                        if (response.ok) {
+                            contactMessageDisplay.className = 'mt-4 text-center text-sm p-3 rounded-md bg-green-100 text-green-800';
+                            contactMessageDisplay.textContent = 'Thank you! We will get back to you soon.';
+                            contactForm.reset();
+                            setTimeout(hideContactPopupModal, 3000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        contactMessageDisplay.className = 'mt-4 text-center text-sm p-3 rounded-md bg-red-100 text-red-800';
+                        contactMessageDisplay.textContent = 'Oops! There was a problem. Please try again.';
+                    } finally {
+                        contactLoadingSpinner.classList.add('hidden');
+                        contactSubmitButton.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+  </body>
+</html>

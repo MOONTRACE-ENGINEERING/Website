@@ -233,6 +233,28 @@
             </div>
         </section>
 
+        <!-- Advisor Invitation Section -->
+        <section id="advisor-invitation" class="py-16 bg-blue-100">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-blue-900 sm:text-4xl">
+                    Shape the Future: Join Our Advisory Board
+                </h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-blue-800">
+                    We are actively seeking visionary industry experts and esteemed professors to join Moontrace Engineering as potential advisors. Your invaluable insights and strategic guidance will directly contribute to our mission of advancing post-quantum cybersecurity.
+                    We are offering meaningful equity in exchange for your time and expertise, recognizing the profound impact you can have on our journey.
+                </p>
+                <div class="mt-8">
+                    <button id="express-interest-advisor" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                        Express Interest
+                        <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Company Culture & Benefits Section -->
         <section id="culture-benefits" class="py-16 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -495,6 +517,32 @@
                 </div>
             </div>
         </section>
+
+        <!-- Advisor Application Form Container -->
+        <div id="advisor-application-container" class="hidden mt-16 max-w-3xl mx-auto">
+            <form id="advisor-application-form" class="p-8 sm:p-10 card">
+                <input type="hidden" name="_subject" value="Advisor Inquiry from Careers Page">
+                <button type="button" id="back-to-main-advisor-page-button" class="text-gray-600 hover:text-gray-900 mb-6 flex items-center font-semibold" aria-label="Back to Advisor Invitation">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                    Back to Advisor Invitation
+                </button>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Express Interest in Advisory Role</h2>
+                
+                <div class="space-y-6">
+                    <div><label for="advisor-name" class="form-field-label block mb-2">Name<span class="text-red-500">*</span></label><input type="text" name="name" id="advisor-name" class="form-input w-full" placeholder="Your Full Name" required /></div>
+                    <div><label for="advisor-email" class="form-field-label block mb-2">Email<span class="text-red-500">*</span></label><input type="email" name="email" id="advisor-email" class="form-input w-full" placeholder="you@example.com" required /></div>
+                    <div><label for="advisor-expertise" class="form-field-label block mb-2">Your Key Area(s) of Expertise<span class="text-red-500">*</span></label><textarea name="expertise" id="advisor-expertise" class="form-textarea w-full" rows="2" placeholder="e.g., Post-Quantum Cryptography, Cybersecurity Strategy, Quantum Computing..." required></textarea></div>
+                    <div><label for="advisor-interest" class="form-field-label block mb-2">Briefly state your interest and how you might contribute:</label><textarea name="interest_reason" id="advisor-interest" class="form-textarea w-full" rows="3" placeholder="Keep it concise and to the point."></textarea></div>
+                    <div class="pt-2">
+                        <button type="submit" id="submit-advisor-application-button" class="w-full bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-blue-800 transition disabled:bg-gray-400">
+                            Submit Interest
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- Success Message Container for Advisor Form -->
+            <div id="advisor-form-success-message" class="hidden text-center py-10 card"></div>
+        </div>
 
         <!-- Job Application Form Container -->
         <div id="job-application-container" class="hidden mt-16 max-w-3xl mx-auto">
@@ -823,7 +871,7 @@
                     <p class="mb-3">We are looking for an FPGA / QRNG Integration Engineer to develop and integrate FPGA logic for true quantum random number generation (QRNG) within our QUBEx appliance. This role is crucial for ensuring the highest level of entropy and randomness for cryptographic keys.</p>
                     <p class="mb-3">You will work on the cutting edge of hardware security, focusing on high-speed data acquisition, entropy extraction techniques, and secure integration of QRNGs into our hardware platform. Experience with high-speed interfaces like PCIe and ensuring signal integrity is highly valued.</p>
                     <h4 class="font-bold mt-4 mb-2">Responsibilities:</h4>
-                    <ul class="list-disc list-inside mb-3">
+                    <ul class="list-disc list-inside">
                         <li>Design, develop, and verify FPGA logic for QRNG and cryptographic acceleration.</li>
                         <li>Implement high-speed interfaces (e.g., PCIe, Ethernet) for data transfer.</li>
                         <li>Develop and optimize entropy extraction and conditioning algorithms.</li>
@@ -849,10 +897,13 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const jobListingsSection = document.getElementById('job-listings-section');
             const jobApplicationContainer = document.getElementById('job-application-container');
+            const advisorApplicationContainer = document.getElementById('advisor-application-container'); // New advisor form container
             const applicationJobTitle = document.getElementById('application-job-title');
             const hiddenJobTitleInput = document.getElementById('hidden-job-title');
-            const applicationForm = document.getElementById('job-application-form');
+            const jobApplicationForm = document.getElementById('job-application-form'); // Renamed for clarity
+            const advisorApplicationForm = document.getElementById('advisor-application-form'); // New advisor form
             const successMessageContainer = document.getElementById('form-success-message');
+            const advisorSuccessMessageContainer = document.getElementById('advisor-form-success-message'); // New advisor success message container
             const jobSearchInput = document.getElementById('job-search-input');
             const jobCards = document.querySelectorAll('#job-listings .job-card-compact');
             const jobDetailsModalOverlay = document.getElementById('job-details-modal-overlay');
@@ -861,6 +912,7 @@
             const modalJobLocation = document.getElementById('modal-job-location');
             const modalJobDescription = document.getElementById('modal-job-description');
             const modalApplyButton = document.getElementById('modal-apply-button');
+            const expressInterestAdvisorButton = document.getElementById('express-interest-advisor'); // New button for advisor form
 
 
             // --- Mobile menu toggle logic ---
@@ -998,7 +1050,7 @@
                 }
             });
 
-            // --- Modal Apply Button to Main Form Logic ---
+            // --- Modal Apply Button to Main Job Form Logic ---
             modalApplyButton.addEventListener('click', () => {
                 const jobTitle = modalApplyButton.getAttribute('data-job-title');
                 applicationJobTitle.textContent = jobTitle;
@@ -1009,8 +1061,9 @@
                 document.body.style.overflow = ''; // Restore body overflow before scrolling
                 
                 jobListingsSection.classList.add('hidden'); // Hide job listings
-                jobApplicationContainer.classList.remove('hidden'); // Show application form
-                applicationForm.classList.remove('hidden'); // Ensure form is visible
+                advisorApplicationContainer.classList.add('hidden'); // Hide advisor form
+                jobApplicationContainer.classList.remove('hidden'); // Show job application form
+                jobApplicationForm.classList.remove('hidden'); // Ensure form is visible
                 successMessageContainer.classList.add('hidden'); // Hide success message if previously shown
                 
                 // Scroll the form into view
@@ -1019,19 +1072,40 @@
 
 
             // --- Form Navigation Logic (Back to Job Listings) ---
-            const backButton = document.getElementById('back-to-jobs-button');
-            backButton.addEventListener('click', () => {
+            const backToJobsButton = document.getElementById('back-to-jobs-button');
+            backToJobsButton.addEventListener('click', () => {
                 jobApplicationContainer.classList.add('hidden');
+                advisorApplicationContainer.classList.add('hidden'); // Hide advisor form too
                 jobListingsSection.classList.remove('hidden');
                 window.scrollTo({ top: jobListingsSection.offsetTop - 100, behavior: 'smooth' });
             });
             
-            // --- Form Submission Handler (using AJAX with Formspree) ---
-            applicationForm.addEventListener('submit', function(event) {
+            // --- Advisor Form Navigation (Back to Advisor Invitation) ---
+            const backToAdvisorMainButton = document.getElementById('back-to-main-advisor-page-button');
+            backToAdvisorMainButton.addEventListener('click', () => {
+                advisorApplicationContainer.classList.add('hidden');
+                jobApplicationContainer.classList.add('hidden'); // Hide job form too
+                jobListingsSection.classList.remove('hidden'); // Show job listings and advisor invitation sections
+                document.getElementById('advisor-invitation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            // --- "Express Interest" button for Advisor role logic ---
+            expressInterestAdvisorButton.addEventListener('click', () => {
+                jobListingsSection.classList.add('hidden'); // Hide job listings
+                jobApplicationContainer.classList.add('hidden'); // Hide job application form
+                advisorApplicationContainer.classList.remove('hidden'); // Show advisor application form
+                advisorApplicationForm.classList.remove('hidden'); // Ensure form is visible
+                advisorSuccessMessageContainer.classList.add('hidden'); // Hide advisor success message
+                
+                advisorApplicationContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            // --- Job Application Form Submission Handler (using AJAX with Formspree) ---
+            jobApplicationForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 
                 const submitButton = document.getElementById('submit-application-button');
-                const formData = new FormData(applicationForm);
+                const formData = new FormData(jobApplicationForm);
                 const applicantName = formData.get('name');
                 const applicantEmail = formData.get('email');
 
@@ -1043,7 +1117,8 @@
                 submitButton.disabled = true;
                 submitButton.textContent = 'Submitting...';
 
-                fetch('https://formspree.io/f/mvgqaege', {
+                // Formspree URL for Job Applications
+                fetch('https://formspree.io/f/mvgqaege', { 
                     method: 'POST',
                     body: formData,
                     headers: {
@@ -1052,7 +1127,7 @@
                 })
                 .then(response => {
                     if (response.ok) {
-                        applicationForm.classList.add('hidden');
+                        jobApplicationForm.classList.add('hidden');
                         successMessageContainer.innerHTML = `
                             <h2 class="text-3xl font-bold text-gray-900 mb-4">Thank You, ${applicantName}!</h2>
                             <p class="text-lg text-gray-600">Your application for the "${hiddenJobTitleInput.value}" role has been received.</p>
@@ -1083,6 +1158,67 @@
                     submitButton.textContent = 'Submit Application';
                 });
             });
+
+            // --- Advisor Application Form Submission Handler (using AJAX with Formspree) ---
+            advisorApplicationForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const submitButton = document.getElementById('submit-advisor-application-button');
+                const formData = new FormData(advisorApplicationForm);
+                const advisorName = formData.get('name');
+                const advisorEmail = formData.get('email');
+                const advisorExpertise = formData.get('expertise');
+
+                if (!advisorName || !advisorEmail || !advisorExpertise) {
+                    showMessageBox('Please fill out all required fields (*).', 'error');
+                    return;
+                }
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                // Formspree URL for Advisor Applications
+                fetch('https://formspree.io/f/xjkozlng', { 
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        advisorApplicationForm.classList.add('hidden');
+                        advisorSuccessMessageContainer.innerHTML = `
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Thank You, ${advisorName}!</h2>
+                            <p class="text-lg text-gray-600">Your interest in an advisory role has been received.</p>
+                            <p class="text-lg text-gray-600 mt-2">We appreciate your interest and will be in touch with you at ${advisorEmail}.</p>
+                            <button id="back-to-advisor-after-submit" class="mt-8 bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition">
+                                Back to Careers Page
+                            </button>
+                        `;
+                        advisorSuccessMessageContainer.classList.remove('hidden');
+                        
+                        document.getElementById('back-to-advisor-after-submit').addEventListener('click', () => {
+                           // This reloads the page, effectively resetting the forms and showing all listings
+                           window.location.reload(); 
+                        });
+                    } else {
+                        response.json().then(data => {
+                            const errorMessage = data.errors ? data.errors.map(e => e.message).join(', ') : 'There was a problem submitting your form.';
+                            showMessageBox(`Oops! ${errorMessage}`, 'error');
+                        });
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit Interest';
+                    }
+                })
+                .catch(error => {
+                    console.error('Form submission error:', error);
+                    showMessageBox('Oops! There was a network error. Please try again.', 'error');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Interest';
+                });
+            });
+
 
             // Custom Message Box Function (replaces alert)
             function showMessageBox(message, type = 'info') {
