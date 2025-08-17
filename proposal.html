@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOONTRACE ENGINEERING | Interactive Proposal</title>
+    <!-- Chosen Palette: "Subtle Horizon" - a foundation of light grays and off-whites, accented with a calm sky blue and muted slate, promoting clarity and ease of reading. -->
+    <!-- Application Structure Plan: A clean, single-page layout with generous vertical spacing between distinct thematic sections (Introduction, The Problem, Our Integrated Solution, Core Products, Strategic Roadmap, and Foundational Technology). Navigation is handled by a sticky top bar. Interactive elements include a dynamic donut chart for PQC readiness, tabbed content for product features (VANTAGE and APX), and a clickable roadmap timeline that reveals phase details. This redesigned structure prioritizes visual calm and a linear, digestible flow, allowing users to absorb complex information step-by-step while maintaining the ability to explore specific areas in depth. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Development Roadmap -> Goal: Clearly illustrate progress and future plans -> Viz: Interactive Vertical Timeline -> Interaction: Clicking a phase displays its specific details, making the progression clear and engaging -> Justification: Breaks down complex information into manageable, interactive chunks, improving comprehension over a static list. Method: HTML/CSS/JS.
+        - Report Info: Product Features (VANTAGE/APX) -> Goal: Detail distinct capabilities of each product -> Viz: Tabbed Feature Cards -> Interaction: User can easily switch between product views to compare or focus -> Justification: Efficiently organizes extensive feature sets, reducing visual overload while making content accessible. Method: HTML/CSS/JS.
+        - Report Info: PQC Readiness Metric -> Goal: Highlight key challenge and urgency -> Viz: Doughnut Chart with central value display -> Interaction: Hover to see percentage breakdown -> Justification: Provides an immediate visual impact of a critical metric, effectively communicating the scale of the challenge in a glance. Library: Chart.js.
+        - Report Info: Technical Architecture -> Goal: Provide an overview of the underlying technology -> Viz: Clean, bulleted lists within distinct cards -> Interaction: Static display, designed for quick scanning -> Justification: Presents technical details in an organized, scannable format without visual complexity. Method: HTML/CSS with Unicode characters.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc; /* Very light background */
+            color: #1a202c; /* Darker text for readability */
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb; /* A slightly deeper blue for active/hover */
+        }
+        .section-title {
+            border-bottom: 2px solid #3b82f6; /* Consistent accent color for titles */
+            padding-bottom: 0.75rem;
+            margin-bottom: 2.5rem; /* More space below titles */
+        }
+        .phase {
+            transition: all 0.3s ease-in-out;
+            border-left-color: #cbd5e1;
+            padding-left: 1.5rem; /* More padding for a cleaner look */
+        }
+        .phase.active {
+            background-color: #e0f2fe; /* Lighter blue highlight */
+            border-left-color: #2563eb;
+            font-weight: 600; /* Bolder text for active phase */
+        }
+        .tab-button {
+            transition: all 0.2s ease;
+            font-weight: 500; /* Medium weight for tab buttons */
+            border-radius: 0.5rem; /* Rounded corners for buttons */
+        }
+        .tab-button.active {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for active tab */
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container {
+            position: relative; 
+            width: 100%; 
+            max-width: 400px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 300px;
+            max-height: 400px;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Softer shadow */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-xl tracking-wider">
+              <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
+              <span class="font-normal text-red-600 text-base md:text-lg">|</span>
+              <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#problem" class="nav-link text-slate-600 font-medium">The Problem</a>
+                <a href="#solution" class="nav-link text-slate-600 font-medium">Our Solution</a>
+                <a href="#products" class="nav-link text-slate-600 font-medium">Products</a>
+                <a href="#roadmap" class="nav-link text-slate-600 font-medium">Roadmap</a>
+                <a href="#tech" class="nav-link text-slate-600 font-medium">Technology</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#problem" class="block py-2 nav-link text-slate-600 font-medium">The Problem</a>
+            <a href="#solution" class="block py-2 nav-link text-slate-600 font-medium">Our Solution</a>
+            <a href="#products" class="block py-2 nav-link text-slate-600 font-medium">Products</a>
+            <a href="#roadmap" class="block py-2 nav-link text-slate-600 font-medium">Roadmap</a>
+            <a href="#tech" class="block py-2 nav-link text-slate-600 font-medium">Technology</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <!-- Introduction Section -->
+        <section id="introduction" class="container mx-auto px-6 py-12 text-center">
+            <h2 class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">Securing Tomorrow's Digital Landscape Today</h2>
+            <p class="mt-8 text-xl text-slate-700 max-w-4xl mx-auto">
+                MOONTRACE ENGINEERING is at the forefront of post-quantum cyber resilience, offering a unified, AI-driven platform that proactively manages cryptographic risks and enables a seamless transition to quantum-resistant standards for your organization.
+            </p>
+        </section>
+
+        <!-- The Problem Section -->
+        <section id="problem" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title inline-block">The Looming Quantum Threat</h2>
+                    <p class="mt-4 text-slate-700 max-w-3xl mx-auto">
+                        The emergence of quantum computing presents an unprecedented challenge to current cryptographic standards. This section highlights the immediate and future risks your organization faces.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="chart-container flex items-center justify-center">
+                        <canvas id="pqcReadinessChart"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                             <div class="text-center">
+                                <span id="readiness-value" class="text-5xl font-extrabold text-slate-800">15%</span>
+                                <span class="block text-sm text-slate-500 mt-2">PQC Ready Assets</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Understanding "Harvest Now, Decrypt Later"</h3>
+                        <p class="mt-4 text-slate-600 leading-relaxed">
+                            A critical vulnerability where adversaries capture and store currently encrypted data, intending to decrypt it years from now when powerful quantum computers become available. This scenario means sensitive data with long-term value is already at severe risk.
+                        </p>
+                        <div class="mt-8 p-5 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg">
+                            <p class="text-yellow-800 font-medium">
+                                <span class="text-lg mr-2">⚠️</span> Any data requiring security for the next 5-10 years is immediately vulnerable. Proactive migration to Post-Quantum Cryptography (PQC) is an urgent strategic imperative, not a distant future concern.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Solution Section -->
+        <section id="solution" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title inline-block">Our Integrated Solution Ecosystem</h2>
+                    <p class="mt-4 text-slate-700 max-w-3xl mx-auto">
+                        MOONTRACE ENGINEERING offers a holistic, AI-powered platform designed to provide end-to-end cryptographic risk management—from discovery and assessment to automated remediation and continuous monitoring.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-center mt-12">
+                    <div class="p-8 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
+                        <div class="text-5xl mb-4 text-blue-600">👁️</div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">VANTAGE</h3>
+                        <p class="mt-2 text-slate-600 leading-relaxed">
+                            Our comprehensive Third-Party Risk Management (TPRM) tool for continuous cryptographic asset discovery, vulnerability scanning, and compliance management.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
+                        <div class="text-5xl mb-4 text-blue-600">🖐️</div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">APX</h3>
+                        <p class="mt-2 text-slate-600 leading-relaxed">
+                            The robust Post-Quantum Cryptography (PQC) migration tool that orchestrates remediation playbooks, enforces security policies, and manages your transition to quantum-safe standards.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
+                        <div class="text-5xl mb-4 text-blue-600">🧠</div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">AI AGENT</h3>
+                        <p class="mt-2 text-slate-600 leading-relaxed">
+                            The intelligent core that automates the entire cybersecurity workflow, from risk analysis and prioritization to self-healing remediation, translating technical risks into actionable business insights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Deep-Dive Section -->
+        <section id="products" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title inline-block">Our Core Products in Detail</h2>
+                    <p class="mt-4 text-slate-700 max-w-3xl mx-auto">
+                        Dive deeper into the distinct capabilities of MOONTRACE VANTAGE and MOONTRACE APX. Use the tabs below to explore how each product supports your organization's journey to quantum-safe security.
+                    </p>
+                </div>
+                <div class="flex justify-center mb-10">
+                    <div class="bg-gray-100 p-2 rounded-xl flex space-x-2 shadow-inner">
+                        <button class="tab-button active px-8 py-3 font-semibold text-slate-700" data-tab="vantage">VANTAGE</button>
+                        <button class="tab-button px-8 py-3 font-semibold text-slate-700" data-tab="apx">APX</button>
+                    </div>
+                </div>
+                <div id="product-content" class="fade-in bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                    <!-- Product content will be injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title inline-block">Strategic Development Roadmap</h2>
+                    <p class="mt-4 text-slate-700 max-w-3xl mx-auto">
+                        Our multi-phase roadmap outlines the evolution of MOONTRACE ENGINEERING's platform into a leading, enterprise-grade Third-Party Risk Management solution. Click on each phase to explore the key features and milestones.
+                    </p>
+                </div>
+                <div class="flex flex-col md:flex-row gap-10 mt-12">
+                    <div class="md:w-1/3">
+                        <div id="roadmap-phases" class="space-y-4">
+                            <!-- Phases will be injected here -->
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 p-8 bg-white rounded-xl shadow-lg border border-gray-100 min-h-[350px] fade-in" id="roadmap-details">
+                        <!-- Details will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Architecture Section -->
+        <section id="tech" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title inline-block">Underlying Technology & Architecture</h2>
+                    <p class="mt-4 text-slate-700 max-w-3xl mx-auto">
+                        Our platform is built on a robust, scalable, and secure modern technology stack, designed for high performance, reliability, and future-proof extensibility in enterprise environments.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="text-blue-600 mr-2">⚙️</span> Backend Stack</h3>
+                        <ul class="space-y-3 text-slate-600 list-disc pl-5">
+                            <li><span class="font-semibold text-slate-700">Framework:</span> FastAPI (Python)</li>
+                            <li><span class="font-semibold text-slate-700">Database:</span> PostgreSQL</li>
+                            <li><span class="font-semibold text-slate-700">AI/ML:</span> scikit-learn, TensorFlow/PyTorch</li>
+                            <li><span class="font-semibold text-slate-700">Authentication:</span> JWT with OAuth2 support</li>
+                            <li><span class="font-semibold text-slate-700">Caching & Messaging:</span> Redis & Celery</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="text-blue-600 mr-2">💻</span> Frontend Stack</h3>
+                        <ul class="space-y-3 text-slate-600 list-disc pl-5">
+                            <li><span class="font-semibold text-slate-700">Framework:</span> React.js (Functional Components)</li>
+                            <li><span class="font-semibold text-slate-700">UI Library:</span> Tailwind CSS (Responsive Design)</li>
+                            <li><span class="font-semibold text-slate-700">Charts:</span> Recharts / Chart.js</li>
+                            <li><span class="font-semibold text-slate-700">Icons:</span> Lucide React</li>
+                            <li><span class="font-semibold text-slate-700">State Management:</span> React Hooks</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="text-blue-600 mr-2">🌐</span> Infrastructure</h3>
+                        <ul class="space-y-3 text-slate-600 list-disc pl-5">
+                            <li><span class="font-semibold text-slate-700">Containerization:</span> Docker</li>
+                            <li><span class="font-semibold text-slate-700">Orchestration:</span> Kubernetes (Production)</li>
+                            <li><span class="font-semibold text-slate-700">CI/CD:</span> GitHub Actions</li>
+                            <li><span class="font-semibold text-slate-700">Monitoring:</span> Prometheus + Grafana</li>
+                            <li><span class="font-semibold text-slate-700">Logging:</span> ELK Stack</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-bold text-xl mb-2">MOONTRACE ENGINEERING</p>
+            <p class="text-slate-400">Pioneering the future of post-quantum cyber resilience.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Active Nav Link Scrolling
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3 // Adjust as needed, section is active when 30% visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+
+            // PQC Readiness Chart
+            const pqcReadinessCtx = document.getElementById('pqcReadinessChart').getContext('2d');
+            const readinessValue = document.getElementById('readiness-value');
+            let currentReadiness = 15;
+            
+            const pqcChart = new Chart(pqcReadinessCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['PQC Ready', 'Vulnerable'],
+                    datasets: [{
+                        data: [currentReadiness, 100 - currentReadiness],
+                        backgroundColor: ['#2563eb', '#cbd5e1'], /* Adjusted colors for softer look */
+                        borderColor: ['#ffffff', '#ffffff'],
+                        borderWidth: 4,
+                        hoverOffset: 8 /* Increased hover offset for better visual feedback */
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '80%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Product Data
+            const productData = {
+                vantage: {
+                    title: "MOONTRACE VANTAGE: Comprehensive Risk Management",
+                    description: "VANTAGE is a robust Third-Party Risk Management (TPRM) platform that integrates cryptographic risk scanning, software supply chain security, and workflow automation. It provides a complete, real-time picture of your organization's security posture and vendor risks.",
+                    features: [
+                        { name: "Vendor Management", desc: "Implement detailed vendor profiles, assign risk tiers (Critical, High, Medium, Low), and streamline onboarding workflows with automation." },
+                        { name: "Enhanced Risk Scoring", desc: "Expand PQC readiness scoring to include vendor-specific risk factors across six categories (Financial, Operational, Technical, Compliance, Reputational, Strategic) with visual risk matrix displays." },
+                        { name: "Compliance Tracking", desc: "Utilize pre-built templates for industry-standard frameworks including ISO 27001, SOC 2, NIST, GDPR, CCPA, SOX, PCI DSS, and HIPAA, with automated gap analysis and reporting." },
+                        { name: "Advanced Contract Management", desc: "Comprehensive models for Master Service Agreements (MSAs), Service Level Agreements (SLAs), Data Processing Agreements (DPAs), and Non-Disclosure Agreements (NDAs), including lifecycle tracking and financial management." },
+                        { name: "Real-time Monitoring & Alerting", desc: "Implement a proactive system for continuous vendor risk monitoring and automated alerts for any detected risk breaches, ensuring immediate response capabilities." }
+                    ]
+                },
+                apx: {
+                    title: "MOONTRACE APX: Post-Quantum Cryptography Migration Tool",
+                    description: "APX is a powerful React-based dashboard designed to help organizations assess, plan, and execute their transition to quantum-resistant cryptography. It manages the entire lifecycle of migrating cryptographic assets to post-quantum secure standards.",
+                    features: [
+                        { name: "Asset Discovery & Inventory", desc: "Comprehensive scanning and cataloging of cryptographic assets across TLS endpoints, VPNs, databases, authentication services, CI/CD pipelines, firmware, and applications." },
+                        { name: "Migration Planning & Algorithm Selection", desc: "Support for NIST-standardized PQC algorithms including Kyber-768 (KEM) and Dilithium-3, Falcon-512, SPHINCS+-128f (Signatures), alongside hybrid classical+PQC approaches (e.g., ECDH + Kyber-768)." },
+                        { name: "Policy Enforcement Engine", desc: "Automate compliance checking against NIST Level 1, 3, and 5 security levels, detect legacy algorithms, and flag forbidden cryptographic practices for remediation." },
+                        { name: "Migration Workflows & Tracking", desc: "Execute step-by-step migration playbooks with real-time status tracking, detailed job histories, and post-migration validation to ensure successful deployment and activation." },
+                        { name: "CI/CD Integration", desc: "Seamless integration with development pipelines (e.g., GitHub Actions) for automated policy enforcement, ensuring that only quantum-safe cryptography is deployed." }
+                    ]
+                }
+            };
+
+            // Product Tabs Logic
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const productContent = document.getElementById('product-content');
+
+            function renderProductContent(productKey) {
+                const data = productData[productKey];
+                let featuresHtml = data.features.map(f => `
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+                        <h4 class="font-bold text-blue-700 mb-2">${f.name}</h4>
+                        <p class="text-slate-600 leading-relaxed">${f.desc}</p>
+                    </div>
+                `).join('');
+
+                productContent.innerHTML = `
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-slate-800">${data.title}</h3>
+                        <p class="mt-3 text-slate-700 max-w-2xl mx-auto leading-relaxed">${data.description}</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mt-8">
+                        ${featuresHtml}
+                    </div>
+                `;
+                productContent.classList.remove('fade-in');
+                void productContent.offsetWidth; // Trigger reflow
+                productContent.classList.add('fade-in');
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderProductContent(button.dataset.tab);
+                });
+            });
+
+            renderProductContent('vantage'); // Initial load
+
+            // Roadmap Data
+            const roadmapData = [
+                {
+                    phase: 1,
+                    title: "Core TPRM Foundation",
+                    status: "Completed",
+                    details: "This phase established the foundational elements, including vendor profiles, risk tiers, and streamlined onboarding workflows. We also expanded PQC readiness scoring and integrated initial compliance tracking templates for various standards."
+                },
+                {
+                    phase: 2,
+                    title: "Advanced TPRM Features",
+                    status: "Completed",
+                    details: "Completion of this phase saw the implementation of advanced contract management capabilities, including comprehensive models for MSAs, SLAs, DPAs, and NDAs, complete with lifecycle tracking and financial management. Enhanced workflow automation with pre-built, multi-step templates and background processing was also achieved."
+                },
+                {
+                    phase: 3,
+                    title: "Enhanced Risk Assessment & Integration",
+                    status: "Completed",
+                    details: "This phase delivered a robust Enhanced Risk Assessment Engine, introducing new models for multi-factor risk scoring across six critical categories (Financial, Operational, Technical, Compliance, Reputational, Strategic). It also brought Advanced Compliance Management, with full support for major frameworks like ISO 27001, SOC 2, NIST, GDPR, CCPA, SOX, PCI DSS, and HIPAA, including automated gap analysis."
+                },
+                {
+                    phase: 4,
+                    title: "Enterprise Integration & Automation",
+                    status: "In Progress",
+                    details: "Currently, we are focused on developing robust API integrations with third-party systems such as SIEM platforms (Splunk, QRadar), GRC solutions (ServiceNow), and leading cloud security tools. A key deliverable is the intelligent workflow engine, featuring AI-powered automation and dynamic routing based on real-time risk levels."
+                },
+                {
+                    phase: 5,
+                    title: "AI/ML & Advanced Security",
+                    status: "Planned",
+                    details: "Our future will incorporate advanced Machine Learning capabilities for AI-powered risk assessment, including natural language processing for automated contract analysis, anomaly detection, and predictive risk modeling. This phase also includes integrating advanced threat intelligence (e.g., dark web monitoring) and implementing a Zero Trust Architecture for vendor access."
+                }
+            ];
+
+            // Roadmap Logic
+            const roadmapPhases = document.getElementById('roadmap-phases');
+            const roadmapDetails = document.getElementById('roadmap-details');
+
+            function renderRoadmap() {
+                roadmapPhases.innerHTML = roadmapData.map((item, index) => `
+                    <div class="phase p-4 border-l-4 border-gray-300 rounded-md cursor-pointer ${index === 3 ? 'active' : ''}" data-phase="${item.phase}">
+                        <p class="font-bold text-slate-800">Phase ${item.phase}: ${item.title}</p>
+                        <p class="text-sm text-slate-500 mt-1">${item.status}</p>
+                    </div>
+                `).join('');
+            }
+
+            function renderRoadmapDetails(phaseNum) {
+                const data = roadmapData.find(item => item.phase == phaseNum);
+                if (data) {
+                    roadmapDetails.innerHTML = `
+                        <h3 class="text-2xl font-bold text-slate-800">${data.title}</h3>
+                        <span class="inline-block mt-3 px-4 py-1 text-sm font-semibold rounded-full ${data.status === 'Completed' ? 'bg-green-100 text-green-800' : (data.status === 'In Progress' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800')}">${data.status}</span>
+                        <p class="mt-6 text-slate-600 leading-relaxed">${data.details}</p>
+                    `;
+                    roadmapDetails.classList.remove('fade-in');
+                    void roadmapDetails.offsetWidth;
+                    roadmapDetails.classList.add('fade-in');
+                }
+            }
+
+            roadmapPhases.addEventListener('click', (e) => {
+                const phaseElement = e.target.closest('.phase');
+                if (phaseElement) {
+                    document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+                    phaseElement.classList.add('active');
+                    renderRoadmapDetails(phaseElement.dataset.phase);
+                }
+            });
+
+            renderRoadmap();
+            renderRoadmapDetails(4); // Display Phase 4 details by default
+        });
+    </script>
+</body>
+</html>
