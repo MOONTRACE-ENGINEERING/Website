@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets/finalbg.png" />
+    <link rel="icon" type="image/png" href="https://placehold.co/16x16/000000/FFFFFF?text=MT" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -120,6 +120,11 @@
             opacity: 1;
             visibility: visible;
         }
+        /* Important: Ensure this class overrides the default display property when active */
+        .modal-overlay:not(.hidden-display) {
+            display: flex; /* Or block, depending on desired base layout */
+        }
+
         .modal-overlay.hidden-display { /* New class to fully hide the modal */
             display: none;
         }
@@ -587,7 +592,7 @@
         </div>
 
         <!-- Job Details Modal Structure -->
-        <div id="job-details-modal-overlay" class="modal-overlay" aria-modal="true" role="dialog">
+        <div id="job-details-modal-overlay" class="modal-overlay hidden-display" aria-modal="true" role="dialog">
             <div class="modal-content">
                 <button id="job-details-modal-close" class="modal-close-button" aria-label="Close job details">×</button>
                 <h3 id="modal-job-title" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2"></h3>
@@ -629,7 +634,7 @@
                     </ul>
                     <h4 class="font-bold mt-4 mb-2">Requirements:</h4>
                     <ul class="list-disc list-inside">
-                        <li>3+ years of experience in frontend web development.</li>
+                        <li>2+ years of experience in frontend web development.</li>
                         <li>Proficiency in HTML5, CSS3, and JavaScript (ES6+).</li>
                         <li>Extensive experience with at least one modern JavaScript framework (React, Vue, or Angular).</li>
                         <li>Strong understanding of RESTful APIs and asynchronous programming.</li>
@@ -1022,6 +1027,8 @@
                         modalJobDescription.innerHTML = jobDetails.description; // Use innerHTML for rich content
                         modalApplyButton.setAttribute('data-job-title', jobDetails.title); // Pass job title to modal's apply button
 
+                        // Fix: Ensure hidden-display is removed when opening the modal
+                        jobDetailsModalOverlay.classList.remove('hidden-display');
                         jobDetailsModalOverlay.classList.add('show');
                         document.body.style.overflow = 'hidden'; // Prevent scrolling background
                     } else {

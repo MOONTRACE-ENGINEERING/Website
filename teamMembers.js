@@ -38,9 +38,9 @@ window.teamMembers = [
     bio: 'Bharat Raghuvanshi is the visionary founder of Moontrace Engineering and a key researcher at MTLabs. He drives the innovation and strategic development of lightweight PQC solutions, with a strong focus on practical implementation in critical embedded systems. His entrepreneurial spirit combined with deep technical expertise is instrumental in bringing cutting-edge research to real-world applications.',
     insights: [
       {
-        title: 'ExecutiveGov: Accenture, QuSecure Safeguard Satcom with Quantum-Resistant Encryption',
-        date: '29 Mar 2023',
-        description: 'A collaborative effort to enhance satellite communication security using advanced quantum-resistant encryption techniques.',
+        title: 'Enhancing Secure Coding Practices',
+        date: '29 Sep 2024',
+        description: 'A collaborative effort to develop buffer overflow mitigation tool for Code inspection .',
         link: 'https://placehold.co/600x400/000000/FFFFFF?text=Insight+3+Link', // Placeholder link
         image: 'https://placehold.co/600x400/000000/FFFFFF?text=Insight+3', // Placeholder image
       },
