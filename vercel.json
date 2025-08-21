@@ -8,3 +8,6 @@
     { "source": "/whitepaper", "destination": "/whitepaper.html" }
   ]
 }
+{
+  "cleanUrls": true
+}
