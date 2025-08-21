@@ -1,6 +1,7 @@
 {
-  "cleanUrls": false,
+  "cleanUrls": true,
   "trailingSlash": false,
+
   "redirects": [
     {
       "source": "/index.html",
@@ -8,6 +9,7 @@
       "permanent": true
     }
   ],
+
   "rewrites": [
     { "source": "/careers", "destination": "/careers.html" },
     { "source": "/MTLabs", "destination": "/MTLabs.html" },
@@ -15,9 +17,5 @@
     { "source": "/screening", "destination": "/screening.html" },
     { "source": "/trustcenter", "destination": "/trustcenter.html" },
     { "source": "/whitepaper", "destination": "/whitepaper.html" }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/404.html", "status": 404 }
   ]
 }
