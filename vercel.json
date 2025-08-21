@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/careers", "destination": "/careers.html" },
+    { "source": "/MTLabs", "destination": "/MTLabs.html" },
+    { "source": "/pitch", "destination": "/pitch.html" },
+    { "source": "/screening", "destination": "/screening.html" },
+    { "source": "/trustcenter", "destination": "/trustcenter.html" },
+    { "source": "/whitepaper", "destination": "/whitepaper.html" }
+  ]
+}
