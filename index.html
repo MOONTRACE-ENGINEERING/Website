@@ -9,17 +9,17 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.moontrace.in/" /> <!-- Replace with your actual URL -->
+    <meta property="og:url" content="https://www.moontrace.in/" />
     <meta property="og:title" content="Moontrace Engineering | Achieve Crypto-Agility Now" />
     <meta property="og:description" content="Moontrace Engineering provides the integrated platform to discover your cryptographic vulnerabilities, automate your quantum transition, and secure your infrastructure against the inevitable." />
-    <meta property="og:image" content="https://www.moontrace.in/assets/moontrace-og-image.jpg" /> <!-- Replace with a high-quality, descriptive image URL -->
+    <meta property="og:image" content="https://www.moontrace.in/assets/moontrace-og-image.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.moontrace.in/" /> <!-- Replace with your actual URL -->
+    <meta property="twitter:url" content="https://www.moontrace.in/" />
     <meta property="twitter:title" content="Moontrace Engineering | The Quantum Threat is Real. Your Defense Starts Here." />
     <meta property="twitter:description" content="Moontrace Engineering provides the integrated platform to discover your cryptographic vulnerabilities, automate your quantum transition, and secure your infrastructure against the inevitable." />
-    <meta property="twitter:image" content="https://www.moontrace.in/assets/moontrace-twitter-image.jpg" /> <!-- Replace with a high-quality, descriptive image URL -->
+    <meta property="twitter:image" content="https://www.moontrace.in/assets/moontrace-twitter-image.jpg" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -39,8 +39,8 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Moontrace Engineering",
-      "url": "https://www.moontrace.in/", <!-- Replace with your actual URL -->
-      "logo": "https://www.moontrace.in/assets/finalbg.png", <!-- Replace with your logo URL -->
+      "url": "https://www.moontrace.in/",
+      "logo": "https://www.moontrace.in/assets/finalbg.png",
       "description": "Moontrace Engineering provides the integrated platform to discover cryptographic vulnerabilities, automate quantum transitions, and secure critical infrastructure.",
       "contactPoint": {
         "@type": "ContactPoint",
@@ -57,12 +57,10 @@
     </script>
 
     <style>
-      html {
-        zoom: 0.85;
-      }
+      
       body {
         font-family: "Inter", sans-serif;
-        background-color: #f8fafc; /* Lighter theme background */
+        background-color: #f8fafc;
         color: #1a1a1a;
       }
       h1, h2, h3, h4 {
@@ -134,7 +132,6 @@
           padding: 0 0.2rem;
         }
       }
-      /* Updated Hero Section styles */
       .hero-bg {
         position: relative;
         background-color: #000000;
@@ -153,18 +150,13 @@
         z-index: 2;
       }
       
-      /* FIX: Navbar Logic Update
-        - The old scroll-based logic is removed.
-        - The new logic uses a sticky header with a solid background, similar to the provided index.html.
-        - This makes the nav-link text dark by default.
-      */
       .nav-link {
         position: relative;
         transition: color 0.2s;
-        color: #374151; /* Dark color for light background */
+        color: #374151;
       }
       .nav-link:hover {
-        color: #111827; /* Darker hover color */
+        color: #111827;
       }
       .nav-link::after {
         content: "";
@@ -173,7 +165,7 @@
         height: 2px;
         bottom: -5px;
         left: 50%;
-        background-color: #1a1a1a; /* Dark underline */
+        background-color: #1a1a1a;
         transition: width 0.2s ease-out, left 0.2s ease-out;
       }
       .nav-link:hover::after {
@@ -230,12 +222,15 @@
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         min-width: 130px;
       }
+      
+      /* FIX: Improved countdown responsiveness for small screens */
       @media (max-width: 640px) {
-        .countdown-segment { padding: 0.35rem; min-width: 40px; }
-        #countdown { gap: 0.35rem; }
-        #countdown span.text-7xl { font-size: 1.5rem !important; }
-        #countdown span.text-base { font-size: 0.7rem !important; }
+        .countdown-segment { padding: 0.75rem; min-width: 60px; }
+        #countdown { gap: 0.5rem; }
+        #countdown span.text-7xl { font-size: 2.25rem !important; } /* Adjusted font size */
+        #countdown span.text-base { font-size: 0.75rem !important; }
       }
+
       .animated-item {
         opacity: 0;
         transform: translateY(20px);
@@ -298,7 +293,6 @@
       .flash-banner-content a:hover span {
         text-decoration: underline;
       }
-      /* Styles for the new solutions section */
       .solution-tab {
         padding: 0.75rem 0.5rem;
         font-size: 0.875rem;
@@ -320,11 +314,11 @@
       }
       .solution-tab:hover {
         color: #111827;
-        border-color: #a0aec0; /* Lighter border on hover */
+        border-color: #a0aec0;
       }
       .solution-tab.active-tab {
         color: #0052cc;
-        border-color: #0052cc; /* Active tab has a solid border */
+        border-color: #0052cc;
       }
       #active-tab-highlighter {
           height: 3px;
@@ -336,26 +330,23 @@
       .solution-panel-content {
           min-height: 450px;
       }
-      /* CTA button styling */
       .cta-button {
           display: inline-block;
-          margin-top: 1.5rem; /* mt-6 */
-          background-color: #0052cc; /* bg-blue-600 */
+          margin-top: 1.5rem;
+          background-color: #0052cc;
           color: white;
-          padding: 0.75rem 1.5rem; /* px-6 py-2 */
-          border-radius: 0.5rem; /* rounded-lg */
-          font-weight: 600; /* font-semibold */
-          font-size: 0.875rem; /* text-sm */
+          padding: 0.75rem 1.5rem;
+          border-radius: 0.5rem;
+          font-weight: 600;
+          font-size: 0.875rem;
           transition: background-color 0.2s ease, transform 0.2s ease;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
       .cta-button:hover {
-          background-color: #003f99; /* hover:bg-blue-700 */
+          background-color: #003f99;
           transform: translateY(-2px);
           box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
       }
-
-      /* Styles for solution panel navigation buttons */
       .solution-nav-button {
         position: absolute;
         top: 50%;
@@ -363,7 +354,7 @@
         background-color: rgba(0, 0, 0, 0.6);
         color: white;
         border: none;
-        border-radius: 9999px; /* Full rounded */
+        border-radius: 9999px;
         width: 40px;
         height: 40px;
         display: flex;
@@ -371,11 +362,11 @@
         justify-content: center;
         cursor: pointer;
         z-index: 10;
-        opacity: 0; /* Almost hidden by default */
+        opacity: 0;
         transition: opacity 0.2s ease, background-color 0.2s;
       }
       .solution-nav-button:hover {
-        opacity: 1; /* Fully visible on hover */
+        opacity: 1;
         background-color: rgba(0, 0, 0, 0.8);
       }
       .solution-nav-button.left {
@@ -384,52 +375,45 @@
       .solution-nav-button.right {
         right: 1rem;
       }
-      /* Ensure panels don't shrink and enable scroll snap */
       #solution-panels {
         display: flex;
-        overflow-x: auto; /* Enable horizontal scrolling */
-        scroll-snap-type: x mandatory; /* Snap to panels */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        /* Hide scrollbar */
-        scrollbar-width: none; /* For Firefox */
-        -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
-      /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
       #solution-panels::-webkit-scrollbar {
           display: none;
       }
       .solution-panel {
-        flex: 0 0 100%; /* Each panel takes full width */
-        scroll-snap-align: start; /* Snap to the start of each panel */
+        flex: 0 0 100%;
+        scroll-snap-align: start;
       }
-
-      /* New styles for SVG icons in cards */
       .card-icon-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 64px; /* w-16 */
-        height: 64px; /* h-16 */
-        background-color: #e0e7ff; /* Light blue background */
-        border-radius: 50%; /* Rounded */
-        margin: 0 auto 1rem auto; /* Center and add margin-bottom */
+        width: 64px;
+        height: 64px;
+        background-color: #e0e7ff;
+        border-radius: 50%;
+        margin: 0 auto 1rem auto;
         transition: background-color 0.2s ease;
       }
       .card:hover .card-icon-container {
-        background-color: #a7c5ff; /* Darker blue on hover */
+        background-color: #a7c5ff;
       }
       .card-icon-container svg {
-        width: 32px; /* w-8 */
-        height: 32px; /* h-8 */
-        color: #0052cc; /* Blue icon color */
+        width: 32px;
+        height: 32px;
+        color: #0052cc;
         transition: transform 0.2s ease, color 0.2s ease;
       }
       .card:hover .card-icon-container svg {
-        transform: scale(1.1); /* Slightly enlarge icon on hover */
-        color: #0b418d; /* Darker blue icon on hover */
+        transform: scale(1.1);
+        color: #0b418d;
       }
-
-      /* Styles for the Mosca Theorem Modal */
       .modal-overlay {
         position: fixed;
         top: 0;
@@ -451,26 +435,23 @@
       }
       .modal-content {
         background-color: white;
-        padding: 2.5rem; /* Increased padding */
+        padding: 2.5rem;
         border-radius: 0.75rem;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        max-width: 95%; /* Slightly wider */
+        max-width: 95%;
         max-height: 95%;
         overflow-y: auto;
         position: relative;
-        transform: translateY(20px) scale(0.95); /* Initial state for transition */
+        transform: translateY(20px) scale(0.95);
         transition: all 0.2s ease-out;
-        
-        /* Hide scrollbar */
-        scrollbar-width: none; /* For Firefox */
-        -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
-      .modal-content::-webkit-scrollbar { /* For Webkit browsers */
+      .modal-content::-webkit-scrollbar {
           display: none;
       }
-
       .modal-overlay.show .modal-content {
-        transform: translateY(0) scale(1); /* Final state for transition */
+        transform: translateY(0) scale(1);
       }
       .modal-close-button {
         position: absolute;
@@ -491,17 +472,16 @@
         transition: color 0.2s ease;
       }
       .mosca-quote-clickable:hover {
-        color: #a0aec0; /* Lighter gray on hover for interaction */
+        color: #a0aec0;
       }
-      /* Responsive video container */
       .video-container {
         position: relative;
         width: 100%;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        padding-bottom: 56.25%;
         height: 0;
         overflow: hidden;
-        margin-top: 1.5rem; /* Add some space above the video */
-        border-radius: 0.5rem; /* Rounded corners for the video */
+        margin-top: 1.5rem;
+        border-radius: 0.5rem;
       }
       .video-container iframe {
         position: absolute;
@@ -511,8 +491,6 @@
         height: 100%;
         border: 0;
       }
-      
-      /* PDF button and modal styles */
       #pdf-button {
         position: fixed;
         bottom: 20px;
@@ -521,7 +499,7 @@
         background-color: #0052cc;
         color: white;
         border: none;
-        border-radius: 50%; /* Changed to a circle */
+        border-radius: 50%;
         width: 60px;
         height: 60px;
         display: flex;
@@ -543,15 +521,11 @@
         height: 100%;
         object-fit: cover;
       }
-
-      /* Adjust PDF button for mobile to avoid overlap */
       @media (max-width: 768px) {
         #pdf-button {
-          bottom: 80px; /* Adjust to be above the mobile bottom nav */
+          bottom: 80px;
         }
       }
-
-      /* New "Coming Soon" Modal */
       #coming-soon-modal-overlay {
         position: fixed;
         top: 0;
@@ -600,68 +574,60 @@
       #coming-soon-modal-overlay .modal-close-button:hover {
         color: #333;
       }
-
-      /* Contact Section Specific Styling */
       .contact-content-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem; /* Space between direct contact and button */
+        gap: 2rem;
       }
       @media (min-width: 768px) {
         .contact-content-wrapper {
           flex-direction: row;
           justify-content: center;
-          gap: 4rem; /* More space on desktop */
+          gap: 4rem;
         }
       }
-
       .direct-contact-info {
         text-align: center;
-        padding-right: 0; /* No padding-right on mobile */
-        border-right: none; /* No border on mobile */
-        padding-bottom: 2rem; /* Padding below for mobile separator */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* White separator for dark background */
-        width: 100%; /* Take full width on mobile */
+        padding-right: 0;
+        border-right: none;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
       }
-
       @media (min-width: 768px) {
         .direct-contact-info {
-          text-align: right; /* Align text to right on desktop */
-          padding-right: 2rem; /* Padding for vertical separator */
-          border-right: 1px solid rgba(255, 255, 255, 0.2); /* Vertical separator */
-          padding-bottom: 0; /* No bottom padding on desktop */
-          border-bottom: none; /* No bottom border on desktop */
-          width: auto; /* Shrink to content on desktop */
+          text-align: right;
+          padding-right: 2rem;
+          border-right: 1px solid rgba(255, 255, 255, 0.2);
+          padding-bottom: 0;
+          border-bottom: none;
+          width: auto;
         }
       }
-
       .get-in-touch-button-container {
         text-align: center;
-        width: 100%; /* Take full width on mobile */
+        width: 100%;
       }
-
       @media (min-width: 768px) {
         .get-in-touch-button-container {
-          text-align: left; /* Align button to left on desktop */
-          width: auto; /* Shrink to content on desktop */
+          text-align: left;
+          width: auto;
         }
       }
-
-      /* New Contact Popup Modal Styles */
       #contact-popup-modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.7); /* Translucent background */
-        backdrop-filter: blur(5px); /* Added blur effect */
-        -webkit-backdrop-filter: blur(5px); /* For Safari */
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1000; /* Ensure it's on top */
+        z-index: 1000;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.2s ease, visibility 0.2s ease, backdrop-filter 0.2s ease;
@@ -675,14 +641,14 @@
         padding: 2.5rem;
         border-radius: 0.75rem;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        max-width: 90%; /* Adjust max-width for responsiveness */
-        width: 500px; /* Fixed width for larger screens */
+        max-width: 90%;
+        width: 500px;
         max-height: 95%;
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95);
         transition: all 0.2s ease-out;
-        text-align: center; /* Center content inside */
+        text-align: center;
       }
       #contact-popup-modal-overlay.show .modal-content {
         transform: translateY(0) scale(1);
@@ -702,9 +668,9 @@
         color: #333;
       }
       #contact-popup-modal-overlay .company-logo {
-        max-width: 100px; /* Adjust logo size */
+        max-width: 100px;
         height: auto;
-        margin: 0 auto 1.5rem auto; /* Center logo and add bottom margin */
+        margin: 0 auto 1.5rem auto;
       }
       #contact-popup-modal-overlay .contact-form label {
         display: block;
@@ -721,14 +687,14 @@
         border: 1px solid #ccc;
         border-radius: 0.5rem;
         font-size: 1rem;
-        box-sizing: border-box; /* Include padding in width */
-        transition: border-color 0.2s, box-shadow 0.2s; /* Added transition for focus */
+        box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
       }
       #contact-popup-modal-overlay .contact-form input:focus,
       #contact-popup-modal-overlay .contact-form textarea:focus {
         outline: none;
-        border-color: #0052cc; /* Blue border on focus */
-        box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.25); /* Blue shadow on focus */
+        border-color: #0052cc;
+        box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.25);
       }
       #contact-popup-modal-overlay .contact-form textarea {
         min-height: 100px;
@@ -753,7 +719,6 @@
         background-color: #a0aec0;
         cursor: not-allowed;
       }
-      /* Styles for loading spinner inside the modal */
       .modal-loading-spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
         border-top: 4px solid #0052cc;
@@ -763,7 +728,6 @@
         animation: spin 1s linear infinite;
         margin: 1rem auto;
       }
-      /* Styles for message display */
       .modal-message {
         margin-top: 1rem;
         padding: 0.75rem;
@@ -781,15 +745,13 @@
         color: #721c24;
         border: 1px solid #f5c6cb;
       }
-
-      /* New styles for Whitepaper Invitation Popup */
       #whitepaper-popup {
         position: fixed;
-        bottom: 100px; /* Position above the PDF button (20px bottom + 60px height + 10px margin) */
-        right: 30px; /* Align right edge with PDF button */
-        width: 280px; /* Adjust width as needed */
+        bottom: 100px;
+        right: 30px;
+        width: 280px;
         padding: 0.75rem 1rem;
-        background-color: #378bf9; /* Dark background */
+        background-color: #378bf9;
         color: #ffffff;
         border-radius: 0.5rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -798,22 +760,19 @@
         font-weight: 500;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(10px); /* Initial slight offset for animation */
+        transform: translateY(10px);
         transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease;
-        z-index: 101; /* Above the PDF button but below modals */
-        /* Center horizontally relative to the button */
-        transform: translateX(calc(-50% + 30px)); /* Half its width left, half button width right */
+        z-index: 101;
+        transform: translateX(calc(-50% + 30px));
       }
       #whitepaper-popup.show {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
       }
-
-      /* Adjust for mobile bottom nav overlap */
       @media (max-width: 768px) {
         #whitepaper-popup {
-          bottom: 150px; /* Adjust to be above the mobile bottom nav and PDF button */
+          bottom: 150px;
         }
       }
     </style>
@@ -873,36 +832,25 @@
       </button>
     </div>
 
-    <!-- 
-      FIX: Navbar Logic Overhaul
-      - Replaced `fixed` positioning with `sticky`.
-      - The header is now always visible with a light, blurred background.
-      - Text colors are now dark by default to match the light background.
-      - The JavaScript for changing the header on scroll has been removed as it's no longer needed.
-    -->
     <header
       id="header"
-      class="bg-white/90 backdrop-blur-[1000px] sticky top-0 z-50 border-b border-gray-200 h-20 transition-all duration-300"
+      class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200 h-20 transition-all duration-300"
     >
       <nav
         class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
       >
         <a href="#home" class="flex items-center space-x-2">
           <div class="text-xl tracking-wider">
-            <span class="font-bold text-black text-lg md:text-xl company-name-part">MOONTRACE</span>
-            <span class="font-normal text-red-500 text-base md:text-lg company-name-part">|</span>
-            <span class="font-normal text-gray-700 text-base md:text-lg company-name-part"
-              >ENGINEERING</span
-            >
+            <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
+            <span class="font-normal text-red-500 text-base md:text-lg">|</span>
+            <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
           </div>
         </a>
         <div class="hidden md:flex items-center space-x-12">
           <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
           <a href="#solutions" class="nav-link font-medium">Solutions</a>
           <a href="#critical-systems" class="nav-link font-medium">Standards</a>
-          <a href="#whymoontrace" class="nav-link font-medium"
-            >Why Moontrace?</a
-          >
+          <a href="#whymoontrace" class="nav-link font-medium">Why Moontrace?</a>
           <a href="#about" class="nav-link font-medium">About</a>
         </div>
         <a
@@ -937,11 +885,8 @@
         <a href="MTLabs.html" class="block nav-link font-medium py-2">MTLabs</a>
         <a href="#solutions" class="block nav-link font-medium py-2">Solutions</a>
         <a href="#critical-systems" class="block nav-link font-medium py-2">Standards</a>
-        <a href="#whymoontrace" class="block nav-link font-medium"
-          >Why Moontrace?</a
-        >
+        <a href="#whymoontrace" class="block nav-link font-medium">Why Moontrace?</a>
         <a href="#about" class="block nav-link font-medium py-2">About</a>
-       
         <a
           href="careers.html"
           class="block bg-black text-white text-center mt-2 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
@@ -951,7 +896,6 @@
     </header>
 
     <main>
-      <!-- FIX: Removed pt-20 as the sticky header now occupies its own space -->
       <section id="home" class="hero-bg text-white">
         <canvas id="hero-canvas"></canvas>
         <div
@@ -989,38 +933,28 @@
               class="flex justify-center items-center flex-wrap gap-4 text-white text-center"
             >
               <div class="countdown-segment">
-                <span id="years" class="block text-7xl font-bold text-gray-300"
-                  >00</span
-                ><span class="block text-base text-gray-500">Years</span>
+                <span id="years" class="block text-7xl font-bold text-gray-300">00</span>
+                <span class="block text-base text-gray-500">Years</span>
               </div>
               <div class="countdown-segment">
-                <span id="days" class="block text-7xl font-bold text-gray-300"
-                  >00</span
-                ><span class="block text-base text-gray-500">Days</span>
+                <span id="days" class="block text-7xl font-bold text-gray-300">00</span>
+                <span class="block text-base text-gray-500">Days</span>
               </div>
               <div class="countdown-segment">
-                <span id="hours" class="block text-7xl font-bold text-gray-300"
-                  >00</span
-                ><span class="block text-base text-gray-500">Hours</span>
+                <span id="hours" class="block text-7xl font-bold text-gray-300">00</span>
+                <span class="block text-base text-gray-500">Hours</span>
               </div>
               <div class="countdown-segment">
-                <span
-                  id="minutes"
-                  class="block text-7xl font-bold text-gray-300"
-                  >00</span
-                ><span class="block text-base text-gray-500">Minutes</span>
+                <span id="minutes" class="block text-7xl font-bold text-gray-300">00</span>
+                <span class="block text-base text-gray-500">Minutes</span>
               </div>
               <div class="countdown-segment">
-                <span
-                  id="seconds"
-                  class="block text-7xl font-bold text-gray-300"
-                  >00</span
-                ><span class="block text-base text-gray-500">Seconds</span>
+                <span id="seconds" class="block text-7xl font-bold text-gray-300">00</span>
+                <span class="block text-base text-gray-500">Seconds</span>
               </div>
             </div>
           </div>
          
-          <!-- Mosca Quote Section -->
           <div id="mosca-quote-section" class="mt-16 text-center text-gray-300 cursor-pointer mosca-quote-clickable">
             <p class="text-lg md:text-xl italic max-w-3xl mx-auto">
               "There is a <span class="font-bold">1 in 7 chance</span> that some fundamental public-key crypto will be broken by quantum by <span class="font-bold">2026</span>, and a <span class="font-bold">1 in 2 chance</span> of the same by <span class="font-bold">2031</span>."
@@ -1033,8 +967,6 @@
         </div>
       </section>
 
-
-      <!-- NEW SOLUTIONS SECTION -->
       <section id="solutions" class="py-20 bg-gray-50 overflow-x-hidden relative">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -1046,7 +978,6 @@
                 </p>
             </div>
 
-            <!-- Tab Controls -->
             <div class="relative flex justify-center">
                 <div class="relative border-b-2 border-gray-200">
                     <div id="solution-tabs" class="flex flex-wrap justify-center -mb-px sm:space-x-4">
@@ -1059,10 +990,8 @@
             </div>
         </div>
 
-            <!-- Sliding Panels -->
             <div class="mt-10 relative">
                 <div id="solution-panels" class="flex transition-transform duration-300 ease-in-out">
-                    <!-- Panel 1: Vantage -->
                     <div class="solution-panel min-w-full">
                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
                            <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
@@ -1075,14 +1004,13 @@
                            </div>
                            <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
                                 <div class="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent"></div>
-                                <img src="assets/vantage.png" alt="Moontrace Vantage Tool Interface for Cryptographic Posture Visibility" class="h-full w-full object-cover object-right">
+                                <img src="assets/vantage.png" alt="Moontrace Vantage Tool Interface" class="h-full w-full object-cover object-right" onerror="this.onerror=null;this.src='https://placehold.co/800x600/e2e8f0/4a5568?text=Vantage+UI';">
                                 <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
                                   VANTAGE UI
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Panel 2: APX -->
                     <div class="solution-panel min-w-full">
                          <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
                            <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
@@ -1095,14 +1023,13 @@
                            </div>
                            <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
                                 <div class="absolute inset-0 bg-gradient-to-r from-white via-white/170 to-transparent"></div>
-                                <img src="assets/apx.png" alt="Moontrace APX Tool for Crypto-Agile Application Exchange" class="h-full w-full object-cover object-right">
+                                <img src="assets/apx.png" alt="Moontrace APX Tool Interface" class="h-full w-full object-cover object-right" onerror="this.onerror=null;this.src='https://placehold.co/800x600/e2e8f0/4a5568?text=APX+UI';">
                                 <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
                                   APX UI
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Panel 3: QUBEx -->
                     <div class="solution-panel min-w-full">
                          <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
                            <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
@@ -1115,7 +1042,7 @@
                          </div>
                            <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
                                 <div class="absolute inset-0 bg-gradient-to-r from-white via-white/170 to-transparent"></div>
-                                <img src="https://placehold.co/800x600/4a3f56/ffffff?text=QUBEx" alt="Moontrace QUBEx: Quantum Hardware Key Exchange Appliance" class="h-full w-full object-cover object-right">
+                                <img src="https://placehold.co/800x600/4a3f56/ffffff?text=QUBEx" alt="Moontrace QUBEx Hardware Appliance" class="h-full w-full object-cover object-right">
                                 <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
                                   QUBEx APPLIANCE
                                 </div>
@@ -1123,7 +1050,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Desktop Navigation Buttons -->
                 <button id="prev-solution-btn" class="solution-nav-button left hidden md:flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -1136,21 +1062,18 @@
                 </button>
             </div>
       </section>
-      <!-- END NEW SOLUTIONS SECTION -->
 
-      <!-- HERCULES SECTION REDESIGN -->
       <section id="hercules" class="py-20 bg-gray-900 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-gray-700/20 [mask-image:linear-gradient(to_bottom,white_20%,transparent_100%)]"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
-                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The Agentic AI Core: HERCULES</h2>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-white">The Agentic AI Core: HERCULES</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-400">
                     HERCULES is the intelligent brain of the Moontrace platform. It's not just another tool; it's the AI orchestrator that connects discovery to action, transforming complex cryptographic data into a clear, automated remediation strategy.
                 </p>
             </div>
             <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <!-- Card 1 -->
                 <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
                     <div class="flex justify-center items-center mb-4 w-16 h-16 mx-auto bg-gray-700 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1160,7 +1083,6 @@
                     <h3 class="text-xl font-bold text-white mb-2">Intelligent Automation</h3>
                     <p class="text-gray-400">HERCULES automates the entire lifecycle of vulnerability management, from threat analysis and risk prioritization to the execution of remediation playbooks.</p>
                 </div>
-                 <!-- Card 2 -->
                 <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
                     <div class="flex justify-center items-center mb-4 w-16 h-16 mx-auto bg-gray-700 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1170,7 +1092,6 @@
                     <h3 class="text-xl font-bold text-white mb-2">Business Risk Translation</h3>
                     <p class="text-gray-400">It translates raw technical data from VANTAGE into quantifiable business risks, allowing you to make informed decisions based on impact, not just severity.</p>
                 </div>
-                 <!-- Card 3 -->
                 <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
                     <div class="flex justify-center items-center mb-4 w-16 h-16 mx-auto bg-gray-700 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1183,12 +1104,10 @@
             </div>
         </div>
     </section>
-    <!-- END HERCULES SECTION REDESIGN -->
 
       <section id="MTLabs" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <!-- Text Left -->
             <div>
               <h2
                 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-left"
@@ -1213,7 +1132,6 @@
                 </a>
               </div>
             </div>
-            <!-- Image Right -->
             <div
               class="animated-item flex justify-center md:justify-end mt-12 md:mt-0 hidden sm:flex"
             >
@@ -1221,9 +1139,10 @@
               <div class="absolute -inset-2 bg-gradient-to-tr from-blue-200 via-purple-200 to-pink-200 opacity-60 rounded-2xl blur-lg group-hover:opacity-80 transition-opacity duration-300"></div>
               <img
                 src="assets/team/r1.png"
-                alt="Research paper cover showcasing MTLabs' quantum research"
+                alt="MTLabs quantum research paper"
                 class="relative rounded-2xl shadow-2xl border-4 border-white/80 group-hover:shadow-[0_8px_32px_0_rgba(80,80,160,0.25)] w-full max-w-xs sm:max-w-xs md:max-w-sm lg:max-w-xs mx-auto md:mx-0 transition-shadow duration-300"
                 style="max-width: 300px;"
+                onerror="this.onerror=null;this.src='https://placehold.co/300x400/e2e8f0/4a5568?text=MTLabs+Research';"
               />
               <div class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
                 MTLabs Research
@@ -1384,87 +1303,55 @@
       </section>
 
       <section id="about" class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-  <div class="container mx-auto px-6 lg:px-12">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-      <!-- Left Content -->
-      <div class="animated-item">
-        <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl leading-tight">
-          Built in India, for the World.
-        </h2>
-        <p class="mt-6 text-lg text-gray-600 leading-relaxed">
-          Moontrace Engineering was founded to challenge the status quo.
-          We saw that existing quantum security solutions were often opaque,
-          expensive, and inaccessible to many global organizations. 
-          Our mission is to democratize post-quantum security with an open,
-          agile, and developer-friendly platform that prioritizes affordability,
-          transparency, and trust.
-        </p>
-        <p class="mt-6 text-lg text-gray-600 leading-relaxed">
-          Our vision is simple yet bold — to secure the post-quantum internet
-          for everyone, everywhere.
-        </p>
-      </div>
-
-      <!-- Right Cards Section -->
-      <div class="space-y-8">
-        <!-- NQM Mission Card -->
-        <div class="india-card bg-white shadow-lg rounded-2xl p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
-          <h3 class="text-2xl font-bold mb-5 text-blue-700 flex items-center justify-center lg:justify-start">
-            The National Quantum Mission (NQM)
-            <svg class="india-flag-icon ml-3 w-10 h-6 rounded-sm shadow-sm" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-              <!-- Correct Indian Flag Colors -->
-              <rect width="900" height="600" fill="#FF9933" /> <!-- Saffron Top -->
-              <rect y="200" width="900" height="200" fill="#FFFFFF" /> <!-- White Middle -->
-              <rect y="400" width="900" height="200" fill="#138808" /> <!-- Green Bottom -->
-              <!-- Ashoka Chakra -->
-              <circle cx="450" cy="300" r="60" fill="none" stroke="#000080" stroke-width="8" />
-              <g stroke="#000080" stroke-width="4">
-                <!-- 24 Spokes -->
-                <g id="spoke">
-                  <line x1="450" y1="240" x2="450" y2="300" />
-                </g>
-                <use xlink:href="#spoke" transform="rotate(15 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(30 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(45 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(60 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(75 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(90 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(105 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(120 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(135 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(150 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(165 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(180 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(195 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(210 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(225 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(240 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(255 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(270 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(285 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(300 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(315 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(330 450 300)" />
-                <use xlink:href="#spoke" transform="rotate(345 450 300)" />
-              </g>
-            </svg>
-          </h3>
-          <p class="text-gray-600 leading-relaxed text-center lg:text-left">
-            India's NQM is a landmark initiative to foster R&D in quantum computing, 
-            communication, and sensing. Our work is purpose-built to support this vision — 
-            from developing secure communication protocols for long-distance quantum links 
-            to optimizing quantum-safe algorithms for national defense.
-          </p>
-          <a href="trustcenter.html" 
-             class="inline-block mt-6 text-blue-600 font-semibold hover:text-blue-800 hover:underline transition duration-300">
-            Learn more about NQM & Moontrace's role →
-          </a>
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      
+            <div class="animated-item">
+              <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl leading-tight">
+                Built in India, for the World.
+              </h2>
+              <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+                Moontrace Engineering was founded to challenge the status quo.
+                We saw that existing quantum security solutions were often opaque,
+                expensive, and inaccessible to many global organizations. 
+                Our mission is to democratize post-quantum security with an open,
+                agile, and developer-friendly platform that prioritizes affordability,
+                transparency, and trust.
+              </p>
+              <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+                Our vision is simple yet bold — to secure the post-quantum internet
+                for everyone, everywhere.
+              </p>
+            </div>
+      
+            <div class="space-y-8">
+              <div class="bg-white shadow-lg rounded-2xl p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-2xl font-bold mb-5 text-blue-700 flex items-center justify-center lg:justify-start">
+                  The National Quantum Mission (NQM)
+                  <svg class="ml-3 w-10 h-6 rounded-sm shadow-sm" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="900" height="600" fill="#FF9933" />
+                    <rect y="200" width="900" height="200" fill="#FFFFFF" />
+                    <rect y="400" width="900" height="200" fill="#138808" />
+                    <circle cx="450" cy="300" r="60" fill="none" stroke="#000080" stroke-width="8" />
+                    <g stroke="#000080" stroke-width="4">
+                      <g id="spoke"><line x1="450" y1="240" x2="450" y2="300" /></g>
+                      <use xlink:href="#spoke" transform="rotate(15 450 300)" /><use xlink:href="#spoke" transform="rotate(30 450 300)" /><use xlink:href="#spoke" transform="rotate(45 450 300)" /><use xlink:href="#spoke" transform="rotate(60 450 300)" /><use xlink:href="#spoke" transform="rotate(75 450 300)" /><use xlink:href="#spoke" transform="rotate(90 450 300)" /><use xlink:href="#spoke" transform="rotate(105 450 300)" /><use xlink:href="#spoke" transform="rotate(120 450 300)" /><use xlink:href="#spoke" transform="rotate(135 450 300)" /><use xlink:href="#spoke" transform="rotate(150 450 300)" /><use xlink:href="#spoke" transform="rotate(165 450 300)" /><use xlink:href="#spoke" transform="rotate(180 450 300)" /><use xlink:href="#spoke" transform="rotate(195 450 300)" /><use xlink:href="#spoke" transform="rotate(210 450 300)" /><use xlink:href="#spoke" transform="rotate(225 450 300)" /><use xlink:href="#spoke" transform="rotate(240 450 300)" /><use xlink:href="#spoke" transform="rotate(255 450 300)" /><use xlink:href="#spoke" transform="rotate(270 450 300)" /><use xlink:href="#spoke" transform="rotate(285 450 300)" /><use xlink:href="#spoke" transform="rotate(300 450 300)" /><use xlink:href="#spoke" transform="rotate(315 450 300)" /><use xlink:href="#spoke" transform="rotate(330 450 300)" /><use xlink:href="#spoke" transform="rotate(345 450 300)" />
+                    </g>
+                  </svg>
+                </h3>
+                <p class="text-gray-600 leading-relaxed text-center lg:text-left">
+                  India's NQM is a landmark initiative to foster R&D in quantum computing, 
+                  communication, and sensing. Our work is purpose-built to support this vision — 
+                  from developing secure communication protocols for long-distance quantum links 
+                  to optimizing quantum-safe algorithms for national defense.
+                </p>
+                <a href="trustcenter.html" class="inline-block mt-6 text-blue-600 font-semibold hover:text-blue-800 hover:underline transition duration-300">
+                  Learn more about NQM & Moontrace's role →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-    </div>
-  </div>
       </section>
 
       <section id="faq" class="py-20 bg-gray-50">
@@ -1483,68 +1370,34 @@
           </div>
       </section>
 
-
      <section id="contact" class="py-20 bg-gray-800 text-white">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Heading -->
-    <div class="text-center">
-      <h2 class="text-white font-extrabold text-3xl sm:text-4xl tracking-tight">
-        Let's Build the Quantum-Safe Future.
-      </h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-        We're actively seeking collaborators, innovators, and partners who share our vision for securing the quantum era. Connect with us.
-      </p>
-    </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+            <h2 class="text-white font-extrabold text-3xl sm:text-4xl tracking-tight">
+                Let's Build the Quantum-Safe Future.
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+                We're actively seeking collaborators, innovators, and partners who share our vision for securing the quantum era. Connect with us.
+            </p>
+            </div>
 
-    <!-- Contact Info + Divider + CTA -->
-    <div class="mt-16 max-w-4xl mx-auto">
-      <div class="flex flex-col md:flex-row items-stretch justify-center gap-10 md:gap-16">
-
-        <!-- Left: Direct Contact -->
-        <div class="flex-1 text-center md:text-right flex flex-col justify-center">
-          <p class="text-lg">Get in touch directly:</p>
-          <p class="text-lg font-semibold">Bharat Raghuvanshi</p>
-          <p>
-            <a
-              href="mailto:bharat@moontrace.in"
-              class="text-gray-400 hover:text-gray-300 transition"
-            >
-              bharat@moontrace.in
-            </a>
-          </p>
-          <p>
-            <a
-              href="tel:+918887748365"
-              class="text-gray-400 hover:text-gray-300 transition"
-            >
-              +91 8887748365
-            </a>
-          </p>
+            <div class="mt-16 max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-stretch justify-center gap-10 md:gap-16">
+                    <div class="flex-1 text-center md:text-right flex flex-col justify-center">
+                    <p class="text-lg">Get in touch directly:</p>
+                    <p class="text-lg font-semibold">Bharat Raghuvanshi</p>
+                    <p><a href="mailto:bharat@moontrace.in" class="text-gray-400 hover:text-gray-300 transition">bharat@moontrace.in</a></p>
+                    <p><a href="tel:+918887748365" class="text-gray-400 hover:text-gray-300 transition">+91 8887748365</a></p>
+                    </div>
+                    <div class="hidden md:flex items-center"><div class="w-px h-full bg-gray-600"></div></div>
+                    <div class="flex-1 text-center flex flex-col justify-center items-center">
+                    <p class="text-lg mb-4">Prefer to send us a message?</p>
+                    <button id="contact-form-button" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold text-base hover:bg-blue-700 transition">Get in Touch</button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Divider -->
-        <div class="hidden md:flex items-center">
-          <div class="w-px h-full bg-gray-600"></div>
-        </div>
-
-        <!-- Right: CTA -->
-        <div class="flex-1 text-center flex flex-col justify-center items-center">
-          <p class="text-lg mb-4">Prefer to send us a message?</p>
-          <!-- The "Get in Touch" button now triggers the new popup modal -->
-          <button
-            id="contact-form-button"
-            class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold text-base hover:bg-blue-700 transition"
-            >
-            Get in Touch
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
+      </section>
     </main>
 
     <footer class="bg-gray-900 text-gray-400">
@@ -1552,95 +1405,26 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <ul class="mb-4">
             <li><a href="careers.html">Careers</a></li>
-            <li>
-              <a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a>
-            </li>
-            <li><a href="https://www.instagram.com/moontrace_hq/">Instagram</a>
-            <li>
-              <a href="https://x.com/Moontrace_HQ">X</a></li>
-            </li>
-            <li>
-              <a href="assets/pdfs/whymoon.pdf" target="_blank">Manifesto</a>
-            </li>
-            <li>
-              <a href="assets/pdfs/Investor_policy.pdf" target="_blank">Investor Relations</a>
-            </li>
-            <li><a href="trustcenter.html">Trust Center</a></li> <!-- New Footer Link -->
+            <li><a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a></li>
+            <li><a href="https://www.instagram.com/moontrace_hq/">Instagram</a></li>
+            <li><a href="https://x.com/Moontrace_HQ">X</a></li>
+            <li><a href="assets/pdfs/whymoon.pdf" target="_blank">Manifesto</a></li>
+            <li><a href="assets/pdfs/Investor_policy.pdf" target="_blank">Investor Relations</a></li>
+            <li><a href="trustcenter.html">Trust Center</a></li>
           </ul>
-          <p>
-            © 2025 Moontrace Engineering Research and Consulting | All
-            Rights Reserved.
-          </p>
+          <p>© 2025 Moontrace Engineering Research and Consulting | All Rights Reserved.</p>
           <p class="mt-2">Built in India, for the World.</p>
-          <p class="mt-4">
-            <a href="#top" class="hover:underline">Back to top</a>
-          </p>
+          <p class="mt-4"><a href="#top" class="hover:underline">Back to top</a></p>
         </div>
       </div>
     </footer>
 
     <nav class="bottom-nav md:hidden">
       <div class="flex justify-around items-center h-16">
-        <a href="#home" class="bottom-nav-link"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-            /></svg>
-          Home</a
-        >
-        <a href="#solutions" class="bottom-nav-link"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9.75 17L12 20.25l2.25-3.25M21 9l-3.354-3.354A4.5 4.5 0 0014.28 4.792L12 7.5l-2.28-2.708A4.5 4.5 0 005.354 5.646L2 9m19 0H2m19 0a2 2 0 012 2v6a2 2 0 01-2 2H2a2 2 0 01-2-2v-6a2 2 0 012-2z"
-            /></svg>
-          Solutions</a
-        >
-        <a href="careers.html" class="bottom-nav-link"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 13V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
-            /></svg>
-          Careers</a
-        >
-        <a href="#about" class="bottom-nav-link"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            /></svg>
-          About</a
-        >
+        <a href="#home" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>Home</a>
+        <a href="#solutions" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 20.25l2.25-3.25M21 9l-3.354-3.354A4.5 4.5 0 0014.28 4.792L12 7.5l-2.28-2.708A4.5 4.5 0 005.354 5.646L2 9m19 0H2m19 0a2 2 0 012 2v6a2 2 0 01-2 2H2a2 2 0 01-2-2v-6a2 2 0 012-2z" /></svg>Solutions</a>
+        <a href="careers.html" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01" /></svg>Careers</a>
+        <a href="#about" class="bottom-nav-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>About</a>
       </div>
     </nav>
 
@@ -1749,10 +1533,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // All original JS from test12.html is here
-        const flashBanner = document.getElementById("flash-banner");
-        setTimeout(() => flashBanner.classList.add("show"), 100);
-
+        // --- Mobile Menu ---
         const mobileMenuButton = document.getElementById("mobile-menu-button");
         const mobileMenu = document.getElementById("mobile-menu");
         mobileMenuButton.addEventListener("click", () => {
@@ -1764,355 +1545,157 @@
           });
         });
 
-        // FIX: Removed the scroll listener for the header as it's no longer needed with the sticky nav.
-        // const header = document.getElementById('header');
-        // window.addEventListener('scroll', () => {
-        //     if (window.scrollY > 50) {
-        //         header.classList.add('scrolled');
-        //     } else {
-        //         header.classList.remove('scrolled');
-        //     }
-        // });
-
+        // --- Countdown Timer ---
         const countdownDate = new Date("April 20, 2030 00:00:00").getTime();
-        setInterval(() => {
+        const countdownInterval = setInterval(() => {
           const now = new Date().getTime();
           const distance = countdownDate - now;
           if (distance < 0) {
-            document.getElementById("countdown").innerHTML =
-              "<div class='text-4xl font-bold text-gray-400'>The Quantum Era is Here</div>";
+            document.getElementById("countdown").innerHTML = "<div class='text-4xl font-bold text-gray-400'>The Quantum Era is Here</div>";
+            clearInterval(countdownInterval);
             return;
           }
-          document.getElementById("years").textContent = Math.floor(
-            distance / (1000 * 60 * 60 * 24 * 365.25)
-          )
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("days").textContent = Math.floor(
-            (distance % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24)
-          )
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("hours").textContent = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          )
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("minutes").textContent = Math.floor(
-            (distance % (1000 * 60 * 60)) / (1000 * 60)
-          )
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("seconds").textContent = Math.floor(
-            (distance % (1000 * 60)) / 1000
-          )
-            .toString()
-            .padStart(2, "0");
+          document.getElementById("years").textContent = Math.floor(distance / (1000 * 60 * 60 * 24 * 365.25)).toString().padStart(2, "0");
+          document.getElementById("days").textContent = Math.floor((distance % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24)).toString().padStart(2, "0");
+          document.getElementById("hours").textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, "0");
+          document.getElementById("minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
+          document.getElementById("seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, "0");
         }, 1000);
 
+        // --- PQC Performance Chart ---
         const ctx = document.getElementById("pqcChart")?.getContext("2d");
-        const chartLoadingSpinner = document.getElementById(
-          "chart-loading-spinner"
-        );
-        const pqcChartCanvas = document.getElementById("pqcChart");
-        let pqcChart;
-        const benchmarkData = {
-          latency: {
-            labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
-            datasets: {
-              1: [
-                { label: "KeyGen/Sign", data: [0.92, 1.45, 1.25, 2.45] },
-                { label: "Enc/Verify", data: [0.8, 1.15, 0.9, 0.45] },
-                { label: "Decaps", data: [0.85, 1.22, null, null] },
-              ],
-              3: [
-                { label: "KeyGen/Sign", data: [1.18, 1.85, 1.55, 3.12] },
-                { label: "Enc/Verify", data: [0.9, 1.3, 1.03, 0.58] },
-                { label: "Decaps", data: [1.12, 1.4, null, null] },
-              ],
-              5: [
-                { label: "KeyGen/Sign", data: [1.45, 2.25, 1.95, 3.85] },
-                { label: "Enc/Verify", data: [1.2, 1.65, 1.35, 0.7] },
-                { label: "Decaps", data: [1.38, 1.8, null, null] },
-              ],
-            },
-          },
-          size: {
-            labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
-            datasets: {
-              1: [
-                { label: "Public Key", data: [800, 699, 1184, 897] },
-                { label: "Ciphertext/Sig", data: [768, 699, 2044, 666] },
-                { label: "Secret Key", data: [1632, 935, 2800, 1281] },
-              ],
-              3: [
-                { label: "Public Key", data: [1184, 1027, 1472, 1441] },
-                { label: "Ciphertext/Sig", data: [1088, 1088, 2701, 1007] },
-                { label: "Secret Key", data: [2400, 1999, 3504, 2305] },
-              ],
-              5: [
-                { label: "Public Key", data: [1568, 1398, 1760, 1793] },
-                { label: "Ciphertext/Sig", data: [1568, 1568, 3366, 1280] },
-                { label: "Secret Key", data: [3168, 2653, 4864, 3073] },
-              ],
-            },
-          },
-        };
-        function createChart(metric, level) {
-          if (!ctx) return;
-          chartLoadingSpinner.classList.remove("hidden");
-          pqcChartCanvas.classList.add("hidden");
-          if (pqcChart) pqcChart.destroy();
-          setTimeout(() => {
-            const data = benchmarkData[metric];
-            const chartData = data.datasets[level].map((ds, index) => ({
-              ...ds,
-              backgroundColor: ["#bf988a", "#247c6d", "#031c26"][index % 3],
-            }));
-            pqcChart = new Chart(ctx, {
-              type: "bar",
-              data: { labels: data.labels, datasets: chartData },
-              options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    title: {
-                      display: true,
-                      text:
-                        metric === "latency" ? "Milliseconds (ms)" : "Bytes",
-                    },
-                  },
-                },
-                plugins: { tooltip: { mode: "index", intersect: false } },
-              },
-            });
-            chartLoadingSpinner.classList.add("hidden");
-            pqcChartCanvas.classList.remove("hidden");
-          }, 300);
+        if (ctx) {
+            const chartLoadingSpinner = document.getElementById("chart-loading-spinner");
+            const pqcChartCanvas = document.getElementById("pqcChart");
+            let pqcChart;
+            const benchmarkData = {
+                latency: { labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"], datasets: { 1: [{ label: "KeyGen/Sign", data: [0.92, 1.45, 1.25, 2.45] }, { label: "Enc/Verify", data: [0.8, 1.15, 0.9, 0.45] }, { label: "Decaps", data: [0.85, 1.22, null, null] }], 3: [{ label: "KeyGen/Sign", data: [1.18, 1.85, 1.55, 3.12] }, { label: "Enc/Verify", data: [0.9, 1.3, 1.03, 0.58] }, { label: "Decaps", data: [1.12, 1.4, null, null] }], 5: [{ label: "KeyGen/Sign", data: [1.45, 2.25, 1.95, 3.85] }, { label: "Enc/Verify", data: [1.2, 1.65, 1.35, 0.7] }, { label: "Decaps", data: [1.38, 1.8, null, null] }] } },
+                size: { labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"], datasets: { 1: [{ label: "Public Key", data: [800, 699, 1184, 897] }, { label: "Ciphertext/Sig", data: [768, 699, 2044, 666] }, { label: "Secret Key", data: [1632, 935, 2800, 1281] }], 3: [{ label: "Public Key", data: [1184, 1027, 1472, 1441] }, { label: "Ciphertext/Sig", data: [1088, 1088, 2701, 1007] }, { label: "Secret Key", data: [2400, 1999, 3504, 2305] }], 5: [{ label: "Public Key", data: [1568, 1398, 1760, 1793] }, { label: "Ciphertext/Sig", data: [1568, 1568, 3366, 1280] }, { label: "Secret Key", data: [3168, 2653, 4864, 3073] }] } }
+            };
+            const createChart = (metric, level) => {
+                chartLoadingSpinner.classList.remove("hidden");
+                pqcChartCanvas.classList.add("hidden");
+                if (pqcChart) pqcChart.destroy();
+                setTimeout(() => {
+                    const data = benchmarkData[metric];
+                    pqcChart = new Chart(ctx, { type: "bar", data: { labels: data.labels, datasets: data.datasets[level].map((ds, i) => ({ ...ds, backgroundColor: ["#bf988a", "#247c6d", "#031c26"][i % 3] })) }, options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, title: { display: true, text: metric === "latency" ? "Milliseconds (ms)" : "Bytes" } } }, plugins: { tooltip: { mode: "index", intersect: false } } } });
+                    chartLoadingSpinner.classList.add("hidden");
+                    pqcChartCanvas.classList.remove("hidden");
+                }, 300);
+            };
+            const metricSelect = document.getElementById("metric-select");
+            const levelSelect = document.getElementById("security-level-select");
+            metricSelect.addEventListener("change", () => createChart(metricSelect.value, levelSelect.value));
+            levelSelect.addEventListener("change", () => createChart(metricSelect.value, levelSelect.value));
+            createChart("latency", "3");
         }
-        const metricSelect = document.getElementById("metric-select");
-        const levelSelect = document.getElementById("security-level-select");
-        metricSelect?.addEventListener("change", () =>
-          createChart(metricSelect.value, levelSelect.value)
-        );
-        levelSelect?.addEventListener("change", () =>
-          createChart(metricSelect.value, levelSelect.value)
-        );
-        if (ctx) createChart("latency", "3");
 
+        // --- Animate on Scroll ---
         const animatedItems = document.querySelectorAll(".animated-item");
-        const observer = new IntersectionObserver(
-          (entries) => {
+        const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    scrollObserver.unobserve(entry.target);
+                }
             });
-          },
-          { threshold: 0.1 }
-        );
-        animatedItems.forEach((item) => observer.observe(item));
+        }, { threshold: 0.1 });
+        animatedItems.forEach((item) => scrollObserver.observe(item));
 
-        const flashItems = Array.from(
-          document
-            .getElementById("flash-item-template")
-            .content.querySelectorAll("a")
-        );
+        // --- Flash Banner ---
+        const flashItems = Array.from(document.getElementById("flash-item-template").content.querySelectorAll("a"));
         let flashCardIndex = 0;
-        let autoAdvanceTimer = null;
-
-        const flashBannerContent = document.getElementById(
-          "flash-banner-content"
-        );
-        const flashBannerPrev = document.getElementById("flash-banner-prev");
-        const flashBannerNext = document.getElementById("flash-banner-next");
-
-        function renderFlashCard(idx) {
-          flashBannerContent.innerHTML = "";
-          const node = flashItems[idx].cloneNode(true);
-          if (node.tagName === "A") {
-            if (!node.href.includes("#")) {
-              node.target = "_blank";
-              node.rel = "noopener noreferrer";
-            }
-          }
-          flashBannerContent.appendChild(node);
-        }
-        renderFlashCard(flashCardIndex);
-
-        function showPrevCard() {
-          flashCardIndex =
-            (flashCardIndex - 1 + flashItems.length) % flashItems.length;
-          renderFlashCard(flashCardIndex);
-          resetAutoAdvance();
-        }
-        function showNextCard() {
-          flashCardIndex = (flashCardIndex + 1) % flashItems.length;
-          renderFlashCard(flashCardIndex);
-          resetAutoAdvance();
-        }
-
-        flashBannerPrev.addEventListener("click", showPrevCard);
-        flashBannerNext.addEventListener("click", showNextCard);
-
-        function autoAdvance() {
-          flashCardIndex = (flashCardIndex + 1) % flashItems.length;
-          renderFlashCard(flashCardIndex);
-        }
-        function resetAutoAdvance() {
-          if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
-          autoAdvanceTimer = setInterval(autoAdvance, 5000);
-        }
-        resetAutoAdvance();
+        const flashBannerContent = document.getElementById("flash-banner-content");
+        const renderFlashCard = (idx) => { flashBannerContent.innerHTML = ""; flashBannerContent.appendChild(flashItems[idx].cloneNode(true)); };
+        const showNextCard = () => { flashCardIndex = (flashCardIndex + 1) % flashItems.length; renderFlashCard(flashCardIndex); resetAutoAdvance(); };
+        const showPrevCard = () => { flashCardIndex = (flashCardIndex - 1 + flashItems.length) % flashItems.length; renderFlashCard(flashCardIndex); resetAutoAdvance(); };
+        document.getElementById("flash-banner-prev").addEventListener("click", showPrevCard);
+        document.getElementById("flash-banner-next").addEventListener("click", showNextCard);
+        let autoAdvanceTimer = setInterval(showNextCard, 5000);
+        const resetAutoAdvance = () => { clearInterval(autoAdvanceTimer); autoAdvanceTimer = setInterval(showNextCard, 5000); };
+        renderFlashCard(0);
 
         // --- Hero Animation: Interactive Particle Field ---
+        const heroCanvas = document.getElementById("hero-canvas");
         const heroScene = new THREE.Scene();
-        const heroCamera = new THREE.PerspectiveCamera(
-          75,
-          window.innerWidth / window.innerHeight,
-          0.1,
-          1000
-        );
-        const heroRenderer = new THREE.WebGLRenderer({
-          canvas: document.getElementById("hero-canvas"),
-          alpha: true,
-          antialias: true,
-        });
+        const heroCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
         heroRenderer.setSize(window.innerWidth, window.innerHeight);
-
         const mouse = new THREE.Vector2();
-        window.addEventListener("mousemove", (event) => {
-          mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-          mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        });
-
+        window.addEventListener("mousemove", (e) => { mouse.x = (e.clientX / window.innerWidth) * 2 - 1; mouse.y = -(e.clientY / window.innerHeight) * 2 + 1; });
         const heroParticleCount = 500;
-        const heroParticles = new THREE.BufferGeometry();
         const heroPositions = new Float32Array(heroParticleCount * 3);
         const heroParticleData = [];
-
         for (let i = 0; i < heroParticleCount; i++) {
-          const x = (Math.random() - 0.5) * 20;
-          const y = (Math.random() - 0.5) * 20;
-          const z = (Math.random() - 0.5) * 20;
-          heroPositions[i * 3] = x;
-          heroPositions[i * 3 + 1] = y;
-          heroPositions[i * 3 + 2] = z;
-
-          heroParticleData.push({
-            originalX: x,
-            originalY: y,
-            originalZ: z,
-            velocityX: (Math.random() - 0.5) * 0.01,
-            velocityY: (Math.random() - 0.5) * 0.01,
-            velocityZ: (Math.random() - 0.5) * 0.01,
-          });
+            const x = (Math.random() - 0.5) * 20, y = (Math.random() - 0.5) * 20, z = (Math.random() - 0.5) * 20;
+            heroPositions.set([x, y, z], i * 3);
+            heroParticleData.push({ originalX: x, originalY: y, originalZ: z, velocityX: (Math.random() - 0.5) * 0.01, velocityY: (Math.random() - 0.5) * 0.01, velocityZ: (Math.random() - 0.5) * 0.01 });
         }
-        heroParticles.setAttribute(
-          "position",
-          new THREE.BufferAttribute(heroPositions, 3)
-        );
-        const heroParticleMaterial = new THREE.PointsMaterial({
-          color: 0xffffff,
-          size: 0.05,
-        });
-        const heroParticleSystem = new THREE.Points(
-          heroParticles,
-          heroParticleMaterial
-        );
+        const heroParticles = new THREE.BufferGeometry();
+        heroParticles.setAttribute("position", new THREE.BufferAttribute(heroPositions, 3));
+        const heroParticleSystem = new THREE.Points(heroParticles, new THREE.PointsMaterial({ color: 0xffffff, size: 0.05 }));
         heroScene.add(heroParticleSystem);
-
-        const heroLineMaterial = new THREE.LineBasicMaterial({
-          color: 0x87ceeb,
-          transparent: true,
-          opacity: 0.08,
-        });
         const heroLineGeometry = new THREE.BufferGeometry();
-        const heroLinePositions = new Float32Array(
-          heroParticleCount * heroParticleCount * 3
-        );
-        heroLineGeometry.setAttribute(
-          "position",
-          new THREE.BufferAttribute(heroLinePositions, 3)
-        );
-        const heroLines = new THREE.LineSegments(
-          heroLineGeometry,
-          heroLineMaterial
-        );
+        heroLineGeometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(heroParticleCount * heroParticleCount * 3), 3));
+        const heroLines = new THREE.LineSegments(heroLineGeometry, new THREE.LineBasicMaterial({ color: 0x87ceeb, transparent: true, opacity: 0.08 }));
         heroScene.add(heroLines);
-
         heroCamera.position.z = 15;
         let heroTime = 0;
+        let animationFrameId; // <-- FIX: To hold the animation frame ID
 
         function animateHero() {
-          requestAnimationFrame(animateHero);
-          heroTime += 0.005;
-
-          const posArray =
-            heroParticleSystem.geometry.attributes.position.array;
-          const linePosArray = heroLines.geometry.attributes.position.array;
-          let lineIndex = 0;
-          const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
-
-          for (let i = 0; i < heroParticleCount; i++) {
-            const data = heroParticleData[i];
-            const particlePos = new THREE.Vector3(
-              posArray[i * 3],
-              posArray[i * 3 + 1],
-              posArray[i * 3 + 2]
-            );
-            const distanceToMouse = particlePos.distanceTo(mouse3D);
-            const pushStrength = Math.max(0, 1 - distanceToMouse / 5);
-            const pushVector = particlePos
-              .clone()
-              .sub(mouse3D)
-              .normalize()
-              .multiplyScalar(pushStrength * 0.1);
-
-            posArray[i * 3] +=
-              Math.sin(heroTime + data.originalX) * 0.001 +
-              data.velocityX +
-              pushVector.x;
-            posArray[i * 3 + 1] +=
-              Math.cos(heroTime + data.originalY) * 0.001 +
-              data.velocityY +
-              pushVector.y;
-            posArray[i * 3 + 2] += data.velocityZ + pushVector.z;
-
-            if (posArray[i * 3] > 10 || posArray[i * 3] < -10)
-              data.velocityX *= -1;
-            if (posArray[i * 3 + 1] > 10 || posArray[i * 3 + 1] < -10)
-              data.velocityY *= -1;
-            if (posArray[i * 3 + 2] > 10 || posArray[i * 3 + 2] < -10)
-              data.velocityZ *= -1;
-
-            for (let j = i + 1; j < heroParticleCount; j++) {
-              const dx = posArray[i * 3] - posArray[j * 3];
-              const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
-              const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
-              const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-              if (distance < 1.8) {
-                linePosArray[lineIndex++] = posArray[i * 3];
-                linePosArray[lineIndex++] = posArray[i * 3 + 1];
-                linePosArray[lineIndex++] = posArray[i * 3 + 2];
-                linePosArray[lineIndex++] = posArray[j * 3];
-                linePosArray[lineIndex++] = posArray[j * 3 + 1];
-                linePosArray[lineIndex++] = posArray[j * 3 + 2];
-              }
+            animationFrameId = requestAnimationFrame(animateHero); // <-- FIX: Store the ID
+            heroTime += 0.005;
+            const posArray = heroParticleSystem.geometry.attributes.position.array;
+            const linePosArray = heroLines.geometry.attributes.position.array;
+            let lineIndex = 0;
+            const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
+            for (let i = 0; i < heroParticleCount; i++) {
+                const data = heroParticleData[i];
+                const pPos = new THREE.Vector3(posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2]);
+                const push = pPos.clone().sub(mouse3D).normalize().multiplyScalar(Math.max(0, 1 - pPos.distanceTo(mouse3D) / 5) * 0.1);
+                posArray[i * 3] += Math.sin(heroTime + data.originalX) * 0.001 + data.velocityX + push.x;
+                posArray[i * 3 + 1] += Math.cos(heroTime + data.originalY) * 0.001 + data.velocityY + push.y;
+                posArray[i * 3 + 2] += data.velocityZ + push.z;
+                if (Math.abs(posArray[i * 3]) > 10) data.velocityX *= -1;
+                if (Math.abs(posArray[i * 3 + 1]) > 10) data.velocityY *= -1;
+                if (Math.abs(posArray[i * 3 + 2]) > 10) data.velocityZ *= -1;
+                for (let j = i + 1; j < heroParticleCount; j++) {
+                    const d = new THREE.Vector3(posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2]).distanceTo(new THREE.Vector3(posArray[j * 3], posArray[j * 3 + 1], posArray[j * 3 + 2]));
+                    if (d < 1.8) {
+                        linePosArray.set([posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2], posArray[j * 3], posArray[j * 3 + 1], posArray[j * 3 + 2]], lineIndex);
+                        lineIndex += 6;
+                    }
+                }
             }
-          }
-          heroLines.geometry.setDrawRange(0, lineIndex / 3);
-          heroLines.geometry.attributes.position.needsUpdate = true;
-          heroParticleSystem.geometry.attributes.position.needsUpdate = true;
-          heroScene.rotation.y += 0.0001;
-          heroScene.rotation.x += 0.0001;
-          heroRenderer.render(heroScene, heroCamera);
+            heroLines.geometry.setDrawRange(0, lineIndex / 3);
+            heroLines.geometry.attributes.position.needsUpdate = true;
+            heroParticleSystem.geometry.attributes.position.needsUpdate = true;
+            heroScene.rotation.y += 0.0001;
+            heroScene.rotation.x += 0.0001;
+            heroRenderer.render(heroScene, heroCamera);
         }
-        animateHero();
+
+        // --- FIX: Intersection Observer for Hero Animation ---
+        const heroSection = document.getElementById('home');
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start animation only if it's not already running
+                    if (!animationFrameId) {
+                        animateHero();
+                    }
+                } else {
+                    // Stop animation if it's running
+                    if (animationFrameId) {
+                        cancelAnimationFrame(animationFrameId);
+                        animationFrameId = null; // Reset the ID
+                    }
+                }
+            });
+        }, { threshold: 0.01 }); // Trigger when even a small part is visible
+
+        animationObserver.observe(heroSection);
 
         window.addEventListener("resize", () => {
           heroCamera.aspect = window.innerWidth / window.innerHeight;
@@ -2120,444 +1703,124 @@
           heroRenderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // --- Solutions Tab Slider & Navigation ---
-        const tabs = document.querySelectorAll('.solution-tab');
-        const panels = document.getElementById('solution-panels');
-        const highlighter = document.getElementById('active-tab-highlighter');
-        const prevSolutionBtn = document.getElementById('prev-solution-btn');
-        const nextSolutionBtn = document.getElementById('next-solution-btn');
-        let currentSolutionIndex = 0;
-        let solutionSliderInterval;
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const minSwipeDistance = 50; // Minimum pixels for a swipe to register
-        let isScrollingProgrammatically = false; // Flag to prevent scroll events from interfering with manual tab clicks
+        // --- All Modal Logic ---
+        function setupModal(triggerIds, modalOverlayId, closeButtonId) {
+            const modalOverlay = document.getElementById(modalOverlayId);
+            const closeButton = document.getElementById(closeButtonId);
+            if (!modalOverlay) return;
 
-        function updateHighlighter(activeTab) {
-            if (!activeTab) return;
-            highlighter.style.width = `${activeTab.offsetWidth}px`;
-            highlighter.style.left = `${activeTab.offsetLeft}px`;
-        }
-        
-        function switchTab(tabIndex, smoothScroll = true) {
-            // Ensure tabIndex is within bounds
-            tabIndex = Math.max(0, Math.min(tabIndex, tabs.length - 1));
+            const showModal = (e) => {
+                if(e) e.preventDefault();
+                modalOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            };
+            const hideModal = () => {
+                modalOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+            };
+
+            triggerIds.forEach(id => {
+                const trigger = document.getElementById(id);
+                if (trigger) trigger.addEventListener('click', showModal);
+            });
             
-            // Only update if the index has changed or if it's a programmatic smooth scroll
-            if (currentSolutionIndex === tabIndex && !smoothScroll) {
-                return;
-            }
-
-            const activeTab = tabs[tabIndex];
-
-            tabs.forEach(tab => tab.classList.remove('active-tab'));
-            activeTab.classList.add('active-tab');
-            
-            if (smoothScroll) {
-                isScrollingProgrammatically = true; // Set flag before programmatic scroll
-                panels.scrollTo({
-                    left: tabIndex * panels.offsetWidth,
-                    behavior: 'smooth'
-                });
-            } else {
-                panels.scrollLeft = tabIndex * panels.offsetWidth; // Instant scroll for scroll event sync
-            }
-            
-            updateHighlighter(activeTab);
-            currentSolutionIndex = tabIndex;
-
-            // Clear flag after a short delay to allow smooth scroll to complete
-            if (smoothScroll) {
-                setTimeout(() => { isScrollingProgrammatically = false; }, 400); 
-            }
-        }
-
-        function startAutoSlider() {
-            solutionSliderInterval = setInterval(() => {
-                const nextIndex = (currentSolutionIndex + 1) % tabs.length;
-                switchTab(nextIndex);
-            }, 7000); // 7 seconds
-        }
-
-        function resetAutoSlider() {
-            clearInterval(solutionSliderInterval);
-            startAutoSlider();
-        }
-
-        // Event listeners for top tabs
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabIndex = parseInt(tab.dataset.tabIndex, 10);
-                switchTab(tabIndex);
-                resetAutoSlider(); // Reset timer on manual click
-            });
-        });
-
-        // Touch/Swipe functionality for panels
-        panels.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            clearInterval(solutionSliderInterval); // Pause auto-slider on touch
-            isScrollingProgrammatically = true; // Temporarily block scroll sync during touch
-        });
-
-        panels.addEventListener('touchmove', (e) => {
-            // Prevent vertical scrolling while swiping horizontally
-            e.preventDefault(); 
-            touchEndX = e.changedTouches[0].screenX;
-        });
-
-        panels.addEventListener('touchend', () => {
-            const diffX = touchEndX - touchStartX;
-
-            if (diffX > minSwipeDistance) { // Swiped right (show previous)
-                switchTab(currentSolutionIndex - 1);
-            } else if (diffX < -minSwipeDistance) { // Swiped left (show next)
-                switchTab(currentSolutionIndex + 1);
-            } else {
-                // If no significant swipe, ensure panel snaps to nearest
-                switchTab(currentSolutionIndex); // Re-snap to current if no swipe
-            }
-            resetAutoSlider(); // Resume auto-slider after touch ends
-            setTimeout(() => { isScrollingProgrammatically = false; }, 400); // Allow scroll sync after transition
-        });
-
-        // Desktop navigation buttons
-        if (prevSolutionBtn) {
-            prevSolutionBtn.addEventListener('click', () => {
-                switchTab(currentSolutionIndex - 1);
-                resetAutoSlider();
-            });
-        }
-        if (nextSolutionBtn) {
-            nextSolutionBtn.addEventListener('click', () => {
-                switchTab(currentSolutionIndex + 1);
-                resetAutoSlider();
-            });
-        }
-
-        // Scroll synchronization for panels (when user manually scrolls)
-        let scrollTimeout;
-        panels.addEventListener('scroll', () => {
-            if (isScrollingProgrammatically) return; // Don't sync if a click/swipe just initiated a scroll
-
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const scrollLeft = panels.scrollLeft;
-                const panelWidth = panels.offsetWidth;
-                // Calculate the nearest panel index, ensuring it's an integer
-                const nearestPanelIndex = Math.round(scrollLeft / panelWidth);
-                
-                // Only update if the active tab needs to change
-                if (nearestPanelIndex !== currentSolutionIndex) {
-                    switchTab(nearestPanelIndex, false); // Update UI without re-scrolling
-                    resetAutoSlider(); // Reset auto-slider on manual scroll
-                }
-            }, 150); // Debounce scroll event
-        });
-
-        // Initialize highlighter and auto-slider
-        const initialActiveTab = document.querySelector('.solution-tab.active-tab');
-        if (initialActiveTab) {
-            setTimeout(() => {
-                updateHighlighter(initialActiveTab);
-            }, 100);
+            if (closeButton) closeButton.addEventListener('click', hideModal);
+            modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) hideModal(); });
         }
         
-        window.addEventListener('resize', () => {
-            const currentActiveTab = document.querySelector('.solution-tab.active-tab');
-            updateHighlighter(currentActiveTab);
-            // Re-align panel on resize to ensure correct position after layout changes
-            panels.scrollTo({
-                left: currentSolutionIndex * panels.offsetWidth,
-                behavior: 'smooth'
-            });
-        });
-
-        startAutoSlider();
-
-        // --- Mosca Theorem Modal Logic ---
-        const moscaQuoteSection = document.getElementById('mosca-quote-section');
-        const moscaModalOverlay = document.getElementById('mosca-modal-overlay');
-        const moscaModalCloseButton = document.getElementById('mosca-modal-close');
-
-        // Function to show the modal
-        function showMoscaModal() {
-            moscaModalOverlay.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling background
-        }
-
-        // Function to hide the modal
-        function hideMoscaModal() {
-            moscaModalOverlay.classList.remove('show');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-
-        // Event listener to open modal when quote is clicked
-        if (moscaQuoteSection) {
-            moscaQuoteSection.addEventListener('click', showMoscaModal);
-        }
-
-        // Event listener to close modal when close button is clicked
-        if (moscaModalCloseButton) {
-            moscaModalCloseButton.addEventListener('click', hideMoscaModal);
-        }
-
-        // Event listener to close modal when clicking outside the content (on the overlay)
-        if (moscaModalOverlay) {
-            moscaModalOverlay.addEventListener('click', (event) => {
-                // Check if the click occurred directly on the overlay, not its children
-                if (event.target === moscaModalOverlay) {
-                    hideMoscaModal();
-                }
-            });
-        }
+        setupModal(['mosca-quote-section'], 'mosca-modal-overlay', 'mosca-modal-close');
+        setupModal(['contact-form-button', 'assess-risk-cta'], 'contact-popup-modal-overlay', 'contact-popup-modal-close');
         
-        // --- "Coming Soon" Modal Logic (for CTA buttons) ---
-        const ctaButtons = document.querySelectorAll('.cta-button');
-        const comingSoonModalOverlay = document.getElementById('coming-soon-modal-overlay');
-        const comingSoonModalClose = document.getElementById('coming-soon-modal-close');
-
-        // Function to show the "Coming Soon" modal
-        function showComingSoonModal(e) {
-          // Prevent default link behavior
-          e.preventDefault(); 
-          comingSoonModalOverlay.classList.add('show');
-          document.body.style.overflow = 'hidden'; // Prevent scrolling background
-        }
-
-        // Function to hide the "Coming Soon" modal
-        function hideComingSoonModal() {
-          comingSoonModalOverlay.classList.remove('show');
-          document.body.style.overflow = ''; // Restore scrolling
-        }
-
-        // Event listener for all "Learn More" buttons
-        if (ctaButtons) {
-          ctaButtons.forEach(button => {
-            button.addEventListener('click', showComingSoonModal);
-          });
-        }
-
-        // Event listener to close modal when close button is clicked
-        if (comingSoonModalClose) {
-            comingSoonModalClose.addEventListener('click', hideComingSoonModal);
-        }
-        
-        // Event listener to close modal when clicking outside the content (on the overlay)
-        if (comingSoonModalOverlay) {
-            comingSoonModalOverlay.addEventListener('click', (event) => {
-                // Check if the click occurred directly on the overlay, not its children
-                if (event.target === comingSoonModalOverlay) {
-                    hideComingSoonModal();
-                }
-            });
-        }
-
-        // --- New Contact Popup Modal Logic ---
-        const contactFormButton = document.getElementById('contact-form-button');
-        const performanceCtaButton = document.getElementById('performance-cta-button'); // New CTA button
-        const assessRiskCta = document.getElementById('assess-risk-cta');
-        const contactPopupModalOverlay = document.getElementById('contact-popup-modal-overlay');
-        const contactPopupModalClose = document.getElementById('contact-popup-modal-close');
-        const contactForm = document.getElementById('contact-form');
-        const contactSubmitButton = document.getElementById('contact-submit-button');
-        const contactLoadingSpinner = document.getElementById('contact-loading-spinner');
-        const contactMessageDisplay = document.getElementById('contact-message-display');
-
-        // Function to show the contact popup modal
-        function showContactPopupModal() {
-            contactPopupModalOverlay.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling background
-            // Reset form and messages when opening
-            contactForm.reset();
-            contactMessageDisplay.classList.add('hidden');
-            contactMessageDisplay.textContent = '';
-            contactSubmitButton.disabled = false;
-        }
-
-        // Function to hide the contact popup modal
-        function hideContactPopupModal() {
-            contactPopupModalOverlay.classList.remove('show');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-
-        // Event listener for the "Get in Touch" button in the contact section
-        if (contactFormButton) {
-            contactFormButton.addEventListener('click', showContactPopupModal);
-        }
-
-        // Event listener for the new "See How We Can Secure Your Project" button
-        if (performanceCtaButton) {
-            performanceCtaButton.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default link behavior
-                showContactPopupModal();
-            });
-        }
-        
-        if (assessRiskCta) {
-            assessRiskCta.addEventListener('click', (e) => {
+        // Special setup for CTA buttons that open the "Coming Soon" modal
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', (e) => {
                 e.preventDefault();
-                showContactPopupModal();
+                const modal = document.getElementById('coming-soon-modal-overlay');
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
             });
+        });
+        const comingSoonClose = document.getElementById('coming-soon-modal-close');
+        const comingSoonOverlay = document.getElementById('coming-soon-modal-overlay');
+        if (comingSoonClose) {
+            const hide = () => {
+                comingSoonOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+            };
+            comingSoonClose.addEventListener('click', hide);
+            comingSoonOverlay.addEventListener('click', (e) => { if (e.target === comingSoonOverlay) hide(); });
         }
 
-
-        // Event listener to close modal when close button is clicked
-        if (contactPopupModalClose) {
-            contactPopupModalClose.addEventListener('click', hideContactPopupModal);
-        }
-        
-        // Event listener to close modal when clicking outside the content (on the overlay)
-        if (contactPopupModalOverlay) {
-            contactPopupModalOverlay.addEventListener('click', (event) => {
-                // Check if the click occurred directly on the overlay, not its children
-                if (event.target === contactPopupModalOverlay) {
-                    hideContactPopupModal();
-                }
-            });
-        }
-
-        // Form submission logic for Formspree
+        // --- Contact Form Submission ---
+        const contactForm = document.getElementById('contact-form');
         if (contactForm) {
-            contactForm.addEventListener('submit', async (event) => {
-                event.preventDefault(); // Prevent default form submission
-
-                contactSubmitButton.disabled = true; // Disable button
-                contactLoadingSpinner.classList.remove('hidden'); // Show spinner
-                contactMessageDisplay.classList.add('hidden'); // Hide previous messages
-                contactMessageDisplay.textContent = '';
-
-                const formData = new FormData(contactForm);
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitButton = document.getElementById('contact-submit-button');
+                const spinner = document.getElementById('contact-loading-spinner');
+                const messageDisplay = document.getElementById('contact-message-display');
+                submitButton.disabled = true;
+                spinner.classList.remove('hidden');
+                messageDisplay.className = 'modal-message hidden';
+                
                 try {
-                    const response = await fetch(contactForm.action, {
-                        method: contactForm.method,
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    console.log('Formspree response status:', response.status); // Debugging
-                    const data = await response.json();
-                    console.log('Formspree response data:', data); // Debugging
-
+                    const response = await fetch(contactForm.action, { method: 'POST', body: new FormData(contactForm), headers: { 'Accept': 'application/json' } });
                     if (response.ok) {
-                        contactMessageDisplay.classList.remove('hidden', 'error');
-                        contactMessageDisplay.classList.add('success');
-                        contactMessageDisplay.textContent = 'Thank you for your message! We will get back to you soon.';
-                        contactForm.reset(); // Clear form fields on success
-                        setTimeout(hideContactPopupModal, 1500); // Hide modal after 1.5 seconds (faster)
+                        messageDisplay.textContent = 'Thank you! Your message has been sent.';
+                        messageDisplay.classList.add('success');
+                        contactForm.reset();
+                        setTimeout(() => document.getElementById('contact-popup-modal-overlay').classList.remove('show'), 2000);
                     } else {
-                        contactMessageDisplay.classList.remove('hidden', 'success');
-                        contactMessageDisplay.classList.add('error');
-                        if (data.errors) {
-                            contactMessageDisplay.textContent = data.errors.map(error => error.message).join(', ');
-                        } else {
-                            contactMessageDisplay.textContent = 'Oops! There was a problem sending your message.';
-                        }
+                        throw new Error('Form submission failed');
                     }
                 } catch (error) {
-                    console.error('Form submission error:', error);
-                    contactMessageDisplay.classList.remove('hidden', 'success');
-                    contactMessageDisplay.classList.add('error');
-                    contactMessageDisplay.textContent = 'Network error. Please try again later.';
+                    messageDisplay.textContent = 'Oops! There was a problem. Please try again.';
+                    messageDisplay.classList.add('error');
                 } finally {
-                    contactLoadingSpinner.classList.add('hidden'); // Hide spinner
-                    contactSubmitButton.disabled = false; // Re-enable button
+                    messageDisplay.classList.remove('hidden');
+                    spinner.classList.add('hidden');
+                    submitButton.disabled = false;
                 }
             });
         }
-
-        // --- Whitepaper Invitation Popup Logic --
-        const whitepaperPopup = document.getElementById('whitepaper-popup');
-        const whitepaperButton = document.getElementById('pdf-button'); // Assuming this is the whitepaper button
-
-        function showWhitepaperPopup() {
-            whitepaperPopup.classList.add('show');
-            // Hide after 5 seconds
-            setTimeout(() => {
-                whitepaperPopup.classList.remove('show');
-            }, 5000); // Popup stays for 5 seconds
-        }
-
-        // Show the popup after 3 seconds of page load
-        setTimeout(showWhitepaperPopup, 3000); // Popup appears after 3 seconds
         
-        
-        // --- FAQ Accordion Logic ---
+        // --- FAQ Accordion ---
         const faqAccordion = document.getElementById('faq-accordion');
-        const faqData = [
-            {
-                title: "What is Post-Quantum Cryptography (PQC) and why is it urgent?",
-                content: "PQC refers to new cryptographic algorithms that are secure against attacks from both classical and quantum computers. The urgency comes from the 'Harvest Now, Decrypt Later' threat, where adversaries are capturing your encrypted data today to decrypt it once a powerful quantum computer is available. For any data that needs to remain secure for more than 5-7 years, the transition to PQC is an immediate priority."
-            },
-            {
-                title: "How does Moontrace's platform differ from other security solutions?",
-                content: "Most solutions are point products. We provide a complete, end-to-end platform that automates the entire crypto-agility lifecycle. Our HERCULES AI core connects discovery (VANTAGE) with automated remediation (APX), translating technical risk into business intelligence. Furthermore, our MTLabs division gives us a unique edge in securing specialized hardware and embedded systems where standard solutions fail."
-            },
-            {
-                title: "Our infrastructure is complex with many legacy systems. Can your platform handle this?",
-                content: "Absolutely. Our platform was designed for complex, hybrid environments. The VANTAGE module provides a comprehensive inventory of all cryptographic assets, including those in legacy systems. APX then enables a phased, manageable migration using hybrid cryptographic approaches, ensuring backward compatibility and minimizing disruption to your critical operations."
-            },
-            {
-                title: "What does a typical PQC migration engagement look like?",
-                content: "Our process is structured and transparent. It begins with a comprehensive risk assessment using VANTAGE to map your entire cryptographic landscape. HERCULES then prioritizes vulnerabilities based on business impact. Finally, APX executes a phased migration based on a jointly-developed roadmap. We move from non-critical systems to your most sensitive assets, ensuring a secure and controlled transition. To discuss a tailored plan, please <a href='#' class='text-blue-600 font-semibold hover:underline contact-link'>get in touch</a>."
-            }
-        ];
-
-        faqData.forEach((item, index) => {
-            const accordionItem = document.createElement('div');
-            accordionItem.classList.add('border', 'border-gray-200', 'rounded-lg', 'bg-white');
-            accordionItem.innerHTML = `
-                <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 hover:bg-gray-50">
-                    <span>${item.title}</span>
-                    <span class="accordion-icon text-2xl font-light text-gray-500 transform transition-transform">+</span>
-                </button>
-                <div class="accordion-content px-5 text-gray-600">
-                    <p class="py-4 border-t border-gray-200">${item.content}</p>
-                </div>
-            `;
-            faqAccordion.appendChild(accordionItem);
-        });
-
-        faqAccordion.addEventListener('click', (e) => {
-            const header = e.target.closest('.accordion-header');
-            if (!header) return;
-
-            // FIX: FAQ "Get in Touch" button
-            // This logic correctly finds clicks on the 'contact-link' inside the FAQ
-            // and triggers the contact modal. This was already implemented correctly.
-            if (e.target.classList.contains('contact-link')) {
-                e.preventDefault();
-                showContactPopupModal();
-                return;
-            }
-
-            const content = header.nextElementSibling;
-            const icon = header.querySelector('.accordion-icon');
-            const isExpanded = header.classList.contains('expanded');
-
-            // Close all other items
-            faqAccordion.querySelectorAll('.accordion-header').forEach(h => {
-                if (h !== header) {
+        if (faqAccordion) {
+            const faqData = [
+                { title: "What is Post-Quantum Cryptography (PQC) and why is it urgent?", content: "PQC refers to new cryptographic algorithms that are secure against attacks from both classical and quantum computers. The urgency comes from the 'Harvest Now, Decrypt Later' threat, where adversaries are capturing your encrypted data today to decrypt it once a powerful quantum computer is available. For any data that needs to remain secure for more than 5-7 years, the transition to PQC is an immediate priority." },
+                { title: "How does Moontrace's platform differ from other security solutions?", content: "Most solutions are point products. We provide a complete, end-to-end platform that automates the entire crypto-agility lifecycle. Our HERCULES AI core connects discovery (VANTAGE) with automated remediation (APX), translating technical risk into business intelligence. Furthermore, our MTLabs division gives us a unique edge in securing specialized hardware and embedded systems where standard solutions fail." },
+                { title: "Our infrastructure is complex with many legacy systems. Can your platform handle this?", content: "Absolutely. Our platform was designed for complex, hybrid environments. The VANTAGE module provides a comprehensive inventory of all cryptographic assets, including those in legacy systems. APX then enables a phased, manageable migration using hybrid cryptographic approaches, ensuring backward compatibility and minimizing disruption to your critical operations." },
+                { title: "What does a typical PQC migration engagement look like?", content: "Our process is structured and transparent. It begins with a comprehensive risk assessment using VANTAGE to map your entire cryptographic landscape. HERCULES then prioritizes vulnerabilities based on business impact. Finally, APX executes a phased migration based on a jointly-developed roadmap. We move from non-critical systems to your most sensitive assets, ensuring a secure and controlled transition. To discuss a tailored plan, please <a href='#' class='text-blue-600 font-semibold hover:underline contact-link'>get in touch</a>." }
+            ];
+            faqData.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'border border-gray-200 rounded-lg bg-white';
+                div.innerHTML = `<button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 hover:bg-gray-50"><span>${item.title}</span><span class="accordion-icon text-2xl font-light text-gray-500 transform transition-transform">+</span></button><div class="accordion-content px-5 text-gray-600"><p class="py-4 border-t border-gray-200">${item.content}</p></div>`;
+                faqAccordion.appendChild(div);
+            });
+            faqAccordion.addEventListener('click', (e) => {
+                if (e.target.classList.contains('contact-link')) {
+                    e.preventDefault();
+                    document.getElementById('contact-form-button').click();
+                    return;
+                }
+                const header = e.target.closest('.accordion-header');
+                if (!header) return;
+                const content = header.nextElementSibling;
+                const isExpanded = header.classList.contains('expanded');
+                faqAccordion.querySelectorAll('.accordion-header').forEach(h => {
                     h.classList.remove('expanded');
                     h.nextElementSibling.style.maxHeight = null;
                     h.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+                });
+                if (!isExpanded) {
+                    header.classList.add('expanded');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    header.querySelector('.accordion-icon').style.transform = 'rotate(45deg)';
                 }
             });
-
-            // Toggle the clicked item
-            if (isExpanded) {
-                header.classList.remove('expanded');
-                content.style.maxHeight = null;
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                header.classList.add('expanded');
-                content.style.maxHeight = content.scrollHeight + "px";
-                icon.style.transform = 'rotate(45deg)';
-            }
-        });
-
+        }
       });
     </script>
   </body>
