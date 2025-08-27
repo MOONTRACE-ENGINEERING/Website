@@ -4,21 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Moontrace Engineering | Leading Post-Quantum Cryptography & Quantum-Safe Solutions</title>
-    <meta name="description" content="Moontrace Engineering pioneers quantum-resilient security solutions for critical industries. Discover our crypto-agile tools: Vantage, APX, and QUBEx for a confident future in the quantum era." />
+    <meta name="description" content="Moontrace Engineering provides the integrated platform to discover your cryptographic vulnerabilities, automate your quantum transition, and secure your infrastructure against the inevitable." />
     <meta name="keywords" content="post-quantum cryptography, quantum-safe, quantum-resilient, crypto-agility, PQC, NIST, quantum security, cybersecurity, enterprise security, IoT security, hardware security, India, Moontrace Engineering, Vantage, APX, QUBEx, quantum threats" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.moontrace.in/" /> <!-- Replace with your actual URL -->
-    <meta property="og:title" content="Moontrace Engineering | Leading Post-Quantum Cryptography & Quantum-Safe Solutions" />
-    <meta property="og:description" content="Moontrace Engineering pioneers quantum-resilient security solutions for critical industries. Discover our crypto-agile tools: Vantage, APX, and QUBEx for a confident future in the quantum era." />
+    <meta property="og:title" content="Moontrace Engineering | Achieve Crypto-Agility Now" />
+    <meta property="og:description" content="Moontrace Engineering provides the integrated platform to discover your cryptographic vulnerabilities, automate your quantum transition, and secure your infrastructure against the inevitable." />
     <meta property="og:image" content="https://www.moontrace.in/assets/moontrace-og-image.jpg" /> <!-- Replace with a high-quality, descriptive image URL -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://www.moontrace.in/" /> <!-- Replace with your actual URL -->
-    <meta property="twitter:title" content="Moontrace Engineering | Leading Post-Quantum Cryptography & Quantum-Safe Solutions" />
-    <meta property="twitter:description" content="Moontrace Engineering pioneers quantum-resilient security solutions for critical industries. Discover our crypto-agile tools: Vantage, APX, and QUBEx for a confident future in the quantum era." />
+    <meta property="twitter:title" content="Moontrace Engineering | The Quantum Threat is Real. Your Defense Starts Here." />
+    <meta property="twitter:description" content="Moontrace Engineering provides the integrated platform to discover your cryptographic vulnerabilities, automate your quantum transition, and secure your infrastructure against the inevitable." />
     <meta property="twitter:image" content="https://www.moontrace.in/assets/moontrace-twitter-image.jpg" /> <!-- Replace with a high-quality, descriptive image URL -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,7 +41,7 @@
       "name": "Moontrace Engineering",
       "url": "https://www.moontrace.in/", <!-- Replace with your actual URL -->
       "logo": "https://www.moontrace.in/assets/finalbg.png", <!-- Replace with your logo URL -->
-      "description": "Moontrace Engineering pioneers quantum-resilient security solutions for critical industries, building the foundational layers of quantum-resilient digital transformation.",
+      "description": "Moontrace Engineering provides the integrated platform to discover cryptographic vulnerabilities, automate quantum transitions, and secure critical infrastructure.",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+91-8887748365",
@@ -57,9 +57,12 @@
     </script>
 
     <style>
+      html {
+        zoom: 0.85;
+      }
       body {
         font-family: "Inter", sans-serif;
-        background-color: #ffffff;
+        background-color: #f8fafc; /* Lighter theme background */
         color: #1a1a1a;
       }
       h1, h2, h3, h4 {
@@ -83,7 +86,7 @@
         position: relative;
         z-index: 60;
         opacity: 0;
-        transition: opacity 0.5s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
       }
       .flash-banner.show {
         opacity: 1;
@@ -149,13 +152,19 @@
         position: relative;
         z-index: 2;
       }
+      
+      /* FIX: Navbar Logic Update
+        - The old scroll-based logic is removed.
+        - The new logic uses a sticky header with a solid background, similar to the provided index.html.
+        - This makes the nav-link text dark by default.
+      */
       .nav-link {
         position: relative;
-        transition: color 0.3s;
-        color: #666666;
+        transition: color 0.2s;
+        color: #374151; /* Dark color for light background */
       }
       .nav-link:hover {
-        color: #1a1a1a;
+        color: #111827; /* Darker hover color */
       }
       .nav-link::after {
         content: "";
@@ -164,8 +173,8 @@
         height: 2px;
         bottom: -5px;
         left: 50%;
-        background-color: #1a1a1a;
-        transition: width 0.3s ease-out, left 0.3s ease-out;
+        background-color: #1a1a1a; /* Dark underline */
+        transition: width 0.2s ease-out, left 0.2s ease-out;
       }
       .nav-link:hover::after {
         width: 100%;
@@ -176,7 +185,7 @@
         border-radius: 0.75rem;
         border: 1px solid #e0e0e0;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
       .card:hover {
         transform: translateY(-5px);
@@ -199,7 +208,7 @@
       .accordion-content {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease-out;
+        transition: max-height 0.3s ease-out;
       }
       .loading-spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
@@ -258,7 +267,7 @@
       .bottom-nav-link:hover { color: #ffffff; }
       .bottom-nav-link svg { width: 24px; height: 24px; margin-bottom: 0.25rem; }
       .accordion-header { cursor: pointer; }
-      .accordion-icon { transition: transform 0.3s ease-in-out; }
+      .accordion-icon { transition: transform 0.2s ease-in-out; }
       .accordion-header.expanded .accordion-icon {
         transform: rotate(45deg);
       }
@@ -297,7 +306,7 @@
         color: #6b7280;
         border-bottom: 2px solid transparent;
         cursor: pointer;
-        transition: color 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
+        transition: color 0.2s ease, border-color 0.2s ease;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         background: none;
@@ -322,7 +331,7 @@
           background-color: #0052cc;
           position: absolute;
           bottom: -2px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .solution-panel-content {
           min-height: 450px;
@@ -337,7 +346,7 @@
           border-radius: 0.5rem; /* rounded-lg */
           font-weight: 600; /* font-semibold */
           font-size: 0.875rem; /* text-sm */
-          transition: background-color 0.3s ease, transform 0.2s ease;
+          transition: background-color 0.2s ease, transform 0.2s ease;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
       .cta-button:hover {
@@ -363,7 +372,7 @@
         cursor: pointer;
         z-index: 10;
         opacity: 0; /* Almost hidden by default */
-        transition: opacity 0.3s ease, background-color 0.3s;
+        transition: opacity 0.2s ease, background-color 0.2s;
       }
       .solution-nav-button:hover {
         opacity: 1; /* Fully visible on hover */
@@ -404,7 +413,7 @@
         background-color: #e0e7ff; /* Light blue background */
         border-radius: 50%; /* Rounded */
         margin: 0 auto 1rem auto; /* Center and add margin-bottom */
-        transition: background-color 0.3s ease;
+        transition: background-color 0.2s ease;
       }
       .card:hover .card-icon-container {
         background-color: #a7c5ff; /* Darker blue on hover */
@@ -413,7 +422,7 @@
         width: 32px; /* w-8 */
         height: 32px; /* h-8 */
         color: #0052cc; /* Blue icon color */
-        transition: transform 0.3s ease, color 0.3s ease;
+        transition: transform 0.2s ease, color 0.2s ease;
       }
       .card:hover .card-icon-container svg {
         transform: scale(1.1); /* Slightly enlarge icon on hover */
@@ -434,7 +443,7 @@
         z-index: 100;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease; /* Faster transition */
+        transition: opacity 0.2s ease, visibility 0.2s ease;
       }
       .modal-overlay.show {
         opacity: 1;
@@ -450,7 +459,7 @@
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95); /* Initial state for transition */
-        transition: all 0.3s ease-out; /* Faster transition */
+        transition: all 0.2s ease-out;
         
         /* Hide scrollbar */
         scrollbar-width: none; /* For Firefox */
@@ -520,7 +529,7 @@
         justify-content: center;
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
         padding: 0;
         overflow: hidden;
       }
@@ -556,7 +565,7 @@
         z-index: 100;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease; /* Faster transition */
+        transition: opacity 0.2s ease, visibility 0.2s ease;
       }
       #coming-soon-modal-overlay.show {
         opacity: 1;
@@ -572,7 +581,7 @@
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95);
-        transition: all 0.3s ease-out; /* Faster transition */
+        transition: all 0.2s ease-out;
       }
       #coming-soon-modal-overlay.show .modal-content {
         transform: translateY(0) scale(1);
@@ -655,7 +664,7 @@
         z-index: 1000; /* Ensure it's on top */
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease, backdrop-filter 0.3s ease; /* Faster transition for backdrop-filter */
+        transition: opacity 0.2s ease, visibility 0.2s ease, backdrop-filter 0.2s ease;
       }
       #contact-popup-modal-overlay.show {
         opacity: 1;
@@ -672,7 +681,7 @@
         overflow-y: auto;
         position: relative;
         transform: translateY(20px) scale(0.95);
-        transition: all 0.3s ease-out; /* Faster transition */
+        transition: all 0.2s ease-out;
         text-align: center; /* Center content inside */
       }
       #contact-popup-modal-overlay.show .modal-content {
@@ -732,7 +741,7 @@
         border-radius: 0.5rem;
         font-weight: 600;
         font-size: 1rem;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.2s ease;
         cursor: pointer;
         border: none;
         width: 100%;
@@ -790,7 +799,7 @@
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px); /* Initial slight offset for animation */
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0.5s ease;
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease;
         z-index: 101; /* Above the PDF button but below modals */
         /* Center horizontally relative to the button */
         transform: translateX(calc(-50% + 30px)); /* Half its width left, half button width right */
@@ -864,21 +873,29 @@
       </button>
     </div>
 
+    <!-- 
+      FIX: Navbar Logic Overhaul
+      - Replaced `fixed` positioning with `sticky`.
+      - The header is now always visible with a light, blurred background.
+      - Text colors are now dark by default to match the light background.
+      - The JavaScript for changing the header on scroll has been removed as it's no longer needed.
+    -->
     <header
       id="header"
-      class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20"
+      class="bg-white/90 backdrop-blur-[1000px] sticky top-0 z-50 border-b border-gray-200 h-20 transition-all duration-300"
     >
       <nav
         class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
       >
-        <div class="text-xl tracking-wider">
-          <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
-          <span class="font-normal text-red-600 text-base md:text-lg">|</span>
-          <span class="font-normal text-gray-700 text-base md:text-lg"
-            >ENGINEERING</span
-          >
-        </div>
-        <a href="#home" class="flex items-center space-x-2"> </a>
+        <a href="#home" class="flex items-center space-x-2">
+          <div class="text-xl tracking-wider">
+            <span class="font-bold text-black text-lg md:text-xl company-name-part">MOONTRACE</span>
+            <span class="font-normal text-red-500 text-base md:text-lg company-name-part">|</span>
+            <span class="font-normal text-gray-700 text-base md:text-lg company-name-part"
+              >ENGINEERING</span
+            >
+          </div>
+        </a>
         <div class="hidden md:flex items-center space-x-12">
           <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
           <a href="#solutions" class="nav-link font-medium">Solutions</a>
@@ -934,6 +951,7 @@
     </header>
 
     <main>
+      <!-- FIX: Removed pt-20 as the sticky header now occupies its own space -->
       <section id="home" class="hero-bg text-white">
         <canvas id="hero-canvas"></canvas>
         <div
@@ -942,25 +960,24 @@
           <h1
             class="text-4xl md:text-6xl font-black tracking-tight leading-tight"
           >
-            Pioneering Quantum-Resilient Security. Building the Future Together.
+            The Quantum Threat is Real. Your Defense Starts with Moontrace.
           </h1>
           <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-300">
-            At Moontrace Engineering, we are building the foundational layers of
-            quantum-resilient digital transformation, inviting partners to shape
-            a confident future in the quantum era.
+            Moontrace Engineering provides the integrated platform to discover your cryptographic vulnerabilities, automate your quantum transition, and secure your infrastructure against the inevitable.
           </p>
           <div
             class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
           >
             <a
-              href="#solutions"
+              href="#contact"
+              id="assess-risk-cta"
               class="bg-white text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition w-full sm:w-auto"
-              >Discover Our Approach</a
+              >Assess Your Quantum Risk</a
             >
             <a
-              href="careers.html"
+              href="#solutions"
               class="bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition w-full sm:w-auto"
-              >Join Our Journey</a
+              >Explore the Platform</a
             >
           </div>
           <div class="mt-20">
@@ -1016,15 +1033,16 @@
         </div>
       </section>
 
+
       <!-- NEW SOLUTIONS SECTION -->
       <section id="solutions" class="py-20 bg-gray-50 overflow-x-hidden relative">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    Our Solutions
+                    Our Integrated Workflow
                 </h2>
                 <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                   A powerful suite of tools enabling cryptographic agility, post-quantum security, and advanced TPRM for seamless risk management.
+                   An end-to-end platform for discovering vulnerabilities, orchestrating remediation, and managing your quantum-safe transition.
                 </p>
             </div>
 
@@ -1034,8 +1052,7 @@
                     <div id="solution-tabs" class="flex flex-wrap justify-center -mb-px sm:space-x-4">
                         <button data-tab-index="0" class="solution-tab active-tab">VANTAGE</button>
                         <button data-tab-index="1" class="solution-tab">APX</button>
-                        <button data-tab-index="2" class="solution-tab">HERCULES</button>
-                        <button data-tab-index="3" class="solution-tab">QUBEx</button>
+                        <button data-tab-index="2" class="solution-tab">QUBEx</button>
                     </div>
                     <div id="active-tab-highlighter"></div>
                 </div>
@@ -1044,15 +1061,15 @@
 
             <!-- Sliding Panels -->
             <div class="mt-10 relative">
-                <div id="solution-panels" class="flex transition-transform duration-500 ease-in-out">
+                <div id="solution-panels" class="flex transition-transform duration-300 ease-in-out">
                     <!-- Panel 1: Vantage -->
                     <div class="solution-panel min-w-full">
                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
                            <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
                                 <div class="text-left">
-                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Cryptographic Posture Visibility</h3>
-                                    <p class="text-gray-600 mb-3">Gain complete visibility into your cryptographic posture. We identify what needs fixing, where, and why, providing a clear roadmap to quantum readiness.</p>
-                                    <p class="text-600">Our Vantage tool scans your entire digital ecosystem—from code repositories to live applications—to create a comprehensive inventory of all cryptographic assets.</p>
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Map Your Entire Cryptographic Attack Surface</h3>
+                                    <p class="text-gray-600 mb-3">VANTAGE scans your code, applications, and third-party supply chain to provide a complete, real-time inventory of every cryptographic asset and vulnerability.</p>
+                                    <p class="text-gray-600">Our advanced Third-Party Risk Management (TPRM) capabilities ensure your entire ecosystem, not just your internal assets, is quantum-ready.</p>
                                     <a href="#" class="cta-button">Learn More about Vantage</a>
                                 </div>
                            </div>
@@ -1063,10 +1080,6 @@
                                   VANTAGE UI
                                 </div>
                             </div>
-                           <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
-                                <!-- Image hidden on mobile -->
-                                <img src="https://placehold.co/600x400/0052cc/ffffff?text=Vantage" alt="Moontrace Vantage Tool Interface for Cryptographic Posture Visibility" class="h-auto w-full rounded-lg shadow-md">
-                           </div>
                         </div>
                     </div>
                     <!-- Panel 2: APX -->
@@ -1074,9 +1087,9 @@
                          <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
                            <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
                                 <div class="text-left">
-                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Crypto-Agile Application Exchange (APX)</h3>
-                                    <p class="text-gray-600 mb-3">Enable phased, hybrid crypto adoption without disrupting your current operations. APX provides a structured, manageable path to integrate PQC.</p>
-                                    <p class="text-gray-600">Moontrace APX acts as a cryptographic abstraction layer. Instead of hardcoding cryptographic calls, your developers interface with our simple API.</p>
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Execute Your Quantum Transition Seamlessly</h3>
+                                    <p class="text-gray-600 mb-3">APX is the remediation engine that automates the migration to quantum-safe standards. Enforce policy, manage the lifecycle, and achieve crypto-agility without operational disruption.</p>
+                                    <p class="text-gray-600">Through a simple API, APX acts as a cryptographic abstraction layer, enabling phased, hybrid crypto adoption.</p>
                                     <a href="#" class="cta-button">Learn More about APX</a>
                                 </div>
                            </div>
@@ -1087,44 +1100,16 @@
                                   APX UI
                                 </div>
                             </div>
-                            <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
-                                <!-- Image hidden on mobile -->
-                                <img src="https://placehold.co/600x400/247c6d/ffffff?text=APX" alt="Moontrace APX Tool for Crypto-Agile Application Exchange" class="h-auto w-full rounded-lg shadow-md">
-                           </div>
                         </div>
                     </div>
-                    <!-- Panel 3: HERCULES -->
+                    <!-- Panel 3: QUBEx -->
                     <div class="solution-panel min-w-full">
                          <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
                            <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
                                 <div class="text-left">
-                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">HERCULES: Agentic AI Framework</h3>
-                                    <p class="text-gray-600 mb-3">HERCULES is a cyber agentic AI framework designed to automate and intelligently manage the entire cryptographic risk mitigation lifecycle.</p>
-                                    <p class="text-gray-600">It bridges the gap between VANTAGE's discovery and APX's remediation, acting as an intelligent orchestrator to translate technical data into quantifiable business risk and execute remediation playbooks.</p>
-                                    <a href="#" class="cta-button">Discover HERCULES</a>
-                                </div>
-                         </div>
-                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
-                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/170 to-transparent"></div>
-                                <img src="assets/Hercules.png" alt="Moontrace HERCULES: Agentic AI Framework" class="h-full w-full object-cover object-right">
-                                <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
-                                  HERCULES UI
-                                </div>
-                            </div>
-                            <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
-                                <!-- Image hidden on mobile -->
-                                <img src="assets/Hercules.png" alt="Moontrace HERCULES: Agentic AI Framework" class="h-auto w-full rounded-lg shadow-md">
-                           </div>
-                        </div>
-                    </div>
-                    <!-- Panel 4: QUBEx -->
-                    <div class="solution-panel min-w-full">
-                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
-                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
-                                <div class="text-left">
-                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">QUBEx: Quantum Hardware Key Exchange Appliance</h3>
-                                    <p class="text-gray-600 mb-3">Moontrace QUBEx is a next-gen hardware-based quantum key management system, purpose-built to safeguard cryptographic keys in the post-quantum era.</p>
-                                    <p class="text-gray-600">Designed for hybrid infrastructure, QUBEx enables secure generation, exchange, and orchestration of both classical and post-quantum keys — all through independent, tamper-resistant channels.</p>
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Secure Your Keys with Tamper-Resistant Hardware</h3>
+                                    <p class="text-gray-600 mb-3">For the most critical infrastructure, QUBEx provides a dedicated hardware appliance for generating, managing, and orchestrating classical and post-quantum keys in a secure, isolated environment.</p>
+                                    <p class="text-gray-600">Designed for hybrid infrastructure, QUBEx enables secure key exchange through independent, tamper-resistant channels.</p>
                                     <a href="#" class="cta-button">Explore QUBEx</a>
                                 </div>
                          </div>
@@ -1135,10 +1120,6 @@
                                   QUBEx APPLIANCE
                                 </div>
                             </div>
-                            <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
-                                <!-- Image hidden on mobile -->
-                                <img src="https://placehold.co/600x400/4a3f56/ffffff?text=QUBEx" alt="Moontrace QUBEx: Quantum Hardware Key Exchange Appliance" class="h-auto w-full rounded-lg shadow-md">
-                           </div>
                         </div>
                     </div>
                 </div>
@@ -1157,6 +1138,53 @@
       </section>
       <!-- END NEW SOLUTIONS SECTION -->
 
+      <!-- HERCULES SECTION REDESIGN -->
+      <section id="hercules" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-gray-700/20 [mask-image:linear-gradient(to_bottom,white_20%,transparent_100%)]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The Agentic AI Core: HERCULES</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-400">
+                    HERCULES is the intelligent brain of the Moontrace platform. It's not just another tool; it's the AI orchestrator that connects discovery to action, transforming complex cryptographic data into a clear, automated remediation strategy.
+                </p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Card 1 -->
+                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex justify-center items-center mb-4 w-16 h-16 mx-auto bg-gray-700 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2.25 2.25 0 003.182-3.182l-7.07-7.07a2.25 2.25 0 00-3.182 0l-7.07 7.07a2.25 2.25 0 003.182 3.182m2.828-3.182l.001-.001M12 12l.001-.001M12 12l-.001-.001M12 12l-.001.001M12 12l.001.001M4.572 15.428a2.25 2.25 0 003.182 3.182l7.07-7.07a2.25 2.25 0 000-3.182l-7.07-7.07a2.25 2.25 0 00-3.182 3.182m2.828 3.182l-.001.001" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Intelligent Automation</h3>
+                    <p class="text-gray-400">HERCULES automates the entire lifecycle of vulnerability management, from threat analysis and risk prioritization to the execution of remediation playbooks.</p>
+                </div>
+                 <!-- Card 2 -->
+                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex justify-center items-center mb-4 w-16 h-16 mx-auto bg-gray-700 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Business Risk Translation</h3>
+                    <p class="text-gray-400">It translates raw technical data from VANTAGE into quantifiable business risks, allowing you to make informed decisions based on impact, not just severity.</p>
+                </div>
+                 <!-- Card 3 -->
+                <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex justify-center items-center mb-4 w-16 h-16 mx-auto bg-gray-700 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Seamless Remediation</h3>
+                    <p class="text-gray-400">By integrating with APX, HERCULES orchestrates the seamless deployment of quantum-resistant solutions, ensuring a smooth and secure transition for your critical systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERCULES SECTION REDESIGN -->
+
       <section id="MTLabs" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -1165,7 +1193,7 @@
               <h2
                 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-left"
               >
-                MTLabs: Research & Development Wing
+                MTLabs: Advanced Research Wing
               </h2>
               <p class="mt-4 max-w-3xl text-lg text-gray-600 text-left">
                 Our R&D wing, MTLabs, is at the forefront of post-quantum and
@@ -1206,20 +1234,20 @@
         </div>
       </section>
 
-      <section id="critical-systems" class="py-20">
+      <section id="critical-systems" class="py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
             <h2
               class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
             >
-              Advanced Cryptography for Critical Systems: Enterprise to Edge
+              Verifiable Performance for Critical Systems
             </h2>
             <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
-              We are developing lightweight, high-performance cryptographic solutions optimized for a wide range of critical systems. From robust enterprise servers and secure cloud environments to resource-constrained embedded devices and industrial IoT, our expertise ensures quantum-resilient and future-proof security in the most demanding operational landscapes.
+              Security Optimized for the Edge. Through MTLabs, we engineer lightweight, high-performance PQC solutions for resource-constrained environments like IoT, defense hardware, and industrial control systems. We provide verifiable benchmarks, not just promises.
             </p>
           </div>
-          <div class="mt-16 bg-white p-8 md:p-12 rounded-xl shadow-lg">
-            <h3 class="text-2xl font-bold text-gray-800 text-center mt-12">
+          <div class="mt-16 bg-gray-50 p-8 md:p-12 rounded-xl border border-gray-200">
+            <h3 class="text-2xl font-bold text-gray-800 text-center">
               Interactive Performance: PQC on Embedded Systems
             </h3>
             <p class="text-center text-gray-600 mt-2 mb-8">
@@ -1267,57 +1295,27 @@
               <canvas id="pqcChart" class="hidden"></canvas>
             </div>
             <div class="mt-10 text-center">
-              <a href="#" id="performance-cta-button" class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition inline-block">
-                  See How We Can Secure Your Project
+              <a href="MTLabs.html" class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition inline-block">
+                  Explore Our Embedded Systems Research
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="whymoontrace" class="py-20 bg-white">
+      <section id="whymoontrace" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2
             class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
-            Why Choose Moontrace Engineering?
+            Why Moontrace Engineering?
           </h2>
           <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-            We are committed to democratizing post-quantum security with an
-            approach that is open, agile, and fundamentally trustworthy.
+            We deliver complete, intelligent, and verifiable quantum-safe security.
           </p>
           <div
-            class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            <div class="card p-8 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Open & Agile Approach
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Challenging the opaque and expensive, we offer transparent,
-                developer-friendly solutions for rapid adaptation to quantum
-                threats.
-              </p>
-            </div>
-            <div class="card p-8 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h18m-15-4.5L3 9m0 0L7.5 4.5M3 9h18" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Affordability, Transparency, Trust
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Our core values guide every interaction, ensuring practical and
-                accessible quantum security for organizations worldwide.
-              </p>
-            </div>
             <div class="card p-8 animated-item">
               <div class="card-icon-container">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -1325,44 +1323,12 @@
                 </svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900">
-                Built in India, for the World
+                Indigenous Powerhouse, Built for the World
               </h3>
               <p class="mt-2 text-gray-600">
-                With a global-first mindset, our solutions are designed to serve
-                companies, governments, and developers beyond traditional
-                Western enterprise markets.
+                Sovereign Capability, Global Scale. We leverage India's deep-tech talent to build indigenous, world-class security solutions, ensuring technological sovereignty for our clients and partners.
               </p>
             </div>
-            <div class="card p-8 md:col-span-1 lg:col-span-1 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9.893 18.027M16 16.22V17.5M16 6.5V7.77m-1.5 5.5h-6M12 21.75c-1.892 0-3.717-.347-5.433-1.043C3.86 19.546 2.25 17.5 2.25 15V9c0-2.25 1.86-4.296 4.317-5.207A9.004 9.004 0 0112 2.25c1.892 0 3.717.347 5.433 1.043C20.14 4.704 21.75 6.75 21.75 9v6c0 2.25-1.86 4.296-4.317 5.207A9.004 9.004 0 0112 21.75z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Dual Expertise: QSaaS & Critical System Security
-              </h3>
-              <p class="mt-2 text-gray-600">
-                From comprehensive enterprise QSaaS to specialized lightweight
-                algorithms for critical system deployment, we cover the full
-                spectrum of advanced security needs.
-              </p>
-            </div>
-            <div class="card p-8 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Founding Vision for a Confident Tomorrow
-              </h3>
-              <p class="mt-2 text-gray-600">
-                We are driven by a singular mission: to move every organization
-                from compromised to confident in the quantum era.
-              </p>
-            </div>
-            <!-- NEW CARD: Agentic AI & Intelligent Automation -->
             <div class="card p-8 animated-item">
               <div class="card-icon-container">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -1373,142 +1339,27 @@
                 Agentic AI & Intelligent Automation
               </h3>
               <p class="mt-2 text-gray-600">
-                Beyond static defenses, our solutions leverage advanced AI and automation to proactively detect, adapt to, and neutralize emerging threats, ensuring self-managing security.
+                The Platform That Thinks. Our HERCULES AI core doesn't just find problems—it orchestrates the entire remediation workflow, translating risk into an automated, intelligent defense.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Full-Spectrum Expertise (QSaaS & Critical Systems)
+              </h3>
+              <p class="mt-2 text-gray-600">
+                From Cloud to Edge. We secure your entire ecosystem, from enterprise cloud applications with our integrated SaaS platform to the most demanding, resource-constrained embedded hardware.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="industries" class="py-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center">
-            <h2
-              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-            >
-              Securing Critical Industries
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-              From government agencies to healthcare providers, we deliver
-              quantum-resistant security tailored to your sector's unique
-              challenges.
-            </p>
-          </div>
-          <div
-            class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
-          >
-            <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 14.25V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m-9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M9 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M15 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M21 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M3.75 14.25V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m-9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M9 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M15 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M21 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Government & Public Sector
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Protecting national security data and critical infrastructure
-                against state-level quantum threats, ensuring compliance with
-                mandates like NSM-10.
-              </p>
-            </div>
-            <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">Healthcare</h3>
-              <p class="mt-2 text-gray-600">
-                Securing long-term patient records and medical devices from the
-                "Harvest Now, Decrypt Later" risk and ensuring HIPAA compliance.
-              </p>
-            </div>
-            <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.25 2.25 0 0021 17.25l-5.82-5.82m-.997-5.997L10.378 3.242M9.002 6.31l2.685 2.685m-3.04 3.04L5.097 12.25M2.25 12.75l1.5 1.5m1.5-1.5l1.5 1.5m-.75-6.75h.008v.008H18V6.75h.008z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Critical Infrastructure
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Ensuring the resilience of energy grids, financial networks, and
-                transportation systems against catastrophic quantum breaches.
-              </p>
-            </div>
-            <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75A2.25 2.25 0 0015.75 1.5H13.5m-3 0V3.75m3-2.25V3.75M9 15.75h3m-3 3h3m-3-6h3m3-6h.008v.008H15V9.75h.008z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Defense & Military
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Providing military-grade, lightweight PQC for tactical
-                communications and battlefield systems under extreme conditions.
-              </p>
-            </div>
-            <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Financial Services
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Safeguarding sensitive financial transactions, long-term customer data, and blockchain integrity against quantum attacks and evolving regulatory demands.
-              </p>
-            </div>
-            <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18L14.25 12L8.25 6" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Automotive
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Securing connected vehicle systems, autonomous driving data, and vehicle-to-everything (V2X) communication to prevent quantum-enabled cyber-physical attacks.
-              </p>
-            </div>
-            <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75A2.25 2.25 0 0015.75 1.5H13.5m-3 0V3.75m3-2.25V3.75M9 15.75h3m-3 3h3m-3-6h3m3-6h.008v.008H15V9.75h.008z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Manufacturing & IoT
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Protecting industrial control systems, smart factory data, and vast networks of IoT devices from quantum-era vulnerabilities.
-              </p>
-            </div>
-             <div class="p-6 animated-item">
-              <div class="card-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.106l-1.412-.353a1.125 1.125 0 01-.924-.924L19.5 8.4c0-.21-.129-.381-.363-.455l-3.75-1.001a1.125 1.125 0 01-.924-.924V3.375c0-.516-.351-.966-.852-1.106L12 1.5H10.5a2.25 2.25 0 00-2.25 2.25v2.818c0 .516-.351.966-.852 1.106L4.25 9.75c-.234.074-.363.245-.363.455v3.182c0 .516-.351.966-.852 1.106l-1.412.353a1.125 1.125 0 01-.924.924L2.25 18.75z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900">
-                Telecommunications
-              </h3>
-              <p class="mt-2 text-gray-600">
-                Fortifying 5G networks, satellite communications, and global data transmission against quantum decryption and future-proofing critical communication infrastructure.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="careers-cta" class="py-20 bg-gray-100">
+      <section id="careers-cta" class="py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
             <h2
@@ -1614,6 +1465,22 @@
 
     </div>
   </div>
+      </section>
+
+      <section id="faq" class="py-20 bg-gray-50">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center">
+                  <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                      Frequently Asked Questions
+                  </h2>
+                  <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                      Your questions about the quantum transition, answered.
+                  </p>
+              </div>
+              <div class="mt-12 max-w-4xl mx-auto space-y-4" id="faq-accordion">
+                  <!-- Accordion items will be injected by JS -->
+              </div>
+          </div>
       </section>
 
 
@@ -1774,24 +1641,6 @@
             /></svg>
           About</a
         >
-        <!-- Removed contact link from bottom nav as it's no longer a modal -->
-        <!--
-        <a href="#" id="mobile-contact-link-bottom" class="bottom-nav-link"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
-            /></svg>
-          >Contact</a
-        >
-        -->
       </div>
     </nav>
 
@@ -1915,37 +1764,15 @@
           });
         });
 
-        const accordionItems = document.querySelectorAll(".accordion-item");
-        accordionItems.forEach((item) => {
-          const header = item.querySelector(".accordion-header");
-          const content = item.querySelector(".accordion-content");
-          const icon = item.querySelector(".accordion-icon");
-          header.addEventListener("click", () => {
-            const isExpanded = header.classList.contains("expanded");
-            accordionItems.forEach((otherItem) => {
-              if (otherItem !== item) {
-                const otherHeader =
-                  otherItem.querySelector(".accordion-header");
-                const otherContent =
-                  otherItem.querySelector(".accordion-content");
-                otherHeader.classList.remove("expanded");
-                otherContent.style.maxHeight = null;
-                if (otherHeader.querySelector(".accordion-icon"))
-                  otherHeader.querySelector(".accordion-icon").textContent =
-                    "+";
-              }
-            });
-            if (isExpanded) {
-              header.classList.remove("expanded");
-              content.style.maxHeight = null;
-              if (icon) icon.textContent = "+"; // Changed to "+" for collapse
-            } else {
-              header.classList.add("expanded");
-              content.style.maxHeight = content.scrollHeight + "px";
-              if (icon) icon.textContent = "-"; // Changed to "-" for expand
-            }
-          });
-        });
+        // FIX: Removed the scroll listener for the header as it's no longer needed with the sticky nav.
+        // const header = document.getElementById('header');
+        // window.addEventListener('scroll', () => {
+        //     if (window.scrollY > 50) {
+        //         header.classList.add('scrolled');
+        //     } else {
+        //         header.classList.remove('scrolled');
+        //     }
+        // });
 
         const countdownDate = new Date("April 20, 2030 00:00:00").getTime();
         setInterval(() => {
@@ -2341,7 +2168,7 @@
 
             // Clear flag after a short delay to allow smooth scroll to complete
             if (smoothScroll) {
-                setTimeout(() => { isScrollingProgrammatically = false; }, 600); 
+                setTimeout(() => { isScrollingProgrammatically = false; }, 400); 
             }
         }
 
@@ -2391,7 +2218,7 @@
                 switchTab(currentSolutionIndex); // Re-snap to current if no swipe
             }
             resetAutoSlider(); // Resume auto-slider after touch ends
-            setTimeout(() => { isScrollingProgrammatically = false; }, 600); // Allow scroll sync after transition
+            setTimeout(() => { isScrollingProgrammatically = false; }, 400); // Allow scroll sync after transition
         });
 
         // Desktop navigation buttons
@@ -2529,6 +2356,7 @@
         // --- New Contact Popup Modal Logic ---
         const contactFormButton = document.getElementById('contact-form-button');
         const performanceCtaButton = document.getElementById('performance-cta-button'); // New CTA button
+        const assessRiskCta = document.getElementById('assess-risk-cta');
         const contactPopupModalOverlay = document.getElementById('contact-popup-modal-overlay');
         const contactPopupModalClose = document.getElementById('contact-popup-modal-close');
         const contactForm = document.getElementById('contact-form');
@@ -2562,6 +2390,13 @@
         if (performanceCtaButton) {
             performanceCtaButton.addEventListener('click', (e) => {
                 e.preventDefault(); // Prevent default link behavior
+                showContactPopupModal();
+            });
+        }
+        
+        if (assessRiskCta) {
+            assessRiskCta.addEventListener('click', (e) => {
+                e.preventDefault();
                 showContactPopupModal();
             });
         }
@@ -2647,6 +2482,82 @@
 
         // Show the popup after 3 seconds of page load
         setTimeout(showWhitepaperPopup, 3000); // Popup appears after 3 seconds
+        
+        
+        // --- FAQ Accordion Logic ---
+        const faqAccordion = document.getElementById('faq-accordion');
+        const faqData = [
+            {
+                title: "What is Post-Quantum Cryptography (PQC) and why is it urgent?",
+                content: "PQC refers to new cryptographic algorithms that are secure against attacks from both classical and quantum computers. The urgency comes from the 'Harvest Now, Decrypt Later' threat, where adversaries are capturing your encrypted data today to decrypt it once a powerful quantum computer is available. For any data that needs to remain secure for more than 5-7 years, the transition to PQC is an immediate priority."
+            },
+            {
+                title: "How does Moontrace's platform differ from other security solutions?",
+                content: "Most solutions are point products. We provide a complete, end-to-end platform that automates the entire crypto-agility lifecycle. Our HERCULES AI core connects discovery (VANTAGE) with automated remediation (APX), translating technical risk into business intelligence. Furthermore, our MTLabs division gives us a unique edge in securing specialized hardware and embedded systems where standard solutions fail."
+            },
+            {
+                title: "Our infrastructure is complex with many legacy systems. Can your platform handle this?",
+                content: "Absolutely. Our platform was designed for complex, hybrid environments. The VANTAGE module provides a comprehensive inventory of all cryptographic assets, including those in legacy systems. APX then enables a phased, manageable migration using hybrid cryptographic approaches, ensuring backward compatibility and minimizing disruption to your critical operations."
+            },
+            {
+                title: "What does a typical PQC migration engagement look like?",
+                content: "Our process is structured and transparent. It begins with a comprehensive risk assessment using VANTAGE to map your entire cryptographic landscape. HERCULES then prioritizes vulnerabilities based on business impact. Finally, APX executes a phased migration based on a jointly-developed roadmap. We move from non-critical systems to your most sensitive assets, ensuring a secure and controlled transition. To discuss a tailored plan, please <a href='#' class='text-blue-600 font-semibold hover:underline contact-link'>get in touch</a>."
+            }
+        ];
+
+        faqData.forEach((item, index) => {
+            const accordionItem = document.createElement('div');
+            accordionItem.classList.add('border', 'border-gray-200', 'rounded-lg', 'bg-white');
+            accordionItem.innerHTML = `
+                <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 hover:bg-gray-50">
+                    <span>${item.title}</span>
+                    <span class="accordion-icon text-2xl font-light text-gray-500 transform transition-transform">+</span>
+                </button>
+                <div class="accordion-content px-5 text-gray-600">
+                    <p class="py-4 border-t border-gray-200">${item.content}</p>
+                </div>
+            `;
+            faqAccordion.appendChild(accordionItem);
+        });
+
+        faqAccordion.addEventListener('click', (e) => {
+            const header = e.target.closest('.accordion-header');
+            if (!header) return;
+
+            // FIX: FAQ "Get in Touch" button
+            // This logic correctly finds clicks on the 'contact-link' inside the FAQ
+            // and triggers the contact modal. This was already implemented correctly.
+            if (e.target.classList.contains('contact-link')) {
+                e.preventDefault();
+                showContactPopupModal();
+                return;
+            }
+
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+            const isExpanded = header.classList.contains('expanded');
+
+            // Close all other items
+            faqAccordion.querySelectorAll('.accordion-header').forEach(h => {
+                if (h !== header) {
+                    h.classList.remove('expanded');
+                    h.nextElementSibling.style.maxHeight = null;
+                    h.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Toggle the clicked item
+            if (isExpanded) {
+                header.classList.remove('expanded');
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                header.classList.add('expanded');
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(45deg)';
+            }
+        });
+
       });
     </script>
   </body>

@@ -1,0 +1,2653 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moontrace Engineering | Leading Post-Quantum Cryptography & Quantum-Safe Solutions</title>
+    <meta name="description" content="Moontrace Engineering pioneers quantum-resilient security solutions for critical industries. Discover our crypto-agile tools: Vantage, APX, and QUBEx for a confident future in the quantum era." />
+    <meta name="keywords" content="post-quantum cryptography, quantum-safe, quantum-resilient, crypto-agility, PQC, NIST, quantum security, cybersecurity, enterprise security, IoT security, hardware security, India, Moontrace Engineering, Vantage, APX, QUBEx, quantum threats" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.moontrace.in/" /> <!-- Replace with your actual URL -->
+    <meta property="og:title" content="Moontrace Engineering | Leading Post-Quantum Cryptography & Quantum-Safe Solutions" />
+    <meta property="og:description" content="Moontrace Engineering pioneers quantum-resilient security solutions for critical industries. Discover our crypto-agile tools: Vantage, APX, and QUBEx for a confident future in the quantum era." />
+    <meta property="og:image" content="https://www.moontrace.in/assets/moontrace-og-image.jpg" /> <!-- Replace with a high-quality, descriptive image URL -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.moontrace.in/" /> <!-- Replace with your actual URL -->
+    <meta property="twitter:title" content="Moontrace Engineering | Leading Post-Quantum Cryptography & Quantum-Safe Solutions" />
+    <meta property="twitter:description" content="Moontrace Engineering pioneers quantum-resilient security solutions for critical industries. Discover our crypto-agile tools: Vantage, APX, and QUBEx for a confident future in the quantum era." />
+    <meta property="twitter:image" content="https://www.moontrace.in/assets/moontrace-twitter-image.jpg" /> <!-- Replace with a high-quality, descriptive image URL -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- three.js for hero animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/finalbg.png" />
+
+    <!-- Schema Markup for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Moontrace Engineering",
+      "url": "https://www.moontrace.in/", <!-- Replace with your actual URL -->
+      "logo": "https://www.moontrace.in/assets/finalbg.png", <!-- Replace with your logo URL -->
+      "description": "Moontrace Engineering pioneers quantum-resilient security solutions for critical industries, building the foundational layers of quantum-resilient digital transformation.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8887748365",
+        "contactType": "Sales",
+        "email": "bharat@moontrace.in"
+      },
+      "sameAs": [
+        "https://github.com/MOONTRACE-ENGINEERING",
+        "https://www.instagram.com/moontrace_hq/",
+        "https://x.com/Moontrace_HQ"
+      ]
+    }
+    </script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff;
+        color: #1a1a1a;
+      }
+      h1, h2, h3, h4 {
+        font-family: "Inter", sans-serif;
+        color: #1a1a1a;
+      }
+      #home h1 {
+        color: #ffffff;
+      }
+      .flash-banner {
+        background: linear-gradient(90deg, #070708 0%, #414040 100%);
+        color: #ffffff;
+        padding: 0.75rem 1rem;
+        text-align: center;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        min-height: 3.5rem;
+        position: relative;
+        z-index: 60;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .flash-banner.show {
+        opacity: 1;
+      }
+      .flash-banner-content {
+        a:hover text-decoration: underline;
+        flex: 1 1 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        min-width: 0;
+        text-align: center;
+        flex-wrap: wrap;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+      }
+      .flash-banner-nav {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0 0.5rem;
+        min-width: 1.8rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+      .flash-banner-nav:hover { opacity: 1; }
+      .flash-banner-nav.left { left: 0.2rem; }
+      .flash-banner-nav.right { right: 0.2rem; }
+      @media (max-width: 640px) {
+        .flash-banner-content {
+          padding-left: 2.2rem;
+          padding-right: 2.2rem;
+          font-size: 0.95rem;
+        }
+        .flash-banner-nav {
+          font-size: 1.5rem;
+          min-width: 2rem;
+          padding: 0 0.2rem;
+        }
+      }
+      /* Updated Hero Section styles */
+      .hero-bg {
+        position: relative;
+        background-color: #000000;
+        overflow: hidden;
+      }
+      #hero-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .nav-link {
+        position: relative;
+        transition: color 0.3s;
+        color: #666666;
+      }
+      .nav-link:hover {
+        color: #1a1a1a;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background-color: #1a1a1a;
+        transition: width 0.3s ease-out, left 0.3s ease-out;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+        left: 0;
+      }
+      .card {
+        background-color: white;
+        border-radius: 0.75rem;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        max-height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 450px;
+        }
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+      }
+      .loading-spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #666666;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .countdown-segment {
+        background-color: #1a1a1a;
+        padding: 1.5rem 2rem;
+        border-radius: 0.5rem;
+        border: 1px solid #444444;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        min-width: 130px;
+      }
+      @media (max-width: 640px) {
+        .countdown-segment { padding: 0.35rem; min-width: 40px; }
+        #countdown { gap: 0.35rem; }
+        #countdown span.text-7xl { font-size: 1.5rem !important; }
+        #countdown span.text-base { font-size: 0.7rem !important; }
+      }
+      .animated-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      }
+      .animated-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #000000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 50;
+      }
+      .bottom-nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 0.25rem;
+        color: #cccccc;
+        font-size: 0.75rem;
+        font-weight: 500;
+        transition: color 0.2s ease-in-out;
+      }
+      .bottom-nav-link:hover { color: #ffffff; }
+      .bottom-nav-link svg { width: 24px; height: 24px; margin-bottom: 0.25rem; }
+      .accordion-header { cursor: pointer; }
+      .accordion-icon { transition: transform 0.3s ease-in-out; }
+      .accordion-header.expanded .accordion-icon {
+        transform: rotate(45deg);
+      }
+      .footer-links-section {
+        background-color: #000000;
+        color: #cccccc;
+        padding: 1.5rem 0;
+        font-size: 0.875rem;
+        border-top: 1px solid #222222;
+      }
+      .footer-links-section a {
+        color: #cccccc;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+      }
+      .footer-links-section a:hover { color: #ffffff; }
+      .footer-links-section ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .footer-links-section li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .flash-banner-content a:hover span {
+        text-decoration: underline;
+      }
+      /* Styles for the new solutions section */
+      .solution-tab {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #6b7280;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: color 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background: none;
+        border: none;
+      }
+      @media (min-width: 768px) {
+        .solution-tab {
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+      }
+      .solution-tab:hover {
+        color: #111827;
+        border-color: #a0aec0; /* Lighter border on hover */
+      }
+      .solution-tab.active-tab {
+        color: #0052cc;
+        border-color: #0052cc; /* Active tab has a solid border */
+      }
+      #active-tab-highlighter {
+          height: 3px;
+          background-color: #0052cc;
+          position: absolute;
+          bottom: -2px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .solution-panel-content {
+          min-height: 450px;
+      }
+      /* CTA button styling */
+      .cta-button {
+          display: inline-block;
+          margin-top: 1.5rem; /* mt-6 */
+          background-color: #0052cc; /* bg-blue-600 */
+          color: white;
+          padding: 0.75rem 1.5rem; /* px-6 py-2 */
+          border-radius: 0.5rem; /* rounded-lg */
+          font-weight: 600; /* font-semibold */
+          font-size: 0.875rem; /* text-sm */
+          transition: background-color 0.3s ease, transform 0.2s ease;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .cta-button:hover {
+          background-color: #003f99; /* hover:bg-blue-700 */
+          transform: translateY(-2px);
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Styles for solution panel navigation buttons */
+      .solution-nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: none;
+        border-radius: 9999px; /* Full rounded */
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        opacity: 0; /* Almost hidden by default */
+        transition: opacity 0.3s ease, background-color 0.3s;
+      }
+      .solution-nav-button:hover {
+        opacity: 1; /* Fully visible on hover */
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .solution-nav-button.left {
+        left: 1rem;
+      }
+      .solution-nav-button.right {
+        right: 1rem;
+      }
+      /* Ensure panels don't shrink and enable scroll snap */
+      #solution-panels {
+        display: flex;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        scroll-snap-type: x mandatory; /* Snap to panels */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        /* Hide scrollbar */
+        scrollbar-width: none; /* For Firefox */
+        -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+      }
+      /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+      #solution-panels::-webkit-scrollbar {
+          display: none;
+      }
+      .solution-panel {
+        flex: 0 0 100%; /* Each panel takes full width */
+        scroll-snap-align: start; /* Snap to the start of each panel */
+      }
+
+      /* New styles for SVG icons in cards */
+      .card-icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px; /* w-16 */
+        height: 64px; /* h-16 */
+        background-color: #e0e7ff; /* Light blue background */
+        border-radius: 50%; /* Rounded */
+        margin: 0 auto 1rem auto; /* Center and add margin-bottom */
+        transition: background-color 0.3s ease;
+      }
+      .card:hover .card-icon-container {
+        background-color: #a7c5ff; /* Darker blue on hover */
+      }
+      .card-icon-container svg {
+        width: 32px; /* w-8 */
+        height: 32px; /* h-8 */
+        color: #0052cc; /* Blue icon color */
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .card:hover .card-icon-container svg {
+        transform: scale(1.1); /* Slightly enlarge icon on hover */
+        color: #0b418d; /* Darker blue icon on hover */
+      }
+
+      /* Styles for the Mosca Theorem Modal */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Faster transition */
+      }
+      .modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 2.5rem; /* Increased padding */
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 95%; /* Slightly wider */
+        max-height: 95%;
+        overflow-y: auto;
+        position: relative;
+        transform: translateY(20px) scale(0.95); /* Initial state for transition */
+        transition: all 0.3s ease-out; /* Faster transition */
+        
+        /* Hide scrollbar */
+        scrollbar-width: none; /* For Firefox */
+        -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+      }
+      .modal-content::-webkit-scrollbar { /* For Webkit browsers */
+          display: none;
+      }
+
+      .modal-overlay.show .modal-content {
+        transform: translateY(0) scale(1); /* Final state for transition */
+      }
+      .modal-close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        color: #666;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .modal-close-button:hover {
+        color: #333;
+      }
+      .mosca-quote-clickable {
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+      .mosca-quote-clickable:hover {
+        color: #a0aec0; /* Lighter gray on hover for interaction */
+      }
+      /* Responsive video container */
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        margin-top: 1.5rem; /* Add some space above the video */
+        border-radius: 0.5rem; /* Rounded corners for the video */
+      }
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      
+      /* PDF button and modal styles */
+      #pdf-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+        background-color: #0052cc;
+        color: white;
+        border: none;
+        border-radius: 50%; /* Changed to a circle */
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        padding: 0;
+        overflow: hidden;
+      }
+      #pdf-button:hover {
+        transform: scale(1.1);
+        background-color: #003f99;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+      #pdf-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Adjust PDF button for mobile to avoid overlap */
+      @media (max-width: 768px) {
+        #pdf-button {
+          bottom: 80px; /* Adjust to be above the mobile bottom nav */
+        }
+      }
+
+      /* New "Coming Soon" Modal */
+      #coming-soon-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Faster transition */
+      }
+      #coming-soon-modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      #coming-soon-modal-overlay .modal-content {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 95%;
+        max-height: 95%;
+        overflow-y: auto;
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.3s ease-out; /* Faster transition */
+      }
+      #coming-soon-modal-overlay.show .modal-content {
+        transform: translateY(0) scale(1);
+      }
+      #coming-soon-modal-overlay .modal-close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        color: #666;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      #coming-soon-modal-overlay .modal-close-button:hover {
+        color: #333;
+      }
+
+      /* Contact Section Specific Styling */
+      .contact-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem; /* Space between direct contact and button */
+      }
+      @media (min-width: 768px) {
+        .contact-content-wrapper {
+          flex-direction: row;
+          justify-content: center;
+          gap: 4rem; /* More space on desktop */
+        }
+      }
+
+      .direct-contact-info {
+        text-align: center;
+        padding-right: 0; /* No padding-right on mobile */
+        border-right: none; /* No border on mobile */
+        padding-bottom: 2rem; /* Padding below for mobile separator */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* White separator for dark background */
+        width: 100%; /* Take full width on mobile */
+      }
+
+      @media (min-width: 768px) {
+        .direct-contact-info {
+          text-align: right; /* Align text to right on desktop */
+          padding-right: 2rem; /* Padding for vertical separator */
+          border-right: 1px solid rgba(255, 255, 255, 0.2); /* Vertical separator */
+          padding-bottom: 0; /* No bottom padding on desktop */
+          border-bottom: none; /* No bottom border on desktop */
+          width: auto; /* Shrink to content on desktop */
+        }
+      }
+
+      .get-in-touch-button-container {
+        text-align: center;
+        width: 100%; /* Take full width on mobile */
+      }
+
+      @media (min-width: 768px) {
+        .get-in-touch-button-container {
+          text-align: left; /* Align button to left on desktop */
+          width: auto; /* Shrink to content on desktop */
+        }
+      }
+
+      /* New Contact Popup Modal Styles */
+      #contact-popup-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Translucent background */
+        backdrop-filter: blur(5px); /* Added blur effect */
+        -webkit-backdrop-filter: blur(5px); /* For Safari */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Ensure it's on top */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, backdrop-filter 0.3s ease; /* Faster transition for backdrop-filter */
+      }
+      #contact-popup-modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      #contact-popup-modal-overlay .modal-content {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 90%; /* Adjust max-width for responsiveness */
+        width: 500px; /* Fixed width for larger screens */
+        max-height: 95%;
+        overflow-y: auto;
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.3s ease-out; /* Faster transition */
+        text-align: center; /* Center content inside */
+      }
+      #contact-popup-modal-overlay.show .modal-content {
+        transform: translateY(0) scale(1);
+      }
+      #contact-popup-modal-overlay .modal-close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        color: #666;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .modal-close-button:hover {
+        color: #333;
+      }
+      #contact-popup-modal-overlay .company-logo {
+        max-width: 100px; /* Adjust logo size */
+        height: auto;
+        margin: 0 auto 1.5rem auto; /* Center logo and add bottom margin */
+      }
+      #contact-popup-modal-overlay .contact-form label {
+        display: block;
+        text-align: left;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+      #contact-popup-modal-overlay .contact-form input,
+      #contact-popup-modal-overlay .contact-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        box-sizing: border-box; /* Include padding in width */
+        transition: border-color 0.2s, box-shadow 0.2s; /* Added transition for focus */
+      }
+      #contact-popup-modal-overlay .contact-form input:focus,
+      #contact-popup-modal-overlay .contact-form textarea:focus {
+        outline: none;
+        border-color: #0052cc; /* Blue border on focus */
+        box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.25); /* Blue shadow on focus */
+      }
+      #contact-popup-modal-overlay .contact-form textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      #contact-popup-modal-overlay .contact-form button {
+        background-color: #0052cc;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+      }
+      #contact-popup-modal-overlay .contact-form button:hover {
+        background-color: #003f99;
+      }
+      #contact-popup-modal-overlay .contact-form button:disabled {
+        background-color: #a0aec0;
+        cursor: not-allowed;
+      }
+      /* Styles for loading spinner inside the modal */
+      .modal-loading-spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #0052cc;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 1rem auto;
+      }
+      /* Styles for message display */
+      .modal-message {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        text-align: center;
+      }
+      .modal-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .modal-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      /* New styles for Whitepaper Invitation Popup */
+      #whitepaper-popup {
+        position: fixed;
+        bottom: 100px; /* Position above the PDF button (20px bottom + 60px height + 10px margin) */
+        right: 30px; /* Align right edge with PDF button */
+        width: 280px; /* Adjust width as needed */
+        padding: 0.75rem 1rem;
+        background-color: #378bf9; /* Dark background */
+        color: #ffffff;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        font-size: 0.875rem;
+        font-weight: 500;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px); /* Initial slight offset for animation */
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0.5s ease;
+        z-index: 101; /* Above the PDF button but below modals */
+        /* Center horizontally relative to the button */
+        transform: translateX(calc(-50% + 30px)); /* Half its width left, half button width right */
+      }
+      #whitepaper-popup.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      /* Adjust for mobile bottom nav overlap */
+      @media (max-width: 768px) {
+        #whitepaper-popup {
+          bottom: 150px; /* Adjust to be above the mobile bottom nav and PDF button */
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <template id="flash-item-template">
+      <a href="careers.html" class="flash-item flash-banner-heading-link">
+        <span>
+          We're seeking pioneering minds in Post-Quantum Cryptography and
+          crypto-agility.
+        </span>
+      </a>
+      <a
+        href="assets/infographics/Quantuminsights.html"
+        class="flash-item flash-banner-heading-link"
+      >
+        <span>
+          From the MTLabs Blog: An Interactive Guide to the NIST PQC Finalists.
+        </span>
+      </a>
+      <a
+        href="assets/infographics/futurevis.html"
+        class="flash-item flash-banner-heading-link"
+      >
+        <span>
+          From the MTLabs Blog: A Look at Our Vision for the Next Generation of
+          Security.
+        </span>
+      </a>
+      <a
+        href="assets/infographics/Quantcount.html"
+        class="flash-item flash-banner-heading-link"
+      >
+        <span>
+          From the MTLabs Blog: Quantum Countdown has already begun! Are you
+          ready?
+        </span>
+      </a>
+    </template>
+    <div id="flash-banner" class="flash-banner show">
+      <button
+        class="flash-banner-nav left"
+        id="flash-banner-prev"
+        aria-label="Previous"
+      >
+        ←
+      </button>
+      <div class="flash-banner-content" id="flash-banner-content">
+        <!-- JS will inject content here -->
+      </div>
+      <button
+        class="flash-banner-nav right"
+        id="flash-banner-next"
+        aria-label="Next"
+      >
+        →
+      </button>
+    </div>
+
+    <header
+      id="header"
+      class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20"
+    >
+      <nav
+        class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
+      >
+        <div class="text-xl tracking-wider">
+          <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
+          <span class="font-normal text-red-600 text-base md:text-lg">|</span>
+          <span class="font-normal text-gray-700 text-base md:text-lg"
+            >ENGINEERING</span
+          >
+        </div>
+        <a href="#home" class="flex items-center space-x-2"> </a>
+        <div class="hidden md:flex items-center space-x-12">
+          <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
+          <a href="#solutions" class="nav-link font-medium">Solutions</a>
+          <a href="#critical-systems" class="nav-link font-medium">Standards</a>
+          <a href="#whymoontrace" class="nav-link font-medium"
+            >Why Moontrace?</a
+          >
+          <a href="#about" class="nav-link font-medium">About</a>
+        </div>
+        <a
+          href="careers.html"
+          class="hidden md:block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
+          >Join Our Team</a
+        >
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </nav>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden px-4 pb-4 space-y-2 bg-white/95 rounded-b-lg shadow-lg"
+      >
+        <a href="MTLabs.html" class="block nav-link font-medium py-2">MTLabs</a>
+        <a href="#solutions" class="block nav-link font-medium py-2">Solutions</a>
+        <a href="#critical-systems" class="block nav-link font-medium py-2">Standards</a>
+        <a href="#whymoontrace" class="block nav-link font-medium"
+          >Why Moontrace?</a
+        >
+        <a href="#about" class="block nav-link font-medium py-2">About</a>
+       
+        <a
+          href="careers.html"
+          class="block bg-black text-white text-center mt-2 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
+          >Join Our Team</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero-bg text-white">
+        <canvas id="hero-canvas"></canvas>
+        <div
+          class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32"
+        >
+          <h1
+            class="text-4xl md:text-6xl font-black tracking-tight leading-tight"
+          >
+            Pioneering Quantum-Resilient Security. Building the Future Together.
+          </h1>
+          <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-300">
+            At Moontrace Engineering, we are building the foundational layers of
+            quantum-resilient digital transformation, inviting partners to shape
+            a confident future in the quantum era.
+          </p>
+          <div
+            class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
+          >
+            <a
+              href="#solutions"
+              class="bg-white text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition w-full sm:w-auto"
+              >Discover Our Approach</a
+            >
+            <a
+              href="careers.html"
+              class="bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition w-full sm:w-auto"
+              >Join Our Journey</a
+            >
+          </div>
+          <div class="mt-20">
+            <p class="text-white text-xl font-semibold mb-4">
+              Years to Quantum (Y2Q) Countdown
+            </p>
+            <div
+              id="countdown"
+              class="flex justify-center items-center flex-wrap gap-4 text-white text-center"
+            >
+              <div class="countdown-segment">
+                <span id="years" class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Years</span>
+              </div>
+              <div class="countdown-segment">
+                <span id="days" class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Days</span>
+              </div>
+              <div class="countdown-segment">
+                <span id="hours" class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Hours</span>
+              </div>
+              <div class="countdown-segment">
+                <span
+                  id="minutes"
+                  class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Minutes</span>
+              </div>
+              <div class="countdown-segment">
+                <span
+                  id="seconds"
+                  class="block text-7xl font-bold text-gray-300"
+                  >00</span
+                ><span class="block text-base text-gray-500">Seconds</span>
+              </div>
+            </div>
+          </div>
+         
+          <!-- Mosca Quote Section -->
+          <div id="mosca-quote-section" class="mt-16 text-center text-gray-300 cursor-pointer mosca-quote-clickable">
+            <p class="text-lg md:text-xl italic max-w-3xl mx-auto">
+              "There is a <span class="font-bold">1 in 7 chance</span> that some fundamental public-key crypto will be broken by quantum by <span class="font-bold">2026</span>, and a <span class="font-bold">1 in 2 chance</span> of the same by <span class="font-bold">2031</span>."
+            </p>
+            <p class="text-sm md:text-base font-semibold mt-2">
+              – Dr. Michele Mosca
+            </p>
+            <p class="text-xs mt-2 text-gray-400">learn more about Mosca's Theorem</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEW SOLUTIONS SECTION -->
+      <section id="solutions" class="py-20 bg-gray-50 overflow-x-hidden relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    Our Solutions
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                   A powerful suite of tools enabling cryptographic agility, post-quantum security, and Advanced TPRM for seamless risk management.
+                </p>
+            </div>
+
+            <!-- Tab Controls -->
+            <div class="relative flex justify-center">
+                <div class="relative border-b-2 border-gray-200">
+                    <div id="solution-tabs" class="flex flex-wrap justify-center -mb-px sm:space-x-4">
+                        <button data-tab-index="0" class="solution-tab active-tab">VANTAGE</button>
+                        <button data-tab-index="1" class="solution-tab">APX</button>
+                        <button data-tab-index="2" class="solution-tab">HERCULES</button>
+                        <button data-tab-index="3" class="solution-tab">QUBEx</button>
+                    </div>
+                    <div id="active-tab-highlighter"></div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Sliding Panels -->
+            <div class="mt-10 relative">
+                <div id="solution-panels" class="flex transition-transform duration-500 ease-in-out">
+                    <!-- Panel 1: Vantage -->
+                    <div class="solution-panel min-w-full">
+                        <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Cryptographic Posture Visibility</h3>
+                                    <p class="text-gray-600 mb-3">Gain complete visibility into your cryptographic posture. We identify what needs fixing, where, and why, providing a clear roadmap to quantum readiness.</p>
+                                    <p class="text-600">Our Vantage tool scans your entire digital ecosystem—from code repositories to live applications—to create a comprehensive inventory of all cryptographic assets.</p>
+                                    <a href="#" class="cta-button">Learn More about Vantage</a>
+                                </div>
+                           </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent"></div>
+                                <img src="assets/vantage.png" alt="Moontrace Vantage Tool Interface for Cryptographic Posture Visibility" class="h-full w-full object-cover object-right">
+                                <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
+                                  VANTAGE UI
+                                </div>
+                            </div>
+                           <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <!-- Image hidden on mobile -->
+                                <img src="https://placehold.co/600x400/0052cc/ffffff?text=Vantage" alt="Moontrace Vantage Tool Interface for Cryptographic Posture Visibility" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Panel 2: APX -->
+                    <div class="solution-panel min-w-full">
+                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">Crypto-Agile Application Exchange (APX)</h3>
+                                    <p class="text-gray-600 mb-3">Enable phased, hybrid crypto adoption without disrupting your current operations. APX provides a structured, manageable path to integrate PQC.</p>
+                                    <p class="text-gray-600">Moontrace APX acts as a cryptographic abstraction layer. Instead of hardcoding cryptographic calls, your developers interface with our simple API.</p>
+                                    <a href="#" class="cta-button">Learn More about APX</a>
+                                </div>
+                           </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/170 to-transparent"></div>
+                                <img src="assets/apx.png" alt="Moontrace APX Tool for Crypto-Agile Application Exchange" class="h-full w-full object-cover object-right">
+                                <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
+                                  APX UI
+                                </div>
+                            </div>
+                            <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <!-- Image hidden on mobile -->
+                                <img src="https://placehold.co/600x400/247c6d/ffffff?text=APX" alt="Moontrace APX Tool for Crypto-Agile Application Exchange" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Panel 3: HERCULES -->
+                    <div class="solution-panel min-w-full">
+                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">HERCULES: Agentic AI Framework</h3>
+                                    <p class="text-gray-600 mb-3">HERCULES is a cyber agentic AI framework designed to automate and intelligently manage the entire cryptographic risk mitigation lifecycle.</p>
+                                    <p class="text-gray-600">It bridges the gap between VANTAGE's discovery and APX's remediation, acting as an intelligent orchestrator to translate technical data into quantifiable business risk and execute remediation playbooks.</p>
+                                    <a href="#" class="cta-button">Discover HERCULES</a>
+                                </div>
+                         </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/170 to-transparent"></div>
+                                <img src="assets/Hercules.png" alt="Moontrace HERCULES: Agentic AI Framework" class="h-full w-full object-cover object-right">
+                                <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
+                                  HERCULES UI
+                                </div>
+                            </div>
+                            <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <!-- Image hidden on mobile -->
+                                <img src="assets/Hercules.png" alt="Moontrace HERCULES: Agentic AI Framework" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Panel 4: QUBEx -->
+                    <div class="solution-panel min-w-full">
+                         <div class="solution-panel-content relative bg-white flex flex-col md:flex-row md:items-center">
+                           <div class="container z-10 mx-auto w-full px-4 py-12 md:w-3/5 md:py-20 lg:w-1/2 sm:px-6 lg:px-8">
+                                <div class="text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 md:text-3xl mb-4">QUBEx: Quantum Hardware Key Exchange Appliance</h3>
+                                    <p class="text-gray-600 mb-3">Moontrace QUBEx is a next-gen hardware-based quantum key management system, purpose-built to safeguard cryptographic keys in the post-quantum era.</p>
+                                    <p class="text-gray-600">Designed for hybrid infrastructure, QUBEx enables secure generation, exchange, and orchestration of both classical and post-quantum keys — all through independent, tamper-resistant channels.</p>
+                                    <a href="#" class="cta-button">Explore QUBEx</a>
+                                </div>
+                         </div>
+                           <div class="absolute top-0 right-0 hidden h-full w-full md:w-1/2 md:block">
+                                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/170 to-transparent"></div>
+                                <img src="https://placehold.co/800x600/4a3f56/ffffff?text=QUBEx" alt="Moontrace QUBEx: Quantum Hardware Key Exchange Appliance" class="h-full w-full object-cover object-right">
+                                <div class="absolute bottom-4 right-4 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
+                                  QUBEx APPLIANCE
+                                </div>
+                            </div>
+                            <div class="hidden px-4 pb-8 md:hidden sm:px-6 lg:px-8">
+                                <!-- Image hidden on mobile -->
+                                <img src="https://placehold.co/600x400/4a3f56/ffffff?text=QUBEx" alt="Moontrace QUBEx: Quantum Hardware Key Exchange Appliance" class="h-auto w-full rounded-lg shadow-md">
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Desktop Navigation Buttons -->
+                <button id="prev-solution-btn" class="solution-nav-button left hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-solution-btn" class="solution-nav-button right hidden md:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+      </section>
+      <!-- END NEW SOLUTIONS SECTION -->
+
+      <section id="MTLabs" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Text Left -->
+            <div>
+              <h2
+                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-left"
+              >
+                MTLabs: Research & Development Wing
+              </h2>
+              <p class="mt-4 max-w-3xl text-lg text-gray-600 text-left">
+                Our R&D wing, MTLabs, is at the forefront of post-quantum and
+                quantum innovation. We are dedicated to creating the next
+                generation of algorithms and solutions for defense, healthcare,
+                and other critical sectors.
+              </p>
+              <div class="mt-8 text-left">
+                <a
+                  href="MTLabs.html"
+                  class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition block sm:inline-block"
+                >
+                  <span class="hidden sm:inline"
+                    >Explore Our Research & Innovations</span
+                  >
+                  <span class="sm:hidden">Explore MTLabs</span>
+                </a>
+              </div>
+            </div>
+            <!-- Image Right -->
+            <div
+              class="animated-item flex justify-center md:justify-end mt-12 md:mt-0 hidden sm:flex"
+            >
+              <div class="relative group transition-transform duration-300 hover:scale-105">
+              <div class="absolute -inset-2 bg-gradient-to-tr from-blue-200 via-purple-200 to-pink-200 opacity-60 rounded-2xl blur-lg group-hover:opacity-80 transition-opacity duration-300"></div>
+              <img
+                src="assets/team/r1.png"
+                alt="Research paper cover showcasing MTLabs' quantum research"
+                class="relative rounded-2xl shadow-2xl border-4 border-white/80 group-hover:shadow-[0_8px_32px_0_rgba(80,80,160,0.25)] w-full max-w-xs sm:max-w-xs md:max-w-sm lg:max-w-xs mx-auto md:mx-0 transition-shadow duration-300"
+                style="max-width: 300px;"
+              />
+              <div class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/80 text-gray-800 text-xs px-4 py-1 rounded-full shadow backdrop-blur-md font-medium tracking-wide">
+                MTLabs Research
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="critical-systems" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Advanced Cryptography for Critical Systems: Enterprise to Edge
+            </h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              We are developing lightweight, high-performance cryptographic solutions optimized for a wide range of critical systems. From robust enterprise servers and secure cloud environments to resource-constrained embedded devices and industrial IoT, our expertise ensures quantum-resilient and future-proof security in the most demanding operational landscapes.
+            </p>
+          </div>
+          <div class="mt-16 bg-white p-8 md:p-12 rounded-xl shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-800 text-center mt-12">
+              Interactive Performance: PQC on Embedded Systems
+            </h3>
+            <p class="text-center text-gray-600 mt-2 mb-8">
+              Explore the trade-offs between NIST PQC algorithms on a
+              resource-constrained ARM Cortex-A53 device. This demonstrates our capability to optimize advanced cryptographic primitives for edge computing and other low-power environments. Lower bars indicate
+              better performance.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8"
+            >
+              <div>
+                <label
+                  for="metric-select"
+                  class="font-medium text-sm text-gray-700"
+                  >Metric:</label
+                >
+                <select
+                  id="metric-select"
+                  class="mt-1 block w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 rounded-md"
+                >
+                  <option value="latency" selected>
+                    Computational Latency (ms)
+                  </option>
+                  <option value="size">Key/Signature Size (bytes)</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="security-level-select"
+                  class="font-medium text-sm text-gray-700"
+                  >NIST Security Level:</label
+                >
+                <select
+                  id="security-level-select"
+                  class="mt-1 block w-full sm:w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 rounded-md"
+                >
+                  <option value="1">Level 1</option>
+                  <option value="3" selected>Level 3</option>
+                  <option value="5">Level 5</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-container">
+              <div id="chart-loading-spinner" class="loading-spinner"></div>
+              <canvas id="pqcChart" class="hidden"></canvas>
+            </div>
+            <div class="mt-10 text-center">
+              <a href="#" id="performance-cta-button" class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition inline-block">
+                  See How We Can Secure Your Project
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="whymoontrace" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2
+            class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            Why Choose Moontrace Engineering?
+          </h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+            We are committed to democratizing post-quantum security with an
+            approach that is open, agile, and fundamentally trustworthy.
+          </p>
+          <div
+            class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <div class="card p-8 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Open & Agile Approach
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Challenging the opaque and expensive, we offer transparent,
+                developer-friendly solutions for rapid adaptation to quantum
+                threats.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h18m-15-4.5L3 9m0 0L7.5 4.5M3 9h18" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Affordability, Transparency, Trust
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Our core values guide every interaction, ensuring practical and
+                accessible quantum security for organizations worldwide.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21v-4.243m2.25-4.243l4.724-4.724M12 17.757l-2.25-2.25L9.75 15m-4.724-4.724L3.28 8.003M12 17.757L9.75 15m-4.724-4.724L3.28 8.003m18.44 0L19.75 6.25m-4.724 4.724L12 17.757m-4.724-4.724L3.28 8.003" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Built in India, for the World
+              </h3>
+              <p class="mt-2 text-gray-600">
+                With a global-first mindset, our solutions are designed to serve
+                companies, governments, and developers beyond traditional
+                Western enterprise markets.
+              </p>
+            </div>
+            <div class="card p-8 md:col-span-1 lg:col-span-1 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9.893 18.027M16 16.22V17.5M16 6.5V7.77m-1.5 5.5h-6M12 21.75c-1.892 0-3.717-.347-5.433-1.043C3.86 19.546 2.25 17.5 2.25 15V9c0-2.25 1.86-4.296 4.317-5.207A9.004 9.004 0 0112 2.25c1.892 0 3.717.347 5.433 1.043C20.14 4.704 21.75 6.75 21.75 9v6c0 2.25-1.86 4.296-4.317 5.207A9.004 9.004 0 0112 21.75z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Dual Expertise: QSaaS & Critical System Security
+              </h3>
+              <p class="mt-2 text-gray-600">
+                From comprehensive enterprise QSaaS to specialized lightweight
+                algorithms for critical system deployment, we cover the full
+                spectrum of advanced security needs.
+              </p>
+            </div>
+            <div class="card p-8 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Founding Vision for a Confident Tomorrow
+              </h3>
+              <p class="mt-2 text-gray-600">
+                We are driven by a singular mission: to move every organization
+                from compromised to confident in the quantum era.
+              </p>
+            </div>
+            <!-- NEW CARD: Agentic AI & Intelligent Automation -->
+            <div class="card p-8 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9.893 18.027M16 16.22V17.5M16 6.5V7.77m-1.5 5.5h-6M12 21.75c-1.892 0-3.717-.347-5.433-1.043C3.86 19.546 2.25 17.5 2.25 15V9c0-2.25 1.86-4.296 4.317-5.207A9.004 9.004 0 0112 2.25c1.892 0 3.717.347 5.433 1.043C20.14 4.704 21.75 6.75 21.75 9v6c0 2.25-1.86 4.296-4.317 5.207A9.004 9.004 0 0112 21.75z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Agentic AI & Intelligent Automation
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Beyond static defenses, our solutions leverage advanced AI and automation to proactively detect, adapt to, and neutralize emerging threats, ensuring self-managing security.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Securing Critical Industries
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+              From government agencies to healthcare providers, we deliver
+              quantum-resistant security tailored to your sector's unique
+              challenges.
+            </p>
+          </div>
+          <div
+            class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+          >
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 14.25V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m-9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M9 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M15 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M21 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M3.75 14.25V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5m-9.75 1.5V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M9 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M15 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5M21 15.75V9.75m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 003 0m-3 0h1.5m-3 0h1.5" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Government & Public Sector
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Protecting national security data and critical infrastructure
+                against state-level quantum threats, ensuring compliance with
+                mandates like NSM-10.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">Healthcare</h3>
+              <p class="mt-2 text-gray-600">
+                Securing long-term patient records and medical devices from the
+                "Harvest Now, Decrypt Later" risk and ensuring HIPAA compliance.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.25 2.25 0 0021 17.25l-5.82-5.82m-.997-5.997L10.378 3.242M9.002 6.31l2.685 2.685m-3.04 3.04L5.097 12.25M2.25 12.75l1.5 1.5m1.5-1.5l1.5 1.5m-.75-6.75h.008v.008H18V6.75h.008z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Critical Infrastructure
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Ensuring the resilience of energy grids, financial networks, and
+                transportation systems against catastrophic quantum breaches.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75A2.25 2.25 0 0015.75 1.5H13.5m-3 0V3.75m3-2.25V3.75M9 15.75h3m-3 3h3m-3-6h3m3-6h.008v.008H15V9.75h.008z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Defense & Military
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Providing military-grade, lightweight PQC for tactical
+                communications and battlefield systems under extreme conditions.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Financial Services
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Safeguarding sensitive financial transactions, long-term customer data, and blockchain integrity against quantum attacks and evolving regulatory demands.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18L14.25 12L8.25 6" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Automotive
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Securing connected vehicle systems, autonomous driving data, and vehicle-to-everything (V2X) communication to prevent quantum-enabled cyber-physical attacks.
+              </p>
+            </div>
+            <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75A2.25 2.25 0 0015.75 1.5H13.5m-3 0V3.75m3-2.25V3.75M9 15.75h3m-3 3h3m-3-6h3m3-6h.008v.008H15V9.75h.008z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Manufacturing & IoT
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Protecting industrial control systems, smart factory data, and vast networks of IoT devices from quantum-era vulnerabilities.
+              </p>
+            </div>
+             <div class="p-6 animated-item">
+              <div class="card-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.106l-1.412-.353a1.125 1.125 0 01-.924-.924L19.5 8.4c0-.21-.129-.381-.363-.455l-3.75-1.001a1.125 1.125 0 01-.924-.924V3.375c0-.516-.351-.966-.852-1.106L12 1.5H10.5a2.25 2.25 0 00-2.25 2.25v2.818c0 .516-.351.966-.852 1.106L4.25 9.75c-.234.074-.363.245-.363.455v3.182c0 .516-.351.966-.852 1.106l-1.412.353a1.125 1.125 0 01-.924.924L2.25 18.75z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">
+                Telecommunications
+              </h3>
+              <p class="mt-2 text-gray-600">
+                Fortifying 5G networks, satellite communications, and global data transmission against quantum decryption and future-proofing critical communication infrastructure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="careers-cta" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              We're Building the Future. Join Us.
+            </h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+              We are looking for passionate, innovative, and driven individuals and Advisors
+              to help us build a more quantum-resilient world.
+            </p>
+            <div class="mt-8">
+              <a
+                href="careers.html"
+                class="bg-black text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition"
+              >
+                View Open Positions
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left Content -->
+      <div class="animated-item">
+        <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl leading-tight">
+          Built in India, for the World.
+        </h2>
+        <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+          Moontrace Engineering was founded to challenge the status quo.
+          We saw that existing quantum security solutions were often opaque,
+          expensive, and inaccessible to many global organizations. 
+          Our mission is to democratize post-quantum security with an open,
+          agile, and developer-friendly platform that prioritizes affordability,
+          transparency, and trust.
+        </p>
+        <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+          Our vision is simple yet bold — to secure the post-quantum internet
+          for everyone, everywhere.
+        </p>
+      </div>
+
+      <!-- Right Cards Section -->
+      <div class="space-y-8">
+        <!-- NQM Mission Card -->
+        <div class="india-card bg-white shadow-lg rounded-2xl p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+          <h3 class="text-2xl font-bold mb-5 text-blue-700 flex items-center justify-center lg:justify-start">
+            The National Quantum Mission (NQM)
+            <svg class="india-flag-icon ml-3 w-10 h-6 rounded-sm shadow-sm" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+              <!-- Correct Indian Flag Colors -->
+              <rect width="900" height="600" fill="#FF9933" /> <!-- Saffron Top -->
+              <rect y="200" width="900" height="200" fill="#FFFFFF" /> <!-- White Middle -->
+              <rect y="400" width="900" height="200" fill="#138808" /> <!-- Green Bottom -->
+              <!-- Ashoka Chakra -->
+              <circle cx="450" cy="300" r="60" fill="none" stroke="#000080" stroke-width="8" />
+              <g stroke="#000080" stroke-width="4">
+                <!-- 24 Spokes -->
+                <g id="spoke">
+                  <line x1="450" y1="240" x2="450" y2="300" />
+                </g>
+                <use xlink:href="#spoke" transform="rotate(15 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(30 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(45 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(60 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(75 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(90 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(105 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(120 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(135 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(150 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(165 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(180 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(195 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(210 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(225 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(240 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(255 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(270 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(285 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(300 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(315 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(330 450 300)" />
+                <use xlink:href="#spoke" transform="rotate(345 450 300)" />
+              </g>
+            </svg>
+          </h3>
+          <p class="text-gray-600 leading-relaxed text-center lg:text-left">
+            India's NQM is a landmark initiative to foster R&D in quantum computing, 
+            communication, and sensing. Our work is purpose-built to support this vision — 
+            from developing secure communication protocols for long-distance quantum links 
+            to optimizing quantum-safe algorithms for national defense.
+          </p>
+          <a href="trustcenter.html" 
+             class="inline-block mt-6 text-blue-600 font-semibold hover:text-blue-800 hover:underline transition duration-300">
+            Learn more about NQM & Moontrace's role →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+      </section>
+
+
+     <section id="contact" class="py-20 bg-gray-800 text-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Heading -->
+    <div class="text-center">
+      <h2 class="text-white font-extrabold text-3xl sm:text-4xl tracking-tight">
+        Let's Build the Quantum-Safe Future.
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+        We're actively seeking collaborators, innovators, and partners who share our vision for securing the quantum era. Connect with us.
+      </p>
+    </div>
+
+    <!-- Contact Info + Divider + CTA -->
+    <div class="mt-16 max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row items-stretch justify-center gap-10 md:gap-16">
+
+        <!-- Left: Direct Contact -->
+        <div class="flex-1 text-center md:text-right flex flex-col justify-center">
+          <p class="text-lg">Get in touch directly:</p>
+          <p class="text-lg font-semibold">Bharat Raghuvanshi</p>
+          <p>
+            <a
+              href="mailto:bharat@moontrace.in"
+              class="text-gray-400 hover:text-gray-300 transition"
+            >
+              bharat@moontrace.in
+            </a>
+          </p>
+          <p>
+            <a
+              href="tel:+918887748365"
+              class="text-gray-400 hover:text-gray-300 transition"
+            >
+              +91 8887748365
+            </a>
+          </p>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden md:flex items-center">
+          <div class="w-px h-full bg-gray-600"></div>
+        </div>
+
+        <!-- Right: CTA -->
+        <div class="flex-1 text-center flex flex-col justify-center items-center">
+          <p class="text-lg mb-4">Prefer to send us a message?</p>
+          <!-- The "Get in Touch" button now triggers the new popup modal -->
+          <button
+            id="contact-form-button"
+            class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold text-base hover:bg-blue-700 transition"
+            >
+            Get in Touch
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400">
+      <div class="footer-links-section text-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ul class="mb-4">
+            <li><a href="careers.html">Careers</a></li>
+            <li>
+              <a href="https://github.com/MOONTRACE-ENGINEERING">GitHub</a>
+            </li>
+            <li><a href="https://www.instagram.com/moontrace_hq/">Instagram</a>
+            <li>
+              <a href="https://x.com/Moontrace_HQ">X</a></li>
+            </li>
+            <li>
+              <a href="assets/pdfs/whymoon.pdf" target="_blank">Manifesto</a>
+            </li>
+            <li>
+              <a href="assets/pdfs/Investor_policy.pdf" target="_blank">Investor Relations</a>
+            </li>
+            <li><a href="trustcenter.html">Trust Center</a></li> <!-- New Footer Link -->
+          </ul>
+          <p>
+            © 2025 Moontrace Engineering Research and Consulting | All
+            Rights Reserved.
+          </p>
+          <p class="mt-2">Built in India, for the World.</p>
+          <p class="mt-4">
+            <a href="#top" class="hover:underline">Back to top</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <nav class="bottom-nav md:hidden">
+      <div class="flex justify-around items-center h-16">
+        <a href="#home" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            /></svg>
+          Home</a
+        >
+        <a href="#solutions" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9.75 17L12 20.25l2.25-3.25M21 9l-3.354-3.354A4.5 4.5 0 0014.28 4.792L12 7.5l-2.28-2.708A4.5 4.5 0 005.354 5.646L2 9m19 0H2m19 0a2 2 0 012 2v6a2 2 0 01-2 2H2a2 2 0 01-2-2v-6a2 2 0 012-2z"
+            /></svg>
+          Solutions</a
+        >
+        <a href="careers.html" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 13V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
+            /></svg>
+          Careers</a
+        >
+        <a href="#about" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            /></svg>
+          About</a
+        >
+        <!-- Removed contact link from bottom nav as it's no longer a modal -->
+        <!--
+        <a href="#" id="mobile-contact-link-bottom" class="bottom-nav-link"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2h6l-3 3v-3h6l-3 3v-3h6a2 2 0 002-2zM12 11h.01M7 11h.01M17 11h.01"
+            /></svg>
+          >Contact</a
+        >
+        -->
+      </div>
+    </nav>
+
+    <!-- Mosca Theorem Modal -->
+    <div id="mosca-modal-overlay" class="modal-overlay">
+      <div class="modal-content">
+        <button id="mosca-modal-close" class="modal-close-button">×</button>
+        <h3 class="text-2xl font-extrabold text-blue-400 mb-4 text-center">
+          Dr. Michele Mosca's Theorem: The Path to Post-Quantum Preparation
+        </h3>
+
+        <h4 class="text-xl font-bold text-blue-400 border-b border-blue-200 pb-2 mb-4">Definition:</h4>
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          Dr. Michele Mosca, a renowned expert in cryptography, has proposed a theorem to identify the path to post-quantum preparation. Dr. Mosca has advocated using an equation to evaluate an organization's readiness for the quantum era. This theory is based on the XYZ risk model.
+        </p>
+
+        <h4 class="text-xl font-bold text-blue-400 border-b border-blue-200 pb-2 mb-4">Explanation:</h4>
+        <p class="text-lg italic text-gray-800 mb-4 leading-relaxed">
+          "There is a <span class="font-bold">1 in 7 chance</span> that some fundamental public-key crypto will be broken by quantum by <span class="font-bold">2026</span>, and a <span class="font-bold">1 in 2 chance</span> of the same by <span class="font-bold">2031</span>."
+          <span class="block text-base font-normal text-gray-500 mt-1">– Dr. Michele Mosca, (April 2015)</span>
+        </p>
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          According to Michele Mosca's Theorem <span class="font-extrabold">(X + Y) > Z</span>, if the amount of time that data must remain secure (<span class="font-bold">X</span>) plus the time it takes to upgrade cryptographic systems (<span class="font-bold">Y</span>) is greater than when quantum computers come online with enough power to break cryptography (<span class="font-bold">Z</span>), you have already run out of time.
+        </p>
+
+        <h4 class="text-xl font-bold text-blue-400 border-b border-blue-200 pb-2 mb-4">Here is a basic example of the theorem:</h4>
+        <ul class="list-disc list-inside text-gray-700 mb-6 pl-5 leading-relaxed">
+          <li class="mb-2">How long do you need encryption to be secure? (<span class="font-bold">X</span> years)</li>
+          <li class="mb-2">How long will it take to implement a large-scale quantum-safe solution into your current infrastructure? (<span class="font-bold">Y</span> years)</li>
+          <li>How long will it take to develop a large-scale quantum computer or any other significant development? (<span class="font-bold">Z</span> years)</li>
+        </ul>
+        <p class="text-lg font-bold text-gray-900 mb-6">Theorem: If X + Y > Z, then worry.</p>
+
+        <h4 class="text-xl font-bold text-blue-400 border-b border-blue-200 pb-2 mb-4">Components Explained:</h4>
+        <ul class="list-disc list-inside text-gray-700 mb-6 pl-5 leading-relaxed">
+          <li class="mb-2">
+            <strong>Security Shelf Life (X):</strong> The lifespan your current security capabilities must maintain. Many cryptographic keys, especially in public key infrastructure, need to remain secure for years or even decades.
+          </li>
+          <li class="mb-2">
+            <strong>Migration Time (Y):</strong> The total time required to transition your cryptographic solutions to a fully quantum-safe environment. This includes the development and widespread acceptance of quantum-safe algorithms.
+          </li>
+          <li>
+            <strong>Collapse Time (Z):</strong> The number of years before stable quantum computers become available that can break existing crypto algorithms. Data requiring long-term confidentiality may be at risk if not protected before this time.
+          </li>
+        </ul>
+
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/ewDE7yaKZyw"
+            title="Dr. Michele Mosca (University of Waterloo) on overcoming cyber security challenges of the PQC era"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="text-center text-sm text-gray-600 mt-2">
+            Dr. Michele Mosca (University of Waterloo) on overcoming cyber security challenges of the PQC era
+        </p>
+      </div>
+    </div>
+
+    <!-- Whitepaper PDF Button - Updated to link to whitepaper.html -->
+    <a href="whitepaper.html" id="pdf-button" aria-label="Read Moontrace Engineering Whitepaper" title="Read Moontrace Engineering Whitepaper" style="padding:0; background:none; border:none; width:60px; height:60px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+        <img src="assets/button.png" alt="Download Moontrace Engineering Whitepaper" style="width:60px; height:60px; object-fit:cover; border-radius:50%; display:block;" />
+    </a>
+    
+    <!-- New "Coming Soon" Modal -->
+    <div id="coming-soon-modal-overlay" class="modal-overlay">
+        <div class="modal-content text-center max-w-sm p-8">
+            <button id="coming-soon-modal-close" class="modal-close-button">×</button>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Launching Soon!</h3>
+            <p class="text-lg text-gray-700">We are actively developing our tools and will be launching soon. Stay tuned!</p>
+        </div>
+    </div>
+
+    <!-- New Contact Popup Modal -->
+    <div id="contact-popup-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="contact-popup-modal-close" class="modal-close-button" aria-label="Close contact form">×</button>
+            <img src="assets/button.png" alt="Moontrace Engineering Logo" class="company-logo">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Get in Touch with Moontrace</h3>
+            <p class="text-gray-700 mb-6">We'd love to hear from you! Please fill out the form below.</p>
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/mdkdpakv" method="POST">
+                <div class="mb-4">
+                    <label for="contact-name">Name</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required>
+                </div>
+                <div class="mb-6">
+                    <label for="contact-message">Message</label>
+                    <textarea id="contact-message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" id="contact-submit-button">Send Message</button>
+                <div id="contact-loading-spinner" class="modal-loading-spinner hidden"></div>
+                <div id="contact-message-display" class="modal-message hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Whitepaper Invitation Popup -->
+    <div id="whitepaper-popup" class="whitepaper-popup">
+        <p>Access our Whitepaper for in-depth insights!</p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // All original JS from test12.html is here
+        const flashBanner = document.getElementById("flash-banner");
+        setTimeout(() => flashBanner.classList.add("show"), 100);
+
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+
+        const accordionItems = document.querySelectorAll(".accordion-item");
+        accordionItems.forEach((item) => {
+          const header = item.querySelector(".accordion-header");
+          const content = item.querySelector(".accordion-content");
+          const icon = item.querySelector(".accordion-icon");
+          header.addEventListener("click", () => {
+            const isExpanded = header.classList.contains("expanded");
+            accordionItems.forEach((otherItem) => {
+              if (otherItem !== item) {
+                const otherHeader =
+                  otherItem.querySelector(".accordion-header");
+                const otherContent =
+                  otherItem.querySelector(".accordion-content");
+                otherHeader.classList.remove("expanded");
+                otherContent.style.maxHeight = null;
+                if (otherHeader.querySelector(".accordion-icon"))
+                  otherHeader.querySelector(".accordion-icon").textContent =
+                    "+";
+              }
+            });
+            if (isExpanded) {
+              header.classList.remove("expanded");
+              content.style.maxHeight = null;
+              if (icon) icon.textContent = "+"; // Changed to "+" for collapse
+            } else {
+              header.classList.add("expanded");
+              content.style.maxHeight = content.scrollHeight + "px";
+              if (icon) icon.textContent = "-"; // Changed to "-" for expand
+            }
+          });
+        });
+
+        const countdownDate = new Date("April 20, 2030 00:00:00").getTime();
+        setInterval(() => {
+          const now = new Date().getTime();
+          const distance = countdownDate - now;
+          if (distance < 0) {
+            document.getElementById("countdown").innerHTML =
+              "<div class='text-4xl font-bold text-gray-400'>The Quantum Era is Here</div>";
+            return;
+          }
+          document.getElementById("years").textContent = Math.floor(
+            distance / (1000 * 60 * 60 * 24 * 365.25)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("days").textContent = Math.floor(
+            (distance % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").textContent = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          )
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("seconds").textContent = Math.floor(
+            (distance % (1000 * 60)) / 1000
+          )
+            .toString()
+            .padStart(2, "0");
+        }, 1000);
+
+        const ctx = document.getElementById("pqcChart")?.getContext("2d");
+        const chartLoadingSpinner = document.getElementById(
+          "chart-loading-spinner"
+        );
+        const pqcChartCanvas = document.getElementById("pqcChart");
+        let pqcChart;
+        const benchmarkData = {
+          latency: {
+            labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
+            datasets: {
+              1: [
+                { label: "KeyGen/Sign", data: [0.92, 1.45, 1.25, 2.45] },
+                { label: "Enc/Verify", data: [0.8, 1.15, 0.9, 0.45] },
+                { label: "Decaps", data: [0.85, 1.22, null, null] },
+              ],
+              3: [
+                { label: "KeyGen/Sign", data: [1.18, 1.85, 1.55, 3.12] },
+                { label: "Enc/Verify", data: [0.9, 1.3, 1.03, 0.58] },
+                { label: "Decaps", data: [1.12, 1.4, null, null] },
+              ],
+              5: [
+                { label: "KeyGen/Sign", data: [1.45, 2.25, 1.95, 3.85] },
+                { label: "Enc/Verify", data: [1.2, 1.65, 1.35, 0.7] },
+                { label: "Decaps", data: [1.38, 1.8, null, null] },
+              ],
+            },
+          },
+          size: {
+            labels: ["ML-KEM", "NTRU", "ML-DSA", "FALCON"],
+            datasets: {
+              1: [
+                { label: "Public Key", data: [800, 699, 1184, 897] },
+                { label: "Ciphertext/Sig", data: [768, 699, 2044, 666] },
+                { label: "Secret Key", data: [1632, 935, 2800, 1281] },
+              ],
+              3: [
+                { label: "Public Key", data: [1184, 1027, 1472, 1441] },
+                { label: "Ciphertext/Sig", data: [1088, 1088, 2701, 1007] },
+                { label: "Secret Key", data: [2400, 1999, 3504, 2305] },
+              ],
+              5: [
+                { label: "Public Key", data: [1568, 1398, 1760, 1793] },
+                { label: "Ciphertext/Sig", data: [1568, 1568, 3366, 1280] },
+                { label: "Secret Key", data: [3168, 2653, 4864, 3073] },
+              ],
+            },
+          },
+        };
+        function createChart(metric, level) {
+          if (!ctx) return;
+          chartLoadingSpinner.classList.remove("hidden");
+          pqcChartCanvas.classList.add("hidden");
+          if (pqcChart) pqcChart.destroy();
+          setTimeout(() => {
+            const data = benchmarkData[metric];
+            const chartData = data.datasets[level].map((ds, index) => ({
+              ...ds,
+              backgroundColor: ["#bf988a", "#247c6d", "#031c26"][index % 3],
+            }));
+            pqcChart = new Chart(ctx, {
+              type: "bar",
+              data: { labels: data.labels, datasets: chartData },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text:
+                        metric === "latency" ? "Milliseconds (ms)" : "Bytes",
+                    },
+                  },
+                },
+                plugins: { tooltip: { mode: "index", intersect: false } },
+              },
+            });
+            chartLoadingSpinner.classList.add("hidden");
+            pqcChartCanvas.classList.remove("hidden");
+          }, 300);
+        }
+        const metricSelect = document.getElementById("metric-select");
+        const levelSelect = document.getElementById("security-level-select");
+        metricSelect?.addEventListener("change", () =>
+          createChart(metricSelect.value, levelSelect.value)
+        );
+        levelSelect?.addEventListener("change", () =>
+          createChart(metricSelect.value, levelSelect.value)
+        );
+        if (ctx) createChart("latency", "3");
+
+        const animatedItems = document.querySelectorAll(".animated-item");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        animatedItems.forEach((item) => observer.observe(item));
+
+        const flashItems = Array.from(
+          document
+            .getElementById("flash-item-template")
+            .content.querySelectorAll("a")
+        );
+        let flashCardIndex = 0;
+        let autoAdvanceTimer = null;
+
+        const flashBannerContent = document.getElementById(
+          "flash-banner-content"
+        );
+        const flashBannerPrev = document.getElementById("flash-banner-prev");
+        const flashBannerNext = document.getElementById("flash-banner-next");
+
+        function renderFlashCard(idx) {
+          flashBannerContent.innerHTML = "";
+          const node = flashItems[idx].cloneNode(true);
+          if (node.tagName === "A") {
+            if (!node.href.includes("#")) {
+              node.target = "_blank";
+              node.rel = "noopener noreferrer";
+            }
+          }
+          flashBannerContent.appendChild(node);
+        }
+        renderFlashCard(flashCardIndex);
+
+        function showPrevCard() {
+          flashCardIndex =
+            (flashCardIndex - 1 + flashItems.length) % flashItems.length;
+          renderFlashCard(flashCardIndex);
+          resetAutoAdvance();
+        }
+        function showNextCard() {
+          flashCardIndex = (flashCardIndex + 1) % flashItems.length;
+          renderFlashCard(flashCardIndex);
+          resetAutoAdvance();
+        }
+
+        flashBannerPrev.addEventListener("click", showPrevCard);
+        flashBannerNext.addEventListener("click", showNextCard);
+
+        function autoAdvance() {
+          flashCardIndex = (flashCardIndex + 1) % flashItems.length;
+          renderFlashCard(flashCardIndex);
+        }
+        function resetAutoAdvance() {
+          if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
+          autoAdvanceTimer = setInterval(autoAdvance, 5000);
+        }
+        resetAutoAdvance();
+
+        // --- Hero Animation: Interactive Particle Field ---
+        const heroScene = new THREE.Scene();
+        const heroCamera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000
+        );
+        const heroRenderer = new THREE.WebGLRenderer({
+          canvas: document.getElementById("hero-canvas"),
+          alpha: true,
+          antialias: true,
+        });
+        heroRenderer.setSize(window.innerWidth, window.innerHeight);
+
+        const mouse = new THREE.Vector2();
+        window.addEventListener("mousemove", (event) => {
+          mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        const heroParticleCount = 500;
+        const heroParticles = new THREE.BufferGeometry();
+        const heroPositions = new Float32Array(heroParticleCount * 3);
+        const heroParticleData = [];
+
+        for (let i = 0; i < heroParticleCount; i++) {
+          const x = (Math.random() - 0.5) * 20;
+          const y = (Math.random() - 0.5) * 20;
+          const z = (Math.random() - 0.5) * 20;
+          heroPositions[i * 3] = x;
+          heroPositions[i * 3 + 1] = y;
+          heroPositions[i * 3 + 2] = z;
+
+          heroParticleData.push({
+            originalX: x,
+            originalY: y,
+            originalZ: z,
+            velocityX: (Math.random() - 0.5) * 0.01,
+            velocityY: (Math.random() - 0.5) * 0.01,
+            velocityZ: (Math.random() - 0.5) * 0.01,
+          });
+        }
+        heroParticles.setAttribute(
+          "position",
+          new THREE.BufferAttribute(heroPositions, 3)
+        );
+        const heroParticleMaterial = new THREE.PointsMaterial({
+          color: 0xffffff,
+          size: 0.05,
+        });
+        const heroParticleSystem = new THREE.Points(
+          heroParticles,
+          heroParticleMaterial
+        );
+        heroScene.add(heroParticleSystem);
+
+        const heroLineMaterial = new THREE.LineBasicMaterial({
+          color: 0x87ceeb,
+          transparent: true,
+          opacity: 0.08,
+        });
+        const heroLineGeometry = new THREE.BufferGeometry();
+        const heroLinePositions = new Float32Array(
+          heroParticleCount * heroParticleCount * 3
+        );
+        heroLineGeometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(heroLinePositions, 3)
+        );
+        const heroLines = new THREE.LineSegments(
+          heroLineGeometry,
+          heroLineMaterial
+        );
+        heroScene.add(heroLines);
+
+        heroCamera.position.z = 15;
+        let heroTime = 0;
+
+        function animateHero() {
+          requestAnimationFrame(animateHero);
+          heroTime += 0.005;
+
+          const posArray =
+            heroParticleSystem.geometry.attributes.position.array;
+          const linePosArray = heroLines.geometry.attributes.position.array;
+          let lineIndex = 0;
+          const mouse3D = new THREE.Vector3(mouse.x * 10, mouse.y * 10, 0);
+
+          for (let i = 0; i < heroParticleCount; i++) {
+            const data = heroParticleData[i];
+            const particlePos = new THREE.Vector3(
+              posArray[i * 3],
+              posArray[i * 3 + 1],
+              posArray[i * 3 + 2]
+            );
+            const distanceToMouse = particlePos.distanceTo(mouse3D);
+            const pushStrength = Math.max(0, 1 - distanceToMouse / 5);
+            const pushVector = particlePos
+              .clone()
+              .sub(mouse3D)
+              .normalize()
+              .multiplyScalar(pushStrength * 0.1);
+
+            posArray[i * 3] +=
+              Math.sin(heroTime + data.originalX) * 0.001 +
+              data.velocityX +
+              pushVector.x;
+            posArray[i * 3 + 1] +=
+              Math.cos(heroTime + data.originalY) * 0.001 +
+              data.velocityY +
+              pushVector.y;
+            posArray[i * 3 + 2] += data.velocityZ + pushVector.z;
+
+            if (posArray[i * 3] > 10 || posArray[i * 3] < -10)
+              data.velocityX *= -1;
+            if (posArray[i * 3 + 1] > 10 || posArray[i * 3 + 1] < -10)
+              data.velocityY *= -1;
+            if (posArray[i * 3 + 2] > 10 || posArray[i * 3 + 2] < -10)
+              data.velocityZ *= -1;
+
+            for (let j = i + 1; j < heroParticleCount; j++) {
+              const dx = posArray[i * 3] - posArray[j * 3];
+              const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
+              const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+              const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+              if (distance < 1.8) {
+                linePosArray[lineIndex++] = posArray[i * 3];
+                linePosArray[lineIndex++] = posArray[i * 3 + 1];
+                linePosArray[lineIndex++] = posArray[i * 3 + 2];
+                linePosArray[lineIndex++] = posArray[j * 3];
+                linePosArray[lineIndex++] = posArray[j * 3 + 1];
+                linePosArray[lineIndex++] = posArray[j * 3 + 2];
+              }
+            }
+          }
+          heroLines.geometry.setDrawRange(0, lineIndex / 3);
+          heroLines.geometry.attributes.position.needsUpdate = true;
+          heroParticleSystem.geometry.attributes.position.needsUpdate = true;
+          heroScene.rotation.y += 0.0001;
+          heroScene.rotation.x += 0.0001;
+          heroRenderer.render(heroScene, heroCamera);
+        }
+        animateHero();
+
+        window.addEventListener("resize", () => {
+          heroCamera.aspect = window.innerWidth / window.innerHeight;
+          heroCamera.updateProjectionMatrix();
+          heroRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- Solutions Tab Slider & Navigation ---
+        const tabs = document.querySelectorAll('.solution-tab');
+        const panels = document.getElementById('solution-panels');
+        const highlighter = document.getElementById('active-tab-highlighter');
+        const prevSolutionBtn = document.getElementById('prev-solution-btn');
+        const nextSolutionBtn = document.getElementById('next-solution-btn');
+        let currentSolutionIndex = 0;
+        let solutionSliderInterval;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50; // Minimum pixels for a swipe to register
+        let isScrollingProgrammatically = false; // Flag to prevent scroll events from interfering with manual tab clicks
+
+        function updateHighlighter(activeTab) {
+            if (!activeTab) return;
+            highlighter.style.width = `${activeTab.offsetWidth}px`;
+            highlighter.style.left = `${activeTab.offsetLeft}px`;
+        }
+        
+        function switchTab(tabIndex, smoothScroll = true) {
+            // Ensure tabIndex is within bounds
+            tabIndex = Math.max(0, Math.min(tabIndex, tabs.length - 1));
+            
+            // Only update if the index has changed or if it's a programmatic smooth scroll
+            if (currentSolutionIndex === tabIndex && !smoothScroll) {
+                return;
+            }
+
+            const activeTab = tabs[tabIndex];
+
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+            activeTab.classList.add('active-tab');
+            
+            if (smoothScroll) {
+                isScrollingProgrammatically = true; // Set flag before programmatic scroll
+                panels.scrollTo({
+                    left: tabIndex * panels.offsetWidth,
+                    behavior: 'smooth'
+                });
+            } else {
+                panels.scrollLeft = tabIndex * panels.offsetWidth; // Instant scroll for scroll event sync
+            }
+            
+            updateHighlighter(activeTab);
+            currentSolutionIndex = tabIndex;
+
+            // Clear flag after a short delay to allow smooth scroll to complete
+            if (smoothScroll) {
+                setTimeout(() => { isScrollingProgrammatically = false; }, 600); 
+            }
+        }
+
+        function startAutoSlider() {
+            solutionSliderInterval = setInterval(() => {
+                const nextIndex = (currentSolutionIndex + 1) % tabs.length;
+                switchTab(nextIndex);
+            }, 7000); // 7 seconds
+        }
+
+        function resetAutoSlider() {
+            clearInterval(solutionSliderInterval);
+            startAutoSlider();
+        }
+
+        // Event listeners for top tabs
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabIndex = parseInt(tab.dataset.tabIndex, 10);
+                switchTab(tabIndex);
+                resetAutoSlider(); // Reset timer on manual click
+            });
+        });
+
+        // Touch/Swipe functionality for panels
+        panels.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(solutionSliderInterval); // Pause auto-slider on touch
+            isScrollingProgrammatically = true; // Temporarily block scroll sync during touch
+        });
+
+        panels.addEventListener('touchmove', (e) => {
+            // Prevent vertical scrolling while swiping horizontally
+            e.preventDefault(); 
+            touchEndX = e.changedTouches[0].screenX;
+        });
+
+        panels.addEventListener('touchend', () => {
+            const diffX = touchEndX - touchStartX;
+
+            if (diffX > minSwipeDistance) { // Swiped right (show previous)
+                switchTab(currentSolutionIndex - 1);
+            } else if (diffX < -minSwipeDistance) { // Swiped left (show next)
+                switchTab(currentSolutionIndex + 1);
+            } else {
+                // If no significant swipe, ensure panel snaps to nearest
+                switchTab(currentSolutionIndex); // Re-snap to current if no swipe
+            }
+            resetAutoSlider(); // Resume auto-slider after touch ends
+            setTimeout(() => { isScrollingProgrammatically = false; }, 600); // Allow scroll sync after transition
+        });
+
+        // Desktop navigation buttons
+        if (prevSolutionBtn) {
+            prevSolutionBtn.addEventListener('click', () => {
+                switchTab(currentSolutionIndex - 1);
+                resetAutoSlider();
+            });
+        }
+        if (nextSolutionBtn) {
+            nextSolutionBtn.addEventListener('click', () => {
+                switchTab(currentSolutionIndex + 1);
+                resetAutoSlider();
+            });
+        }
+
+        // Scroll synchronization for panels (when user manually scrolls)
+        let scrollTimeout;
+        panels.addEventListener('scroll', () => {
+            if (isScrollingProgrammatically) return; // Don't sync if a click/swipe just initiated a scroll
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollLeft = panels.scrollLeft;
+                const panelWidth = panels.offsetWidth;
+                // Calculate the nearest panel index, ensuring it's an integer
+                const nearestPanelIndex = Math.round(scrollLeft / panelWidth);
+                
+                // Only update if the active tab needs to change
+                if (nearestPanelIndex !== currentSolutionIndex) {
+                    switchTab(nearestPanelIndex, false); // Update UI without re-scrolling
+                    resetAutoSlider(); // Reset auto-slider on manual scroll
+                }
+            }, 150); // Debounce scroll event
+        });
+
+        // Initialize highlighter and auto-slider
+        const initialActiveTab = document.querySelector('.solution-tab.active-tab');
+        if (initialActiveTab) {
+            setTimeout(() => {
+                updateHighlighter(initialActiveTab);
+            }, 100);
+        }
+        
+        window.addEventListener('resize', () => {
+            const currentActiveTab = document.querySelector('.solution-tab.active-tab');
+            updateHighlighter(currentActiveTab);
+            // Re-align panel on resize to ensure correct position after layout changes
+            panels.scrollTo({
+                left: currentSolutionIndex * panels.offsetWidth,
+                behavior: 'smooth'
+            });
+        });
+
+        startAutoSlider();
+
+        // --- Mosca Theorem Modal Logic ---
+        const moscaQuoteSection = document.getElementById('mosca-quote-section');
+        const moscaModalOverlay = document.getElementById('mosca-modal-overlay');
+        const moscaModalCloseButton = document.getElementById('mosca-modal-close');
+
+        // Function to show the modal
+        function showMoscaModal() {
+            moscaModalOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        // Function to hide the modal
+        function hideMoscaModal() {
+            moscaModalOverlay.classList.remove('show');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Event listener to open modal when quote is clicked
+        if (moscaQuoteSection) {
+            moscaQuoteSection.addEventListener('click', showMoscaModal);
+        }
+
+        // Event listener to close modal when close button is clicked
+        if (moscaModalCloseButton) {
+            moscaModalCloseButton.addEventListener('click', hideMoscaModal);
+        }
+
+        // Event listener to close modal when clicking outside the content (on the overlay)
+        if (moscaModalOverlay) {
+            moscaModalOverlay.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the overlay, not its children
+                if (event.target === moscaModalOverlay) {
+                    hideMoscaModal();
+                }
+            });
+        }
+        
+        // --- "Coming Soon" Modal Logic (for CTA buttons) ---
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        const comingSoonModalOverlay = document.getElementById('coming-soon-modal-overlay');
+        const comingSoonModalClose = document.getElementById('coming-soon-modal-close');
+
+        // Function to show the "Coming Soon" modal
+        function showComingSoonModal(e) {
+          // Prevent default link behavior
+          e.preventDefault(); 
+          comingSoonModalOverlay.classList.add('show');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        // Function to hide the "Coming Soon" modal
+        function hideComingSoonModal() {
+          comingSoonModalOverlay.classList.remove('show');
+          document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Event listener for all "Learn More" buttons
+        if (ctaButtons) {
+          ctaButtons.forEach(button => {
+            button.addEventListener('click', showComingSoonModal);
+          });
+        }
+
+        // Event listener to close modal when close button is clicked
+        if (comingSoonModalClose) {
+            comingSoonModalClose.addEventListener('click', hideComingSoonModal);
+        }
+        
+        // Event listener to close modal when clicking outside the content (on the overlay)
+        if (comingSoonModalOverlay) {
+            comingSoonModalOverlay.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the overlay, not its children
+                if (event.target === comingSoonModalOverlay) {
+                    hideComingSoonModal();
+                }
+            });
+        }
+
+        // --- New Contact Popup Modal Logic ---
+        const contactFormButton = document.getElementById('contact-form-button');
+        const performanceCtaButton = document.getElementById('performance-cta-button'); // New CTA button
+        const contactPopupModalOverlay = document.getElementById('contact-popup-modal-overlay');
+        const contactPopupModalClose = document.getElementById('contact-popup-modal-close');
+        const contactForm = document.getElementById('contact-form');
+        const contactSubmitButton = document.getElementById('contact-submit-button');
+        const contactLoadingSpinner = document.getElementById('contact-loading-spinner');
+        const contactMessageDisplay = document.getElementById('contact-message-display');
+
+        // Function to show the contact popup modal
+        function showContactPopupModal() {
+            contactPopupModalOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            // Reset form and messages when opening
+            contactForm.reset();
+            contactMessageDisplay.classList.add('hidden');
+            contactMessageDisplay.textContent = '';
+            contactSubmitButton.disabled = false;
+        }
+
+        // Function to hide the contact popup modal
+        function hideContactPopupModal() {
+            contactPopupModalOverlay.classList.remove('show');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Event listener for the "Get in Touch" button in the contact section
+        if (contactFormButton) {
+            contactFormButton.addEventListener('click', showContactPopupModal);
+        }
+
+        // Event listener for the new "See How We Can Secure Your Project" button
+        if (performanceCtaButton) {
+            performanceCtaButton.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                showContactPopupModal();
+            });
+        }
+
+
+        // Event listener to close modal when close button is clicked
+        if (contactPopupModalClose) {
+            contactPopupModalClose.addEventListener('click', hideContactPopupModal);
+        }
+        
+        // Event listener to close modal when clicking outside the content (on the overlay)
+        if (contactPopupModalOverlay) {
+            contactPopupModalOverlay.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the overlay, not its children
+                if (event.target === contactPopupModalOverlay) {
+                    hideContactPopupModal();
+                }
+            });
+        }
+
+        // Form submission logic for Formspree
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                contactSubmitButton.disabled = true; // Disable button
+                contactLoadingSpinner.classList.remove('hidden'); // Show spinner
+                contactMessageDisplay.classList.add('hidden'); // Hide previous messages
+                contactMessageDisplay.textContent = '';
+
+                const formData = new FormData(contactForm);
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: contactForm.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    console.log('Formspree response status:', response.status); // Debugging
+                    const data = await response.json();
+                    console.log('Formspree response data:', data); // Debugging
+
+                    if (response.ok) {
+                        contactMessageDisplay.classList.remove('hidden', 'error');
+                        contactMessageDisplay.classList.add('success');
+                        contactMessageDisplay.textContent = 'Thank you for your message! We will get back to you soon.';
+                        contactForm.reset(); // Clear form fields on success
+                        setTimeout(hideContactPopupModal, 1500); // Hide modal after 1.5 seconds (faster)
+                    } else {
+                        contactMessageDisplay.classList.remove('hidden', 'success');
+                        contactMessageDisplay.classList.add('error');
+                        if (data.errors) {
+                            contactMessageDisplay.textContent = data.errors.map(error => error.message).join(', ');
+                        } else {
+                            contactMessageDisplay.textContent = 'Oops! There was a problem sending your message.';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    contactMessageDisplay.classList.remove('hidden', 'success');
+                    contactMessageDisplay.classList.add('error');
+                    contactMessageDisplay.textContent = 'Network error. Please try again later.';
+                } finally {
+                    contactLoadingSpinner.classList.add('hidden'); // Hide spinner
+                    contactSubmitButton.disabled = false; // Re-enable button
+                }
+            });
+        }
+
+        // --- Whitepaper Invitation Popup Logic --
+        const whitepaperPopup = document.getElementById('whitepaper-popup');
+        const whitepaperButton = document.getElementById('pdf-button'); // Assuming this is the whitepaper button
+
+        function showWhitepaperPopup() {
+            whitepaperPopup.classList.add('show');
+            // Hide after 5 seconds
+            setTimeout(() => {
+                whitepaperPopup.classList.remove('show');
+            }, 5000); // Popup stays for 5 seconds
+        }
+
+        // Show the popup after 3 seconds of page load
+        setTimeout(showWhitepaperPopup, 3000); // Popup appears after 3 seconds
+      });
+    </script>
+  </body>
+</html>
