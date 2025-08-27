@@ -57,7 +57,6 @@
     </script>
 
     <style>
-      
       body {
         font-family: "Inter", sans-serif;
         background-color: #f8fafc;
@@ -69,6 +68,11 @@
       }
       #home h1 {
         color: #ffffff;
+      }
+      .main-container {
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
       }
       .flash-banner {
         background: linear-gradient(90deg, #070708 0%, #414040 100%);
@@ -223,11 +227,10 @@
         min-width: 130px;
       }
       
-      /* FIX: Improved countdown responsiveness for small screens */
       @media (max-width: 640px) {
         .countdown-segment { padding: 0.75rem; min-width: 60px; }
         #countdown { gap: 0.5rem; }
-        #countdown span.text-7xl { font-size: 2.25rem !important; } /* Adjusted font size */
+        #countdown span.text-7xl { font-size: 2.25rem !important; }
         #countdown span.text-base { font-size: 0.75rem !important; }
       }
 
@@ -836,48 +839,50 @@
       id="header"
       class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200 h-20 transition-all duration-300"
     >
-      <nav
-        class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
-      >
-        <a href="#home" class="flex items-center space-x-2">
-          <div class="text-xl tracking-wider">
-            <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
-            <span class="font-normal text-red-500 text-base md:text-lg">|</span>
-            <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
+      <div class="main-container">
+        <nav
+          class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
+        >
+          <a href="#home" class="flex items-center space-x-2">
+            <div class="text-xl tracking-wider">
+              <span class="font-bold text-black text-lg md:text-xl">MOONTRACE</span>
+              <span class="font-normal text-red-500 text-base md:text-lg">|</span>
+              <span class="font-normal text-gray-700 text-base md:text-lg">ENGINEERING</span>
+            </div>
+          </a>
+          <div class="hidden md:flex items-center space-x-12">
+            <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
+            <a href="#solutions" class="nav-link font-medium">Solutions</a>
+            <a href="#critical-systems" class="nav-link font-medium">Standards</a>
+            <a href="#whymoontrace" class="nav-link font-medium">Why Moontrace?</a>
+            <a href="#about" class="nav-link font-medium">About</a>
           </div>
-        </a>
-        <div class="hidden md:flex items-center space-x-12">
-          <a href="MTLabs.html" class="nav-link font-medium">MTLabs</a>
-          <a href="#solutions" class="nav-link font-medium">Solutions</a>
-          <a href="#critical-systems" class="nav-link font-medium">Standards</a>
-          <a href="#whymoontrace" class="nav-link font-medium">Why Moontrace?</a>
-          <a href="#about" class="nav-link font-medium">About</a>
-        </div>
-        <a
-          href="careers.html"
-          class="hidden md:block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
-          >Join Our Team</a
-        >
-        <button
-          id="mobile-menu-button"
-          class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <a
+            href="careers.html"
+            class="hidden md:block bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition"
+            >Join Our Team</a
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
-        </button>
-      </nav>
+          <button
+            id="mobile-menu-button"
+            class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </nav>
+      </div>
       <div
         id="mobile-menu"
         class="hidden md:hidden px-4 pb-4 space-y-2 bg-white/95 rounded-b-lg shadow-lg"
@@ -895,7 +900,7 @@
       </div>
     </header>
 
-    <main>
+    <main class="main-container">
       <section id="home" class="hero-bg text-white">
         <canvas id="hero-canvas"></canvas>
         <div
@@ -1472,12 +1477,7 @@
         </ul>
 
         <div class="video-container">
-          <iframe
-            src="https://www.youtube.com/embed/ewDE7yaKZyw"
-            title="Dr. Michele Mosca (University of Waterloo) on overcoming cyber security challenges of the PQC era"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+          <iframe src="https://www.youtube.com/embed/ewDE7yaKZyw" title="Dr. Michele Mosca on PQC era challenges" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <p class="text-center text-sm text-gray-600 mt-2">
             Dr. Michele Mosca (University of Waterloo) on overcoming cyber security challenges of the PQC era
@@ -1485,12 +1485,10 @@
       </div>
     </div>
 
-    <!-- Whitepaper PDF Button - Updated to link to whitepaper.html -->
     <a href="whitepaper.html" id="pdf-button" aria-label="Read Moontrace Engineering Whitepaper" title="Read Moontrace Engineering Whitepaper" style="padding:0; background:none; border:none; width:60px; height:60px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-        <img src="assets/button.png" alt="Download Moontrace Engineering Whitepaper" style="width:60px; height:60px; object-fit:cover; border-radius:50%; display:block;" />
+        <img src="assets/button.png" alt="Download Moontrace Engineering Whitepaper" style="width:60px; height:60px; object-fit:cover; border-radius:50%; display:block;" onerror="this.onerror=null;this.parentElement.style.backgroundColor='#0052cc'; this.parentElement.innerHTML = '<svg xmlns=\\'http://www.w3.org/2000/svg\\' class=\\'h-8 w-8 text-white\\' fill=\\'none\\' viewBox=\\'0 0 24 24\\' stroke=\\'currentColor\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\\' /></svg>';" />
     </a>
     
-    <!-- New "Coming Soon" Modal -->
     <div id="coming-soon-modal-overlay" class="modal-overlay">
         <div class="modal-content text-center max-w-sm p-8">
             <button id="coming-soon-modal-close" class="modal-close-button">×</button>
@@ -1499,26 +1497,16 @@
         </div>
     </div>
 
-    <!-- New Contact Popup Modal -->
     <div id="contact-popup-modal-overlay" class="modal-overlay">
         <div class="modal-content">
             <button id="contact-popup-modal-close" class="modal-close-button" aria-label="Close contact form">×</button>
-            <img src="assets/button.png" alt="Moontrace Engineering Logo" class="company-logo">
+            <img src="assets/button.png" alt="Moontrace Engineering Logo" class="company-logo" onerror="this.style.display='none';">
             <h3 class="text-2xl font-bold text-gray-900 mb-4">Get in Touch with Moontrace</h3>
             <p class="text-gray-700 mb-6">We'd love to hear from you! Please fill out the form below.</p>
             <form id="contact-form" class="contact-form" action="https://formspree.io/f/mdkdpakv" method="POST">
-                <div class="mb-4">
-                    <label for="contact-name">Name</label>
-                    <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="mb-4">
-                    <label for="contact-email">Email</label>
-                    <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required>
-                </div>
-                <div class="mb-6">
-                    <label for="contact-message">Message</label>
-                    <textarea id="contact-message" name="message" rows="5" placeholder="Your message here..." required></textarea>
-                </div>
+                <div class="mb-4"><label for="contact-name">Name</label><input type="text" id="contact-name" name="name" placeholder="Your Name" required></div>
+                <div class="mb-4"><label for="contact-email">Email</label><input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required></div>
+                <div class="mb-6"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="5" placeholder="Your message here..." required></textarea></div>
                 <button type="submit" id="contact-submit-button">Send Message</button>
                 <div id="contact-loading-spinner" class="modal-loading-spinner hidden"></div>
                 <div id="contact-message-display" class="modal-message hidden"></div>
@@ -1526,7 +1514,6 @@
         </div>
     </div>
 
-    <!-- Whitepaper Invitation Popup -->
     <div id="whitepaper-popup" class="whitepaper-popup">
         <p>Access our Whitepaper for in-depth insights!</p>
     </div>
@@ -1641,10 +1628,10 @@
         heroScene.add(heroLines);
         heroCamera.position.z = 15;
         let heroTime = 0;
-        let animationFrameId; // <-- FIX: To hold the animation frame ID
+        let animationFrameId;
 
         function animateHero() {
-            animationFrameId = requestAnimationFrame(animateHero); // <-- FIX: Store the ID
+            animationFrameId = requestAnimationFrame(animateHero);
             heroTime += 0.005;
             const posArray = heroParticleSystem.geometry.attributes.position.array;
             const linePosArray = heroLines.geometry.attributes.position.array;
@@ -1676,24 +1663,21 @@
             heroRenderer.render(heroScene, heroCamera);
         }
 
-        // --- FIX: Intersection Observer for Hero Animation ---
         const heroSection = document.getElementById('home');
         const animationObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Start animation only if it's not already running
                     if (!animationFrameId) {
                         animateHero();
                     }
                 } else {
-                    // Stop animation if it's running
                     if (animationFrameId) {
                         cancelAnimationFrame(animationFrameId);
-                        animationFrameId = null; // Reset the ID
+                        animationFrameId = null;
                     }
                 }
             });
-        }, { threshold: 0.01 }); // Trigger when even a small part is visible
+        }, { threshold: 0.01 });
 
         animationObserver.observe(heroSection);
 
@@ -1702,6 +1686,80 @@
           heroCamera.updateProjectionMatrix();
           heroRenderer.setSize(window.innerWidth, window.innerHeight);
         });
+        
+        // --- Solutions Section Logic ---
+        const solutionsSection = document.getElementById('solutions');
+        const solutionTabs = document.querySelectorAll('.solution-tab');
+        const solutionPanels = document.getElementById('solution-panels');
+        const highlighter = document.getElementById('active-tab-highlighter');
+        const prevBtn = document.getElementById('prev-solution-btn');
+        const nextBtn = document.getElementById('next-solution-btn');
+        let currentSolutionIndex = 0;
+        let solutionInterval;
+
+        const updateSolutionTab = (index) => {
+            currentSolutionIndex = index;
+            const activeTab = solutionTabs[index];
+            
+            // Update tabs
+            solutionTabs.forEach(tab => tab.classList.remove('active-tab'));
+            activeTab.classList.add('active-tab');
+            
+            // Move highlighter
+            highlighter.style.width = `${activeTab.offsetWidth}px`;
+            highlighter.style.left = `${activeTab.offsetLeft}px`;
+            
+            // Scroll panels
+            solutionPanels.scrollTo({
+                left: solutionPanels.offsetWidth * index,
+                behavior: 'smooth'
+            });
+        };
+
+        const autoAdvanceSolution = () => {
+            const nextIndex = (currentSolutionIndex + 1) % solutionTabs.length;
+            updateSolutionTab(nextIndex);
+        };
+
+        const startAutoAdvance = () => {
+            if (!solutionInterval) {
+                solutionInterval = setInterval(autoAdvanceSolution, 5000); // Change slide every 5 seconds
+            }
+        };
+
+        const stopAutoAdvance = () => {
+            clearInterval(solutionInterval);
+            solutionInterval = null;
+        };
+
+        solutionTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const index = parseInt(tab.dataset.tabIndex);
+                updateSolutionTab(index);
+                stopAutoAdvance(); // Stop auto-advance on manual interaction
+            });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const newIndex = (currentSolutionIndex - 1 + solutionTabs.length) % solutionTabs.length;
+            updateSolutionTab(newIndex);
+            stopAutoAdvance();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const newIndex = (currentSolutionIndex + 1) % solutionTabs.length;
+            updateSolutionTab(newIndex);
+            stopAutoAdvance();
+        });
+        
+        // Pause on hover
+        solutionsSection.addEventListener('mouseenter', stopAutoAdvance);
+        solutionsSection.addEventListener('mouseleave', startAutoAdvance);
+
+        // Initial setup
+        updateSolutionTab(0);
+        startAutoAdvance();
+
 
         // --- All Modal Logic ---
         function setupModal(triggerIds, modalOverlayId, closeButtonId) {
@@ -1731,7 +1789,6 @@
         setupModal(['mosca-quote-section'], 'mosca-modal-overlay', 'mosca-modal-close');
         setupModal(['contact-form-button', 'assess-risk-cta'], 'contact-popup-modal-overlay', 'contact-popup-modal-close');
         
-        // Special setup for CTA buttons that open the "Coming Soon" modal
         document.querySelectorAll('.cta-button').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1751,7 +1808,6 @@
             comingSoonOverlay.addEventListener('click', (e) => { if (e.target === comingSoonOverlay) hide(); });
         }
 
-        // --- Contact Form Submission ---
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
@@ -1784,7 +1840,6 @@
             });
         }
         
-        // --- FAQ Accordion ---
         const faqAccordion = document.getElementById('faq-accordion');
         if (faqAccordion) {
             const faqData = [
@@ -1824,4 +1879,4 @@
       });
     </script>
   </body>
-</html>
+</html
