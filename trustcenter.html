@@ -84,7 +84,7 @@
     </style>
   </head>
   <body class="antialiased">
-    <!-- UNCHANGED HEADER -->
+    <!-- HEADER -->
     <header
       id="header"
       class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200 h-16 md:h-20"
@@ -140,7 +140,7 @@
       </div>
     </header>
 
-    <!-- MAIN CONTENT - REDESIGNED -->
+    <!-- MAIN CONTENT -->
     <main>
       <!-- Hero Section -->
       <section class="hero-pattern text-white relative">
@@ -218,14 +218,29 @@
             <div id="features" class="tab-content hidden">
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center p-6">
+                  <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-blue-600">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                  </div>
                   <h3 class="text-xl font-bold">Crypto-Agility Platform</h3>
                   <p class="text-gray-600 mt-2">Seamlessly transition to post-quantum cryptographic standards without disrupting your operations.</p>
                 </div>
                 <div class="text-center p-6">
+                  <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-blue-600">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                  </div>
                   <h3 class="text-xl font-bold">Continuous Discovery</h3>
                   <p class="text-gray-600 mt-2">Automatically discover and inventory cryptographic assets across your entire digital ecosystem.</p>
                 </div>
                 <div class="text-center p-6">
+                  <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-blue-600">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V5.75A2.25 2.25 0 0018 3.5H6A2.25 2.25 0 003.75 5.75v12.5A2.25 2.25 0 006 20.25z" />
+                    </svg>
+                  </div>
                   <h3 class="text-xl font-bold">Threat Intelligence</h3>
                   <p class="text-gray-600 mt-2">Stay ahead of emerging threats with real-time intelligence on quantum computing advancements.</p>
                 </div>
@@ -235,7 +250,7 @@
         </div>
       </section>
 
-      <!-- UPDATED: Commitment to Standards Section -->
+      <!-- Commitment to Standards Section -->
       <section id="compliance" class="py-16 md:py-24 section-animate">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
@@ -266,8 +281,8 @@
         </div>
       </section>
       
-      <!-- UPDATED: Security Journey Timeline Section -->
-      <!-- <section id="security-journey" class="py-16 md:py-24 bg-gray-50 section-animate">
+      <!-- 
+      <section id="security-journey" class="py-16 md:py-24 bg-gray-50 section-animate">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
@@ -304,7 +319,8 @@
                 </div>
             </div>
         </div>
-      </section> -->
+      </section>
+      -->
 
       <!-- 'Built for India' Section -->
       <section id="indian-initiatives" class="py-16 md:py-24 bg-blue-50 section-animate">
@@ -406,7 +422,7 @@
 
     </main>
 
-    <!-- UNCHANGED FOOTER -->
+    <!-- FOOTER -->
     <footer class="bg-gray-900 text-gray-400">
       <div class="text-center py-6">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -419,7 +435,7 @@
       </div>
     </footer>
 
-    <!-- UNCHANGED CONTACT MODAL -->
+    <!-- CONTACT MODAL -->
     <div
       id="contact-popup-modal-overlay"
       class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[1000] opacity-0 invisible transition-opacity duration-200"
@@ -474,7 +490,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // --- Mobile Menu Logic (Unchanged) ---
+        // --- Mobile Menu Logic ---
         const menuToggle = document.getElementById("mobile-menu-button");
         const mobileMenu = document.getElementById("mobile-menu");
         if (menuToggle && mobileMenu) {
@@ -483,7 +499,7 @@
           );
         }
 
-        // --- Contact Popup Modal Logic (Unchanged, but with more triggers) ---
+        // --- Contact Popup Modal Logic ---
         const contactPopupModalOverlay = document.getElementById("contact-popup-modal-overlay");
         const contactPopupModalClose = document.getElementById("contact-popup-modal-close");
         const contactForm = document.getElementById("contact-form");
